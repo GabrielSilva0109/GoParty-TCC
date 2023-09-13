@@ -3,10 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoParty</title>
+    <title>GoParty | Login</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h1>Deu certo</h1>
-    <p>Porra</p>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+          <form method="POST" action="/register" th:object="${user}">
+            <h1>Cadastro</h1>
+            <span>Insira seus dados</span>
+            <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" required/>
+            <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" required/>
+            <input type="password" name="senha" id="password" class="form-control" placeholder="Senha" required/>
+            <button type="submit" value="Cadastrar">Cadastrar</button>
+          </form>
+        </div>
+        <div class="form-container sign-in-container">
+          <form >
+            <h1>GoParty</h1>
+            <span class="spanTexto"></span>
+            <input type="text" id="username" class="form-control" placeholder="Usuario" required/>
+            <input type="password" id="password" class="form-control" placeholder="Senha" required/>
+            <button href="home.html"><a href="home.html">Login</a></button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1 class="stake-h1">Login</h1>
+              <p>Ja possui conta?</p>
+              <button class="ghost" id="signIn">Login</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h2>Ainda não possui conta ?</h2>
+              <p>Faça cadastro na melhor rede social</p>
+              <button class="ghost" id="signUp">Cadastro</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    
+    <script>
+    
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+    
+        signUpButton.addEventListener('click', () =>
+        container.classList.add('right-panel-active'));
+    
+        signInButton.addEventListener('click', () =>
+        container.classList.remove('right-panel-active'));
+        
+    </script>
+
+    
 </body>
 </html>
