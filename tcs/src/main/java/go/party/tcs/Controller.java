@@ -1,7 +1,7 @@
 package go.party.tcs;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
+//TESTE
 @org.springframework.stereotype.Controller
 public class Controller {
     
