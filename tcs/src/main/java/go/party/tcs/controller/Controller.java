@@ -1,4 +1,4 @@
-package go.party.tcs;
+package go.party.tcs.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
