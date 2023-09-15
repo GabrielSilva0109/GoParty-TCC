@@ -12,7 +12,7 @@
     
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-          <form method="POST" action="/register" th:object="${user}">
+          <form method="POST" action="register">
             <h1>Cadastro</h1>
             <span>Insira seus dados</span>
             <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" required/>
@@ -53,7 +53,7 @@
         const signInButton = document.getElementById('signIn');
         const container = document.getElementById('container');
     
-        signUpButton.addEventListener('click', () =>
+        signUpButton.addEventListener('click', () => 
         container.classList.add('right-panel-active'));
     
         signInButton.addEventListener('click', () =>
