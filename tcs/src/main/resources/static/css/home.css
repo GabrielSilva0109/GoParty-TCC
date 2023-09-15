@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #333; /* Cor de fundo do header */
+    color: #fff; /* Cor do texto no header */
+    padding: 10px; /* Espaçamento interno do header */
+    display: flex; /* Ativar o layout flexbox para os elementos filho */
+    justify-content: space-between; /* Espaçamento igual entre os elementos filho */
+    align-items: center; /* Alinhar verticalmente os elementos filho */
+  }
+  
+  .header h1 {
+    margin: 0; /* Remover margens padrão */
+  }
+  
+  .header ul {
+    list-style: none; /* Remover marcadores de lista */
+    padding: 0; /* Remover preenchimento da lista */
+    display: flex; /* Ativar o layout flexbox para os links de perfil */
+  }
+  
+  .header li {
+    margin-right: 20px; /* Espaçamento entre os itens da lista */
+  }
+  
+  .header a {
+    text-decoration: none; /* Remover sublinhado dos links */
+    color: #fff; /* Cor dos links */
+  }
+  
+  .button {
+    background-color: #ff5733; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto no botão */
+    border: none; /* Remover borda do botão */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    cursor: pointer; /* Alterar cursor ao passar o mouse sobre o botão */
+  }
+  
+  .button:hover {
+    background-color: #ff8144; /* Cor de fundo do botão ao passar o mouse */
+  }
+  

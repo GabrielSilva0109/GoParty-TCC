@@ -25,12 +25,12 @@ public class LoginController {
     public String login(@RequestParam("nome") String nome, @RequestParam("senha") String senha, Model model) {
         // Consulte o banco de dados para verificar se o usuário existe e a senha está correta
         Usuario usuario = usuarioRepository.findByNome(nome);
-
+    
         if (usuario != null && senha.equals(usuario.getSenha())) {
-            // Autenticação bem-sucedida, redirecione para a página de sucesso ou dashboard
+            // Autenticação bem-sucedida
             return "redirect:/home";
         } else {
-            // Autenticação falhou, adicione uma mensagem de erro ao modelo e retorne para a página de login
+            // Autenticação falhou
             model.addAttribute("error", "Nome de usuário ou senha incorretos.");
             return "login";
         }

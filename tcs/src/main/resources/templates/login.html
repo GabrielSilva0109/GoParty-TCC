@@ -30,7 +30,10 @@
             <input type="text" name="nome" class="form-control" placeholder="Nome" required/>
             <input type="password" name="senha" class="form-control" placeholder="Senha" required/>
             <button type="submit">Login</button>
-        </form>
+          </form>
+          <div th:if="${error}" class="error-message">
+            <p th:text="${error}"></p>
+          </div>
         </div>
         <div class="overlay-container">
           <div class="overlay">
