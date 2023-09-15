@@ -28,17 +28,35 @@ body{
   }
   
   .header li {
-    margin-right: 20px; /* Espaçamento entre os itens da lista */
+    margin: 0 10px 0 10px;
   }
   
   .header a {
     font-size: 1.5rem;
+    font-weight: bold;
     text-decoration: none; 
     color: white; 
+    
+    
+  }
+  .header a:hover {
+    color: rgb(255, 52, 52);
+  }
+  .ulContainer {
+    background: rgba(255, 255, 255, 0.2); /* Cor de fundo com transparência */
+    backdrop-filter: blur(10px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
+    border-radius: 10px; /* Borda arredondada (ajuste conforme necessário) */
+    list-style: none; /* Remova os marcadores de lista */
   }
   
   
-  
+  .ulContainer a {
+    text-decoration: none; /* Remova a decoração do link */
+    color: white; /* Cor do texto */
+    display: block; /* Torna todo o conteúdo do item da lista clicável */
+    
+  }  
+
   .Btn {
     display: flex;
     align-items: center;
@@ -106,7 +124,7 @@ body{
     transform: translate(2px ,2px);
   }
 
-  /* Reset de margens e preenchimento padrão */
+  
 body, html {
   margin: 0;
   padding: 0;
@@ -115,8 +133,8 @@ body, html {
 /* Estilo para a div que envolve todo o conteúdo */
 .container {
   display: flex;
-  justify-content: space-between; /* Distribui os elementos igualmente */
-  padding: 20px; /* Espaçamento interno para melhor visualização */
+  justify-content: space-between; 
+  padding: 20px; 
 }
 
 /* Estilos para as três partes */
@@ -140,4 +158,5 @@ body, html {
 
 .right-sidebar, .center-content, .left-sidebar{
   border-radius: 20px;
+  text-align: center;
 }
