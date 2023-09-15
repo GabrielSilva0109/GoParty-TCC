@@ -15,14 +15,14 @@
 /*======================== COMEÇO LOGIN ======================== */
 
 body {
-    background-color: #ffffff;
+    background-color: #0a0b1d;
     padding-bottom: 60px !important;
     margin: 0; /* Remova as margens do body para evitar espaços indesejados */
 }
 
 .container {
     display: contents;
-    background: #fff;
+    background: #0a0b1d;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     position: relative;
@@ -34,7 +34,7 @@ body {
 
 
 .form-container form {
-    background: #fff;
+    background: #0a0b1d;
     display: flex;
     flex-direction: column;
     padding:  0 50px;
