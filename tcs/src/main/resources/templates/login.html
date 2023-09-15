@@ -23,13 +23,14 @@
           
         </div>
         <div class="form-container sign-in-container">
-          <form >
+          <form action="/loginValida" method="post">
             <h1>GoParty</h1>
+            <span>Insira seus dados</span>
             <span class="spanTexto"></span>
-            <input type="text" id="username" class="form-control" placeholder="Usuario" required/>
-            <input type="password" id="password" class="form-control" placeholder="Senha" required/>
-            <button href="home.html"><a href="home.html">Login</a></button>
-          </form>
+            <input type="text" name="nome" class="form-control" placeholder="Nome" required/>
+            <input type="password" name="senha" class="form-control" placeholder="Senha" required/>
+            <button type="submit">Login</button>
+        </form>
         </div>
         <div class="overlay-container">
           <div class="overlay">
