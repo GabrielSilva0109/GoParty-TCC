@@ -10,22 +10,24 @@ body{
 }
 
 .header {
-    color: #fff; /* Cor do texto no header */
-    padding: 5px; /* Espaçamento interno do header */
-    display: flex; /* Ativar o layout flexbox para os elementos filho */
-    justify-content: space-between; /* Espaçamento igual entre os elementos filho */
-    align-items: center; /* Alinhar verticalmente os elementos filho */
-  }
+  color: #fff; /* Cor do texto no header */
+  padding: 5px; /* Espaçamento interno do header */
+  display: flex; /* Ativar o layout flexbox para os elementos filho */
+  justify-content: space-between; /* Espaçamento igual entre os elementos filho */
+  align-items: center; /* Alinhar verticalmente os elementos filho */
+}
   
-  .header h1 {
-    margin: 0; /* Remover margens padrão */
-  }
+.header h1 {
+  margin: 0; /* Remover margens padrão */
+  color: rgb(255, 65, 65);
+  margin: 10px;
+}
   
-  .header ul {
-    list-style: none; /* Remover marcadores de lista */
-    padding: 0; /* Remover preenchimento da lista */
-    display: flex; /* Ativar o layout flexbox para os links de perfil */
-  }
+.header ul {
+  list-style: none; /* Remover marcadores de lista */
+  padding: 0; /* Remover preenchimento da lista */
+  display: flex; /* Ativar o layout flexbox para os links de perfil */
+}
   
   .header li {
     margin: 0 10px 0 10px;
@@ -159,4 +161,19 @@ body, html {
 .right-sidebar, .center-content, .left-sidebar{
   border-radius: 20px;
   text-align: center;
+}
+
+@media (max-width: 700px) {
+  ul {
+    display: none !important; /* Oculta o ulContainer */
+  }
+}
+
+@media (max-width: 400px) {
+  .left-sidebar, .right-sidebar{
+    display: none !important; /* Oculta o ulContainer */
+  }
+  .center-content{
+    width: 350px;
+  }
 }
