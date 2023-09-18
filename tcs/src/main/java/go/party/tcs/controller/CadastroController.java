@@ -24,7 +24,6 @@ public class CadastroController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     @GetMapping
     public String exibirFormularioCadastro() {
         return "login"; // Retorne a página que contém o formulário de login e cadastro
