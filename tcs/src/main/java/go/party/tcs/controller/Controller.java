@@ -18,6 +18,7 @@ public class Controller {
 
     @GetMapping("/home")
     public String principalPage(){
+       
         return "home";
     }
     

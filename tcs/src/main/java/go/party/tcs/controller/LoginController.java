@@ -34,7 +34,7 @@ public class LoginController {
             // Autenticação bem-sucedida
             return "redirect:/home";
         }
-    }
+    } 
     
     // Autenticação falhou
     model.addAttribute("error", "Nome de usuário ou senha incorretos.");
