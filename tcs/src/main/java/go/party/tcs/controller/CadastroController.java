@@ -1,7 +1,7 @@
 package go.party.tcs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +20,9 @@ public class CadastroController {
 
     @Autowired
     private UsuarioService usuarioService;
-
+    
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping
     public String exibirFormularioCadastro() {
@@ -31,8 +31,9 @@ public class CadastroController {
 
     @PostMapping
     public String cadastrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-        String senhaCryptografada = passwordEncoder.encode(usuario.getSenha());//Cryptografa a Senha
-        usuario.setSenha(senhaCryptografada); 
+        // Criptografar a senha antes de salvar
+        String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+        usuario.setSenha(senhaCriptografada);
         usuarioService.cadastrarUsuario(usuario);
         return "redirect:/login"; // Redirecionar para a página de login após o cadastro
     }
