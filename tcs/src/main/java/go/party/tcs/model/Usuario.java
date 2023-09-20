@@ -19,12 +19,17 @@ public class Usuario {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "descricao")
+    private String descricao;
+
     @Column(name = "cpf")
     private String cpf;
 
     @Column(name = "senha")
     private String senha;
 
+    @Column(name = "fotoPerfil")
+    private String fotoPerfil;
 
     public Integer getId() {
         return id;
@@ -56,6 +61,22 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getDescricao(){
+        return this.descricao = descricao;
+    }
+
+    public void setDescricao(String descricao){
+        this.descricao = descricao;
+    }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
 
 }
