@@ -12,12 +12,31 @@
   box-sizing: border-box;
 }
 
-/*======================== COMEÇO LOGIN ======================== */
-
 body {
     background-color: #0a0b1d;
-    padding-bottom: 60px !important;
-    margin: 0; /* Remova as margens do body para evitar espaços indesejados */
+    margin: 0; 
+}
+
+h1 {
+    margin: 0; 
+    color: rgb(255, 65, 65);
+    margin: 10px;
+    font-size: 3.5rem!important;
+}
+h2{
+    color: #ddd;
+    font-size: 2.0rem;
+}
+
+span{
+    color: white;
+    font-size: 1.2rem;    
+}
+
+p{
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .container {
@@ -68,13 +87,13 @@ body {
 }
 
 button:hover{
-  background: #d5d500;
+  background: rgb(232, 30, 30);
 }
 
  button {
     border-radius: 20px;
     border: 1px solid #000000;
-    background: #ffff00;
+    background: rgb(255, 65, 65);
     color: #fff;
     font-size: 12px;
     font-weight: bold;
@@ -93,7 +112,7 @@ button:active {
     outline: none;
 }
 
- button.ghost {
+button.ghost {
     background: #151515;
     border-color: black;
 }
@@ -134,7 +153,7 @@ button:active {
 
 .overlay {
     background: #ffffff;
-    background: linear-gradient(to right, #fafa00, #fafa00) no-repeat 0 0 / cover;
+    background: #0F110D;
     color: #fff;
     position: relative;
     left: -100%;
@@ -200,6 +219,15 @@ button:active {
     transform: translateY(20%);
 }
 
+.error-message {
+    background-color: #f44336;
+    color: rgb(255, 255, 255)!important;
+    padding: 5px 10px;
+    border-radius: 40px; 
+    margin-top: 10px;
+    text-align: center; 
+    font-weight: bold; 
+}
 /*======================== FIM LOGIN ======================== */
 
 

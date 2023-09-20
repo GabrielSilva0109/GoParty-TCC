@@ -1,6 +1,7 @@
 package go.party.tcs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,8 +42,10 @@ public class LoginController {
             return "redirect:/home";
         } else {
             // Autenticação falhou
-            model.addAttribute("error", "Nome de usuário ou senha incorretos.");
+            model.addAttribute("error", "Usuário ou senha incorretos!");
             return "login";
         }
     }
+    
+    
 }
