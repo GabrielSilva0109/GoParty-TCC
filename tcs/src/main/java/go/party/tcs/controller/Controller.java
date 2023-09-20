@@ -16,11 +16,7 @@ public class Controller {
         return "redirect:/login";
     }
 
-    @GetMapping("/home")
-    public String principalPage(){
-       
-        return "home";
-    }
+   
     
 
     
