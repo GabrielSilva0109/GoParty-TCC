@@ -24,28 +24,25 @@ public class LoginController {
 
     @PostMapping("/loginValida")
     public String login(@RequestParam("nome") String nome, @RequestParam("senha") String senha, Model model) {
-    // Consulte o banco de dados para verificar se o usuário existe
-    Usuario usuario = usuarioRepository.findByNome(nome);
-    boolean valida = false;
-    if (usuario != null) {
-        // Verificar se a senha fornecida corresponde à senha criptografada no banco de dados
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        if (passwordEncoder.matches(senha, usuario.getSenha())) {
-            // Autenticação bem-sucedida
-            valida = true;
+        // Consulte o banco de dados para verificar se o usuário existe
+        Usuario usuario = usuarioRepository.findByNome(nome);
+        boolean valida = false;
+        
+        if (usuario != null) {
+            // Verificar se a senha fornecida corresponde à senha criptografada no banco de dados
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            if (passwordEncoder.matches(senha, usuario.getSenha())) {
+                // Autenticação bem-sucedida
+                valida = true;
+            }
         }
-        valida = true;
-    } 
-    if(valida == true){
-        return "redirect:/home";
+        
+        if (valida) {
+            return "redirect:/home";
+        } else {
+            // Autenticação falhou
+            model.addAttribute("error", "Nome de usuário ou senha incorretos.");
+            return "login";
+        }
     }
-    
-    // Autenticação falhou
-    model.addAttribute("error", "Nome de usuário ou senha incorretos.");
-    return "login";
 }
-
-}
-
-
-
