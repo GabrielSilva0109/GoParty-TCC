@@ -16,6 +16,11 @@ public class Controller {
         return "redirect:/login";
     }
 
+    @GetMapping("/perfil")
+    public String mostrarPerfil() {
+        return "perfil";
+    }
+
    
     
 
