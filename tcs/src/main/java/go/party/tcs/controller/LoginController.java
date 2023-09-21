@@ -60,6 +60,19 @@ public class LoginController {
             return "redirect:/loginValida";
         }
     }
+
+    @GetMapping("/evento")
+    public String paginaEvento(Model model, HttpSession session, HttpServletRequest request){
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        if(sessionUsuario != null){
+            // ... outras atribuições ao modelo
+            model.addAttribute("sessionUsuario", sessionUsuario);
+            // ...
+            return "evento";
+        } else {
+            return "redirect:/home";
+        }
+    }
     
     
 }

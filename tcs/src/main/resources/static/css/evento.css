@@ -136,15 +136,15 @@ h1{
   padding: 20px; 
 }
 
-.arroba{
-  color: rgb(255, 65, 65);
-}
-
 /* Estilos para as três partes */
 .left-sidebar {
   width: 25%;
   background-color: #f0f0f0; /* Cor de fundo do lado esquerdo */
   padding: 20px;
+}
+
+.arroba{
+  color: rgb(255, 65, 65);
 }
 
 .center-content {

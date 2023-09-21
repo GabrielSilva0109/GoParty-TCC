@@ -20,11 +20,8 @@ public class Controller {
     public String mostrarPerfil() {
         return "perfil";
     }
+
     
-    @GetMapping("/evento")
-    public String mostrarEvento() {
-        return "evento";
-    }
 
    
     
