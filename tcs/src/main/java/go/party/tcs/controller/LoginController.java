@@ -74,5 +74,25 @@ public class LoginController {
         }
     }
     
+    //Metodo para fazer o logout
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        // Remova o usuário da sessão para efetuar logout
+        session.removeAttribute("usuario");
+        return "redirect:/loginValida";
+    }
+
+    @GetMapping("/perfil")
+    public String mostrarPerfil(Model model, HttpSession session, HttpServletRequest request) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        if(sessionUsuario != null){
+            // ... outras atribuições ao modelo
+            model.addAttribute("sessionUsuario", sessionUsuario);
+            // ...
+            return "perfil";
+        } else {
+            return "redirect:/login";
+        }
+    }
     
 }

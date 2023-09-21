@@ -2,6 +2,8 @@ package go.party.tcs.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -16,11 +18,9 @@ public class Controller {
         return "redirect:/login";
     }
 
-    @GetMapping("/perfil")
-    public String mostrarPerfil() {
-        return "perfil";
-    }
+   
 
+    
     
 
    
