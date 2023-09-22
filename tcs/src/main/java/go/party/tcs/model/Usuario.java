@@ -19,8 +19,8 @@ public class Usuario {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "usuario")
-    private String user;
+    @Column(name = "usuarioNome")
+    private String usuarioNome;
 
     @Column(name = "descricao")
     private String descricao;
@@ -56,12 +56,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsuarioNome() {
+        return usuarioNome;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsuarioNome(String usuarioNome) {
+        this.usuarioNome = usuarioNome;
     }
 
     public String getDescricao(){
