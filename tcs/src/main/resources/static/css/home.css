@@ -161,6 +161,7 @@ h1{
 .center-content, .left-sidebar{
   border-radius: 20px;
   text-align: center;
+  padding: 10px;
 }
 
 /* Estilos para o footer (invisível por padrão) */
@@ -192,6 +193,76 @@ footer ul li a {
   color: #fff;
   
 }
+
+/* Bloco de Usuarios */
+.bloco-user {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.usuario-bloco {
+  width: 35%;
+  height: 100px;
+  background-color: #ccc;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Padrões de Botão */
+.btn-1:hover{
+  background: rgb(232, 30, 30);
+}
+
+.btn-1 {
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background: rgb(255, 65, 65);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-top:20px;
+}
+
+.btn-1:active {
+    transform: scale(.95);
+}
+
+.btn-1:focus {
+    outline: none;
+}
+
+.btn-2:hover{
+  background: black;
+}
+
+.btn-2 {
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background: #151515;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-top:20px;
+}
+
+.btn-2:active {
+    transform: scale(.95);
+}
+
+.btn-2:focus {
+    outline: none;
+}
+
 
 /* Consulta de mídia para mostrar o footer em telas com menos de 500px */
 @media (max-width: 500px) {

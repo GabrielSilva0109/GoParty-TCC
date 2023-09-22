@@ -1,5 +1,7 @@
 package go.party.tcs.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -94,5 +96,23 @@ public class LoginController {
             return "redirect:/login";
         }
     }
+
+    //Pagina Usuarios
+    @GetMapping("/usuarios")
+    public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        
+        if (sessionUsuario != null) {
+            model.addAttribute("sessionUsuario", sessionUsuario);
+            
+            // Aqui você pode buscar a lista de usuários da mesma forma que antes
+            List<Usuario> usuarios = usuarioService.findAll();
+            model.addAttribute("usuarios", usuarios);
+        
+            return "usuarios";
+        } else {
+            return "redirect:/login";
+        }
+}
     
 }

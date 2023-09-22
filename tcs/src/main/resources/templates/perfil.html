@@ -22,5 +22,26 @@
             <div class="text">Sair</div>
         </a>
     </header>
+
+    <div class="container">
+        <div class="left-sidebar">
+            <h2><span class="arroba">@</span><span th:text="${sessionUsuario.nome}"></span></h2>
+
+            <div class="altera">
+                <button class="btn-1">Alterar</button>
+                <button class="btn-2">Excluir</button>
+            </div>
+        </div>
+    
+        <div class="center-content">
+            <h1>Seus Role</h1>
+            <div class="bloco-user">
+                <div th:each="usuario : ${usuarios}" class="usuario-bloco">
+                    <h3><span class="arroba">@</span><span th:text="${usuario.nome}"></span></h3>                    
+                </div>
+            </div>
+        </div>
+    
+    </div>
 </body>
 </html>
