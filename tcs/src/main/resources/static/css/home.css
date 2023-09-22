@@ -22,8 +22,10 @@ h1{
 }
   
 .logo {
+  font-size: 2.5rem;
   margin: 0; /* Remover margens padrão */
   color: rgb(255, 65, 65);
+  padding-left: 10px;
 }
   
 .header ul {
@@ -36,74 +38,74 @@ h1{
     margin: 0 10px 0 10px;
   }
   
-  .header a {
+  .links  {
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none; 
     color: white; 
     
-  }
-  .header a:hover {
-    color: rgb(255, 52, 52);
-  }
+}
+.header a:hover {
+  color: rgb(255, 52, 52);
+}
 
-  .ulContainer {
-    background: rgba(255, 255, 255, 0.2); /* Cor de fundo com transparência */
-    backdrop-filter: blur(10px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
-    border-radius: 10px; /* Borda arredondada (ajuste conforme necessário) */
-    list-style: none; /* Remova os marcadores de lista */
-  }
+.ulContainer {
+  background: rgba(255, 255, 255, 0.2); /* Cor de fundo com transparência */
+  backdrop-filter: blur(10px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
+  border-radius: 10px; /* Borda arredondada (ajuste conforme necessário) */
+  list-style: none; /* Remova os marcadores de lista */
+}
   
   
-  .ulContainer a {
-    text-decoration: none; /* Remova a decoração do link */
-    color: white; /* Cor do texto */
-    display: block; /* Torna todo o conteúdo do item da lista clicável */
-  }  
+.ulContainer a {
+  text-decoration: none; /* Remova a decoração do link */
+  color: white; /* Cor do texto */
+  display: block; /* Torna todo o conteúdo do item da lista clicável */
+}  
 
-  .Btn {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition-duration: .3s;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-    background-color: rgb(255, 65, 65);
-  }
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
   
   /* plus sign */
-  .sign {
-    width: 100%;
-    transition-duration: .3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   
-  .sign svg {
-    width: 17px;
-  }
+.sign svg {
+  width: 17px;
+}
   
-  .sign svg path {
-    fill: white;
-  }
+.sign svg path {
+  fill: white;
+}
   /* text */
-  .text {
-    position: absolute;
-    right: 0%;
-    width: 0%;
-    opacity: 0;
-    color: white;
-    font-size: 1.2em;
-    font-weight: 600;
-    transition-duration: .3s;
-  }
+.text {
+  position: absolute;
+  right: -20%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
   /* hover effect on button width */
   .Btn:hover {
     width: 125px;
@@ -161,10 +163,45 @@ h1{
   text-align: center;
 }
 
+/* Estilos para o footer (invisível por padrão) */
+footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
 
+/* Estilos para a lista no footer */
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+footer ul li {
+  margin: 0 10px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: #fff;
+  
+}
+
+/* Consulta de mídia para mostrar o footer em telas com menos de 500px */
+@media (max-width: 500px) {
+  footer {
+    display: block!important;
+  }
+}
 
 @media (max-width: 700px) {
-  ul {
+  .ulContainer {
     display: none !important; /* Oculta o ulContainer */
   }
 }
@@ -176,4 +213,5 @@ h1{
   .center-content{
     width: 350px;
   }
+  
 }
