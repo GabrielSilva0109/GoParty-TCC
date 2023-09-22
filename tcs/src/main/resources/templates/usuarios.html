@@ -32,7 +32,11 @@
             <h1>Usuarios</h1>
             <div class="bloco-user">
                 <div th:each="usuario : ${usuarios}" class="usuario-bloco">
-                    <h3><span class="arroba">@</span><span th:text="${usuario.nome}"></span></h3>                    
+                    <h3><span class="arroba">@</span><span th:text="${usuario.nome}"></span></h3>
+                    <div class="interacoes">
+                        <button class="btn-3">Seguir</button>
+                        <button class="btn-4">Perfil</button>
+                    </div>
                 </div>
             </div>
         </div>

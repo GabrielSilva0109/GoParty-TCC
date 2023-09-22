@@ -199,10 +199,18 @@ footer ul li a {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  padding: 10px;
+}
+
+@media (max-width: 500px) {
+  .usuario-bloco{
+    width: 40%!important;
+    height: 120px!important;
+  }
 }
 
 .usuario-bloco {
-  width: 35%;
+  width: 30%;
   height: 100px;
   background-color: #ccc;
   text-align: center;
@@ -260,6 +268,58 @@ footer ul li a {
 }
 
 .btn-2:focus {
+    outline: none;
+}
+
+.btn-3:hover{
+  background: rgb(232, 30, 30);
+}
+
+.btn-3 {
+    border-radius: 20px;
+    border: 1px solid #b42e2e;
+    background: rgb(255, 65, 65);
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 7px 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    font-weight: bold;
+}
+
+.btn-3:active {
+    transform: scale(.95);
+}
+
+.btn-3:focus {
+    outline: none;
+}
+
+.btn-4:hover{
+  background: black;
+}
+
+.btn-4 {
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background: #151515;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 7px 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    font-weight: bold;
+}
+
+.btn-4:active {
+    transform: scale(.95);
+}
+
+.btn-4:focus {
     outline: none;
 }
 
