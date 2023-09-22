@@ -19,17 +19,26 @@ public class Usuario {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "usuario")
+    private String user;
+
     @Column(name = "descricao")
     private String descricao;
+
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "cpf")
     private String cpf;
 
+    @Column(name = "idade")
+    private Integer idade;
+
+    @Column(name = "url")
+    private String url;
+
     @Column(name = "senha")
     private String senha;
-
-    @Column(name = "fotoPerfil")
-    private String fotoPerfil;
 
     public Integer getId() {
         return id;
@@ -47,6 +56,30 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getDescricao(){
+        return descricao;
+    }
+
+    public void setDescricao(String descricao){
+        this.descricao = descricao;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
     public String getCpf() {
         return cpf;
     }
@@ -55,28 +88,28 @@ public class Usuario {
         this.cpf = cpf;
     }
 
+    public Integer getIdade() {
+        return idade;
+    }
+    
+    public void setIdade(Integer idade) {
+        this.idade = idade;
+    }
+
+    public String getUrlFoto() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getDescricao(){
-        return this.descricao = descricao;
-    }
-
-    public void setDescricao(String descricao){
-        this.descricao = descricao;
-    }
-
-    public String getFotoPerfil() {
-        return fotoPerfil;
-    }
-
-    public void setFotoPerfil(String fotoPerfil) {
-        this.fotoPerfil = fotoPerfil;
     }
 
 }

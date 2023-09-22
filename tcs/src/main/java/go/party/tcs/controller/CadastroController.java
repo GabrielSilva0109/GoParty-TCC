@@ -31,11 +31,12 @@ public class CadastroController {
 
     @PostMapping
     public String cadastrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-        // Criptografar a senha antes de salvar
-        String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
-        usuario.setSenha(senhaCriptografada);
-        usuarioService.cadastrarUsuario(usuario);
-        return "redirect:/login"; // Redirecionar para a página de login após o cadastro
-    }
+    // Criptografar a senha antes de salvar
+    String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+    usuario.setSenha(senhaCriptografada);
+    usuarioService.cadastrarUsuario(usuario);
+    return "redirect:/login"; // Redirecionar para a página de login após o cadastro
+}
+
 }
 
