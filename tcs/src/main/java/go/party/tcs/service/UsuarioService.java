@@ -21,6 +21,10 @@ public class UsuarioService {
         // Salvar o usuário no banco de dados
     }
 
+    public void atualizarUsuario(Usuario usuario){
+        usuarioRepository.save(usuario);
+    }
+    
     public List<Usuario> findAll(){
         return usuarioRepository.findAll();
     }

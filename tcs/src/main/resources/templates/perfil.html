@@ -27,20 +27,30 @@
         <div class="left-sidebar">
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.nome}"></span></h2>
             <div class="info">
+                <h3><span th:text="${sessionUsuario.descricao}"></span></h3>
                 <h4><span th:text="${sessionUsuario.email}"></span></h4>
                 <h4><span th:text="${sessionUsuario.cpf}"></span></h4>
                 <h4><span th:text="${sessionUsuario.idade}"></span></h4>
             </div>
+            <form method="POST" action="/editar" class="edit-form" style="display: none;">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="text" name="usuarioNome" id="edit-nome" placeholder="Novo Usuario">
+                <input type="text" name="email" id="edit-email" placeholder="Novo Email">
+                <input type="text" name="descricao" id="edit-descricao" placeholder="Nova Descrição">
+                <input type="text" name="idade" id="edit-idade" placeholder="Nova Idade">
+                <input type="password" name="senha" id="edit-senha" placeholder="Nova Senha">
+                <button id="btn-salvar">Salvar</button>
+            </form>
+            
             <div class="altera">
-                <button class="Btn-editar">
+                <button class="Btn-editar" id="btn-editar">
                     <div class="sign">+</div>
                     <div class="text">Editar</div>
-                  </button>
+                </button>
                 <button class="btn-excluir">
                     <svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
                 </button>
             </div>
-            
         </div>
     
         <div class="center-content">
@@ -53,5 +63,68 @@
         </div>
     
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Quando o botão "Editar" for clicado
+        $("#btn-editar").click(function() {
+            // Toggle (alternar) a exibição do formulário de edição
+            $(".edit-form").toggle();
+        });
+
+        // Quando o botão "Salvar" for clicado
+        $("#btn-salvar").click(function() {
+            // Obtenha os novos valores dos campos de edição
+            var novoNome = $("#edit-nome").val();
+            var novoEmail = $("#edit-email").val();
+            var novaIdade = $("#edit-idade").val();
+            var novaSenha = $("#edit-senha").val();
+            // Após a atualização bem-sucedida, você pode ocultar o formulário de edição novamente:
+            $(".edit-form").hide();
+        });
+    });
+
+    document.getElementById('edit-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Evita o envio padrão do formulário
+
+    const formData = new FormData(this);
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('PUT', '/editar', true);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Lógica para lidar com a resposta após a atualização
+        }
+    };
+
+    xhr.send(formData);
+
+    function validarFormulario() {
+    // Pega os valores dos campos
+    var novoUsuarioNome = document.getElementById("edit-nome").value;
+    var novoEmail = document.getElementById("edit-email").value;
+    var novaDescricao = document.getElementById("edit-descricao").value;
+    var novaIdade = document.getElementById("edit-idade").value;
+    var novaSenha = document.getElementById("edit-senha").value;
+
+    // Verifica se algum campo está preenchido
+    if (
+        novoUsuarioNome === "" &&
+        novoEmail === "" &&
+        novaDescricao === "" &&
+        novaIdade === "" &&
+        novaSenha === ""
+    ) {
+        // Nenhum campo preenchido, impedir envio
+        alert("Preencha pelo menos um campo.");
+        return false;
+    }
+    // Se algum campo estiver preenchido, permitir envio
+    return true;
+}
+});
+</script>
 </body>
 </html>

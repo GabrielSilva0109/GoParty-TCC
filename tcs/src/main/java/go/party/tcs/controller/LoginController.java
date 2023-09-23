@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import go.party.tcs.model.Usuario;
@@ -113,6 +114,46 @@ public class LoginController {
         } else {
             return "redirect:/login";
         }
-}
+    }
+
+    @PutMapping("/editar")
+    public String editarUsuario(
+        @RequestParam(name = "usuarioNome", required = false) String novoUsuarioNome,
+        @RequestParam(name = "email", required = false) String novoEmail,
+        @RequestParam(name = "descricao", required = false) String novaDescricao,
+        @RequestParam(name = "idade", required = false) String novaIdade,
+        @RequestParam(name = "senha", required = false) String novaSenha,
+        Model model, 
+        HttpSession session, 
+        HttpServletRequest request
+    ) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+        // Verifique quais campos estão preenchidos e atualize-os
+        if (novoUsuarioNome != null && !novoUsuarioNome.isEmpty()) {
+            sessionUsuario.setUsuarioNome(novoUsuarioNome);
+        }
+        if (novoEmail != null && !novoEmail.isEmpty()) {
+            sessionUsuario.setEmail(novoEmail);
+        }
+        if (novaDescricao != null && !novaDescricao.isEmpty()) {
+            sessionUsuario.setDescricao(novaDescricao);
+        }
+        if (novaIdade != null && !novaIdade.isEmpty()) {
+            // Certifique-se de fazer a conversão adequada, pois idade é um campo numérico
+            int idade = Integer.parseInt(novaIdade);
+            sessionUsuario.setIdade(idade);
+        }
+        if (novaSenha != null && !novaSenha.isEmpty()) {
+            sessionUsuario.setSenha(novaSenha);
+        }
+
+        // Realize a lógica para salvar o objeto de usuário atualizado no banco de dados
+        // ...
+
+        return "redirect:/perfil";
+    }
+
+
     
 }

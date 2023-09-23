@@ -450,6 +450,44 @@ footer ul li a {
   justify-content: center;
 }
 
+.edit-form {
+  padding: 20px;
+  max-width: 300px;
+  margin: 0 auto; /* Isso centraliza o formulário horizontalmente */
+  text-align: center;
+}
+
+.edit-form input[type="text"] {
+  max-width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-form input[type="password"] {
+  max-width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.edit-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+}
+.edit-form button:hover {
+  background-color: #004b9b;
+  
+}
+
+/* Adicione este estilo para que os elementos fiquem um abaixo do outro */
+
 /* Consulta de mídia para mostrar o footer em telas com menos de 500px */
 @media (max-width: 500px) {
   footer {
