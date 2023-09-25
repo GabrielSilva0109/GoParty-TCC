@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoParty | Usuarios</title>
+    <title>GoParty | Perfil</title>
     <link rel="stylesheet"  href="/css/home.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,8 +12,8 @@
     <header class="header"> 
         <h1 class="logo">GoParty</h1>
         <ul class="ulContainer">
-            <li><a class="links" th:href="@{/perfil}">Perfil</a></li>
-            <li><a class="links" th:href="@{/usuarios}" style="border-bottom: 4px solid rgb(255, 65, 65);">Usuarios</a></li>
+            <li><a class="links" th:href="@{/perfil}" style="border-bottom: 4px solid rgb(255, 65, 65);">Perfil</a></li>
+            <li><a class="links" th:href="@{/usuarios}">Usuarios</a></li>
             <li><a class="links" th:href="@{/home}">Feed</a></li>
             <li><a class="links" th:href="@{/evento}">Evento</a></li>
         </ul>
@@ -25,25 +25,25 @@
 
     <div class="container">
         <div class="left-sidebar">
-            <h2><span class="arroba">@</span><span th:text="${sessionUsuario.nome}"></span></h2>
+            <img class="imgPerfil" src="/css/img/fotoPerfil.jpg" alt="">
+            <h2><span class="arroba">@</span><span th:text="${usuario.nome}"></span></h2>
+            <div class="info">
+                <h3><span th:text="${usuario.descricao}"></span></h3>
+                <h4><span th:text="${usuario.email}"></span></h4>
+                <h4><span th:text="${usuario.cpf}"></span></h4>
+                <h4><span th:text="${usuario.idade}"></span></h4>
+            </div>
         </div>
     
         <div class="center-content">
-            <h1>Usuarios</h1>
+            <h1>Seus Role</h1>
             <div class="bloco-user">
-                <div th:each="usuario : ${usuarios}" class="usuario-bloco">
-                    <img class="imgUsuarios" src="/css/img/fotoPerfil.jpg" alt="">
-                    <h3><span class="arroba">@</span><span th:text="${usuario.nome}"></span></h3>
-                    <div class="interacoes">
-                        <button class="btn-3">Seguir</button>
-                        <!-- Atualize o botão "Perfil" para usar um link dinâmico -->
-                        <a class="btn-4" th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">Perfil</a>
-                    </div>
-                </div>
+                
             </div>
         </div>
-        
-    
     </div>
+    
+
+    
 </body>
 </html>

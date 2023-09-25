@@ -12,10 +12,6 @@
   box-sizing: border-box;
 }
 
-.cadastro-container input{
-    width: 50px;
-}
-
 input:required{
     color: #000000;
 }
