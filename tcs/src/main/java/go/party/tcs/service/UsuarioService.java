@@ -36,5 +36,7 @@ public class UsuarioService {
     public Usuario encontrarId(Integer idUsuario){
         return usuarioRepository.getById(idUsuario);
     }
+
+   
 }
 

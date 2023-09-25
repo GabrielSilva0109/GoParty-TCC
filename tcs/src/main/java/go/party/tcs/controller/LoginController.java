@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authenticati
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,6 +24,9 @@ public class LoginController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @GetMapping("/loginValida")
     public String loginPage() {
@@ -159,8 +163,33 @@ public class LoginController {
         // Passo 5: Salve as alterações no banco de dados.
         usuarioService.cadastrarUsuario(usuarioNoBanco); // Substitua 'usuarioService' pelo seu serviço de usuário.
 
+        // Passo 6: Atualize a sessão com o usuário atualizado.
+        session.setAttribute("usuario", usuarioNoBanco);
+
         return "redirect:/perfil";
     }
+
+
+    @DeleteMapping("/deletar")
+    public String deletarUsuario(Model model, HttpSession session, HttpServletRequest request) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        
+        if (sessionUsuario != null) {
+            try {
+                // Aqui você pode usar o repositório JPA para deletar o usuário
+                usuarioRepository.delete(sessionUsuario);
+                
+                // Remova o usuário da sessão
+                session.removeAttribute("usuario");
+            } catch (Exception e) {
+                
+                e.printStackTrace();
+            }
+        }
+
+        return "redirect:/login";
+    }
+
 
 
     
