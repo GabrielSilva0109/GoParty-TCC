@@ -29,7 +29,7 @@ public class Controller {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @GetMapping("/perfil/{id}")
+    @GetMapping("/perfilUsuario/{id}")
     public String exibirPerfil(@PathVariable Integer id, Model model) {
         // Buscar o usuário com o ID especificado no banco de dados
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
@@ -38,7 +38,7 @@ public class Controller {
             Usuario usuario = usuarioOptional.get();
             // Adicionar o usuário ao modelo para que ele possa ser exibido na página de perfil
             model.addAttribute("usuario", usuario);
-            return "perfilUsuarios"; // Isso renderizará a página de perfil
+            return "perfilUsuario"; // Isso renderizará a página de perfil
         } else {
             // Lide com o caso em que o usuário não foi encontrado
             return "redirect:/usuarios"; // Redirecione para uma página de lista de usuários, por exemplo

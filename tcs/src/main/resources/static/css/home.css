@@ -301,6 +301,9 @@ footer ul li a {
   background: black;
 }
 
+.btn-4 a{
+  text-decoration: none;
+}
 .btn-4 {
     border-radius: 20px;
     border: 1px solid #000000;
