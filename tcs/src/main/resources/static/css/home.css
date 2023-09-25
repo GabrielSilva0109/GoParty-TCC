@@ -211,7 +211,7 @@ footer ul li a {
 
 .usuario-bloco {
   width: 30%;
-  height: 100px;
+  height: 150px;
   background-color: #ccc;
   text-align: center;
   padding: 10px;
@@ -491,6 +491,12 @@ footer ul li a {
 .imgPerfil{
   width: 150px;
   height: 150px;
+  border-radius: 20px;
+}
+
+.imgUsuarios{
+  width: 40px;
+  height: 40px;
   border-radius: 20px;
 }
 
