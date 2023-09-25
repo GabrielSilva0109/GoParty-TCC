@@ -19,14 +19,5 @@ public class Controller {
     public String redirectToHomePage() {
         return "redirect:/login";
     }
-
-  
-
-    
-    
-
-   
-    
-
     
 }

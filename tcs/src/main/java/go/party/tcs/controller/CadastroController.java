@@ -16,8 +16,7 @@ import go.party.tcs.service.UsuarioService;
 @RequestMapping("/cadastro")
 public class CadastroController {
 
-    // Injete o serviço do usuário aqui
-
+    // Injeta o serviço do usuário
     @Autowired
     private UsuarioService usuarioService;
     

@@ -12,6 +12,38 @@
   box-sizing: border-box;
 }
 
+.cadastro-container input{
+    width: 50px;
+}
+
+input:required{
+    color: #000000;
+}
+
+input{
+    width: 40px;
+    border-radius: 11px;
+}
+
+/*Mostrar Senha */
+.password-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  #senhaTroca {
+    padding-right: 30px;
+  }
+
+  .password-toggle {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
 body {
     background-color: #0a0b1d;
     margin: 0; 

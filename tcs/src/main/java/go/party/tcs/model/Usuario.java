@@ -1,5 +1,7 @@
 package go.party.tcs.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +34,8 @@ public class Usuario {
     private String cpf;
 
     @Column(name = "idade")
-    private Integer idade;
+    private LocalDate idade;
+
 
     @Column(name = "url")
     private String url;
@@ -88,11 +91,11 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public Integer getIdade() {
+    public LocalDate getIdade() {
         return idade;
     }
     
-    public void setIdade(Integer idade) {
+    public void setIdade(LocalDate idade) {
         this.idade = idade;
     }
 

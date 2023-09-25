@@ -10,8 +10,7 @@ import go.party.tcs.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-
-
+    
     @Autowired
     private UsuarioRepository usuarioRepository;
 

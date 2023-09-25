@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoParty | Login</title>
     <link rel="stylesheet"  href="/css/style.css">
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/tcs/src/main/resources/static/css/imagens/TCSicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 <body>
     
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-          <form method="post" action="/cadastro"> 
+          <form method="post" action="/cadastro" class="cadastro-container"> 
             <h1>Cadastro</h1>
             <span>Insira seus dados</span>
-            <input type="text" name="nome" class="form-control" placeholder="Nome" required/>
-            <input type="text" name="usuarioNome" class="form-control" placeholder="Usuario" required/>
-            <input type="text" name="email" class="form-control" placeholder="Email" required/>
+            <input type="text" name="nome" class="form-control" placeholder="Nome Completo" required/>
+            <input type="text" name="usuarioNome" class="form-control" placeholder="Nome de usuário" required/>
+            <input type="email" name="email" class="form-control" placeholder="Email" required/>
             <input type="text" id="cpf" name="cpf" class="form-control" placeholder="CPF" required/>
-            <input type="number" id="idade" name="idade" class="form-control" placeholder="Idade" required/>
-            <input type="password" name="senha" class="form-control" placeholder="Senha" required/>
+            <input type="date" id="idade" name="idade" class="form-control" placeholder="Data de nascimento" required/>
+              <input type="password" name="senha" class="form-control" id="senhaTrocaCadastro" placeholder="Informe a senha" required />
+              <i id="toggle" class="fas fa-eye-slash password-toggle" onclick="togglePasswordVisibilityCadastro()"></i>
             <button type="submit">Cadastrar</button>
           </form>
           
@@ -34,8 +35,14 @@
             <h1>GoParty</h1>
             <span>Insira seus dados</span>
             <span class="spanTexto"></span>
-            <input type="text" name="nome" class="form-control" placeholder="Nome" required/>
-            <input type="password" name="senha" class="form-control" placeholder="Senha" required/>
+          
+            <!--Conteiner de senha-->
+          <div class="password-container">
+            <input type="text" name="nome" class="form-control" placeholder="Nome de usuário" required/>
+            <input type="password" name="senha" class="form-control" id="senhaTrocaLogin" placeholder="Informe a senha" required />
+            <i id="toggle" class="fas fa-eye-slash password-toggle" onclick="togglePasswordVisibilityLogin()"></i>
+          </div>
+            
             <div th:if="${error}" class="error-message">
               <p th:text="${error}"></p>
             </div>
@@ -73,9 +80,39 @@
           $(document).ready(function(){
             $('#cpf').mask('000.000.000-00', {reverse: true});
         });
-        
-    </script>
 
+        //MOSTRAR E OCULTAR SENHA 
+     function togglePasswordVisibilityLogin() {
+      var senhaInput = document.getElementById("senhaTrocaLogin");
+      var toggleButton = document.getElementById("toggle");
+
+      if (senhaInput.type === "password") {
+        senhaInput.type = "text";
+        toggleButton.classList.remove("fa-eye-slash");
+        toggleButton.classList.add("fa-eye");
+      } else {
+        senhaInput.type = "password";
+        toggleButton.classList.remove("fa-eye");
+        toggleButton.classList.add("fa-eye-slash");
+      }
+    }
+
+    function togglePasswordVisibilityCadastro() {
+      var senhaInput = document.getElementById("senhaTrocaCadastro");
+      var toggleButton = document.getElementById("toggle");
+
+      if (senhaInput.type === "password") {
+        senhaInput.type = "text";
+        toggleButton.classList.remove("fa-eye-slash");
+        toggleButton.classList.add("fa-eye");
+      } else {
+        senhaInput.type = "password";
+        toggleButton.classList.remove("fa-eye");
+        toggleButton.classList.add("fa-eye-slash");
+      }
+    }
     
+    
+    </script>  
 </body>
 </html>

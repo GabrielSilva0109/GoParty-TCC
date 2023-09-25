@@ -1,5 +1,6 @@
 package go.party.tcs.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,7 +152,7 @@ public class LoginController {
             usuarioNoBanco.setDescricao(novaDescricao);
         }
         if (novaIdade != null && !novaIdade.isEmpty()) {
-            int idade = Integer.parseInt(novaIdade);
+            LocalDate idade = LocalDate.parse(novaIdade);
             usuarioNoBanco.setIdade(idade);
         }
         if (novaSenha != null && !novaSenha.isEmpty()) {
@@ -190,7 +191,4 @@ public class LoginController {
         return "redirect:/login";
     }
 
-
-
-    
 }
