@@ -486,7 +486,13 @@ footer ul li a {
   
 }
 
-/* Adicione este estilo para que os elementos fiquem um abaixo do outro */
+/* Imagem que ficara de perfil */
+
+.imgPerfil{
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+}
 
 /* Consulta de mídia para mostrar o footer em telas com menos de 500px */
 @media (max-width: 500px) {
