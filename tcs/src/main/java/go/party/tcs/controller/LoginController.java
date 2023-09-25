@@ -127,29 +127,37 @@ public class LoginController {
         HttpSession session, 
         HttpServletRequest request
     ) {
+        // Passo 1: Recupere o usuário da sessão.
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
-        // Verifique quais campos estão preenchidos e atualize-os
+        // Passo 2: Obtenha o ID do usuário da sessão.
+        Integer userId = sessionUsuario.getId();
+
+        // Passo 3: Use o ID para carregar o usuário correspondente do banco de dados.
+        Usuario usuarioNoBanco = usuarioService.encontrarId(userId); // Substitua 'usuarioService' pelo seu serviço de usuário.
+
+        // Passo 4: Atualize as informações do usuário com os novos valores.
         if (novoUsuarioNome != null && !novoUsuarioNome.isEmpty()) {
-            sessionUsuario.setUsuarioNome(novoUsuarioNome);
+            usuarioNoBanco.setUsuarioNome(novoUsuarioNome);
         }
         if (novoEmail != null && !novoEmail.isEmpty()) {
-            sessionUsuario.setEmail(novoEmail);
+            usuarioNoBanco.setEmail(novoEmail);
         }
         if (novaDescricao != null && !novaDescricao.isEmpty()) {
-            sessionUsuario.setDescricao(novaDescricao);
+            usuarioNoBanco.setDescricao(novaDescricao);
         }
         if (novaIdade != null && !novaIdade.isEmpty()) {
-            // Certifique-se de fazer a conversão adequada, pois idade é um campo numérico
             int idade = Integer.parseInt(novaIdade);
-            sessionUsuario.setIdade(idade);
+            usuarioNoBanco.setIdade(idade);
         }
         if (novaSenha != null && !novaSenha.isEmpty()) {
-            sessionUsuario.setSenha(novaSenha);
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String senhaCriptografada = passwordEncoder.encode(novaSenha);
+            usuarioNoBanco.setSenha(senhaCriptografada);
         }
 
-        // Realize a lógica para salvar o objeto de usuário atualizado no banco de dados
-        // ...
+        // Passo 5: Salve as alterações no banco de dados.
+        usuarioService.cadastrarUsuario(usuarioNoBanco); // Substitua 'usuarioService' pelo seu serviço de usuário.
 
         return "redirect:/perfil";
     }

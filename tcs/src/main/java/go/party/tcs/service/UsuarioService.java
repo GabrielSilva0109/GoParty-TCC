@@ -24,13 +24,17 @@ public class UsuarioService {
     public void atualizarUsuario(Usuario usuario){
         usuarioRepository.save(usuario);
     }
-    
+
     public List<Usuario> findAll(){
         return usuarioRepository.findAll();
     }
     
     public Usuario findByUsuario(String usuarioNome){
         return usuarioRepository.findByNome(usuarioNome);
+    }
+
+    public Usuario encontrarId(Integer idUsuario){
+        return usuarioRepository.getById(idUsuario);
     }
 }
 

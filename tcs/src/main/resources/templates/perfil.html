@@ -65,66 +65,66 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        // Quando o botão "Editar" for clicado
-        $("#btn-editar").click(function() {
-            // Toggle (alternar) a exibição do formulário de edição
-            $(".edit-form").toggle();
+    <script>
+        $(document).ready(function() {
+            // Quando o botão "Editar" for clicado
+            $("#btn-editar").click(function() {
+                // Toggle (alternar) a exibição do formulário de edição
+                $(".edit-form").toggle();
+            });
+
+            // Quando o botão "Salvar" for clicado
+            $("#btn-salvar").click(function() {
+                // Obtenha os novos valores dos campos de edição
+                var novoNome = $("#edit-nome").val();
+                var novoEmail = $("#edit-email").val();
+                var novaIdade = $("#edit-idade").val();
+                var novaSenha = $("#edit-senha").val();
+                // Após a atualização bem-sucedida, você pode ocultar o formulário de edição novamente:
+                $(".edit-form").hide();
+            });
         });
 
-        // Quando o botão "Salvar" for clicado
-        $("#btn-salvar").click(function() {
-            // Obtenha os novos valores dos campos de edição
-            var novoNome = $("#edit-nome").val();
-            var novoEmail = $("#edit-email").val();
-            var novaIdade = $("#edit-idade").val();
-            var novaSenha = $("#edit-senha").val();
-            // Após a atualização bem-sucedida, você pode ocultar o formulário de edição novamente:
-            $(".edit-form").hide();
-        });
-    });
+        document.getElementById('edit-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // Evita o envio padrão do formulário
 
-    document.getElementById('edit-form').addEventListener('submit', function (e) {
-    e.preventDefault(); // Evita o envio padrão do formulário
+        const formData = new FormData(this);
+        const xhr = new XMLHttpRequest();
 
-    const formData = new FormData(this);
-    const xhr = new XMLHttpRequest();
+        xhr.open('PUT', '/editar', true);
 
-    xhr.open('PUT', '/editar', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Lógica para lidar com a resposta após a atualização
+            }
+        };
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Lógica para lidar com a resposta após a atualização
+        xhr.send(formData);
+
+        function validarFormulario() {
+        // Pega os valores dos campos
+        var novoUsuarioNome = document.getElementById("edit-nome").value;
+        var novoEmail = document.getElementById("edit-email").value;
+        var novaDescricao = document.getElementById("edit-descricao").value;
+        var novaIdade = document.getElementById("edit-idade").value;
+        var novaSenha = document.getElementById("edit-senha").value;
+
+        // Verifica se algum campo está preenchido
+        if (
+            novoUsuarioNome === "" &&
+            novoEmail === "" &&
+            novaDescricao === "" &&
+            novaIdade === "" &&
+            novaSenha === ""
+        ) {
+            // Nenhum campo preenchido, impedir envio
+            alert("Preencha pelo menos um campo.");
+            return false;
         }
-    };
-
-    xhr.send(formData);
-
-    function validarFormulario() {
-    // Pega os valores dos campos
-    var novoUsuarioNome = document.getElementById("edit-nome").value;
-    var novoEmail = document.getElementById("edit-email").value;
-    var novaDescricao = document.getElementById("edit-descricao").value;
-    var novaIdade = document.getElementById("edit-idade").value;
-    var novaSenha = document.getElementById("edit-senha").value;
-
-    // Verifica se algum campo está preenchido
-    if (
-        novoUsuarioNome === "" &&
-        novoEmail === "" &&
-        novaDescricao === "" &&
-        novaIdade === "" &&
-        novaSenha === ""
-    ) {
-        // Nenhum campo preenchido, impedir envio
-        alert("Preencha pelo menos um campo.");
-        return false;
+        // Se algum campo estiver preenchido, permitir envio
+        return true;
     }
-    // Se algum campo estiver preenchido, permitir envio
-    return true;
-}
-});
-</script>
+    });
+    </script>
 </body>
 </html>
