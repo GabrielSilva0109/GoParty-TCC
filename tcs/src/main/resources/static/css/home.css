@@ -164,35 +164,7 @@ h1{
   padding: 10px;
 }
 
-/* Estilos para o footer (invisível por padrão) */
-footer {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-}
 
-/* Estilos para a lista no footer */
-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-}
-
-footer ul li {
-  margin: 0 10px;
-}
-
-footer ul li a {
-  text-decoration: none;
-  color: #fff;
-  
-}
 
 /* Bloco de Usuarios */
 .bloco-user {
@@ -504,6 +476,33 @@ footer ul li a {
 }
 
 /* Consulta de mídia para mostrar o footer em telas com menos de 500px */
+/* Estilos para o footer (invisível por padrão) */
+footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+}
+
+/* Estilos para a lista no footer */
+footer ul {
+  display: flex;
+  border-radius: 0.5rem;
+  background-color: #EEE;
+  padding: 0.25rem;
+  justify-content: space-around;
+  margin: 8px;
+}
+
+.links-foot{
+  text-decoration: none;
+  color: #000000;
+  background-color: #fff;
+  font-weight: 600;
+}
+
 @media (max-width: 500px) {
   footer {
     display: block!important;

@@ -161,13 +161,44 @@ h1{
   text-align: center;
 }
 
+footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+}
 
+/* Estilos para a lista no footer */
+footer ul {
+  display: flex;
+  border-radius: 0.5rem;
+  background-color: #EEE;
+  padding: 0.25rem;
+  justify-content: space-around;
+  margin: 8px;
+}
+
+.links-foot{
+  text-decoration: none;
+  color: #000000;
+  background-color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 500px) {
+  footer {
+    display: block!important;
+  }
+}
 
 @media (max-width: 700px) {
-  ul {
+  .ulContainer {
     display: none !important; /* Oculta o ulContainer */
   }
 }
+
 
 @media (max-width: 400px) {
   .left-sidebar, .right-sidebar{
