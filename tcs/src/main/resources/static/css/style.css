@@ -162,10 +162,13 @@ button.ghost {
 }
 
 .sign-up-container {
-    left: 0;
-    width: 50%;
     z-index: 1;
     opacity: 0;
+    position: absolute; /* Altere para absoluta */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
 }
 
 .overlay-container {
@@ -218,6 +221,7 @@ button.ghost {
 /* Move signin to right */
 .container.right-panel-active .sign-in-container {
     transform: translateY(100%);
+    display: none;
 }
 
 /* Move overlay to left */
@@ -256,7 +260,3 @@ button.ghost {
     text-align: center; 
     font-weight: bold; 
 }
-/*======================== FIM LOGIN ======================== */
-
-
-/*======================== HOME ======================== */

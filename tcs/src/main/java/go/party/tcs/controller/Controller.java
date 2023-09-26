@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
-import go.party.tcs.service.UsuarioService;
-import jakarta.servlet.http.HttpSession;
-
 
 @org.springframework.stereotype.Controller
 public class Controller {
