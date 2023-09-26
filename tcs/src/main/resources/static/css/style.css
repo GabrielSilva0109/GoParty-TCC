@@ -260,3 +260,60 @@ button.ghost {
     text-align: center; 
     font-weight: bold; 
 }
+
+/* Check Box Senha */
+/*------ Settings ------*/
+.check-pass {
+    --color: #a5a5b0;
+    --size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: var(--size);
+    user-select: none;
+    fill: var(--color);
+    padding: 15px;
+  }
+  
+  .check-pass .eye {
+    position: absolute;
+    animation: keyframes-fill .5s;
+  }
+  
+  .check-pass .eye-slash {
+    position: absolute;
+    animation: keyframes-fill .5s;
+    display: none;
+  }
+  
+  /* ------ On check event ------ */
+  .check-pass input:checked ~ .eye {
+    display: none;
+  }
+  
+  .check-pass input:checked ~ .eye-slash {
+    display: block;
+  }
+  
+  /* ------ Hide the default checkbox ------ */
+  .check-pass input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* ------ Animation ------ */
+  @keyframes keyframes-fill {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  }
