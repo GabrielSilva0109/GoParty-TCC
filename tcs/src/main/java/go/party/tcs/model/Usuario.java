@@ -36,7 +36,6 @@ public class Usuario {
     @Column(name = "idade")
     private LocalDate idade;
 
-
     @Column(name = "url")
     private String url;
 
