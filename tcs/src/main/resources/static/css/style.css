@@ -317,3 +317,29 @@ button.ghost {
       transform: scale(1.2);
     }
   }
+
+  /* Estilos para o modal */
+#idade-nao-permitida{
+    display: none;
+    align-items: center;
+    width: 370px;
+    height: 20px;
+    color: #151515;
+    background-color: #e11313;
+    border-radius: 9px;
+    padding: 10px;
+}
+
+#idade-nao-permitida p{
+    font-size: 10px;
+    color: #151515;
+}
+
+#idade-nao-permitida span{
+    padding: 10px;
+    font-size: 10px;
+    color: #151515;
+
+}
+
+

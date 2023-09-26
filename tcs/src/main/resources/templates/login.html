@@ -16,14 +16,20 @@
     
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-          <form method="post" action="/cadastro" class="cadastro-container"> 
+          <form method="post" action="/cadastro" class="cadastro-container" id="cadastro-form"> 
             <h1>Cadastro</h1>
             <span>Insira seus dados</span>
             <input type="text" name="nome" class="form-control" placeholder="Nome Completo" required/>
             <input type="text" name="usuarioNome" class="form-control" placeholder="Nome de usuário" required/>
             <input type="email" name="email" class="form-control" placeholder="Email" required/>
             <input type="text" id="cpf" name="cpf" class="form-control" placeholder="CPF" required/>
+
             <input type="date" id="idade" name="idade" class="form-control" placeholder="Data de nascimento" required/>
+
+            <div id="idade-nao-permitida">
+              <p>Idade não permitida para utilizar o GoParty! <span id="close-modal-idade">x</span></p>
+            </div>
+
             <input type="password" name="senha" class="form-control" id="senhaTrocaCadastro" placeholder="Informe a senha" required />
             <label class="check-pass">
               <input type="checkbox" checked="checked" onclick="togglePasswordVisibilityCadastro()">
@@ -32,8 +38,8 @@
             </label>
             <button type="submit">Cadastrar</button>
           </form>
-          
         </div>
+
         <div class="form-container sign-in-container">
           <form action="/loginValida" method="post">
             <h1>GoParty</h1>
@@ -73,7 +79,8 @@
           </div>
         </div>
     </div>
-    
+
+
     <script>
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
@@ -90,7 +97,7 @@
         });
 
         //MOSTRAR E OCULTAR SENHA 
-     function togglePasswordVisibilityLogin() {
+      function togglePasswordVisibilityLogin() {
       var senhaInput = document.getElementById("senhaTrocaLogin");
       var toggleButton = document.getElementById("toggle");
 
@@ -119,8 +126,30 @@
         toggleButton.classList.add("fa-eye-slash");
       }
     }
-    
-    
+
+    //VERIFICAÇÃO DE DATAS 
+    document.getElementById("cadastro-form").addEventListener("submit", function(event) {
+    var dataNascimento = new Date(document.getElementById("idade").value);
+    const modalIdade = document.getElementById('idade-nao-permitida');
+    var hoje = new Date();
+    var idade = hoje.getFullYear() - dataNascimento.getFullYear();
+
+    // Verificar se o usuário tem pelo menos 18 anos
+    if (idade < 18) {
+        // Exibir o modal de cadastro
+        modalIdade.style.display = "flex";
+        event.preventDefault(); // Impedir o envio do formulário
+    }
+});
+
+      document.addEventListener("DOMContentLoaded", function() {
+      // Adicione um evento de clique ao span "close-modal-idade"
+      document.getElementById("close-modal-idade").addEventListener("click", function() {
+        // Oculte a div "idade-nao-permitida" quando o span for clicado
+        document.getElementById("idade-nao-permitida").style.display = "none";
+    });
+});
+
     </script>  
 </body>
 </html>
