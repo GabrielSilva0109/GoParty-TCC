@@ -60,7 +60,12 @@ h1{
     color: white; /* Cor do texto */
     display: block; /* Torna todo o conteúdo do item da lista clicável */
   }  
-
+  .logo {
+    font-size: 2.5rem;
+    margin: 0; /* Remover margens padrão */
+    color: rgb(255, 65, 65);
+    padding-left: 10px;
+  }
   .Btn {
     display: flex;
     align-items: center;
