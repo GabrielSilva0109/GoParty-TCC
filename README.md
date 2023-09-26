@@ -1,7 +1,7 @@
 # GoParty-TCS
 
 ## Descrição
-Este projeto foi desenvolvido como parte do Trabalho de Conclusão de Curso (TCS) para o curso de Análise e Desenvolvimento de Sistemas no Senac. Ele é uma aplicação web que .
+Este projeto foi desenvolvido como parte do Trabalho de Conclusão de Curso (TCC) para o curso de Análise e Desenvolvimento de Sistemas no Senac. Ele é uma aplicação web que .
 
 ## Autores
 - [Gabriel C.S](mailto:silvagabriel0109@gmail.com)
