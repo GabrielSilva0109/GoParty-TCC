@@ -8,4 +8,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     Usuario findByNome(String nome);
 
     Usuario findByUsername(String usuarioNome);
+
+    boolean existsByCpf(String cpf);
+
 }

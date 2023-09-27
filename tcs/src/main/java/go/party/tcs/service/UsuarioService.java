@@ -3,6 +3,7 @@ package go.party.tcs.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import go.party.tcs.model.Usuario;
@@ -15,10 +16,17 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public void cadastrarUsuario(Usuario usuario) {
-        //adicionar lógica de validação, como verificar se o usuário já existe, antes de salvar
+
+        //Validação por CPF
+        boolean existeUsuario = usuarioRepository.existsByCpf(usuario.getCpf());
         
-        usuarioRepository.save(usuario);
+
+        if (existeUsuario) {
+    
+        } else {
+           usuarioRepository.save(usuario);
         // Salvar o usuário no banco de dados
+        }
     }
 
     public void atualizarUsuario(Usuario usuario){
@@ -39,6 +47,12 @@ public class UsuarioService {
 
     public Usuario encontrarId(Integer idUsuario){
         return usuarioRepository.getById(idUsuario);
+    }
+
+    // VERIFICAR A EXISTENCIA DE CPF NO BANCO 
+
+    public boolean existeUsuarioComCpf(String cpf) {
+        return usuarioRepository.existsByCpf(cpf);
     }
 
    
