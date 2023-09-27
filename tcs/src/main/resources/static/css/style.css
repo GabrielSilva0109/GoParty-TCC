@@ -107,10 +107,7 @@ p{
 }
 
 .form-container input {
-    background: #eee;
-    border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
+    margin: 4px 0;
     width: 100%;
 }
 
@@ -264,6 +261,8 @@ button.ghost {
 /* Check Box Senha */
 /*------ Settings ------*/
 .check-pass {
+  margin-left: 355px;
+  margin-top: -45px;
     --color: #a5a5b0;
     --size: 20px;
     display: flex;
@@ -322,9 +321,9 @@ button.ghost {
 #idade-nao-permitida{
     display: none;
     align-items: center;
-    width: 370px;
+    justify-content: center;
     height: 20px;
-    color: #151515;
+    color: #ffffff;
     background-color: #e11313;
     border-radius: 9px;
     padding: 10px;
@@ -345,7 +344,6 @@ button.ghost {
 
 .inputGroup {
     font-family: 'Segoe UI', sans-serif;
-    margin: 1em 0 1em 0;
     position: relative;
   }
   
