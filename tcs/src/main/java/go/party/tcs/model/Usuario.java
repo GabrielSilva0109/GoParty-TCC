@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 //Classe Entidade
-//Tabela no banco "Usuarios"
+//Tabela no banco  "Usuarios"
 @Entity
 @Table(name ="usuarios")
 public class Usuario {
