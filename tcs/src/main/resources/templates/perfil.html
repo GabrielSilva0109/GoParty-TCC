@@ -171,7 +171,7 @@
         
         fotoInput.addEventListener("change", function () {
             const file = fotoInput.files[0];
-            fotoExibida.style.display = "block";
+            fotoExibida.style.display = "";
             fotoVazia.style.display = "none";
 
             if (file && file.type.startsWith("image/")) {
