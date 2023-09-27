@@ -432,4 +432,14 @@ button.ghost {
   .button:active {
     scale: 1;
   }
+
+
+  /* Form de Foto perfil */
+  #form-enviar-ft{
+     display: flex;
+     align-items: center;
+     border-radius: 20px;
+     border: 1px solid red;
+
+  }
   

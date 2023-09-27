@@ -463,10 +463,18 @@ h1{
 
 /* Imagem que ficara de perfil */
 
-.imgPerfil{
-  width: 150px;
-  height: 150px;
-  border-radius: 20px;
+#imgPerfil-vazio{
+  width: 145px;
+  height: 145px;
+  border-radius: 50px;
+}
+
+#fotoExibida{
+  display: none;
+  margin-left: 115px;
+  width: 145px;
+  height: 145px;
+  border-radius: 50px;
 }
 
 .imgUsuarios{
