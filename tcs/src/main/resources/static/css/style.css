@@ -352,22 +352,11 @@ button.ghost {
     padding: 0.8em;
     color: #ddd;
     outline: none;
-    border: 2px solid rgb(200, 200, 200);
+    border: 2px solid rgb(150, 150, 200);
     background-color: transparent;
     border-radius: 18px;
     width: 400px;
     height: 50px;
-  }
-  
- .inputGroup label {
-    font-size: 100%;
-    position: absolute;
-    left: 0;
-    padding: 0.8em;
-    margin-left: 0.5em;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    color: rgb(100, 100, 100);
   }
   
   .inputGroup :is(input:focus, input:valid)~label {
@@ -380,6 +369,7 @@ button.ghost {
   
  .inputGroup :is(input:focus, input:valid) {
     border-color: rgb(150, 150, 200);
+   
   }
 
   input[type="date"]:focus {
@@ -438,6 +428,22 @@ button.ghost {
      align-items: center;
      border-radius: 20px;
      border: 1px solid red;
+  }
 
+  .logo-inicio{
+    width: 365px;
+    margin-bottom: -38px;
+  }
+
+  .link-esqueceu-senha{
+    color: #a5a5b0;
+    padding: 10px;
+    font-size: 13px;
+    margin-top: 5px;
+  }
+
+  #logo-inicio-home{
+    width: 365px;
+    margin-bottom: -38px;
   }
   
