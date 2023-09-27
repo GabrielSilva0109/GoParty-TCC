@@ -470,8 +470,6 @@ h1{
 }
 
 #fotoExibida{
-  display: none;
-  margin-left: 115px;
   width: 145px;
   height: 145px;
   border-radius: 50px;
