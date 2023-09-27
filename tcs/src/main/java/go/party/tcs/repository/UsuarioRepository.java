@@ -6,4 +6,6 @@ import go.party.tcs.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     Usuario findByNome(String nome);
+
+    Usuario findByUsername(String usuarioNome);
 }

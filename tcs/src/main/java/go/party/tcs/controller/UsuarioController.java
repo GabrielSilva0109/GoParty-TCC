@@ -57,9 +57,9 @@ public class UsuarioController {
 
     //Método para validar as informações do Usuario para o Login 
     @PostMapping("/loginValida")
-    public String login(@RequestParam("nome") String nome, @RequestParam("senha") String senha, Model model, HttpSession session) {
+    public String login(@RequestParam("usuarioNome") String usuarioNome, @RequestParam("senha") String senha, Model model, HttpSession session) {
         // Consulte o banco de dados para verificar se o usuário existe
-        Usuario usuario = usuarioService.findByUsuario(nome);
+        Usuario usuario = usuarioService.findByUsername(usuarioNome);
         boolean valida = false;
         if (usuario != null) {
             // Verificar se a senha fornecida corresponde à senha criptografada no banco de dados
@@ -116,7 +116,7 @@ public class UsuarioController {
 
         // Passo 4: Atualize as informações do usuário com os novos valores.
         if (novoUsuarioNome != null && !novoUsuarioNome.isEmpty()) {
-            usuarioNoBanco.setUsuarioNome(novoUsuarioNome);
+            usuarioNoBanco.setUsername(novoUsuarioNome);
         }
         if (novoEmail != null && !novoEmail.isEmpty()) {
             usuarioNoBanco.setEmail(novoEmail);

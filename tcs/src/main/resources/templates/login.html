@@ -21,7 +21,7 @@
             <span>Insira seus dados</span>
             <div class="inputGroup">
             <input type="text" name="nome" class="form-control" placeholder="Nome Completo" required/>
-            <input type="text" name="usuarioNome" class="form-control" placeholder="Nome de usuário" required/>
+            <input type="text" name="username" class="form-control" placeholder="Nome de usuário" required/>
             <input type="email" name="email" class="form-control" placeholder="Email" required/>
             <input type="text" id="cpf" name="cpf" class="form-control" placeholder="CPF" required/>
             <input type="date" id="idade" name="idade" class="form-control" placeholder="Data de nascimento" required/>
@@ -41,6 +41,7 @@
         </div>
 
         <div class="form-container sign-in-container">
+          <!--Formulario de Login-->
           <form action="/loginValida" method="post">
             <h1> 
               <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
@@ -52,7 +53,7 @@
           <div class="password-container">
 
           <div class="inputGroup">
-            <input type="text" name="nome" class="form-control" placeholder="Nome de usuário" autocomplete="off"/>
+            <input type="text" name="usuarioNome" class="form-control" placeholder="Nome de usuário" autocomplete="off"/>
             <input type="password" name="senha" placeholder="Informe a sua senha" minlength="8" maxlength="8" class="form-control" id="senhaTrocaLogin" required="" autocomplete="off" />
           </div>
             <label class="check-pass">

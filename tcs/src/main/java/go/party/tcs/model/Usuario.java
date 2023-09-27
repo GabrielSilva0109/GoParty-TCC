@@ -23,8 +23,8 @@ public class Usuario {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "usuarioNome")
-    private String usuarioNome;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "descricao")
     private String descricao;
@@ -48,68 +48,68 @@ public class Usuario {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getUsername() {
+        return username;
     }
 
-    public String getUsuarioNome() {
-        return usuarioNome;
-    }
-
-    public void setUsuarioNome(String usuarioNome) {
-        this.usuarioNome = usuarioNome;
-    }
-
-    public String getDescricao(){
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao){
-        this.descricao = descricao;
-    }
-
-    public String getEmail(){
+    public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email){
-        this.email = email;
     }
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public LocalDate getIdade() {
         return idade;
     }
-    
-    public void setIdade(LocalDate idade) {
-        this.idade = idade;
-    }
 
-    public String getUrlFoto() {
+    public String getUrl() {
         return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public String getSenha() {
         return senha;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setIdade(LocalDate idade) {
+        this.idade = idade;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setSenha(String senha) {

@@ -36,7 +36,7 @@
             <img class="imgPerfil" src="" alt="Foto não carregada!" id="fotoExibida">
         </form>
 
-            <h2><span class="arroba">@</span><span th:text="${sessionUsuario.usuarioNome}"></span></h2>
+            <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
             <div class="info">
                 <h3><span th:text="${sessionUsuario.descricao}"></span></h3>
                 <h4><span th:text="${sessionUsuario.email}"></span></h4>
@@ -46,7 +46,7 @@
             <form method="POST" action="/editar" class="edit-form" style="display: none;" enctype="multipart/form-data">
                 <input type="file" name="url" id="fotoInput" accept="image/*">
                 <input type="hidden" name="_method" value="PUT">
-                <input type="text" name="usuarioNome" id="edit-nome" placeholder="Novo Usuario">
+                <input type="text" name="username" id="edit-nome" placeholder="Novo Usuario">
                 <input type="text" name="email" id="edit-email" placeholder="Novo Email">
                 <input type="text" name="descricao" id="edit-descricao" placeholder="Nova Descrição">
                 <input type="password" name="senha" id="edit-senha" placeholder="Nova Senha">
@@ -73,7 +73,7 @@
             <h1>Seus Role</h1>
             <div class="bloco-user">
                 <div th:each="usuario : ${usuarios}" class="usuario-bloco">
-                    <h3><span class="arroba">@</span><span th:text="${usuario.nome}"></span></h3>                    
+                    <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>                    
                 </div>
             </div>
         </div>

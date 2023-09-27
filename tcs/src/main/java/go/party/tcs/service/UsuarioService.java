@@ -16,6 +16,7 @@ public class UsuarioService {
 
     public void cadastrarUsuario(Usuario usuario) {
         //adicionar lógica de validação, como verificar se o usuário já existe, antes de salvar
+        
         usuarioRepository.save(usuario);
         // Salvar o usuário no banco de dados
     }
@@ -30,6 +31,10 @@ public class UsuarioService {
     
     public Usuario findByUsuario(String usuarioNome){
         return usuarioRepository.findByNome(usuarioNome);
+    }
+
+    public Usuario findByUsername(String usuarioNome){
+        return usuarioRepository.findByUsername(usuarioNome);
     }
 
     public Usuario encontrarId(Integer idUsuario){
