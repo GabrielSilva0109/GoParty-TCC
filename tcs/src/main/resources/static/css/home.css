@@ -15,7 +15,7 @@ h1{
 
 .header {
   color: #fff; /* Cor do texto no header */
-  padding: 5px; /* Espaçamento interno do header */
+  padding: 0px 5px; /* Espaçamento interno do header */
   display: flex; /* Ativar o layout flexbox para os elementos filho */
   justify-content: space-between; /* Espaçamento igual entre os elementos filho */
   align-items: center; /* Alinhar verticalmente os elementos filho */
@@ -182,7 +182,7 @@ h1{
 }
 
 .usuario-bloco {
-  width: 30%;
+  width: 29%;
   height: 150px;
   background-color: #ccc;
   text-align: center;

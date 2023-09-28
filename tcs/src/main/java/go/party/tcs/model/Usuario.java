@@ -1,12 +1,17 @@
 package go.party.tcs.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 //Classe Entidade
@@ -43,6 +48,9 @@ public class Usuario {
 
     @Column(name = "senha")
     private String senha;
+
+    @OneToOne(mappedBy = "usuario")
+    private Imagem imagemPerfil;
 
     public Integer getId() {
         return id;
@@ -116,4 +124,13 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Imagem getImagemPerfil() {
+        return imagemPerfil;
+    }
+
+    public void setImagemPerfil(Imagem imagemPerfil) {
+        this.imagemPerfil = imagemPerfil;
+    }
+
+    
 }

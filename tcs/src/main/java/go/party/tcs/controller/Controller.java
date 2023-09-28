@@ -17,11 +17,13 @@ import jakarta.servlet.http.HttpSession;
 @org.springframework.stereotype.Controller
 public class Controller {
 
+    //Mapea o Login
     @GetMapping("/login")
     public String homePage(){
         return "login";
     }
 
+    //Sem mapeamento redireciona para o Login
     @GetMapping("/")
     public String redirectToHomePage() {
         return "redirect:/login";

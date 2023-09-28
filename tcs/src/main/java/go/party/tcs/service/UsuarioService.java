@@ -45,8 +45,8 @@ public class UsuarioService {
         return usuarioRepository.findByUsername(usuarioNome);
     }
 
-    public Usuario encontrarId(Integer idUsuario){
-        return usuarioRepository.getById(idUsuario);
+    public Usuario encontrarId(Integer userId){
+        return usuarioRepository.getById(userId);
     }
 
     // VERIFICAR A EXISTENCIA DE CPF NO BANCO 

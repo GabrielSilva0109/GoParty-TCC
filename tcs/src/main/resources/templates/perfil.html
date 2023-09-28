@@ -31,9 +31,9 @@
     <div class="container">
         <div class="left-sidebar">
 
-        <form action="/editar" method="post" enctype="multipart/form-data">
+        <form action="/imagem-perfil?userId=${sessionUsuario.id}" method="GET" enctype="multipart/form-data">
             <img class="imgPerfil" src="/css/img/fotoPerfil.jpg" alt="" id="imgPerfil-vazio">
-            <img class="imgPerfil" src="" alt="Foto não carregada!" id="fotoExibida">
+            
         </form>
 
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
@@ -43,8 +43,12 @@
                 <h4><span th:text="${sessionUsuario.cpf}"></span></h4>
                 <h4><span th:text="${sessionUsuario.idade}"></span></h4>
             </div>
+            <form method="POST" action="/upload" class="edit-form" enctype="multipart/form-data">
+                <input type="file" name="file" id="fotoInput" accept="image/*">
+                <input type="submit" value="Enviar">
+            </form>
+            
             <form method="POST" action="/editar" class="edit-form" style="display: none;" enctype="multipart/form-data">
-                <input type="file" name="url" id="fotoInput" accept="image/*">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="text" name="username" id="edit-nome" placeholder="Novo Usuario">
                 <input type="text" name="email" id="edit-email" placeholder="Novo Email">
