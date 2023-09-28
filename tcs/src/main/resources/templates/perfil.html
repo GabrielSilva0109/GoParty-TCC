@@ -43,10 +43,7 @@
                 <h4><span th:text="${sessionUsuario.cpf}"></span></h4>
                 <h4><span th:text="${sessionUsuario.idade}"></span></h4>
             </div>
-            <form method="POST" action="/upload" class="edit-form" enctype="multipart/form-data">
-                <input type="file" name="file" id="fotoInput" accept="image/*">
-                <input type="submit" value="Enviar">
-            </form>
+
             
             <form method="POST" action="/editar" class="edit-form" style="display: none;" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">

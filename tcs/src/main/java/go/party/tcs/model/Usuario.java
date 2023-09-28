@@ -49,9 +49,6 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
-    @OneToOne(mappedBy = "usuario")
-    private Imagem imagemPerfil;
-
     public Integer getId() {
         return id;
     }
@@ -122,14 +119,6 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public Imagem getImagemPerfil() {
-        return imagemPerfil;
-    }
-
-    public void setImagemPerfil(Imagem imagemPerfil) {
-        this.imagemPerfil = imagemPerfil;
     }
 
     

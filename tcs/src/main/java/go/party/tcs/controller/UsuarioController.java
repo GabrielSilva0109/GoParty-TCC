@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
-import go.party.tcs.service.ImagemService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -32,8 +31,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @Autowired
-    private ImagemService imagemService;
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -147,22 +144,6 @@ public class UsuarioController {
         session.setAttribute("usuario", usuarioNoBanco);
 
         return "redirect:/perfil";
-    }
-
-    @PostMapping("/upload")
-    public String uploadImagem(@RequestParam("file") MultipartFile file, Principal principal) {
-        try {
-            // Verifique se o usuário está autenticado
-            if (principal != null) {
-                String username = principal.getName(); // Obtenha o nome de usuário do Principal
-                // Faça algo com o nome de usuário, por exemplo, salvar a imagem no banco de dados associando-a ao usuário
-                imagemService.salvarImagemParaUsuario(file, username);
-            }
-
-            return "redirect:/perfil";
-        } catch (Exception e) {
-            return "redirect:/login";
-        }
     }
 
 
