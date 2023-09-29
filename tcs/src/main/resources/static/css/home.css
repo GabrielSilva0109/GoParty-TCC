@@ -518,13 +518,11 @@ h1{
 /* Imagem de Perfil usuarios que ficara de perfil */
 #imgPerfil-vazio, .imgPerfil, #fotoExibida{
   width: 145px;
-  height: 145px;
   border-radius: 50px;
 }
 
 .imgUsuarios{
-  width: 80px;
-  height: 80px;
+  width: 100px;
   border-radius: 20px;
 }
 
@@ -583,5 +581,35 @@ footer ul {
   margin-bottom: -10px;
 }
 
+/* Estilo para o input de arquivo por ID */
+#fotoPerfil {
+  display: none; /* Esconder o input de arquivo real */
+}
 
+#upload-label {
+  background-color:rgb(255, 32, 32);
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 10px;
+  border-radius: 5px;
+  
+}
 
+/* Estilo para o botão de envio por ID */
+#enviar {
+  background-color: #222;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+/* Estilo para o texto do nome do arquivo selecionado por ID */
+#file-name {
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}

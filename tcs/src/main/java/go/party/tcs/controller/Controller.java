@@ -17,6 +17,12 @@ import jakarta.servlet.http.HttpSession;
 @org.springframework.stereotype.Controller
 public class Controller {
 
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     //Mapea o Login
     @GetMapping("/login")
     public String homePage(){
@@ -45,13 +51,6 @@ public class Controller {
             return "redirect:/usuarios"; // Redirecione para uma página de lista de usuários, por exemplo
         }
     }
-    
-    @Autowired
-    private UsuarioService usuarioService;
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-
 
     @GetMapping("/evento")
     public String paginaEvento(Model model, HttpSession session, HttpServletRequest request){

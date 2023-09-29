@@ -166,7 +166,6 @@ public class UsuarioController {
         return "redirect:/perfil";
     }
 
-
     @DeleteMapping("/deletar")
     public String deletarUsuario(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
@@ -229,7 +228,7 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/perfil-imagem/{usuarioId}")
+    @GetMapping("/perfil-imagem-session/{usuarioId}")
     public ResponseEntity<byte[]> getImagemPerfilSession(@PathVariable Integer usuarioId, HttpSession session) {
         // Recupere o usuário da sessão
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
@@ -253,5 +252,29 @@ public class UsuarioController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     
+    @GetMapping("/perfil-imagem/{usuarioId}")
+    public ResponseEntity<byte[]> getImagemPerfil(@PathVariable Integer usuarioId) {
+        // Recupere os detalhes do usuário com base no ID do usuário
+        Usuario usuario = usuarioService.encontrarId(usuarioId);
+
+        // Verifique se o usuário foi encontrado
+        if (usuario != null) {
+            // Recupere a imagem de perfil do usuário
+            byte[] imagemPerfil = usuario.getFotoPerfil();
+
+            if (imagemPerfil != null && imagemPerfil.length > 0) {
+                // Defina os cabeçalhos de resposta
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.IMAGE_JPEG); // ou MediaType.IMAGE_PNG, dependendo do tipo de imagem
+
+                // Retorna a imagem como uma resposta HTTP
+                return new ResponseEntity<>(imagemPerfil, headers, HttpStatus.OK);
+            }
+        }
+
+        // Se o usuário não for encontrado ou não tiver uma imagem de perfil, retorne uma resposta vazia ou um erro
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 }
 

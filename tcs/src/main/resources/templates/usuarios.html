@@ -28,7 +28,6 @@
 
     <div class="container">
         <div class="left-sidebar">
-            
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
         </div>
     
@@ -36,17 +35,7 @@
             <h1>Usuários</h1>
             <div class="bloco-user">
                 <div th:each="usuario : ${usuarios}" class="usuario-bloco">
-                    <img class="imgUsuarios" 
-                        th:if="${usuario.fotoPerfil != null}" 
-                        th:src="@{'/perfil-imagem/' + ${usuario.id}}" 
-                        alt="Foto de Perfil" />
-                    
-                    <img class="imgUsuarios" 
-                        th:unless="${usuario.fotoPerfil != null}" 
-                        src="/css/img/fotoPerfil.jpg" 
-                        alt="" 
-                        id="imgPerfil-vazio" />
-        
+                    <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="foto">
                     <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
                     <div class="interacoes">
                         <button class="btn-perfil" >

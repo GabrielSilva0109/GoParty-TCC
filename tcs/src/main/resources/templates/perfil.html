@@ -56,12 +56,20 @@
                 <input type="text" name="email" id="edit-email" placeholder="Novo Email">
                 <input type="text" name="descricao" id="edit-descricao" placeholder="Nova Descrição">
                 <input type="password" name="senha" id="edit-senha" placeholder="Nova Senha">
-                <button id="btn-salvar">Salvar</button>
-                <form action="/upload" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="fotoPerfil">
-                    <input type="submit" value="Enviar">
-                </form>
+                <button id="btn-salvar">Salvar</button>                
         </form>
+        
+
+        <form class="edit-form" action="/upload" method="POST" enctype="multipart/form-data" style="display: none;">
+            <!-- Use uma label personalizada para o input de arquivo -->
+            <label for="fotoPerfil" id="upload-label">Escolha uma foto</label>
+            <input type="file" name="fotoPerfil" id="fotoPerfil">
+            <div id="file-name"></div>
+            <!-- Botão de envio personalizado -->
+            <input type="submit" value="Enviar" id="enviar">
+        </form>
+    
+        
 
         <div class="altera">
             <button class="Btn-editar" id="btn-editar">
@@ -100,6 +108,16 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Exibir o nome do arquivo selecionado
+        const fileInput = document.getElementById('fotoPerfil');
+        const fileNameDisplay = document.getElementById('file-name');
+
+        fileInput.addEventListener('change', function () {
+            const fileName = fileInput.files[0].name;
+            fileNameDisplay.textContent = `Arquivo selecionado: ${fileName}`;
+        });
+    </script>
     <script>
         $(document).ready(function() {
             // Quando o botão "Editar" for clicado
@@ -162,6 +180,7 @@
     });
 
     </script>
+
     <script>
         $(document).ready(function () {
         // Captura o clique no botão de exclusão
