@@ -314,6 +314,7 @@ input[type="date"]:focus {
 #btn-criar-evento {
   cursor: pointer;
   position: relative;
+  margin-top: 10px;
   padding: 10px 24px;
   font-size: 16px;
   color: #25142d;
@@ -352,4 +353,7 @@ input[type="date"]:focus {
 #btn-criar-evento:active {
   scale: 1;
 }
+
+
+/* Input file */
 
