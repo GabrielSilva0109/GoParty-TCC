@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -224,6 +229,29 @@ public class UsuarioController {
         }
     }
 
+    @GetMapping("/perfil-imagem/{usuarioId}")
+    public ResponseEntity<byte[]> getImagemPerfilSession(@PathVariable Integer usuarioId, HttpSession session) {
+        // Recupere o usuário da sessão
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        
+        // Verifique se o usuário na sessão corresponde ao ID especificado na rota
+        if (sessionUsuario != null && sessionUsuario.getId().equals(usuarioId)) {
+            // Recupere a imagem de perfil do usuário da sessão
+            byte[] imagemPerfil = sessionUsuario.getFotoPerfil();
+            
+            if (imagemPerfil != null && imagemPerfil.length > 0) {
+                // Defina os cabeçalhos de resposta
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.IMAGE_JPEG); // ou MediaType.IMAGE_PNG, dependendo do tipo de imagem
+
+                // Retorna a imagem como uma resposta HTTP
+                return new ResponseEntity<>(imagemPerfil, headers, HttpStatus.OK);
+            }
+        }
+        
+        // Se o usuário na sessão não corresponder ao ID, retorne uma resposta vazia ou um erro
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
     
 }
 

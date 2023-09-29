@@ -32,6 +32,16 @@
 
     <div class="container">
         <div class="left-sidebar">
+            <img class="imgPerfil" 
+            th:if="${sessionUsuario.fotoPerfil != null}" 
+            th:src="@{'/perfil-imagem/' + ${sessionUsuario.id}}" 
+            alt="Foto de Perfil" />
+       
+            <img class="imgPerfil" 
+                th:unless="${sessionUsuario.fotoPerfil != null}" 
+                src="/css/img/fotoPerfil.jpg" 
+                alt="" 
+                id="imgPerfil-vazio" />
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
         </div>
     

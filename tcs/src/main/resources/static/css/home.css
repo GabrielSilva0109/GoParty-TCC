@@ -185,7 +185,6 @@ h1{
 
 .usuario-bloco {
   width: 29%;
-  height: 150px;
   background-color: #ccc;
   text-align: center;
   padding: 10px;
@@ -516,23 +515,16 @@ h1{
   
 }
 
-/* Imagem que ficara de perfil */
-
-#imgPerfil-vazio{
-  width: 145px;
-  height: 145px;
-  border-radius: 50px;
-}
-
-#fotoExibida{
+/* Imagem de Perfil usuarios que ficara de perfil */
+#imgPerfil-vazio, .imgPerfil, #fotoExibida{
   width: 145px;
   height: 145px;
   border-radius: 50px;
 }
 
 .imgUsuarios{
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   border-radius: 20px;
 }
 
@@ -590,4 +582,6 @@ footer ul {
   width: 290px;
   margin-bottom: -10px;
 }
+
+
 

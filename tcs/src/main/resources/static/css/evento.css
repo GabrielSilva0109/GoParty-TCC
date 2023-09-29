@@ -219,3 +219,15 @@ footer ul {
   width: 290px;
   margin-bottom: -38px;
 }
+
+#imgPerfil-vazio, .imgPerfil, #fotoExibida{
+  width: 145px;
+  height: 145px;
+  border-radius: 50px;
+}
+
+.imgUsuarios{
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+}
