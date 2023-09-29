@@ -237,3 +237,119 @@ footer ul {
   display: block;
   flex-direction: column;
 }
+
+/* Inputs */
+
+.inputGroup {
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+.inputGroup input {
+  font-size: 15px;
+  padding: 0.8em;
+  color: #0F110D;
+  outline: none;
+  border: 2px solid rgb(150, 150, 200);
+  background-color: transparent;
+  border-radius: 18px;
+  width: 200px;
+  margin-left: 1.3em;
+  height: 25px;
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #e8e8e8;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(150, 150, 200);
+ 
+}
+
+input[type="date"]:focus {
+  background-color: #a5a5b0; /* Altere para a cor desejada */
+  color: #0F110D;
+}
+
+/* Estilo para o input de arquivo por ID */
+#fotoEvento {
+  display: none; /* Esconder o input de arquivo real */
+}
+
+#upload-label {
+  background-color:rgb(255, 32, 32);
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 10px;
+  border-radius: 5px;
+  
+}
+
+/* Estilo para o botão de envio por ID */
+#enviar {
+  background-color: #222;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+/* Estilo para o texto do nome do arquivo selecionado por ID */
+#file-name {
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Botões */
+
+#btn-criar-evento {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 16px;
+  color: #25142d;
+  border: 2px solid #25142d;
+  border-radius: 34px;
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+#btn-criar-evento::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: #25142d;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+#btn-criar-evento:hover::before {
+  scale: 3;
+}
+
+#btn-criar-evento:hover {
+  color: #e8e8e8;
+  scale: 1.1;
+  box-shadow: 0 0px 20px #25142d;
+}
+
+#btn-criar-evento:active {
+  scale: 1;
+}
+

@@ -59,10 +59,15 @@
             <h1>Criar Evento</h1>
             <div class="container-ev">
                 <form action="criar-evento" method="POST" enctype="multipart/form-data">
-                    <input type="text" name="titulo" placeholder="Titulo">
-                    <input type="text" name="descricao" placeholder="Descrição">
-                    <input type="file" name="imagemEvento" >
-                    <button type="submit">Criar</button>
+                    <div class="inputGroup">
+                    <input type="text" name="titulo" placeholder="Titulo" id="inputs-evento-titulo">
+                    <input type="text" name="descricao" placeholder="Descrição" id="inputs-evento-desc">
+                   <!-- Use uma label personalizada para o input de arquivo -->
+                    <label for="fotoPerfil" id="upload-label">Foto para o evento</label>
+                    <input type="file" name="imagemEvento" id="fotoEvento">
+                    <div id="file-name"></div>
+                    <button class="button" type="submit" id="btn-criar-evento">Criar</button>
+                </div>
                 </form>
             </div>
         </div>

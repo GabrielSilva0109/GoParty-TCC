@@ -343,39 +343,39 @@ button.ghost {
 /* Teste de estilização inputs */
 
 .inputGroup {
-    font-family: 'Segoe UI', sans-serif;
-    position: relative;
-  }
-  
-  .inputGroup input {
-    font-size: 15px;
-    padding: 0.8em;
-    color: #ddd;
-    outline: none;
-    border: 2px solid rgb(150, 150, 200);
-    background-color: transparent;
-    border-radius: 18px;
-    width: 400px;
-    height: 50px;
-  }
-  
-  .inputGroup :is(input:focus, input:valid)~label {
-    transform: translateY(-50%) scale(.9);
-    margin: 0em;
-    margin-left: 1.3em;
-    padding: 0.4em;
-    background-color: #e8e8e8;
-  }
-  
- .inputGroup :is(input:focus, input:valid) {
-    border-color: rgb(150, 150, 200);
-   
-  }
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+}
 
-  input[type="date"]:focus {
-    background-color: #a5a5b0; /* Altere para a cor desejada */
-    color: #0F110D;
-  }
+.inputGroup input {
+  font-size: 15px;
+  padding: 0.8em;
+  color: #ddd;
+  outline: none;
+  border: 2px solid rgb(150, 150, 200);
+  background-color: transparent;
+  border-radius: 18px;
+  width: 400px;
+  height: 50px;
+}
+
+.inputGroup :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #e8e8e8;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(150, 150, 200);
+ 
+}
+
+input[type="date"]:focus {
+  background-color: #a5a5b0; /* Altere para a cor desejada */
+  color: #0F110D;
+}
 
   /* Novos botões */
 
