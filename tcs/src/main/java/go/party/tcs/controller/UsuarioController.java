@@ -1,35 +1,19 @@
 package go.party.tcs.controller;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.web.exchanges.HttpExchange.Principal;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.multipart.MultipartFile;
 
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
@@ -202,50 +186,6 @@ public class UsuarioController {
     }
     
 
-    @Autowired
-    private Environment env;
-
-    @PostMapping("/uploadFoto")
-    public String uploadFotoPerfil(@RequestParam("fotoPerfil") MultipartFile fotoPerfil, Model model, HttpSession session, HttpServletRequest request) {
-        // Passo 1: Recupere o usuário da sessão.
-        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-
-        // Verifique se o atributo "usuarioLogado" está na sessão
-        Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
-        
-        if (usuario != null) {
-            try {
-                // Caminho para a pasta de destino configurada no application.properties
-                String uploadDir = env.getProperty("upload.dir");
-
-                // Verifique se o diretório de upload existe, se não, crie-o
-                Path uploadPath = Paths.get(uploadDir);
-                if (!Files.exists(uploadPath)) {
-                    Files.createDirectories(uploadPath);
-                }
-
-                // Nome do arquivo a ser salvo (por exemplo, o ID do usuário)
-                String fileName = "perfil_" + sessionUsuario.getId() + ".jpg"; // Você pode escolher o formato apropriado
-
-                // Crie o caminho completo do arquivo
-                Path filePath = Paths.get(uploadDir, fileName);
-
-                // Salve o arquivo na pasta de destino
-                Files.write(filePath, fotoPerfil.getBytes());
-
-                // Atualize o usuário com o caminho da imagem, se necessário
-                usuario.setFotoPerfil(filePath.toString()); // Armazena o caminho completo da imagem
-
-                usuarioService.atualizarUsuario(usuario);
-
-                // Você pode adicionar mensagens ou objetos ao modelo, se necessário
-                model.addAttribute("mensagem", "Upload de foto realizado com sucesso.");
-            } catch (IOException e) {
-                // Lidar com erros de upload aqui
-            }
-        }
-        
-        return "redirect:/perfil";
-    }
+    
 }
 

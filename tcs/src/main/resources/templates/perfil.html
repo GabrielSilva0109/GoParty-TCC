@@ -33,16 +33,18 @@
 
         <form action="/imagem-perfil?userId=${sessionUsuario.id}" method="GET" enctype="multipart/form-data">
             <img class="imgPerfil" src="/css/img/fotoPerfil.jpg" alt="" id="imgPerfil-vazio">
-            
+            <img th:src="@{'/caminho-da-foto/' + ${sessionUsuario.id}}">
         </form>
-        <form method="POST" class="edit-form" action="/uploadFoto" enctype="multipart/form-data">
-            <input type="file" name="fotoPerfil" accept="image/*">
-            <input type="submit" value="Enviar Foto de Perfil">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="fotoPerfil">
+            <input type="submit" value="Enviar">
         </form>
+        
+        
 
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
             <div class="info">
-                <img th:src="@{'/caminho-da-foto/' + ${sessionUsuario.id}}">
+                
                 <h3><span th:text="${sessionUsuario.descricao}"></span></h3>
                 <h4><span th:text="${sessionUsuario.email}"></span></h4>
                 <h4><span th:text="${sessionUsuario.cpf}"></span></h4>
