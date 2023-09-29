@@ -51,7 +51,7 @@ public class Usuario {
     private String senha;
 
     @Lob
-    private byte[] fotoPerfil;
+    private String fotoPerfil;
 
 
     public Integer getId() {
@@ -126,11 +126,14 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public byte[] getFotoPerfil() {
+    public String getFotoPerfil() {
         return fotoPerfil;
     }
 
-    
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+        
+    }
 
     
 }
