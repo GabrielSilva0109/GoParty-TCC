@@ -231,3 +231,9 @@ footer ul {
   height: 80px;
   border-radius: 20px;
 }
+
+/* Criar Evento */
+.container-evento{
+  display: block;
+  flex-direction: column;
+}
