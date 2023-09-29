@@ -1,8 +1,13 @@
 package go.party.tcs.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -185,6 +190,39 @@ public class UsuarioController {
         return "redirect:/loginValida";
     }
     
+    @PostMapping("/upload")
+    public String uploadFotoPerfil(@RequestParam("fotoPerfil") MultipartFile fotoPerfil, Model model, HttpSession session) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        
+        if (sessionUsuario != null) {
+            try {
+                // Faça a validação da imagem, se necessário
+                if (!fotoPerfil.isEmpty()) {
+                    // Converta a imagem para um array de bytes
+                    byte[] fotoBytes = fotoPerfil.getBytes();
+                    
+                    // Associe a imagem de perfil ao usuário
+                    sessionUsuario.setFotoPerfil(fotoBytes);
+                    
+                    // Salve o usuário no banco de dados
+                    usuarioService.atualizarUsuario(sessionUsuario);;
+                    
+                    // Atualize a sessão com o usuário atualizado
+                    session.setAttribute("usuario", sessionUsuario);
+                }
+                
+                model.addAttribute("sessionUsuario", sessionUsuario);
+                return "home";
+            } catch (IOException e) {
+                // Lida com exceções de IO, se ocorrerem
+                e.printStackTrace();
+                // Redireciona ou exibe uma mensagem de erro, conforme necessário
+                return "redirect:/error";
+            }
+        } else {
+            return "redirect:/loginValida";
+        }
+    }
 
     
 }
