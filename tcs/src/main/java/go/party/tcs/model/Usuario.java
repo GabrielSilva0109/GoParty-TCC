@@ -29,13 +29,13 @@ public class Usuario {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @Column(name = "cpf")

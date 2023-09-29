@@ -16,8 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.web.exchanges.HttpExchange.Principal;
-import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
-import org.springframework.core.env.Environment;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,11 +59,20 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastro")
-    public String cadastrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
+    public String cadastrarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
     // Criptografar a senha antes de salvar
     String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
     usuario.setSenha(senhaCriptografada);
-    usuarioService.cadastrarUsuario(usuario);
+
+        try {
+         usuarioService.cadastrarUsuario(usuario, model);
+            
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("mensagem", "O username já está em uso. Escolha outro username.");
+            // Trate outras exceções aqui, se necessário
+        }
+
+
     return "redirect:/login"; // Redirecionar para a página de login após o cadastro
 }
 
@@ -155,7 +163,7 @@ public class UsuarioController {
         
 
         // Passo 6: Salve as alterações no banco de dados.
-        usuarioService.cadastrarUsuario(usuarioNoBanco); // Substitua 'usuarioService' pelo seu serviço de usuário.
+        usuarioService.cadastrarUsuario(usuarioNoBanco, model); // Substitua 'usuarioService' pelo seu serviço de usuário.
 
         // Passo 7: Atualize a sessão com o usuário atualizado.
         session.setAttribute("usuario", usuarioNoBanco);

@@ -45,7 +45,9 @@
                 <h3><span th:text="${sessionUsuario.descricao}"></span></h3>
                 <h4><span th:text="${sessionUsuario.email}"></span></h4>
                 <h4><span th:text="${sessionUsuario.cpf}"></span></h4>
-                <h4><span th:text="${sessionUsuario.idade}"></span></h4>
+                <h4><span id="dataNascimento" th:text="${sessionUsuario.idade}"></span></h4>
+                <h4><span id="idade-formatada" th:text="${sessionUsuario.idade}"></span></h4>
+
             </div>
             
             <form method="POST" action="/editar" class="edit-form" style="display: none;" enctype="multipart/form-data">
@@ -194,6 +196,25 @@
                 alert("Por favor, selecione uma imagem válida.");
             }
         });
+
+    </script>
+    <script>
+        //TESTE formatacao de data de nascimento
+
+        // Recuperar o elemento span pelo ID
+        var spanElement = document.getElementById("dataNascimento");
+
+        // Obter o valor não formatado da data de nascimento
+        var dataNascimentoNaoFormatada = spanElement.textContent;
+
+        // Formatar a data usando JavaScript (supondo que a data esteja no formato "yyyy-MM-dd")
+        var partesData = dataNascimentoNaoFormatada.split("-");
+        var dataFormatada = partesData[2] + "/" + partesData[1] + "/" + partesData[0];
+
+        // Exibir a data formatada em outro elemento, por exemplo, em um div com o ID "dataFormatada"
+        var divElement = document.getElementById("idade-formatada");
+        divElement.textContent = dataFormatada;
+        spanElement.style.display = "none";
     </script>
 </body>
 </html>

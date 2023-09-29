@@ -3,8 +3,10 @@ package go.party.tcs.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
@@ -15,18 +17,17 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public void cadastrarUsuario(Usuario usuario) {
-
-        //Validação por CPF
+    public void cadastrarUsuario(Usuario usuario, Model model) {
+            //Validação por CPF
         boolean existeUsuario = usuarioRepository.existsByCpf(usuario.getCpf());
         
-
         if (existeUsuario) {
-    
-        } else {
-           usuarioRepository.save(usuario);
+           model.addAttribute("mensagem", "Já existe um usuário cadastrado com o CPF informado!.");
+        }else{
+             usuarioRepository.save(usuario);
         // Salvar o usuário no banco de dados
         }
+
     }
 
     public void atualizarUsuario(Usuario usuario){
