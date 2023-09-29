@@ -35,6 +35,10 @@
             <img class="imgPerfil" src="/css/img/fotoPerfil.jpg" alt="" id="imgPerfil-vazio">
             
         </form>
+        <form method="POST" class="edit-form" action="/uploadFoto" enctype="multipart/form-data">
+            <input type="file" name="fotoPerfil" accept="image/*">
+            <input type="submit" value="Enviar Foto de Perfil">
+        </form>
 
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
             <div class="info">
@@ -43,7 +47,6 @@
                 <h4><span th:text="${sessionUsuario.cpf}"></span></h4>
                 <h4><span th:text="${sessionUsuario.idade}"></span></h4>
             </div>
-
             
             <form method="POST" action="/editar" class="edit-form" style="display: none;" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">

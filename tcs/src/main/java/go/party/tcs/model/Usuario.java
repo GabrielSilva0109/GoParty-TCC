@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -48,6 +49,10 @@ public class Usuario {
 
     @Column(name = "senha")
     private String senha;
+
+    @Lob
+    private byte[] fotoPerfil;
+
 
     public Integer getId() {
         return id;
@@ -120,6 +125,12 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public byte[] getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    
 
     
 }
