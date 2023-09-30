@@ -22,11 +22,16 @@ public class Controller {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
+    
     //Mapea o Login
     @GetMapping("/login")
     public String homePage(){
         return "login";
+    }
+
+    @GetMapping("/recuperarSenha")
+    public String recuperarPage() {
+        return "recuperarSenha"; // Retorna o nome do arquivo HTML, não uma rota
     }
 
     //Sem mapeamento redireciona para o Login
@@ -34,7 +39,6 @@ public class Controller {
     public String redirectToHomePage() {
         return "redirect:/login";
     }
-
 
     @GetMapping("/perfilUsuario/{id}")
     public String exibirPerfil(@PathVariable Integer id, Model model) {
