@@ -33,7 +33,7 @@ public class EventoController {
     @Autowired
     private EventoService eventoService;
     
-    
+    //Método para Criar um Evento
     @PostMapping("/criar-evento")
     public String criarEvento(@RequestParam("titulo") String titulo,
                               @RequestParam("descricao") String descricao,
@@ -59,9 +59,9 @@ public class EventoController {
         return "redirect:/home"; // Redirecione para uma página de sucesso após criar o evento
     }
 
-    
-    @GetMapping("/eventosUsuario")
-    public String eventosUsuario(Model model, HttpSession session, HttpServletRequest request){
+    //Método para mostrar os eventos do Usuario no seu perfil
+    @GetMapping("/perfil")
+    public String mostrarPerfil(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
         if (sessionUsuario != null) {
@@ -74,14 +74,18 @@ public class EventoController {
             // Adicione a lista de eventos ao modelo para exibição na página
             model.addAttribute("eventos", eventosDoUsuario);
 
+            // ... outras atribuições ao modelo
+            model.addAttribute("sessionUsuario", sessionUsuario);
+            // ...
+
             return "perfil";
         } else {
             // O usuário não está autenticado, redirecione para a página de login
             return "redirect:/login";
         }
-        
     }
     
+    //Metodo para adicionar imagem no post Evento
     @GetMapping("/evento-imagem/{eventoId}")
     public ResponseEntity<byte[]> getImagemEvento(@PathVariable Integer eventoId) {
         // Recupere os detalhes do evento com base no ID do evento

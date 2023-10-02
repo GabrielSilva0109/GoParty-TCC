@@ -27,7 +27,7 @@ body{
 }
 
 .ulContainer {          
-  background: #25142d; /* Cor de fundo com transparência */
+  background: #25142d;
   backdrop-filter: blur(20px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
   border-radius: 30px; /* Borda arredondada (ajuste conforme necessário) */
   list-style: none; /* Remova os marcadores de lista */
@@ -483,9 +483,7 @@ footer ul {
  /* Layout do Feed */
 .evento-bloco{
   display: flex;
-  background:  #444444;
-  gap: 20px;
-  padding: 20px;
+  background:  #ffffff;
   margin: 20px;
   border-radius: 20px;
 }
@@ -499,8 +497,8 @@ footer ul {
   width: 50%;
 }
 .imgEvento {
-  width: 300px;
-  max-height: 400px;
+  max-width: 300px;
+  max-height: 300px;
   border-radius: 10px;
 }
 

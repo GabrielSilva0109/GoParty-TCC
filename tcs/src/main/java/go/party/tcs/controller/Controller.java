@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
+import go.party.tcs.service.EventoService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -22,6 +24,9 @@ public class Controller {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private EventoService eventoService;
     
     //Mapea o Login
     @GetMapping("/login")
@@ -49,12 +54,20 @@ public class Controller {
             Usuario usuario = usuarioOptional.get();
             // Adicionar o usuário ao modelo para que ele possa ser exibido na página de perfil
             model.addAttribute("usuario", usuario);
-            return "perfilUsuario"; // Isso renderizará a página de perfil
+
+            // Buscar os eventos criados por esse usuário com base no ID do usuário
+            List<Evento> eventosDoUsuario = eventoService.buscarEventosPorAutor(id);
+
+            // Adicionar a lista de eventos ao modelo para exibição na página
+            model.addAttribute("eventos", eventosDoUsuario);
+
+            return "perfilUsuario"; // Isso renderizará a página de perfil do usuário específico
         } else {
             // Lide com o caso em que o usuário não foi encontrado
             return "redirect:/usuarios"; // Redirecione para uma página de lista de usuários, por exemplo
         }
     }
+
 
     @GetMapping("/evento")
     public String paginaEvento(Model model, HttpSession session, HttpServletRequest request){
@@ -66,19 +79,6 @@ public class Controller {
             return "evento";
         } else {
             return "redirect:/home";
-        }
-    }
-
-    @GetMapping("/perfil")
-    public String mostrarPerfil(Model model, HttpSession session, HttpServletRequest request) {
-        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-        if(sessionUsuario != null){
-            // ... outras atribuições ao modelo
-            model.addAttribute("sessionUsuario", sessionUsuario);
-            // ...
-            return "perfil";
-        } else {
-            return "redirect:/login";
         }
     }
 

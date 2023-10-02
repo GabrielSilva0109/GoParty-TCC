@@ -11,7 +11,6 @@
 <body>
     <header class="header"> 
         <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">
-        
 
         <ul class="ulContainer">
             <li>
@@ -31,7 +30,6 @@
             </div>
         </a>
         </li>
-
 
         <li><a class="links" th:href="@{/home}" >
             <div class="icon-container">
@@ -55,8 +53,6 @@
             <div class="text">Sair</div>
         </a>
     </header>
-
-    <!--/css/img/fotoPerfil.jpg-->
 
     <div class="container">
         <div class="left-sidebar">
@@ -119,21 +115,16 @@
     
         <div class="center-content">
             <h1>Seus Role</h1>
-            
-            <!-- Verificando se a lista de eventos não está vazia antes -->
-            <th:block th:if="${not #lists.isEmpty(eventos)}">
-                <ul>
-                    <!-- lista de eventos -->
-                    <li th:each="evento : ${eventos}">
-                        <h2 th:text="${evento.titulo}"></h2>
-                        <p th:text="${evento.descricao}"></p>
-                        
-                    </li>
-                </ul>
-            </th:block>
-        
-            <!-- Exibir uma mensagem se a lista de eventos estiver vazia -->
-            <p th:if="${#lists.isEmpty(eventos)}">Nenhum evento encontrado.</p>
+            <div th:each="evento : ${eventos}" class="evento-bloco">
+                <div class="bloco-evento-left">
+                    <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
+                    <img class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
+                </div>
+                <div class="bloco-evento-right">
+                    <h2 th:text="${evento.titulo}"></h2>
+                    <p th:text="${evento.descricao}"></p>
+                </div>  
+            </div>
         </div>
         
     

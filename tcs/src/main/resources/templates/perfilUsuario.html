@@ -79,8 +79,15 @@
     
         <div class="center-content">
             <h1>Seus Role</h1>
-            <div class="bloco-user">
-                
+            <div th:each="evento : ${eventos}" class="evento-bloco">
+                <div class="bloco-evento-left">
+                    <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
+                    <img class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
+                </div>
+                <div class="bloco-evento-right">
+                    <h2 th:text="${evento.titulo}"></h2>
+                    <p th:text="${evento.descricao}"></p>
+                </div>  
             </div>
         </div>
     </div>
