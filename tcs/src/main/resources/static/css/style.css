@@ -385,7 +385,7 @@ input[type="date"]:focus {
     padding: 10px 24px;
     font-size: 16px;
     color: #e8e8e8;
-    border: 2px solid #25142d;
+    border: 2px solid rgb(255, 65, 65);
     border-radius: 34px;
     background-color: transparent;
     font-weight: 600;
@@ -403,7 +403,7 @@ input[type="date"]:focus {
     border-radius: inherit;
     scale: 0;
     z-index: -1;
-    background-color: #25142d;
+    background-color: rgb(255, 65, 65);
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
   }
   

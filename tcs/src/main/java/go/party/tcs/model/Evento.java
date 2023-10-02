@@ -85,7 +85,7 @@ public class Evento {
         return fotoEvento;
     }
     
-    public void setFotoPerfil(byte[] fotoEvento) {
+    public void setFotoEvento(byte[] fotoEvento) {
         this.fotoEvento = fotoEvento;
     }
     
