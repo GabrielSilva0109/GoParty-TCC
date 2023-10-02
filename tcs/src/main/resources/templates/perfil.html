@@ -65,7 +65,6 @@
             th:if="${sessionUsuario.fotoPerfil != null}" 
             th:src="@{'/perfil-imagem/' + ${sessionUsuario.id}}" 
             alt="Foto de Perfil" />
-       
         <img class="imgPerfil" 
             th:unless="${sessionUsuario.fotoPerfil != null}" 
             src="/css/img/fotoPerfil.jpg" 
@@ -120,11 +119,12 @@
     
         <div class="center-content">
             <h1>Seus Role</h1>
-            <div class="bloco-user">
-                <div th:each="usuario : ${usuarios}" class="usuario-bloco">
-                    <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>                    
-                </div>
+            <div th:each="eventoUsuario : ${evento}" class="evento-bloco">
+                <!-- Aqui você pode acessar as propriedades do evento do usuário, por exemplo: -->
+                <p th:text="${eventoUsuario.titulo}"></p>
+                <p th:text="${eventoUsuario.descricao}"></p>
             </div>
+            
         </div>
     
     </div>

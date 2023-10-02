@@ -110,7 +110,7 @@ public class UsuarioController {
         }
     }
 
-    //Método para Editar as informações do Usuario
+    
     @PutMapping("/editar")
     public String editarUsuario(
         @RequestParam(name = "usuarioNome", required = false) String novoUsuarioNome,
@@ -150,12 +150,11 @@ public class UsuarioController {
             String senhaCriptografada = passwordEncoder.encode(novaSenha);
             usuarioNoBanco.setSenha(senhaCriptografada);
         }
-        
 
-        // Passo 6: Salve as alterações no banco de dados.
-        usuarioService.cadastrarUsuario(usuarioNoBanco, model); // Substitua 'usuarioService' pelo seu serviço de usuário.
+        // Passo 6: Atualize as alterações no banco de dados.
+        usuarioService.atualizarUsuario(usuarioNoBanco); // Substitua 'usuarioService' pelo seu serviço de usuário.
 
-        // Passo 7: Atualize a sessão com o usuário atualizado.
+        // Passo 7: Atualize a sessão com o usuário atualizado (opcional).
         session.setAttribute("usuario", usuarioNoBanco);
 
         return "redirect:/perfil";
