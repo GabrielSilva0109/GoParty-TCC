@@ -18,7 +18,7 @@ body{
   
 .header ul {
   list-style: none; 
-  padding: 0;
+  padding: 0 10px;
   display: flex;
 }
   
@@ -60,7 +60,7 @@ body{
 
 /* Efeito de linha ao passar o mouse */
 .icon-container:hover .line {
- background-color: rgb(138, 56, 74); /* Cor da linha ao passar o mouse */
+ background-color:  rgb(255, 69, 69); /* Cor da linha ao passar o mouse */
 }
 
 /* Botão para Sair do GoParty  Começa Aqui !!*/
