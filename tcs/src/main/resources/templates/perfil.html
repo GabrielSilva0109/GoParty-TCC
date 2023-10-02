@@ -120,8 +120,22 @@
         <div class="center-content">
             <h1>Seus Role</h1>
             
-            
+            <!-- Verificando se a lista de eventos não está vazia antes -->
+            <th:block th:if="${not #lists.isEmpty(eventos)}">
+                <ul>
+                    <!-- lista de eventos -->
+                    <li th:each="evento : ${eventos}">
+                        <h2 th:text="${evento.titulo}"></h2>
+                        <p th:text="${evento.descricao}"></p>
+                        
+                    </li>
+                </ul>
+            </th:block>
+        
+            <!-- Exibir uma mensagem se a lista de eventos estiver vazia -->
+            <p th:if="${#lists.isEmpty(eventos)}">Nenhum evento encontrado.</p>
         </div>
+        
     
     </div>
 

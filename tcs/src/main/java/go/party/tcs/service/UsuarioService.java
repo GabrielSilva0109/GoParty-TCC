@@ -1,6 +1,7 @@
 package go.party.tcs.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -54,6 +55,17 @@ public class UsuarioService {
 
     public boolean existeUsuarioComCpf(String cpf) {
         return usuarioRepository.existsByCpf(cpf);
+    }
+
+    public String getUsernameById(Integer id) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+        if (usuarioOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
+            return usuario.getUsername();
+        } else {
+            // Lide com o caso em que o usuário não foi encontrado (lançar exceção ou retornar um valor padrão)
+            return "Usuário não encontrado";
+        }
     }
 
    

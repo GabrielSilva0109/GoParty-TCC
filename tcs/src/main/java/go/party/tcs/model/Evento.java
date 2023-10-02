@@ -88,5 +88,7 @@ public class Evento {
     public void setFotoEvento(byte[] fotoEvento) {
         this.fotoEvento = fotoEvento;
     }
+
+    
     
 }

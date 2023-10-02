@@ -479,6 +479,31 @@ footer ul {
   color: #25142d;
 }
 
+
+ /* Layout do Feed */
+.evento-bloco{
+  display: flex;
+  background:  #444444;
+  gap: 20px;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.bloco-evento-left{
+  float: left;
+  width: 50%;
+}
+.bloco-evento-right{
+  float: right;
+  width: 50%;
+}
+.imgEvento {
+  width: 300px;
+  max-height: 400px;
+  border-radius: 10px;
+}
+
 @media (max-width: 500px) {
   footer {
     display: block!important;

@@ -2,6 +2,8 @@ package go.party.tcs.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +22,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
+import go.party.tcs.service.EventoService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -39,6 +43,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    private EventoService eventoService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -103,13 +110,13 @@ public class UsuarioController {
         if(sessionUsuario != null){
             // ... outras atribuições ao modelo
             model.addAttribute("sessionUsuario", sessionUsuario);
-            // ...
-            return "home";
+            List<Evento> eventos = eventoService.getAllEventos(); 
+            model.addAttribute("eventos", eventos); 
+            return "home"; 
         } else {
             return "redirect:/loginValida";
         }
     }
-
     
     @PutMapping("/editar")
     public String editarUsuario(
