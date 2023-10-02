@@ -14,28 +14,63 @@
 </head>
 <body>
     
-    <div class="form-container sign-in-container">
-        <!--Formulario de Login-->
-        <form action="/recuperaSenha" method="post">
-          <h1> 
-            <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
-            <legend class="texto-titulos">Recuperação de senha</legend>
-          </h1>
-          <span class="texto-titulos">Informe o seu email cadastrado</span>
-          <span class="spanTexto"></span>
-        
+          <!-- teste de formulario-->
+
+          <div class="login-box">
+ 
+            <h1> 
+              <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
+              <legend class="texto-titulos">Recuperação de senha</legend>
+            </h1>
+
+             <!--Container de código-->
+            <form class="form" action="" id="form-codigo"> 
+              <div class="title">Insira seu código</div> 
+              <p class="message">Enviamos um código de verificação para seu E-mail</p> <div class="inputs"> <input id="input1" type="text" maxlength="1"> <input id="input2" type="text" maxlength="1"> <input id="input3" type="text" maxlength="1"> 
+                <input id="input4" type="text" maxlength="1"> </div> <button type="submit"  class="action" onclick="verificarCodigo()">Verificar</button> 
+              </form>
+
+            <form action="/recuperaSenha" method="post" id="email-inputs-form">
+              <div class="user-box">
+                <input type="email" name="email" required="">
+                <label>Digite o seu E-mail cadastrado</label>
+              </div>
+              <div class="user-box">
+                <input type="email" name="email" required="">
+                <label>Confirme o E-mail</label>
+              </div><center>
+              <a href="#" id="link-verificar-emails">
+                     Enviar
+                 <span></span>
+              </a></center>
+            </form>
+           
+          </div>
+
         <!--Conteiner de recuperacao com os inputs solicitando email-->
-      
-        <div class="inputGroup">
-          <input type="email" name="email" class="form-control" placeholder="Seu E-mail" autocomplete="off"/>
-          <input type="email" name="email2" class="form-control" placeholder="Confime o seu E-mail" autocomplete="off"/>
-        </div>
-        <button type="submit" class="button" onclick="checarEmailsDigitados()">Enviar código</button>
 
         <div id="envioDoCodigo" class="inputGroup">
           <input type="text" name="email" class="form-control" placeholder="Digite o código recebido por e-mail" autocomplete="off"/>
           <button type="submit" class="button" onclick="liberarTrocaDeSenha()">Conferir</button>
         </div>
+
+        <script>
+         
+      var linkVerificarEmails = document.getElementById("link-verificar-emails");
+      const emailInputForm = document.getElementById('email-inputs-form');
+      const formCodigo = document.querySelector(".form");
+
+      // Adicione um evento de clique ao elemento
+       linkVerificarEmails.addEventListener("click", function(event) {
+          // Evite o comportamento padrão do link (neste caso, redirecionar para "#")
+          event.preventDefault();
+
+          emailInputForm.style.display = "none";
+          formCodigo.style.display = "flex";
+
+});
+
+        </script>
 </body>
 
 </html>
