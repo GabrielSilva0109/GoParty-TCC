@@ -3,52 +3,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
 body{
-    margin: 0;
-    padding: 0;
-    background: #0a0b1d;
-    font-family: 'Poppins';
-}
-
-h1{
   margin: 0;
+  padding: 0;
+  background: #0a0b1d;
+  font-family: 'Poppins';
 }
 
 .header {
-  color: #fff; /* Cor do texto no header */
-  padding: 0px 5px; /* Espaçamento interno do header */
-  display: flex; /* Ativar o layout flexbox para os elementos filho */
-  justify-content: space-between; /* Espaçamento igual entre os elementos filho */
-  align-items: center; /* Alinhar verticalmente os elementos filho */
-}
-  
-.logo {
-  font-size: 2.5rem;
-  margin: 0; /* Remover margens padrão */
-  color: rgb(255, 65, 65);
-  padding-left: 10px;
+  padding: 0 5px; /* Espaçamento interno do header */
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
 }
   
 .header ul {
-  list-style: none; /* Remover marcadores de lista */
-  padding: 0; /* Remover preenchimento da lista */
-  display: flex; /* Ativar o layout flexbox para os links de perfil */
+  list-style: none; 
+  padding: 0;
+  display: flex;
 }
   
-  .header li {
-    margin: 0 10px 0 10px;
-  }
-  
-  .links  {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none; 
-    color: white; 
-    
+.header li {
+  margin: 0 10px 0 10px;
 }
 
-/* rgba(255, 255, 255, 0.2 */
+.ulContainer {          
+  background: #25142d; /* Cor de fundo com transparência */
+  backdrop-filter: blur(20px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
+  border-radius: 30px; /* Borda arredondada (ajuste conforme necessário) */
+  list-style: none; /* Remova os marcadores de lista */
+  box-shadow: #25142d;
+}
 
-  /* plus sign */
+/* Estilo padrão para o ícone e a linha */ 
+.icon-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.icon {
+ width: 40px; /* Defina o tamanho desejado para o ícone */
+ height: 40px;
+ display: block; /* Certifique-se de que o ícone seja um bloco para ocupar espaço */
+ margin: 0 auto; /* Centralizar verticalmente o ícone */
+ padding: 10px;
+}
+
+/* Linha em baixo dos links */
+.line {
+  position: absolute;
+  width: 100%;
+  height: 4px; 
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Efeito de linha ao passar o mouse */
+.icon-container:hover .line {
+ background-color: rgb(138, 56, 74); /* Cor da linha ao passar o mouse */
+}
+
+/* Botão para Sair do GoParty  Começa Aqui !!*/
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
+  
+
 .sign {
   width: 100%;
   transition-duration: .3s;
@@ -56,14 +88,16 @@ h1{
   align-items: center;
   justify-content: center;
 }
-  
+
+
 .sign svg {
   width: 17px;
 }
   
 .sign svg path {
   fill: white;
-}
+  }
+
   /* text */
 .text {
   position: absolute;
@@ -75,30 +109,33 @@ h1{
   font-weight: 600;
   transition-duration: .3s;
 }
-  /* hover effect on button width */
-  .Btn:hover {
-    width: 125px;
-    border-radius: 40px;
-    transition-duration: .3s;
-  }
-  
-  .Btn:hover .sign {
-    width: 30%;
-    transition-duration: .3s;
-    padding-left: 20px;
-  }
-  /* hover effect button's text */
-  .Btn:hover .text {
-    opacity: 1;
-    width: 70%;
-    transition-duration: .3s;
-    padding-right: 10px;
-  }
-  /* button click effect*/
-  .Btn:active {
-    transform: translate(2px ,2px);
-  }
 
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+  
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+
+/* hover effect button's text */
+  
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}
+/* Botão para Sair do GoParty  Termina Aqui !!*/
 
 /* Estilo para a div que envolve todo o conteúdo */
 .container {
@@ -107,20 +144,21 @@ h1{
   padding: 20px; 
 }
 
-.arroba{
-  color: rgb(255, 65, 65);
-}
-
-/* Estilos para as três partes */
+/* Estilos para as Duas partes */
 .left-sidebar {
   width: 25%;
   background-color: #f0f0f0; /* Cor de fundo do lado esquerdo */
   padding: 20px;
 }
 
+.arroba{
+  color: rgb(255, 65, 65);
+}
+
+/* Container Principal */
 .center-content {
   display: block;
-  width: 68%; /* Largura desejada para as divs */
+  width: 68%; 
   border-radius: 20px;
   text-align: center;
   background-color: #e0e0e0;
@@ -130,10 +168,65 @@ h1{
 .center-content, .left-sidebar{
   border-radius: 20px;
   text-align: center;
-  padding: 10px;
+}
+
+footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+}
+
+/* Estilos para a lista no footer */
+footer ul {
+  display: flex;
+  border-radius: 0.5rem;
+  background-color: #EEE;
+  padding: 0.25rem;
+  justify-content: space-around;
+  margin: 8px;
+}
+
+.links-foot{
+  text-decoration: none;
+  color: #000000;
+  background-color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 500px) {
+  footer {
+    display: block!important;
+  }
+}
+
+@media (max-width: 700px) {
+  .ulContainer {
+    display: none !important; /* Oculta o ulContainer */
+  }
 }
 
 
+@media (max-width: 400px) {
+  .left-sidebar, .right-sidebar{
+    display: none !important; /* Oculta o ulContainer */
+  }
+  .center-content{
+    width: 350px;
+  }
+}
+
+#logo-inicio-home{
+  width: 290px;
+}
+
+#imgPerfil-vazio, .imgPerfil, #fotoExibida{
+  width: 145px;
+  height: 145px;
+  border-radius: 50px;
+}
 
 /* Bloco de Usuarios */
 .bloco-user {
@@ -159,113 +252,6 @@ h1{
 }
 
 /* Padrões de Botão */
-.btn-1:hover{
-  background: rgb(232, 30, 30);
-}
-
-.btn-1 {
-    border-radius: 20px;
-    border: 1px solid #000000;
-    background: rgb(255, 65, 65);
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    margin-top:20px;
-}
-
-.btn-1:active {
-    transform: scale(.95);
-}
-
-.btn-1:focus {
-    outline: none;
-}
-
-.btn-2:hover{
-  background: black;
-}
-
-.btn-2 {
-    border-radius: 20px;
-    border: 1px solid #000000;
-    background: #151515;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    margin-top:20px;
-}
-
-.btn-2:active {
-    transform: scale(.95);
-}
-
-.btn-2:focus {
-    outline: none;
-}
-
-.btn-3:hover{
-  background: rgb(232, 30, 30);
-}
-
-.btn-3 {
-    border-radius: 20px;
-    border: 1px solid #b42e2e;
-    background: rgb(255, 65, 65);
-    color: #fff;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 7px 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    font-weight: bold;
-}
-
-.btn-3:active {
-    transform: scale(.95);
-}
-
-.btn-3:focus {
-    outline: none;
-}
-
-.btn-4:hover{
-  background: black;
-}
-
-.btn-4 a{
-  text-decoration: none;
-}
-.btn-4 {
-    border-radius: 20px;
-    border: 1px solid #000000;
-    background: #151515;
-    color: #fff;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 7px 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    font-weight: bold;
-}
-
-.btn-4:active {
-    transform: scale(.95);
-}
-
-.btn-4:focus {
-    outline: none;
-}
-
 .btn-excluir {
   width: 50px;
   height: 50px;
@@ -281,15 +267,6 @@ h1{
   overflow: hidden;
   position: relative;
   margin: 10px;
-}
-
-.svgIcon {
-  width: 12px;
-  transition-duration: .3s;
-}
-
-.svgIcon path {
-  fill: white;
 }
 
 .btn-excluir:hover {
@@ -320,6 +297,10 @@ h1{
   opacity: 1;
   transform: translateY(30px);
   transition-duration: .3s;
+}
+
+.svgIcon path {
+  fill: white;
 }
 
 .Btn-editar {
@@ -374,6 +355,7 @@ h1{
   transition-duration: .3s;
   padding-left: 20px;
 }
+
 /* hover effect button's text */
 .Btn-editar:hover .text {
   opacity: 1;
@@ -392,9 +374,7 @@ h1{
   justify-content: center;
   align-items: center;
   display: flex;
-  
 }
-
 
 .btn-perfil {
   align-items: center;
@@ -447,7 +427,7 @@ h1{
 .edit-form {
   padding: 20px;
   max-width: 300px;
-  margin: 0 auto; /* Isso centraliza o formulário horizontalmente */
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -491,31 +471,8 @@ h1{
   border-radius: 20px;
 }
 
-/* Estilos para a lista no footer*/
-
-footer {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: #fff;
-}
-
-footer ul {
-  display: flex;
-  border-radius: 0.5rem;
-  background-color: #EEE;
-  padding: 0.25rem;
-  justify-content: space-around;
-  margin: 8px;
-}
-
-.links-foot{
-  text-decoration: none;
-  color: #000000;
-  background-color: #fff;
-  font-weight: 600;
+#fotoPerfil {
+  display: none; /* Esconder o input de arquivo real */
 }
 
 @media (max-width: 500px) {
@@ -530,7 +487,6 @@ footer ul {
     }
 }
 
-
 @media (max-width: 400px) {
   .left-sidebar, .right-sidebar{
     display: none !important; /* Oculta o ulContainer */
@@ -538,74 +494,4 @@ footer ul {
   .center-content{
     width: 350px;
   }
-}
-
-.Btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition-duration: .3s;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-  background-color: rgb(255, 65, 65);
-}
-
-
-
-#logo-inicio-home{
-  width: 290px;
-  margin-bottom: -10px;
-}
-
-/* Estilo para o input de arquivo por ID */
-#fotoPerfil {
-  display: none; /* Esconder o input de arquivo real */
-}
-
-#upload-label {
-  background-color:rgb(255, 32, 32);
-  color: #fff;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 10px;
-  border-radius: 5px;
-  
-}
-
-/* Estilo para o botão de envio por ID */
-#enviar {
-  background-color: #222;
-  color: #fff;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 10px;
-}
-
-/* Estilo para o texto do nome do arquivo selecionado por ID */
-#file-name {
-  font-size: 10px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-#stories-container{
-  font-size: 13px;
-  margin-left: -200px;
-}
-
-/* Ultimos links */
-
-#btn-settings-link,
-#btn-logout-link {
-  display: inline-block;
-  margin-right: 11px; 
-  font-size: 12px;
 }

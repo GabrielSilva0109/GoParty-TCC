@@ -3,138 +3,139 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
 body{
-    margin: 0;
-    padding: 0;
-    background: #0a0b1d;
-    font-family: 'Poppins';
-}
-
-h1{
   margin: 0;
+  padding: 0;
+  background: #0a0b1d;
+  font-family: 'Poppins';
 }
 
 .header {
-  color: #fff; /* Cor do texto no header */
   padding: 0 5px; /* Espaçamento interno do header */
-  display: flex; /* Ativar o layout flexbox para os elementos filho */
-  justify-content: space-between; /* Espaçamento igual entre os elementos filho */
-  align-items: center; /* Alinhar verticalmente os elementos filho */
-}
-  
-.logo {
-  margin: 0; /* Remover margens padrão */
-  color: rgb(255, 65, 65);
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
 }
   
 .header ul {
-  list-style: none; /* Remover marcadores de lista */
-  padding: 0; /* Remover preenchimento da lista */
-  display: flex; /* Ativar o layout flexbox para os links de perfil */
+  list-style: none; 
+  padding: 0;
+  display: flex;
 }
   
-  .header li {
-    margin: 0 10px 0 10px;
-  }
+.header li {
+  margin: 0 10px 0 10px;
+}
+
+.ulContainer {          
+  background: #25142d; /* Cor de fundo com transparência */
+  backdrop-filter: blur(20px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
+  border-radius: 30px; /* Borda arredondada (ajuste conforme necessário) */
+  list-style: none; /* Remova os marcadores de lista */
+  box-shadow: #25142d;
+}
+
+/* Estilo padrão para o ícone e a linha */ 
+.icon-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.icon {
+ width: 40px; /* Defina o tamanho desejado para o ícone */
+ height: 40px;
+ display: block; /* Certifique-se de que o ícone seja um bloco para ocupar espaço */
+ margin: 0 auto; /* Centralizar verticalmente o ícone */
+ padding: 10px;
+}
+
+/* Linha em baixo dos links */
+.line {
+  position: absolute;
+  width: 100%;
+  height: 4px; 
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Efeito de linha ao passar o mouse */
+.icon-container:hover .line {
+ background-color: rgb(138, 56, 74); /* Cor da linha ao passar o mouse */
+}
+
+/* Botão para Sair do GoParty  Começa Aqui !!*/
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
   
-  .links {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none; 
-    color: white; 
-    
-  }
-  .header a:hover {
-    color: rgb(255, 52, 52);
+
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.sign svg {
+  width: 17px;
+}
+  
+.sign svg path {
+  fill: white;
   }
 
-  .ulContainer {
-    background: rgba(255, 255, 255, 0.2); /* Cor de fundo com transparência */
-    backdrop-filter: blur(10px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
-    border-radius: 10px; /* Borda arredondada (ajuste conforme necessário) */
-    list-style: none; /* Remova os marcadores de lista */
-  }
-  
-  
-  .ulContainer a {
-    text-decoration: none; /* Remova a decoração do link */
-    color: white; /* Cor do texto */
-    display: block; /* Torna todo o conteúdo do item da lista clicável */
-  } 
-  .logo {
-    font-size: 2.5rem;
-    margin: 0; /* Remover margens padrão */
-    color: rgb(255, 65, 65);
-    padding-left: 10px;
-  }
-  
-  .Btn {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition-duration: .3s;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-    background-color: rgb(255, 65, 65);
-  }
-  
-  /* plus sign */
-  .sign {
-    width: 100%;
-    transition-duration: .3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sign svg {
-    width: 17px;
-  }
-  
-  .sign svg path {
-    fill: white;
-  }
   /* text */
-  .text {
-    position: absolute;
-    right: -20%;
-    width: 0%;
-    opacity: 0;
-    color: white;
-    font-size: 1.2em;
-    font-weight: 600;
-    transition-duration: .3s;
-  }
-  /* hover effect on button width */
-  
-  .Btn:hover {
-    width: 125px;
-    border-radius: 40px;
-    transition-duration: .3s;
-  }
-  
-  .Btn:hover .sign {
-    width: 30%;
-    transition-duration: .3s;
-    padding-left: 20px;
-  }
-  /* hover effect button's text */
-  .Btn:hover .text {
-    opacity: 1;
-    width: 70%;
-    transition-duration: .3s;
-    padding-right: 10px;
-  }
-  /* button click effect*/
-  .Btn:active {
-    transform: translate(2px ,2px);
-  }
+.text {
+  position: absolute;
+  right: -20%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
 
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+  
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+
+/* hover effect button's text */
+  
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}
+/* Botão para Sair do GoParty  Termina Aqui !!*/
 
 /* Estilo para a div que envolve todo o conteúdo */
 .container {
@@ -143,7 +144,7 @@ h1{
   padding: 20px; 
 }
 
-/* Estilos para as três partes */
+/* Estilos para as Duas partes */
 .left-sidebar {
   width: 25%;
   background-color: #f0f0f0; /* Cor de fundo do lado esquerdo */
@@ -154,9 +155,10 @@ h1{
   color: rgb(255, 65, 65);
 }
 
+/* Container Principal */
 .center-content {
   display: block;
-  width: 68%; /* Largura desejada para as divs */
+  width: 68%; 
   border-radius: 20px;
   text-align: center;
   background-color: #e0e0e0;
@@ -218,7 +220,6 @@ footer ul {
 
 #logo-inicio-home{
   width: 290px;
-  margin-bottom: -38px;
 }
 
 #imgPerfil-vazio, .imgPerfil, #fotoExibida{
@@ -227,43 +228,10 @@ footer ul {
   border-radius: 50px;
 }
 
-.imgUsuarios{
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
-}
-
 /* Criar Evento */
 .container-evento{
   display: block;
   flex-direction: column;
-}
-
-/* Inputs */
-
-.inputGroup {
-  font-family: 'Segoe UI', sans-serif;
-  position: relative;
-}
-
-
-
-.inputGroup :is(input:focus, input:valid)~label {
-  transform: translateY(-50%) scale(.9);
-  margin: 0em;
-  margin-left: 1.3em;
-  padding: 0.4em;
-  background-color: #e8e8e8;
-}
-
-#upload-label {
-  background-color:rgb(255, 32, 32);
-  color: #fff;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 10px;
-  border-radius: 5px;
-  
 }
 
 #btn-criar-evento {
@@ -287,18 +255,8 @@ footer ul {
   box-shadow: 0 0px 20px #25142d;
 }
 
-/* Ultimos links */
-
-
-#stories-container2{
-  font-size: 13px;
-  margin-left: -200px;
-}
-
 /* Estilo para a div com a classe "container-ev" */
 .container-ev {
-  width: 500px; /* Largura da div, ajuste conforme necessário */
   margin: 0 auto; /* Centralizar a div horizontalmente */
   text-align: center; /* Centralizar o conteúdo dentro da div */
-  
 }
