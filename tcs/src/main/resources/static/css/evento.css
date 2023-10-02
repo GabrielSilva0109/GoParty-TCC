@@ -222,6 +222,11 @@ footer ul {
   width: 290px;
 }
 
+.descricaoUser{
+  margin-top: -20px;
+  color: #25142d;
+}
+
 #imgPerfil-vazio, .imgPerfil, #fotoExibida{
   width: 145px;
   height: 145px;

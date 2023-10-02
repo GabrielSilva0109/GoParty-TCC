@@ -224,7 +224,6 @@ footer ul {
 
 #imgPerfil-vazio, .imgPerfil, #fotoExibida{
   width: 145px;
-  height: 145px;
   border-radius: 50px;
 }
 
@@ -473,6 +472,11 @@ footer ul {
 
 #fotoPerfil {
   display: none; /* Esconder o input de arquivo real */
+}
+
+.descricaoUser{
+  margin-top: -20px;
+  color: #25142d;
 }
 
 @media (max-width: 500px) {

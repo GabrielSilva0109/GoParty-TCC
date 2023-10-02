@@ -69,9 +69,8 @@
                 alt="" 
                 id="imgPerfil-vazio" />
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
-            <div class="info">
-                <h3><span th:text="${sessionUsuario.descricao}"></span></h3>
-            </div>
+            <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>
+            
         </div>
     
         <div class="center-content">
@@ -80,10 +79,8 @@
                 <div th:each="usuario : ${usuarios}" class="usuario-bloco">
                     <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="foto">
                     <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
-                    <h3><span th:text="${usuario.descricao}"></span></h3>
-                    <div class="info">
-                        
-                    </div>
+                    <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
+                    
                     <div class="interacoes">
                         <button class="btn-perfil" >
                             <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
