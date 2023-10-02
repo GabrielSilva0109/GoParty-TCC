@@ -272,7 +272,6 @@ public class UsuarioController {
                 return new ResponseEntity<>(imagemPerfil, headers, HttpStatus.OK);
             }
         }
-
         // Se o usuário não for encontrado ou não tiver uma imagem de perfil, retorne uma resposta vazia ou um erro
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
