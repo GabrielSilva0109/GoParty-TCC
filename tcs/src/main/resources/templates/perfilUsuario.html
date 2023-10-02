@@ -13,16 +13,58 @@
         <h1>
             <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">
         </h1>
+
+         <!--Onde ficara os stories-->
+        <div id="stories-container">
+            <h1>Stories</h1>
+        </div>
+
         <ul class="ulContainer">
-            <li><a class="links" th:href="@{/perfil}"><img src="/css/img/profileIcon.png" alt="Perfil"></a></li>
-            <li><a class="links" th:href="@{/usuarios}"><img src="/css/img/UsersIcon.png" alt="Usuários"></a></li>
-            <li><a class="links" th:href="@{/home}" style="border-bottom: 4px solid rgb(255, 65, 65);"><img src="/css/img/homeIcon.png" alt="Home"></a></li>
-            <li><a class="links" th:href="@{/evento}"><img src="/css/img/PostIcon.png" alt="Eventos"></a></li>
-        </ul>
-        <a th:href="@{/logout}" class="Btn" type="submit">
-            <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
-            <div class="text">Sair</div>
+            <li>
+                <a class="links" th:href="@{/perfil}">
+                    <div class="icon-container">
+                        <img src="/css/img/profileIcon.png" alt="Perfil" class="icon">
+                        <div class="line"></div>
+                    </div>
+                </a>
+            </li>
+
+         <li>
+        <a class="links" th:href="@{/usuarios}">
+            <div class="icon-container">
+                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
+                <div class="line"></div>
+            </div>
         </a>
+        </li>
+
+        <li><a class="links" th:href="@{/home}">
+            <div class="icon-container">
+                <img src="/css/img/homeIcon.png" alt="Home" class="icon">
+                <div class="line"></div>
+            </div>
+        </a></li>
+
+        <li>
+            <a class="links" th:href="@{/evento}">
+                <div class="icon-container">
+                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
+                    <div class="line"></div>
+                </div>
+            </a>
+        </li>
+        </ul>
+        <div class="ultimos-links">
+            <a th:href="@{/configs}" class="Btn" type="submit" id="btn-settings-link">
+                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                <div class="text">Configurações</div>
+            </a>
+    
+            <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link">
+                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                <div class="text">Sair</div>
+            </a>
+        </div>
         <style>
             .ulContainer {
              
@@ -39,6 +81,45 @@
                  margin-top: 15px;
                  margin-right: 10px;
              }
+
+             /*efeito de icone selecionado*/
+
+             /* Estilo padrão para o ícone e a linha */
+            
+                .icon-container {
+                    position: relative;
+                    display: inline-block;
+                    text-align: center; /* Centralizar o ícone e a linha horizontalmente */
+                }
+
+                .icon {
+                    width: 40px; /* Defina o tamanho desejado para o ícone */
+                    height: 40px;
+                    display: block; /* Certifique-se de que o ícone seja um bloco para ocupar espaço */
+                    margin: 0 auto; /* Centralizar verticalmente o ícone */
+                }
+
+                .line {
+                    position: absolute;
+                    width: 100%;
+                    height: 4px; /* Defina a altura desejada para a linha */
+                    background-color: transparent;
+                    bottom: 0;
+                    left: 0;
+                    transition: background-color 0.3s ease-in-out;
+                }
+
+                /* Efeito de linha ao passar o mouse */
+                .icon-container:hover .line {
+                    background-color: rgb(138, 56, 74); /* Cor da linha ao passar o mouse */
+                }
+
+                /* Classe para o estado ativo */
+                .active .line {
+                    background-color: rgb(138, 56, 74);
+                }
+
+
          </style>
     </header>
 
@@ -59,7 +140,8 @@
                 <h3><span th:text="${usuario.descricao}"></span></h3>
                 <h4><span th:text="${usuario.email}"></span></h4>
                 <h4><span th:text="${usuario.cpf}"></span></h4>
-                <h4><span th:text="${usuario.idade}"></span></h4>
+                <h4><span id="dataNascimento2" th:text="${usuario.idade}"></span></h4>
+                <h4><span id="dataNascimentoFormadata2"></span></h4>
             </div>
         </div>
     
@@ -71,7 +153,23 @@
         </div>
     </div>
     
+    <script>
+        // Recuperar o elemento span pelo ID
+        var spanElement = document.getElementById("dataNascimento2");
 
+        // Obter o valor não formatado da data de nascimento
+        var dataNascimentoNaoFormatada = spanElement.textContent;
+
+        // Formatar a data usando JavaScript (supondo que a data esteja no formato "yyyy-MM-dd")
+        var partesData = dataNascimentoNaoFormatada.split("-");
+        var dataFormatada = partesData[2] + "/" + partesData[1] + "/" + partesData[0];
+
+        // Exibir a data formatada em outro elemento, por exemplo, em um div com o ID "dataFormatada"
+        spanElement.style.display = "none";
+        var divElement = document.getElementById("dataNascimentoFormadata2");
+        divElement.textContent = dataFormatada;
+
+    </script>
     
 </body>
 </html>

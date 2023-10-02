@@ -47,38 +47,7 @@ h1{
 }
 
 /* rgba(255, 255, 255, 0.2 */
-.ulContainer {
-  
-  background: #25142d; /* Cor de fundo com transparência */
-  backdrop-filter: blur(10px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
-  border-radius: 10px; /* Borda arredondada (ajuste conforme necessário) */
-  list-style: none; /* Remova os marcadores de lista */
-  box-shadow: #25142d;
-}
-  
-  
-.ulContainer a {
-  text-decoration: none; /* Remova a decoração do link */
-  color: white; /* Cor do texto */
-  display: block; /* Torna todo o conteúdo do item da lista clicável */
-}  
 
-.Btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition-duration: .3s;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-  background-color: rgb(255, 65, 65);
-}
-  
   /* plus sign */
 .sign {
   width: 100%;
@@ -468,8 +437,6 @@ h1{
   transition-duration: 1.5s;
 }
 
-
-
 /* Bloco aonde fica os botões */
 .altera{
   display: flex;
@@ -524,8 +491,8 @@ h1{
   border-radius: 20px;
 }
 
-/* Consulta de mídia para mostrar o footer em telas com menos de 500px */
-/* Estilos para o footer (invisível por padrão) */
+/* Estilos para a lista no footer*/
+
 footer {
   display: none;
   position: fixed;
@@ -535,7 +502,6 @@ footer {
   color: #fff;
 }
 
-/* Estilos para a lista no footer */
 footer ul {
   display: flex;
   border-radius: 0.5rem;
@@ -561,8 +527,9 @@ footer ul {
 @media (max-width: 700px) {
   .ulContainer {
     display: none !important; /* Oculta o ulContainer */
-  }
+    }
 }
+
 
 @media (max-width: 400px) {
   .left-sidebar, .right-sidebar{
@@ -571,8 +538,25 @@ footer ul {
   .center-content{
     width: 350px;
   }
-  
 }
+
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
+
+
 
 #logo-inicio-home{
   width: 290px;
@@ -610,4 +594,18 @@ footer ul {
   font-size: 10px;
   font-weight: bold;
   margin-top: 10px;
+}
+
+#stories-container{
+  font-size: 13px;
+  margin-left: -200px;
+}
+
+/* Ultimos links */
+
+#btn-settings-link,
+#btn-logout-link {
+  display: inline-block;
+  margin-right: 11px; 
+  font-size: 12px;
 }

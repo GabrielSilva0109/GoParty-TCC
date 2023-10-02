@@ -354,6 +354,17 @@ input[type="date"]:focus {
   scale: 1;
 }
 
+/* Ultimos links */
 
-/* Input file */
+#btn-settings-link2,
+#btn-logout-link2 {
+  display: inline-block;
+  margin-right: 11px; 
+  font-size: 12px;
+}
+
+#stories-container2{
+  font-size: 13px;
+  margin-left: -200px;
+}
 

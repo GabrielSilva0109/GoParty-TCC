@@ -88,3 +88,8 @@ body{
   #envioDoCodigo{
     display: none;
   }
+
+  .texto-titulos{
+    color: #ddd;
+    text-shadow: #25142d;
+  }
