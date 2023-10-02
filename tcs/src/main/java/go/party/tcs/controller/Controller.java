@@ -31,7 +31,7 @@ public class Controller {
 
     @GetMapping("/recuperarSenha")
     public String recuperarPage() {
-        return "recuperarSenha"; // Retorna o nome do arquivo HTML, não uma rota
+        return "recuperarSenha"; // Retorna o nome do arquivo HTML
     }
 
     //Sem mapeamento redireciona para o Login

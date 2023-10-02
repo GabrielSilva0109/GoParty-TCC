@@ -14,7 +14,7 @@ public class SenhaResetController {
     @Autowired
     private EmailService emailService;
 
-    @PostMapping("/recuperaSenha")
+    @PostMapping("/recuperarSenha")
     public String enviarEmailDeRecuperacao(@RequestParam("email") String email) {
         // Gere um código de recuperação (pode ser aleatório) e envie-o por e-mail
         String codigoRecuperacao = gerarCodigoRecuperacao();

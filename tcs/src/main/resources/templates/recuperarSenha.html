@@ -13,7 +13,6 @@
 
 </head>
 <body>
-    
           <!-- teste de formulario-->
 
           <div class="login-box">
@@ -24,25 +23,21 @@
             </h1>
 
              <!--Container de código-->
-            <form class="form" action="" id="form-codigo"> 
+            <form class="form" action="" id="form-codigo" method="post"> 
               <div class="title">Insira seu código</div> 
-              <p class="message">Enviamos um código de verificação para seu E-mail</p> <div class="inputs"> <input id="input1" type="text" maxlength="1"> <input id="input2" type="text" maxlength="1"> <input id="input3" type="text" maxlength="1"> 
+              <p class="message">Enviamos um código de verificação para seu E-mail</p><div class="inputs"> <input id="input1" type="text" maxlength="1"> <input id="input2" type="text" maxlength="1"> <input id="input3" type="text" maxlength="1"> 
                 <input id="input4" type="text" maxlength="1"> </div> <button type="submit"  class="action" onclick="verificarCodigo()">Verificar</button> 
               </form>
 
-            <form action="/recuperaSenha" method="post" id="email-inputs-form">
+            <form action="/recuperarSenha" method="post" id="email-inputs-form">
               <div class="user-box">
-                <input type="email" name="email" required="">
+                <input type="email" name="email" required>
                 <label>Digite o seu E-mail cadastrado</label>
               </div>
-              <div class="user-box">
-                <input type="email" name="email" required="">
-                <label>Confirme o E-mail</label>
-              </div><center>
-              <a href="#" id="link-verificar-emails">
+              <button type="submit" id="link-verificar-emails">
                      Enviar
                  <span></span>
-              </a></center>
+              </button></center>
             </form>
            
           </div>

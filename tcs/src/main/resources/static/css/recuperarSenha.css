@@ -73,11 +73,13 @@ body{
     font-size: 12px;
   }
   
-  .login-box form a {
+  .login-box form button {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
     color: #ffffff;
+    background-color: red;
+    border-radius: 20px;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -87,7 +89,7 @@ body{
     letter-spacing: 4px
   }
   
-  .login-box a:hover {
+  .login-box button:hover {
     background: red;
     color: #fff;
     border-radius: 5px;
@@ -97,7 +99,7 @@ body{
                 0 0 100px red;
   }
   
-  .login-box a span {
+  .login-box button span {
     position: absolute;
     display: block;
   }
@@ -112,7 +114,7 @@ body{
     }
   }
   
-  .login-box a span:nth-child(1) {
+  .login-box button span:nth-child(1) {
     bottom: 2px;
     left: -100%;
     width: 100%;
