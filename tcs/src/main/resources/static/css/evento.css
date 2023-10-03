@@ -316,7 +316,7 @@ footer ul {
   color: var(--default-btn-color);
   font: var(--font-weight) var(--font-size) var(--font-family);
   background: var(--btn-default-bg);
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   transition: var(--btn-transition);
