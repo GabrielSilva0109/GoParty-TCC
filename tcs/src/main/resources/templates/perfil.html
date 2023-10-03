@@ -123,6 +123,16 @@
                 <div class="bloco-evento-right">
                     <h2 th:text="${evento.titulo}"></h2>
                     <p th:text="${evento.descricao}"></p>
+
+                    
+                    <form action="/excluir-evento/' + ${evento.id}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="excluir">Excluir</button>
+                    </form>
+                    
+                    
+                    <!-- Botão para editar o evento -->
+                    <a href="#" th:href="@{'/editar-evento/' + ${evento.id}}" class="editar">Editar</a>
                 </div>  
             </div>
         </div>
@@ -133,6 +143,8 @@
     
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Mostra os dados que estão sendo carregados da IMAGEM -->
     <script>
         // Exibir o nome do arquivo selecionado
         const fileInput = document.getElementById('fotoPerfil');
@@ -143,6 +155,8 @@
             fileNameDisplay.textContent = `Arquivo selecionado: ${fileName}`;
         });
     </script>
+
+    <!-- Abre o Formulario para editar as informações do usuario -->
     <script>
         $(document).ready(function() {
             // Quando o botão "Editar" for clicado
@@ -206,6 +220,35 @@
 
     </script>
 
+    <!-- Pergunta pro usuario se ele realmente quer excluir o evento -->
+    <script>
+        function excluirEvento(event, eventoId) {
+            event.preventDefault(); // Evita o comportamento padrão do link (navegação)
+            
+            if (confirm("Tem certeza de que deseja excluir este evento?")) {
+                // Confirmação do usuário, envie uma requisição DELETE para excluir o evento
+                fetch(`/excluir-evento/${eventoId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // A exclusão foi bem-sucedida, você pode atualizar a página ou fazer algo mais
+                        alert('Evento excluído com sucesso.');
+                        window.location.reload(); // Recarrega a página para refletir as alterações
+                    } else {
+                        // Trate erros de exclusão, se necessário
+                        alert('Erro ao excluir o evento.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                });
+            }
+    }
+
+    </script>
+
+    <!-- Pergunta pro usuario se ele realmente quer excluir sua conta -->
     <script>
         $(document).ready(function () {
         // Captura o clique no botão de exclusão
@@ -220,6 +263,8 @@
         });
     });
     </script>
+
+    <!-- Teste de carregamento da foto -->
     <script>
         // TESTE FOTO
 
@@ -245,6 +290,8 @@
             }
         });
     </script>
+
+    <!-- Formatação da data de nascimento -->
     <script>
         // Recuperar o elemento span pelo ID
         var spanElement = document.getElementById("dataNascimento");

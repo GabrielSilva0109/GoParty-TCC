@@ -47,6 +47,7 @@ public class Controller {
 
     @GetMapping("/perfilUsuario/{id}")
     public String exibirPerfil(@PathVariable Integer id, Model model) {
+        
         // Buscar o usuário com o ID especificado no banco de dados
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
 

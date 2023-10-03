@@ -45,4 +45,9 @@ public class EventoService {
     public Evento encontrarPorId(Integer eventoId) {
         return eventoRepository.getById(eventoId);
     }
+
+    public void excluirEvento(Integer id) {
+        // Lógica para excluir o evento com base no ID
+        eventoRepository.deleteById(id);
+    }
 }

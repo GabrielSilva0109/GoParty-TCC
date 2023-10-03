@@ -10,9 +10,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -110,4 +113,13 @@ public class EventoController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    //Metodo para Excluir o Post Evento
+    @DeleteMapping("/excluir-evento/{id}")
+    public String excluirEvento(@PathVariable Integer id) {
+        // Lógica para excluir o evento com base no ID
+        eventoService.excluirEvento(id);
+        
+        // Redirecione para a página inicial ou outra página apropriada após a exclusão
+        return "home";
+    }
 }
