@@ -196,35 +196,6 @@ footer ul {
   font-weight: 600;
 }
 
-@media (max-width: 500px) {
-  footer {
-    display: block!important;
-  }
-}
-
-@media (max-width: 700px) {
-  .ulContainer {
-    display: none !important; /* Oculta o ulContainer */
-  }
-}
-
-@media (max-width: 400px) {
-  .left-sidebar, .right-sidebar{
-    display: none !important; /* Oculta o ulContainer */
-  }
-  .center-content{
-    width: 350px;
-  }
-}
-
-@media (max-width: 500px) {
-  .usuario-bloco{
-    width: 40%!important;
-    height: 120px!important;
-  }
-}
-
-
 #logo-inicio-home{
   width: 290px;
 }
@@ -653,5 +624,33 @@ footer ul {
   }
   .center-content{
     width: 350px;
+  }
+}
+
+@media (max-width: 500px) {
+  footer {
+    display: block!important;
+  }
+}
+
+@media (max-width: 700px) {
+  .ulContainer {
+    display: none !important; /* Oculta o ulContainer */
+  }
+}
+
+@media (max-width: 400px) {
+  .left-sidebar, .right-sidebar{
+    display: none !important; /* Oculta o ulContainer */
+  }
+  .center-content{
+    width: 350px;
+  }
+}
+
+@media (max-width: 500px) {
+  .usuario-bloco{
+    width: 40%!important;
+    height: 120px!important;
   }
 }

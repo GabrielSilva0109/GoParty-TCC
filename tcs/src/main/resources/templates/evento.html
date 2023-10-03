@@ -78,19 +78,19 @@
         <div class="center-content">
             <h1>Criar Evento</h1>
             <div class="container-ev">
-                
                 <form action="criar-evento" method="POST" enctype="multipart/form-data">
                     <input type="text" name="titulo" placeholder="Titulo">
-                    <input type="text" name="descricao" placeholder="Descrição">
-                    <input type="file" name="imagemEvento">
-                    <button class="button" type="submit" id="btn-criar-evento">Criar</button>
+                    <textarea placeholder="Descrição"  name="descricao" id="" cols="10" rows="10"></textarea>
+                    <input class="btn-foto" type="file" name="imagemEvento">
+                    <button class="ui-btn" type="submit">
+                        <span>
+                          Criar
+                        </span>
+                    </button>
                 </form>
-
-                
-                
-            </div>
+                             
+            </div>              
         </div>
-        
     </div>
     
     <footer>
