@@ -125,7 +125,7 @@
                     <p th:text="${evento.descricao}"></p>
 
                     
-                    <form action="/excluir-evento/' + ${evento.id}" method="post">
+                    <form th:action="@{'/excluir-evento/' + ${evento.id}}" method="post">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="excluir">Excluir</button>
                     </form>
@@ -139,8 +139,10 @@
         
     
     </div>
-
-    
+    <th:block th:if="${sessionUsuario != null}">
+    <!-- Coloque o conteúdo que depende de sessionUsuario aqui -->
+    <img th:if="${sessionUsuario.fotoPerfil != null}" th:src="${sessionUsuario.fotoPerfil}" alt="Foto de Perfil">
+    </th:block>    
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

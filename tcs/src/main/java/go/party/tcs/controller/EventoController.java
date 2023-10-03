@@ -55,7 +55,6 @@ public class EventoController {
             byte[] imagemBytes = imagemEvento.getBytes();
             evento.setFotoEvento(imagemBytes); // Supondo que você tenha um método setImagem para o evento
         }
-
         // Salve o evento no banco de dados (você deve implementar a lógica de persistência)
         eventoService.criarEvento(evento, null);
 
@@ -115,11 +114,16 @@ public class EventoController {
 
     //Metodo para Excluir o Post Evento
     @DeleteMapping("/excluir-evento/{id}")
-    public String excluirEvento(@PathVariable Integer id) {
+    public String excluirEvento(@PathVariable Integer id, HttpSession session) {
         // Lógica para excluir o evento com base no ID
         eventoService.excluirEvento(id);
-        
-        // Redirecione para a página inicial ou outra página apropriada após a exclusão
-        return "home";
+        // Obtém o usuário da sessão atual
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        // Reinsira o usuário na sessão (isso pode ser ajustado com base na lógica da sua aplicação)
+        session.setAttribute("usuario", sessionUsuario);
+
+        // Redirecione para a página perfil
+        return "redirect:/perfil";
     }
+
 }
