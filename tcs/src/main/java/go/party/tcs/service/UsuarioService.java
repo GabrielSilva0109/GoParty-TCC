@@ -19,16 +19,8 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public void cadastrarUsuario(Usuario usuario, Model model) {
-            //Validação por CPF
-        boolean existeUsuario = usuarioRepository.existsByCpf(usuario.getCpf());
-        
-        if (existeUsuario) {
-           model.addAttribute("mensagem", "Já existe um usuário cadastrado com o CPF informado!.");
-        }else{
-             usuarioRepository.save(usuario);
-        // Salvar o usuário no banco de dados
-        }
-
+       
+       usuarioRepository.save(usuario);
     }
 
     public void atualizarUsuario(Usuario usuario){

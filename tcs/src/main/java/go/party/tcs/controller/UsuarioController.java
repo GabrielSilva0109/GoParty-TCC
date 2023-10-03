@@ -58,19 +58,21 @@ public class UsuarioController {
     @PostMapping("/cadastro")
     public String cadastrarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
     // Criptografar a senha antes de salvar
-    String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
-    usuario.setSenha(senhaCriptografada);
+       String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+       usuario.setSenha(senhaCriptografada);
 
-        try {
-         usuarioService.cadastrarUsuario(usuario, model);
-            
-        } catch (DataIntegrityViolationException e) {
-            model.addAttribute("mensagem", "O username já está em uso. Escolha outro username.");
-            // Trate outras exceções aqui, se necessário
+         //Validação por CPF
+        boolean existeUsuario = usuarioRepository.existsByCpf(usuario.getCpf());
+        
+        if (existeUsuario) {
+           model.addAttribute("mensagem", "Já existe um usuário cadastrado com o CPF informado!.");
+            return "login"; // Redirecionar para a página de login após o cadastro
+
+        }else{
+            //SERVICE DE SALVAR USUÁRIO
+            usuarioService.cadastrarUsuario(usuario, model);
+             return "redirect:/login"; // Redirecionar para a página de login após o cadastro
         }
-
-
-    return "redirect:/login"; // Redirecionar para a página de login após o cadastro
 }
 
     //Caso de erro no login, ele retorna para pagina de login
