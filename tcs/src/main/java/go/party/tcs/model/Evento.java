@@ -34,6 +34,10 @@ public class Evento {
     @Column(name = "foto_evento", columnDefinition = "BLOB")
     private byte[] fotoEvento;
 
+    @ManyToOne
+    @JoinColumn(name = "comentario_id")
+    private Comentario comentario;
+
     // Construtor vazio
     public Evento() {
     }
@@ -45,6 +49,7 @@ public class Evento {
         this.autor = autor;
     }
 
+    
     // Getters e setters para id
     public Integer getId() {
         return id;
@@ -89,6 +94,12 @@ public class Evento {
         this.fotoEvento = fotoEvento;
     }
 
-    
+    public Comentario getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(Comentario comentario) {
+        this.comentario = comentario;
+    }
     
 }
