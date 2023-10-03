@@ -25,8 +25,9 @@
              <!--Container de código-->
             <form class="form" action="" id="form-codigo" method="post"> 
               <div class="title">Insira seu código</div> 
-              <p class="message">Enviamos um código de verificação para seu E-mail</p><div class="inputs"> <input id="input1" type="text" maxlength="1"> <input id="input2" type="text" maxlength="1"> <input id="input3" type="text" maxlength="1"> 
-                <input id="input4" type="text" maxlength="1"> </div> <button type="submit"  class="action" onclick="verificarCodigo()">Verificar</button> 
+              <p class="message">Enviamos um código de verificação para seu E-mail</p>
+              <input type="text" id="codigo" name="codigoRec">
+              <button type="submit"  class="action" onclick="verificarCodigo()">Verificar</button> 
               </form>
 
             <form action="/recuperarSenha" method="post" id="email-inputs-form">
@@ -39,7 +40,6 @@
                  <span></span>
               </button></center>
             </form>
-           
           </div>
 
         <!--Conteiner de recuperacao com os inputs solicitando email-->
@@ -49,23 +49,7 @@
           <button type="submit" class="button" onclick="liberarTrocaDeSenha()">Conferir</button>
         </div>
 
-        <script>
-         
-      var linkVerificarEmails = document.getElementById("link-verificar-emails");
-      const emailInputForm = document.getElementById('email-inputs-form');
-      const formCodigo = document.querySelector(".form");
-
-      // Adicione um evento de clique ao elemento
-       linkVerificarEmails.addEventListener("click", function(event) {
-          // Evite o comportamento padrão do link (neste caso, redirecionar para "#")
-          event.preventDefault();
-
-          emailInputForm.style.display = "none";
-          formCodigo.style.display = "flex";
-
-});
-
-        </script>
+        
 </body>
 
 </html>

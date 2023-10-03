@@ -180,6 +180,11 @@ body{
     align-self: end;
   }
 
+  #codigo{
+    border-radius: 10px;
+    
+  }
+
 
 
   
