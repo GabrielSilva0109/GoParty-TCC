@@ -230,5 +230,17 @@ body{
     scale: 1;
   }
 
+  .error-message {
+    background-color: #f44336;
+    color: rgb(255, 255, 255)!important;
+    padding: 5px 10px;
+    width: 240px;
+    height: 60px;
+    border-radius: 30px; 
+    margin-top: 20px;
+    text-align: center; 
+    font-weight: bold; 
+}
+
 
   

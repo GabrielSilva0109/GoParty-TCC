@@ -38,8 +38,12 @@
               <div class="user-box">
                 <input type="email" name="email" required>
                 <label>Digite o seu E-mail cadastrado</label>
+                <div th:if="${mensagem}" class="error-message">
+                  <p th:text="${mensagem}"></p>
+                </div>
+
               </div>
-              <button type="submit" id="link-verificar-emails" class="button">
+              <button type="submit" id="link-verificar-emails">
                      Enviar
                  <span></span>
               </button></center>
