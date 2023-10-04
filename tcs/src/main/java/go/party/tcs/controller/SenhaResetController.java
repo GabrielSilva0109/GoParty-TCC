@@ -23,8 +23,13 @@ public class SenhaResetController {
 
     private String codigoRecuperacao;
 
+    private String emailRecuperado;
+
     @PostMapping("/recuperarSenha")
     public String enviarEmailDeRecuperacao(@RequestParam("email") String email, Model model) throws MessagingException {
+
+        //RECUPERANDO O EMAIL DO USUARIO
+        emailRecuperado = email;
 
         boolean emailExiste = usuarioService.emailExiste(email);
         // Gere um código de recuperação e envie-o por e-mail
