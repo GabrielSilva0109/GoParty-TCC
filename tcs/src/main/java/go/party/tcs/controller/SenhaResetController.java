@@ -1,6 +1,7 @@
 package go.party.tcs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,9 @@ public class SenhaResetController {
         String assunto = "Recuperação de senha | GoParty";
         String mensagem = "Use o código a seguir para redefinir sua senha: " + codigoRecuperacao;
 
-        if (emailExiste){
+        try {
+           
+          if (emailExiste){
             emailService.sendEmailToClient(email, assunto, mensagem);
             return "codigoRecuperacao";
         }else {
@@ -46,7 +49,10 @@ public class SenhaResetController {
             return "recuperarSenha";
         }
 
-        // Redirecione para uma página de confirmação ou retorne uma resposta apropriada
+        } catch (MailSendException e) {
+           model.addAttribute("mensagem", "Erro ao enviar o email, tente novamente!");
+            return "recuperarSenha";
+        }
         
     }
 
