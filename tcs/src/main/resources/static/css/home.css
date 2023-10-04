@@ -564,8 +564,10 @@ footer ul {
   border-radius: 50px;
 }
 
+/* Imagem de Perfil de usuarios */
 .imgUsuarios{
-  width: 100px;
+  max-width: 150px;
+  max-height: 120px;
   border-radius: 20px;
 }
 
