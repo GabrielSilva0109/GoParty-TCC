@@ -24,17 +24,15 @@ public class SenhaResetController {
     public String enviarEmailDeRecuperacao(@RequestParam("email") String email, Model model) throws MessagingException {
 
         boolean emailExiste = usuarioService.emailExiste(email);
-         // Gere um código de recuperação e envie-o por e-mail
+        // Gere um código de recuperação e envie-o por e-mail
         String codigoRecuperacao = gerarCodigoRecuperacao();
 
         String assunto = "Recuperação de senha | GoParty";
         String mensagem = "Use o código a seguir para redefinir sua senha: " + codigoRecuperacao;
 
         if (emailExiste){
-
             emailService.sendEmailToClient(email, assunto, mensagem);
             return "redirect:/login";
-            
         }else {
             model.addAttribute("mensagem", "Não existe um cadastro com este E-mail.");
             return "recuperarSenha";
@@ -47,7 +45,7 @@ public class SenhaResetController {
     // Método de geração de códigos aleatórios alfanuméricos
     public String gerarCodigoRecuperacao() {
         // Defina os caracteres permitidos no código
-        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String caracteres = "0123456789";
         StringBuilder codigo = new StringBuilder();
         Random random = new Random();
 
