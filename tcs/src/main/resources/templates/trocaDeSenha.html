@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha</title>
+    <link rel="stylesheet"  href="/css/recuperarSenha.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+          <!-- teste de formulario-->
+
+      <div class="login-box">
+        <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
+
+        <form action="/trocaDeSenha" method="post" id="senha-primeira-form">
+          <div class="user-box">
+
+            <input type="password" name="novaSenha" required placeholder="Digite sua nova senha" id="primeira-senha">
+            
+
+            <input type="password" name="novaSenhaConfirm" required placeholder="Confirme sua nova senha" id="segunda-senha">
+
+            <div id="erro-senha">
+                <p>Senhas não coincidem!</p>
+            </div>
+
+            <style>
+                #erro-senha{
+                    display: none;
+                    border: 1px solid red;
+                    border-radius: 20px;
+                    background-color: red;
+                }
+
+                #erro-senha p{
+                    padding: 10px;
+                   color: #ddd;
+                   font-size: 14px;
+                }
+            </style>
+            
+
+            <div th:if="${mensagem}" class="error-message" >
+              <p th:text="${mensagem}"></p>
+            </div>
+          </div>
+ 
+          <button type="submit" id="salvar-nova-senha" onclick="checarSenha()">
+            Salvar
+            <span></span>
+          </button>    
+        </form>
+
+        <button type="submit" id="link-verificar-emails">
+          <a  th:href="@{/login}">
+            Voltar
+          </a>
+        </button>
+      </div>
+
+      <script>
+
+      const primeiraSenha = document.getElementById('primeira-senha').value;
+      const segundaSenha = document.getElementById('segunda-senha').value;
+      const divErro = document.getElementById('erro-senha');
+
+       function checarSenha(){
+            if (!primeiraSenha == segundaSenha){
+                divErro.style.display = "";
+            }
+       }
+
+      </script>
+
+</body>
+
+</html>

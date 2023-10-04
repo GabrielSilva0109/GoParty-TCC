@@ -34,6 +34,16 @@ public class Controller {
         return "login";
     }
 
+    @GetMapping("/trocaDeSenha")
+    public String trocarSenha(){
+        return "trocaDeSenha";
+    }
+
+    @GetMapping("/digitarCodigo")
+    public String digitarCodigo() {
+        return "codigoRecuperacao"; // Retorna o nome do arquivo HTML
+    }
+
     @GetMapping("/recuperarSenha")
     public String recuperarPage() {
         return "recuperarSenha"; // Retorna o nome do arquivo HTML

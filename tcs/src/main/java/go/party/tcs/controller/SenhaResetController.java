@@ -20,19 +20,21 @@ public class SenhaResetController {
     @Autowired
     private UsuarioService usuarioService;
 
+    private String codigoRecuperacao;
+
     @PostMapping("/recuperarSenha")
     public String enviarEmailDeRecuperacao(@RequestParam("email") String email, Model model) throws MessagingException {
 
         boolean emailExiste = usuarioService.emailExiste(email);
         // Gere um código de recuperação e envie-o por e-mail
-        String codigoRecuperacao = gerarCodigoRecuperacao();
+        codigoRecuperacao = gerarCodigoRecuperacao();
 
         String assunto = "Recuperação de senha | GoParty";
         String mensagem = "Use o código a seguir para redefinir sua senha: " + codigoRecuperacao;
 
         if (emailExiste){
             emailService.sendEmailToClient(email, assunto, mensagem);
-            return "redirect:/login";
+            return "codigoRecuperacao";
         }else {
             model.addAttribute("mensagem", "Não existe um cadastro com este E-mail.");
             return "recuperarSenha";
@@ -40,6 +42,28 @@ public class SenhaResetController {
 
         // Redirecione para uma página de confirmação ou retorne uma resposta apropriada
         
+    }
+
+     @PostMapping("/digitarCodigo")
+    public String checarCodigoDigitado(@RequestParam("codigo") String codigoDigitado, Model model) throws MessagingException {
+
+         
+        if (codigoDigitado.equalsIgnoreCase(codigoRecuperacao)){
+            
+            return "trocaDeSenha";
+        }else {
+            model.addAttribute("mensagemCodigo", "Código inválido!.");
+            return "codigoRecuperacao";
+        }
+        // Redirecione para uma página de confirmação ou retorne uma resposta apropriada
+        
+    }
+
+    //EM CONSTRUÇAO
+    @PostMapping("/trocaDeSenha")
+    public String realizarTrocaSenha(@RequestParam("senha") String senhaNova, Model model) throws MessagingException {
+     
+            return "recuperarSenha";
     }
 
     // Método de geração de códigos aleatórios alfanuméricos
@@ -50,10 +74,11 @@ public class SenhaResetController {
         Random random = new Random();
 
         // Gere um código de 6 caracteres
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             int index = random.nextInt(caracteres.length());
             codigo.append(caracteres.charAt(index));
         }
         return codigo.toString();
     }
+
 }

@@ -245,5 +245,9 @@ body {
   font-weight: bold; 
 }
 
+#codigo-input-form{
+  display: none;
+}
+
 
   

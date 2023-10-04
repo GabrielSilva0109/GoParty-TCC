@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Senha</title>
-    <link rel="stylesheet"  href="/css/recuperarSenha.css">
+    <link rel="stylesheet"  href="/css/codigoRecuperacao.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
@@ -16,26 +16,28 @@
           <!-- teste de formulario-->
 
       <div class="login-box">
+        <p>Enviamos um código para o seu email</p>
         <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
+        
 
-        <form action="/recuperarSenha" method="post" id="email-inputs-form">
+        <form action="/digitarCodigo" method="post" id="input-codigo">
           <div class="user-box">
-            <input type="email" name="email" required>
-            <label>Digite o seu E-mail cadastrado</label>
+            <input type="number" name="codigo"  maxlength="5" required>
+            <label>Digite o código recebido pelo email</label>
 
-            <div th:if="${mensagem}" class="error-message">
-              <p th:text="${mensagem}"></p>
+            <div th:if="${mensagemCodigo}" class="error-message">
+              <p th:text="${mensagemCodigo}"></p>
             </div>
           </div>
 
           
-          <button type="submit" id="link-verificar-emails">
-            Enviar
+          <button type="submit" id="link-verificar-codigo">
+            Verificar
             <span></span>
           </button>    
         </form>
 
-        <button type="submit" id="link-verificar-emails">
+        <button type="submit" id="link-verificar-emails2">
           <a  th:href="@{/login}">
             Voltar
           </a>
