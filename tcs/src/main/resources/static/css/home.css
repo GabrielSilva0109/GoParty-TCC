@@ -632,6 +632,17 @@ footer ul {
   align-items: center;
 }
 
+.fechar{
+  color: #f0f0f0;
+  background: rgb(42, 42, 42);
+  border-radius: 50%;
+  padding: 8px;
+  
+}
+.fechar:hover{
+  background:  rgb(255, 69, 69);
+}
+
 .editar-evento input {
   display: block;
   width: 100%;

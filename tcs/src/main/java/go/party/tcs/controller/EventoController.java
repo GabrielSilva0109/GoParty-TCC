@@ -127,17 +127,41 @@ public class EventoController {
         return "redirect:/perfil";
     }
 
-    //Metodo para Editar as informações do Usuario
+    //Metodo para Editar o Post Evento
     @PutMapping("/editar-evento/{id}")
-    public String editarEvento(@PathVariable Integer id, HttpSession session){
-        // Lógica para editar o evento com base no ID
-        eventoService.editarEvento(id);
-        // Obtém o usuário da sessão atual
+    public String editarEvento(@PathVariable Integer id, Model model,
+                               @RequestParam(name = "titulo", required = false) String novoTitulo,
+                               @RequestParam(name = "descricao", required = false) String novaDescricao,
+                               @RequestParam(name = "imagemEvento", required = false) MultipartFile novaImagemEvento,
+                               HttpSession session) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-        // Reinsira o usuário na sessão (isso pode ser ajustado com base na lógica da sua aplicação)
+
+        // Passo 1: Recupere o evento com base no ID.
+        Evento eventoNoBanco = eventoService.encontrarPorId(id);
+
+        // Passo 2: Atualize as informações do evento com os novos valores.
+        if (novoTitulo != null && !novoTitulo.isEmpty()) {
+            eventoNoBanco.setTitulo(novoTitulo);
+        }
+        if (novaDescricao != null && !novaDescricao.isEmpty()) {
+            eventoNoBanco.setDescricao(novaDescricao);
+        }
+        if (novaImagemEvento != null && !novaImagemEvento.isEmpty()) {
+            try {
+                // Lógica para salvar a nova imagem do evento no seu sistema de arquivos ou banco de dados.
+                byte[] novaImagemBytes = novaImagemEvento.getBytes();
+                eventoNoBanco.setFotoEvento(novaImagemBytes);;
+            } catch (IOException e) {
+                
+                e.printStackTrace();
+            }
+        }
+        // Passo 3: Atualize as alterações no banco de dados.
+        eventoService.atualizarEvento(eventoNoBanco); 
+
+        // Passo 4: Atualizar a sessão com o Post atualizado 
         session.setAttribute("usuario", sessionUsuario);
 
-        // Redirecione para a página perfil
-        return "redirect:/perfil";
+        return "redirect:/perfil";  
     }
 }

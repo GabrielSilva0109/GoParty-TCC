@@ -120,6 +120,7 @@ public class UsuarioController {
         }
     }
     
+    //Metodo para Editar a Conta do Usuario
     @PutMapping("/editar")
     public String editarUsuario(
         @RequestParam(name = "usuarioNome", required = false) String novoUsuarioNome,
@@ -169,6 +170,7 @@ public class UsuarioController {
         return "redirect:/perfil";
     }
 
+    //Metodo para Excluir a Conta do Usuario
     @DeleteMapping("/deletar")
     public String deletarUsuario(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");

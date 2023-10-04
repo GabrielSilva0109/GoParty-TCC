@@ -136,59 +136,58 @@
                         </form>
 
                         <!-- Botão para Editar o Post -->
-                        <button class="edit-button" id="open-modal">
+                        <button class="edit-button open-modal" th:attr="data-target='#modal-${evento.id}'">
                             <svg class="edit-svgIcon" viewBox="0 0 512 512">
-                                              <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
-                                            </svg>
-                          </button>
+                                <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
+                            </svg>
+                        </button>
+                        <div id="modal-${evento.id}" class="modal modal-evento">
+                            <div class="editar-evento">
+                                <form method="POST" th:action="@{'/editar-evento/' + ${evento.id}}" enctype="multipart/form-data">
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <input type="text" name="titulo" placeholder="Titulo">
+                                    <textarea  name="descricao" placeholder="Descrição" cols="10" rows="10" ></textarea>
+                                    <input class="btn-foto" type="file" name="imagemEvento">
+                                    <button class="ui-btn" type="submit">
+                                        <span>
+                                        Salvar
+                                        </span>
+                                    </button>
+                                </form>
+                                <button class="fechar close-modal" id="close-modal">
+                                    x
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <p th:text="${evento.descricao}"></p>
-
-                    <!-- Botão para editar o evento -->
-                    <a href="#" th:href="@{'/editar-evento/' + ${evento.id}}" class="editar">Editar</a>
                 </div>
             </div>            
         </div>
     </div>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="editar-evento">
-            <form method="PUT" action="editar-post" enctype="multipart/form-data">
-                <input type="text" name="titulo" placeholder="Titulo">
-                <textarea placeholder="Descrição"  name="descricao" id="" cols="10" rows="10"></textarea>
-                <input class="btn-foto" type="file" name="imagemEvento">
-                <button class="ui-btn" type="submit">
-                    <span>
-                      Salvar
-                    </span>
-                </button>
-            </form>
-        </div>
-    </div>
-    <th:block th:if="${sessionUsuario != null}">
-    <!-- Coloque o conteúdo que depende de sessionUsuario aqui -->
-    <img th:if="${sessionUsuario.fotoPerfil != null}" th:src="${sessionUsuario.fotoPerfil}" alt="Foto de Perfil">
-    </th:block>    
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Abrir e Fechar Modal -->
     <script>
-        // Seleciona o botão e o modal
-        const openModalButton = document.getElementById('open-modal');
-        const modal = document.getElementById('modal');
-
-        // Adiciona um evento de clique ao botão
-        openModalButton.addEventListener('click', () => {
-            modal.style.display = 'block'; // Mostra o modal quando o botão é clicado
+        const openModalButtons = document.querySelectorAll('.open-modal');
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.nextElementSibling; // Obtém o modal associado ao botão clicado
+                modal.style.display = 'block'; // Mostra o modal
+            });
         });
 
-        // Fecha o modal quando o usuário clica fora dele
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
+        // Obtém todos os botões de fechamento de modal e adiciona eventos de clique a eles
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal-evento'); // Obtém o modal associado ao botão clicado
+                modal.style.display = 'none'; // Fecha o modal
+            });
         });
     </script>
+
     <!-- Mostra os dados que estão sendo carregados da IMAGEM -->
     <script>
         // Exibir o nome do arquivo selecionado
@@ -284,7 +283,6 @@
     <!-- Teste de carregamento da foto -->
     <script>
         // TESTE FOTO
-
         const fotoInput = document.getElementById("fotoInput");
         const fotoExibida = document.getElementById("fotoExibida");
         const fotoVazia = document.getElementById('imgPerfil-vazio');
