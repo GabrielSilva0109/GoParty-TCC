@@ -50,4 +50,8 @@ public class EventoService {
         // Lógica para excluir o evento com base no ID
         eventoRepository.deleteById(id);
     }
+
+    public void editarEvento(Integer id) {
+        eventoRepository.save(null);
+    }
 }

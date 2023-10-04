@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -126,4 +127,17 @@ public class EventoController {
         return "redirect:/perfil";
     }
 
+    //Metodo para Editar as informações do Usuario
+    @PutMapping("/editar-evento/{id}")
+    public String editarEvento(@PathVariable Integer id, HttpSession session){
+        // Lógica para editar o evento com base no ID
+        eventoService.editarEvento(id);
+        // Obtém o usuário da sessão atual
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        // Reinsira o usuário na sessão (isso pode ser ajustado com base na lógica da sua aplicação)
+        session.setAttribute("usuario", sessionUsuario);
+
+        // Redirecione para a página perfil
+        return "redirect:/perfil";
+    }
 }
