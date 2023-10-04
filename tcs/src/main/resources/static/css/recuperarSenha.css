@@ -1,44 +1,46 @@
-body{
-    background-color: #0F110D;
+* {
+  font-family: 'Poppins';
+  padding: 0;
+  margin: 0;
+  color: #000000;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-  .login-box h1 img{
-    width: 400px;
-    height: 300px;
-    margin-left: -50px;
-  }
+body {
+  background-color: #0a0b1d;
+  margin: 0; 
+}
 
-  #title-page{
-    font-size: 20px;
-    color: #a3a3a3;
-  }
+.login-box img{
+  width: 400px;
+}
 
+/* Div de codigo */
+#envioDoCodigo{
+  display: none;
+}
 
-  /* Div de codigo */
+.texto-titulos{
+  color: #ddd;
+  text-shadow: #25142d;
+}
 
-  #envioDoCodigo{
-    display: none;
-  }
-
-  .texto-titulos{
-    color: #ddd;
-    text-shadow: #25142d;
-  }
-
-  /* Teste de Forms */
-
-  .login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    padding: 40px;
-    transform: translate(-50%, -50%);
-    background: rgba(24, 20, 20, 0.987);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;
-  }
+/* Bloco de inserir email */
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(24, 20, 20, 0.987);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+}
   
   .login-box .user-box {
     position: relative;
@@ -189,6 +191,7 @@ body{
   /* Botao */
 
   #link-verificar-emails {
+    margin: 10px;
     cursor: pointer;
     position: relative;
     padding: 10px 24px;
@@ -230,16 +233,16 @@ body{
     scale: 1;
   }
 
-  .error-message {
-    background-color: #f44336;
-    color: rgb(255, 255, 255)!important;
-    padding: 5px 10px;
-    width: 240px;
-    height: 60px;
-    border-radius: 30px; 
-    margin-top: 20px;
-    text-align: center; 
-    font-weight: bold; 
+.error-message {
+  background-color: #f44336;
+  color: rgb(255, 255, 255)!important;
+  padding: 5px 10px;
+  width: 240px;
+  height: 60px;
+  border-radius: 30px; 
+  margin-top: 20px;
+  text-align: center; 
+  font-weight: bold; 
 }
 
 

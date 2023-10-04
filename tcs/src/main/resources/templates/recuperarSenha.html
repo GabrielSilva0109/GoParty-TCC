@@ -15,47 +15,44 @@
 <body>
           <!-- teste de formulario-->
 
-          <div class="login-box">
-           <h2>
-            <p id="title-page">
-              Recuperação de senha
-            </p>
-           </h2>
+      <div class="login-box">
+        <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
 
-            <h1> 
-              <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
-            </h1>
+        <!--Container de código-->
+        <form class="form" action="" id="form-codigo" method="post"> 
+          <div class="title">Insira seu código</div> 
+          <p class="message">Enviamos um código de verificação para seu E-mail</p>
+          <input type="text" id="codigo" name="codigoRec">
+          <button type="submit"  class="action" onclick="verificarCodigo()">Verificar</button> 
+        </form>
 
-             <!--Container de código-->
-            <form class="form" action="" id="form-codigo" method="post"> 
-              <div class="title">Insira seu código</div> 
-              <p class="message">Enviamos um código de verificação para seu E-mail</p>
-              <input type="text" id="codigo" name="codigoRec">
-              <button type="submit"  class="action" onclick="verificarCodigo()">Verificar</button> 
-              </form>
-
-            <form action="/recuperarSenha" method="post" id="email-inputs-form">
-              <div class="user-box">
-                <input type="email" name="email" required>
-                <label>Digite o seu E-mail cadastrado</label>
-                <div th:if="${mensagem}" class="error-message">
-                  <p th:text="${mensagem}"></p>
-                </div>
-
-              </div>
-              <button type="submit" id="link-verificar-emails">
-                     Enviar
-                 <span></span>
-              </button></center>
-            </form>
+        <form action="/recuperarSenha" method="post" id="email-inputs-form">
+          <div class="user-box">
+            <input type="email" name="email" required>
+            <label>Digite o seu E-mail cadastrado</label>
+            <div th:if="${mensagem}" class="error-message">
+              <p th:text="${mensagem}"></p>
+            </div>
           </div>
 
-        <!--Conteiner de recuperacao com os inputs solicitando email-->
+          <button type="submit" id="link-verificar-emails">
+            Enviar
+            <span></span>
+          </button>    
+        </form>
 
-        <div id="envioDoCodigo" class="inputGroup">
-          <input type="text" name="email" class="form-control" placeholder="Digite o código recebido por e-mail" autocomplete="off"/>
-          <button type="submit" class="button" onclick="liberarTrocaDeSenha()">Conferir</button>
-        </div>
+        <button type="submit" id="link-verificar-emails">
+          <a  th:href="@{/login}">
+            Voltar
+          </a>
+        </button>
+      </div>
+
+        <!--Conteiner de recuperacao com os inputs solicitando email-->
+      <div id="envioDoCodigo" class="inputGroup">
+        <input type="text" name="email" class="form-control" placeholder="Digite o código recebido por e-mail" autocomplete="off"/>
+        <button type="submit" class="button" onclick="liberarTrocaDeSenha()">Conferir</button>
+      </div>
 
 </body>
 

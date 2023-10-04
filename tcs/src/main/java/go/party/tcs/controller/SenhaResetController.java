@@ -49,12 +49,11 @@ public class SenhaResetController {
         StringBuilder codigo = new StringBuilder();
         Random random = new Random();
 
-        // Gere um código de 10 caracteres
+        // Gere um código de 6 caracteres
         for (int i = 0; i < 10; i++) {
             int index = random.nextInt(caracteres.length());
             codigo.append(caracteres.charAt(index));
         }
-
         return codigo.toString();
     }
 }
