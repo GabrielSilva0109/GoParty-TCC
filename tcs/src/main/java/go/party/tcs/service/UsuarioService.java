@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UsuarioService {
@@ -61,8 +62,13 @@ public class UsuarioService {
     }
 
     public boolean emailExiste(String email) {
-        Usuario usuario = usuarioRepository.findByEmail(email);
-        return true;
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+        return usuario.isPresent();
+    }
+
+    public Usuario buscarPorEmail(String email) {
+        return usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado para o email: " + email));
     }
 
    

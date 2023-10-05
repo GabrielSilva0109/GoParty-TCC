@@ -17,34 +17,12 @@
 
       <div class="login-box">
         <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
+        <h1 class="titulo">Tudo certo! Agora crie a sua nova senha.</h1>
 
-        <form action="/trocaDeSenha" method="post" id="senha-primeira-form">
+        <form action="/trocaDeSenha" method="PUT" id="senha-primeira-form">
           <div class="user-box">
 
             <input type="password" name="novaSenha" required placeholder="Digite sua nova senha" id="primeira-senha">
-            
-
-            <input type="password" name="novaSenhaConfirm" required placeholder="Confirme sua nova senha" id="segunda-senha">
-
-            <div id="erro-senha">
-                <p>Senhas não coincidem!</p>
-            </div>
-
-            <style>
-                #erro-senha{
-                    display: none;
-                    border: 1px solid red;
-                    border-radius: 20px;
-                    background-color: red;
-                }
-
-                #erro-senha p{
-                    padding: 10px;
-                   color: #ddd;
-                   font-size: 14px;
-                }
-            </style>
-            
 
             <div th:if="${mensagem}" class="error-message" >
               <p th:text="${mensagem}"></p>
@@ -63,20 +41,6 @@
           </a>
         </button>
       </div>
-
-      <script>
-
-      const primeiraSenha = document.getElementById('primeira-senha').value;
-      const segundaSenha = document.getElementById('segunda-senha').value;
-      const divErro = document.getElementById('erro-senha');
-
-       function checarSenha(){
-            if (!primeiraSenha == segundaSenha){
-                divErro.style.display = "";
-            }
-       }
-
-      </script>
 
 </body>
 
