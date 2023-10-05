@@ -1,13 +1,19 @@
 package go.party.tcs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSendException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Optional;
 import java.util.Random;
 
+import go.party.tcs.model.Usuario;
+import go.party.tcs.repository.UsuarioRepository;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.mail.MessagingException;
@@ -19,12 +25,23 @@ public class SenhaResetController {
     private EmailService emailService;
 
     @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     private String codigoRecuperacao;
 
+    private String emailRecuperado;
+
     @PostMapping("/recuperarSenha")
     public String enviarEmailDeRecuperacao(@RequestParam("email") String email, Model model) throws MessagingException {
+
+        //RECUPERANDO O EMAIL DO USUARIO
+        emailRecuperado = email;
 
         boolean emailExiste = usuarioService.emailExiste(email);
         // Gere um código de recuperação e envie-o por e-mail
@@ -33,7 +50,9 @@ public class SenhaResetController {
         String assunto = "Recuperação de senha | GoParty";
         String mensagem = "Use o código a seguir para redefinir sua senha: " + codigoRecuperacao;
 
-        if (emailExiste){
+        try {
+           
+          if (emailExiste){
             emailService.sendEmailToClient(email, assunto, mensagem);
             return "codigoRecuperacao";
         }else {
@@ -41,7 +60,10 @@ public class SenhaResetController {
             return "recuperarSenha";
         }
 
-        // Redirecione para uma página de confirmação ou retorne uma resposta apropriada
+        } catch (MailSendException e) {
+           model.addAttribute("mensagem", "Erro ao enviar o email, tente novamente!");
+            return "recuperarSenha";
+        }
         
     }
 
@@ -60,11 +82,21 @@ public class SenhaResetController {
         
     }
 
-    //EM CONSTRUÇAO
+    //EM TESTE
     @PutMapping("/trocaDeSenha")
     public String realizarTrocaSenha(@RequestParam("novaSenha") String senhaNova, Model model) throws MessagingException {
-     
-            return "recuperarSenha";
+              // RECUPERANDO USUARIO 
+           Usuario usuario = usuarioRepository.findByEmail(emailRecuperado);
+          
+          
+            String senhaCriptografada = passwordEncoder.encode(senhaNova);
+            usuario.setSenha(senhaCriptografada);
+       
+            
+            usuarioRepository.save(usuario);
+
+            
+            return "login";
     }
 
     // Método de geração de códigos aleatórios alfanuméricos

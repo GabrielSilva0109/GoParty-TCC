@@ -61,8 +61,8 @@ public class UsuarioService {
     }
 
     public boolean emailExiste(String email) {
-        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
-        return usuario.isPresent();
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        return true;
     }
 
    
