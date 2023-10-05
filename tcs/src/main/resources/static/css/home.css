@@ -151,6 +151,12 @@ body{
   padding: 20px;
 }
 
+.left-sidebar-perfil {
+  width: 25%;
+  background-color: #f0f0f0; /* Cor de fundo do lado esquerdo */
+  padding: 20px;
+}
+
 .arroba{
   color: rgb(255, 65, 65);
 }
@@ -165,7 +171,7 @@ body{
   border-radius: 20px;
 }
 
-.center-content, .left-sidebar{
+.center-content, .left-sidebar, .left-sidebar-perfil{
   border-radius: 20px;
   text-align: center;
 }
@@ -864,14 +870,6 @@ animation: chitchat linear both var(--btn-animation-duration);
     }
 }
 
-@media (max-width: 400px) {
-  .left-sidebar, .right-sidebar{
-    display: none !important; /* Oculta o ulContainer */
-  }
-  .center-content{
-    width: 350px;
-  }
-}
 
 @media (max-width: 500px) {
   footer {
@@ -889,9 +887,31 @@ animation: chitchat linear both var(--btn-animation-duration);
   .left-sidebar, .right-sidebar{
     display: none !important; /* Oculta o ulContainer */
   }
+  .container{ /* Container do Perfil fica acima do Feed de Usuario*/
+    display: block;
+  }
+  .left-sidebar-perfil{
+    width: 310px;
+  }
   .center-content{
     width: 350px;
+    display: block;
   }
+  .evento-bloco{
+    flex-direction: column;
+  }
+  .bloco-evento-right{
+    width: 100%;
+  }
+  .modal{
+    top: 20%;
+    left: 0%;
+    width: 350px;
+  }
+  .editar-evento{
+    width: 350px;
+  }
+
 }
 
 @media (max-width: 500px) {

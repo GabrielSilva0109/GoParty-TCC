@@ -59,7 +59,7 @@
     <section class="container">
 
         <!-- Parte Esquerda Informações do Usuario -->
-        <div class="left-sidebar">
+        <div class="left-sidebar-perfil">
         
         <!-- Imagem de Perfil Usuario -->
         <img class="imgPerfil" 
@@ -183,6 +183,14 @@
         </div>
     </section>
 
+    <footer>
+        <ul>
+            <li><a class="links-foot" th:href="@{/perfil}" style=" border-bottom: 4px solid rgb(255, 65, 65);">Perfil</a></li>
+            <li><a class="links-foot" th:href="@{/home}">Feed</a></li>
+            <li><a class="links-foot" th:href="@{/usuarios}">Usuarios</a></li>
+            <li><a class="links-foot" th:href="@{/evento}">Evento</a></li>
+        </ul>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <!-- Abrir e Fechar Modal -->
