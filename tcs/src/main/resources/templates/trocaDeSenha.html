@@ -19,23 +19,22 @@
         <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
         <h1 class="titulo">Tudo certo! Agora crie a sua nova senha.</h1>
 
-        <form action="/trocaDeSenha" method="PUT" id="senha-primeira-form">
+        <form method="POST" action="/trocaDeSenha" id="senha-primeira-form" enctype="multipart/form-data">
+
           <div class="user-box">
+          <input type="hidden" name="_method" value="PUT">
+          <input type="password" name="senhaNova" id="primeira-senha" required placeholder="Digite sua nova senha" maxlength="8">
 
-            <input type="password" name="novaSenha" required placeholder="Digite sua nova senha" id="primeira-senha">
+           </div>
 
-            <div th:if="${mensagem}" class="error-message" >
-              <p th:text="${mensagem}"></p>
-            </div>
-          </div>
- 
           <button type="submit" id="salvar-nova-senha" onclick="checarSenha()">
             Salvar
             <span></span>
-          </button>    
-        </form>
+          </button>   
+                    
+         </form>
 
-        <button type="submit" id="link-verificar-emails">
+        <button type="submit">
           <a  th:href="@{/login}">
             Voltar
           </a>

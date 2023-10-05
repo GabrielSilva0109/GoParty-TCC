@@ -84,12 +84,10 @@ public class SenhaResetController {
 
     //EM TESTE
     @PutMapping("/trocaDeSenha")
-    public String realizarTrocaSenha(@RequestParam("novaSenha") String senhaNova, Model model) throws MessagingException {
+    public String realizarTrocaSenha(@RequestParam("senhaNova") String senhaNova, Model model) throws MessagingException {
               
              // RECUPERANDO USUARIO 
             Usuario usuario = usuarioService.buscarPorEmail(emailRecuperado);
-
-            System.out.println(emailRecuperado);
           
             String senhaCriptografada = passwordEncoder.encode(senhaNova);
             usuario.setSenha(senhaCriptografada);
