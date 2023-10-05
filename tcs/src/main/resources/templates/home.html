@@ -57,6 +57,7 @@
     </header>
 
     <div class="container">
+        
         <div class="left-sidebar">
             <img class="imgPerfil" 
             th:if="${sessionUsuario.fotoPerfil != null}" 
@@ -76,7 +77,7 @@
             <div th:each="evento : ${eventos}" class="evento-bloco">
                 <div class="bloco-evento-left">
                     <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
-                    <img class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
+                    <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
                 </div>
                 <div class="bloco-evento-right">
                     <h2 th:text="${evento.titulo}"></h2>
@@ -87,6 +88,7 @@
         </div>
     
     </div>
+
     <script>
                 // Adicione um evento de clique a todos os ícones
         const iconContainers = document.querySelectorAll('.icon-container');
