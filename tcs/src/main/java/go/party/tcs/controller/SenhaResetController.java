@@ -2,13 +2,18 @@ package go.party.tcs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSendException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Optional;
 import java.util.Random;
 
+import go.party.tcs.model.Usuario;
+import go.party.tcs.repository.UsuarioRepository;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.mail.MessagingException;
@@ -20,7 +25,13 @@ public class SenhaResetController {
     private EmailService emailService;
 
     @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     private String codigoRecuperacao;
 
@@ -71,11 +82,21 @@ public class SenhaResetController {
         
     }
 
-    //EM CONSTRUÇAO
+    //EM TESTE
     @PutMapping("/trocaDeSenha")
     public String realizarTrocaSenha(@RequestParam("novaSenha") String senhaNova, Model model) throws MessagingException {
-     
-            return "recuperarSenha";
+              // RECUPERANDO USUARIO 
+           Usuario usuario = usuarioRepository.findByEmail(emailRecuperado);
+          
+          
+            String senhaCriptografada = passwordEncoder.encode(senhaNova);
+            usuario.setSenha(senhaCriptografada);
+       
+            
+            usuarioRepository.save(usuario);
+
+            
+            return "login";
     }
 
     // Método de geração de códigos aleatórios alfanuméricos
