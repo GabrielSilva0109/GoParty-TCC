@@ -124,7 +124,7 @@
       width: 100%;
       height: 2px;
       background: linear-gradient(90deg, transparent, red);
-      animation: btn-anim1 2s linear infinite;
+      animation: 2s linear infinite;
     }
   
     /* Div de código gerado */
@@ -190,7 +190,7 @@
   
     /* Botao */
   
-    #link-verificar-emails2 {
+    .btn-style {
       margin: 10px;
       cursor: pointer;
       position: relative;
@@ -205,11 +205,10 @@
       overflow: hidden;
     }
     
-    #link-verificar-emails2::before {
+    .btn-style::before {
       content: '';
       position: absolute;
       inset: 0;
-      color: #e8e8e8;
       margin: auto;
       width: 40px;
       height: 40px;
@@ -220,17 +219,17 @@
       transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     }
     
-    #link-verificar-emails2:hover::before {
+    .btn-style:hover::before {
       scale: 5;
     }
     
-    #link-verificar-emails2:hover {
+    .btn-style:hover {
       color: #e8e8e8;
       scale: 1.1;
       box-shadow: 0 0px 20px #25142d;
     }
     
-    #link-verificar-emails2:active {
+    .btn-style:active {
       scale: 1;
     }
   
@@ -296,6 +295,49 @@
   p{
     color: rgb(0, 255, 64);
     margin-top: -30px;
+  }
+
+  #voltar-btn2 {
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 24px;
+    font-size: 16px;
+    color: #e8e8e8;
+    border: 2px solid rgb(255, 65, 65);
+    border-radius: 34px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+  }
+  
+  #voltar-btn2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: inherit;
+    scale: 0;
+    z-index: -1;
+    background-color: rgb(255, 65, 65);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  #voltar-btn2:hover::before {
+    scale: 5;
+  }
+  
+  #voltar-btn2:hover {
+    color: #e8e8e8;
+    scale: 1.1;
+    box-shadow: 0 0px 20px #25142d;
+  }
+  
+  #voltar-btn2:active {
+    scale: 1;
   }
   
   

@@ -19,7 +19,6 @@
         <h1 class="titulo">Tudo certo! Agora crie a sua nova senha.</h1>
         <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
         
-
         <form method="POST" action="/trocaDeSenha" id="senha-primeira-form" enctype="multipart/form-data">
 
           <div class="user-box">
@@ -28,15 +27,14 @@
 
            </div>
 
-          <button type="submit" id="salvar-nova-senha" onclick="checarSenha()">
+           <button type="submit" class="btn-style" id="trocar-senha">
             Salvar
             <span></span>
-          </button>   
-                    
-         </form>
+          </button>    
 
-        <button type="submit">
-          <a  th:href="@{/login}">
+
+        <button type="submit" class="btn-style" id="voltar-btn3">
+          <a  th:href="@{/login}" style="color: #e8e8e8;">
             Voltar
           </a>
         </button>
