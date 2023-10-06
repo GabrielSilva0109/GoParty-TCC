@@ -20,7 +20,7 @@
 
         <form action="/recuperarSenha" method="post" id="email-inputs-form">
           <div class="user-box">
-            <input type="email" name="email" required>
+            <input type="email" name="email" id="email-input" required>
             <label>Digite o seu email cadastrado</label>
 
             <div th:if="${mensagem}" class="error-message">
@@ -47,6 +47,22 @@
         <circle r="20" cy="50" cx="50"></circle>
       </svg>
       </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var btnVerificarEmails = document.getElementById("link-verificar-emails");
+            var emailInput = document.getElementById("email-input");
+            var svgCarregamento = document.getElementById("carregamento");
+
+            btnVerificarEmails.addEventListener("click", function () {
+                if (emailInput.value === "") {
+                    svgCarregamento.style.display = "none";
+                } else {
+                  svgCarregamento.style.display = "block";
+                }
+            });
+        });
+    </script>
 
       <script>
         // Selecionar o botão pelo seu ID
