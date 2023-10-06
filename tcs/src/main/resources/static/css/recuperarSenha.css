@@ -150,7 +150,7 @@ body {
 
 
 .titulo{
-  color: rgb(75, 222, 49);
+  color: rgb(0, 255, 64);
   font-size: 15px;
 }
 
@@ -247,7 +247,7 @@ svg {
   position: relative;
   padding: 10px 24px;
   font-size: 16px;
-  color: #e8e8e8;
+  color: #ddd;
   border: 2px solid rgb(255, 65, 65);
   border-radius: 34px;
   background-color: transparent;
