@@ -68,32 +68,29 @@ public class SenhaResetController {
     }
 
      @PostMapping("/digitarCodigo")
-    public String checarCodigoDigitado(@RequestParam("codigo") String codigoDigitado, Model model) throws MessagingException {
-
-         
+    public String checarCodigoDigitado(@RequestParam("codigo") String codigoDigitado, Model model) throws MessagingException { 
         if (codigoDigitado.equalsIgnoreCase(codigoRecuperacao)){
-            
             return "trocaDeSenha";
         }else {
             model.addAttribute("mensagemCodigo", "Código inválido!.");
             return "codigoRecuperacao";
         }
         // Redirecione para uma página de confirmação ou retorne uma resposta apropriada
-        
     }
 
     //EM TESTE
     @PutMapping("/trocaDeSenha")
-    public String realizarTrocaSenha(@RequestParam("senhaNova") String senhaNova, Model model) throws MessagingException {
-              
-             // RECUPERANDO USUARIO 
-            Usuario usuario = usuarioService.buscarPorEmail(emailRecuperado);
-          
-            String senhaCriptografada = passwordEncoder.encode(senhaNova);
-            usuario.setSenha(senhaCriptografada);
+    public String realizarTrocaSenha(@RequestParam("novaSenha") String senhaNova, Model model) throws MessagingException {
+            // RECUPERANDO USUARIO 
+           Optional<Usuario> usuario = usuarioRepository.findByEmail(emailRecuperado); 
+
+           String senhaCriptografada = passwordEncoder.encode(senhaNova);
+           usuario.setSenha(senhaCriptografada);
        
+            
             usuarioRepository.save(usuario);
 
+            
             return "login";
     }
 
