@@ -1,5 +1,9 @@
 package go.party.tcs.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -38,6 +43,9 @@ public class Evento {
     @JoinColumn(name = "comentario_id")
     private Comentario comentario;
 
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
+    private List<Comentario> comentarios = new ArrayList<>();
+    
     // Construtor vazio
     public Evento() {
     }
@@ -102,4 +110,11 @@ public class Evento {
         this.comentario = comentario;
     }
     
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 }

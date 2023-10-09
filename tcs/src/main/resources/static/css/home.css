@@ -982,5 +982,33 @@ animation: chitchat linear both var(--btn-animation-duration);
   /* Estilo para aplicar baixa opacidade ao corpo */
 body.is-blurred {
   opacity: 0.3;
-  pointer-events: none; /* Impede interações com o corpo quando com baixa opacidade */
+  pointer-events: none; 
+}
+/* Estilize o bloco de comentários */
+.comentarios {
+  list-style-type: none; /* Remova os marcadores de lista padrão */
+  padding: 0; /* Remova o preenchimento padrão da lista */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilize o bloco do usuário (nome de usuário precedido por "@") */
+.bloco-usuario {
+  display: flex; /* Use um layout flexível para alinhar os elementos lado a lado */
+  align-items: center; /* Alinhe os itens verticalmente ao centro */
+  margin-bottom: 5px; /* Adicione um espaço entre o bloco do usuário e o bloco de comentário */
+}
+
+/* Estilize o texto do nome de usuário */
+.bloco-usuario p {
+  font-weight: bold; /* Defina o nome de usuário em negrito, se desejar */
+  margin: 0; /* Remova as margens para evitar espaços indesejados */
+}
+
+/* Estilize o bloco de comentário */
+.bloco-comentario {
+  display: flex;
+  margin-top: -20px; /* Remova as margens para evitar espaços indesejados */
 }

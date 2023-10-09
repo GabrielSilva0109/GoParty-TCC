@@ -82,12 +82,43 @@
                 <div class="bloco-evento-right">
                     <h2 th:text="${evento.titulo}"></h2>
                     <p th:text="${evento.descricao}"></p>
-                </div>  
+
+                    <!-- Bloco aonde fica os comentarios-->
+                    <div class="comentarios">
+                        <li class="evento-comentarios" th:each="comentario : ${evento.comentarios}">
+                            <div class="bloco-usuario">
+                                <span class="arroba">@</span>
+                                <p th:text="${comentario.autor.username}"></p>
+                            </div>
+                            <div class="bloco-comentario">
+                                <p th:text="${comentario.texto}"></p>
+                            </div>
+                        </li>
+                    </div>
+                    
+                </div>
+                <div class="bloco-evento-comenta">
+                    <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post" onsubmit="return validarComentario()">
+                        <input name="texto" id="textoComentario" placeholder="Digite seu comentário">
+                        <button type="submit">Comentar</button>
+                    </form>
+                </div>
             </div>
-            
         </div>
-    
     </div>
+    <!--Função para caso o INPUT estiver vazio, ele não faz o evento-->
+    <script>
+        function validarComentario() {
+            var textoComentario = document.getElementById("textoComentario").value.trim();
+            
+            if (textoComentario === "") {
+                alert("Por favor, digite um comentário antes de enviar.");
+                return false; // Impede o envio do formulário
+            }
+            
+            return true; // Permite o envio do formulário se o campo não estiver vazio
+        }
+    </script>
 
     <script>
                 // Adicione um evento de clique a todos os ícones
