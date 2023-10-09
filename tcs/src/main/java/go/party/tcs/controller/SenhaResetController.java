@@ -79,11 +79,11 @@ public class SenhaResetController {
         // Redirecione para uma página de confirmação ou retorne uma resposta apropriada
     }
 
-    //EM TESTE
+    ///EM TESTE
     @PutMapping("/trocaDeSenha")
     public String realizarTrocaSenha(@RequestParam("novaSenha") String senhaNova, Model model) throws MessagingException {
             // RECUPERANDO USUARIO 
-           Usuario usuario = usuarioRepository.findByEmail(emailRecuperado); 
+           Usuario usuario = usuarioService.buscarPorEmail(emailRecuperado); 
 
            String senhaCriptografada = passwordEncoder.encode(senhaNova);
            usuario.setSenha(senhaCriptografada);
@@ -91,7 +91,6 @@ public class SenhaResetController {
             
             usuarioRepository.save(usuario);
 
-            
             return "login";
     }
 
