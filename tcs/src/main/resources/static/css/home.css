@@ -917,3 +917,70 @@ animation: chitchat linear both var(--btn-animation-duration);
     display: none !important; /* Oculta o ulContainer */
   }
 }
+
+/* Exclusao de conta */
+
+.excluindo-conta-container{
+  display: none;
+  color: #ddd;
+  margin-left: 370px;
+  justify-content: center;
+  align-items: center;
+  background-color: #25142d;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  width: 300px;
+  height: 240px;
+  opacity: 1;
+ }
+
+ .loader img{
+  width: 300px;
+  height: 90px;
+ }
+
+ #carregamento-exclusao {
+  display: flex;
+  width: 3.25em;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+  margin-left: 124px;
+  }
+  
+  circle {
+  fill: none;
+  stroke: hsl(214, 97%, 59%);
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes rotate4 {
+  100% {
+  transform: rotate(360deg);
+  }
+  }
+  
+  @keyframes dash4 {
+  0% {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  }
+  
+  50% {
+  stroke-dasharray: 90, 200;
+  stroke-dashoffset: -35px;
+  }
+  
+  100% {
+  stroke-dashoffset: -125px;
+   }
+  }
+
+  /* Estilo para aplicar baixa opacidade ao corpo */
+body.is-blurred {
+  opacity: 0.3;
+  pointer-events: none; /* Impede interações com o corpo quando com baixa opacidade */
+}

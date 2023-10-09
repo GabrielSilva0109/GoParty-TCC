@@ -119,6 +119,8 @@
                 
             </div>
         </div>
+
+        
     
         <!-- Feed com seus Post -->
         <div class="center-content">
@@ -146,6 +148,8 @@
                                                 </svg>
                             </button>
                         </form>
+
+                        
 
                         <!-- Botão para Editar o Post -->
                         <button class="edit-button open-modal" th:attr="data-target='#modal-${evento.id}'">
@@ -179,7 +183,25 @@
                         aaa
                     </div>
                 </div>
-            </div>            
+            </div>   
+            
+            <!--Exclusao de conta loader na tela-->
+            <div class="excluindo-conta-container" id="excluindo-conta">
+                <div class="loader">
+                    <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-loader">
+                  <p>
+                    Estamos excluindo a sua conta...
+                  </p>
+
+                <!--Animacao com o loader padrao do sistema-->
+                <svg viewBox="25 25 50 50" id="carregamento-exclusao">
+                    <circle r="20" cy="50" cx="50"></circle>
+                </svg>
+
+                </div>
+            </div>
+            
+
         </div>
     </section>
 
@@ -347,6 +369,26 @@
         spanElement.style.display = "none";
         var divElement = document.getElementById("dataNascimentoFormadata");
         divElement.textContent = dataFormatada;
+
+    </script>
+
+    <script>
+
+        // Captura o botão e o elemento a ser exibido
+        const btnExcluir = document.getElementById('btn-excluir');
+        const excluindoConta = document.getElementById('excluindo-conta');
+
+        btnExcluir.addEventListener('click', () => {
+        // Adiciona uma classe ao corpo para aplicar a baixa opacidade
+        document.body.classList.add('is-blurred');
+
+        // Remove a classe de baixa opacidade da div excluindo-conta-container
+        excluindoConta.classList.remove('is-blurred');
+        
+        // Mostra o elemento com a classe "excluindo-conta-container"
+        excluindoConta.style.display = 'flex';
+        });
+
 
     </script>
 

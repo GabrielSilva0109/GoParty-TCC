@@ -29,6 +29,7 @@ import go.party.tcs.repository.UsuarioRepository;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.EventoService;
 import go.party.tcs.service.UsuarioService;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -64,10 +65,24 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastro")
-    public String cadastrarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
+    public String cadastrarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) throws MessagingException {
     // Criptografar a senha antes de salvar
        String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
        usuario.setSenha(senhaCriptografada);
+
+       //ENVIO DE EMAIL QUANDO O USUÁRIO EXCLUI CONTA
+        String assunto = "Bem-vindo ao GoParty - Sua Rede Social de Eventos e Festas!";
+
+        String mensagem = "Olá " + usuario.getUsername() + ",\r\n" + //
+                "\r\n" + //
+                "Bem-vindo ao GoParty! Estamos empolgados por você ter se cadastrado em nossa plataforma dedicada a tornar seus eventos e festas ainda mais incríveis.\r\n" + //
+                "\r\n" + //
+                "\r\n" + //
+                "Seja bem-vindo ao GoParty, onde cada evento se torna uma celebração memorável.\r\n" + //
+                "\r\n" + //
+                "Atenciosamente,\r\n" + //
+                "\r\n" + //
+                "A Equipe GoParty";
 
          //Validação por CPF
         boolean existeUsuario = usuarioRepository.existsByCpf(usuario.getCpf());
@@ -79,6 +94,8 @@ public class UsuarioController {
         }else{
             //SERVICE DE SALVAR USUÁRIO
             usuarioService.cadastrarUsuario(usuario, model);
+            emailService.sendEmailToClient(usuario.getEmail(), assunto, mensagem);
+
              return "redirect:/login"; // Redirecionar para a página de login após o cadastro
         }
 }
