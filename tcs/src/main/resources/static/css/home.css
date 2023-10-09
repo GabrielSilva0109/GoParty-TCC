@@ -61,7 +61,7 @@ body{
 /* Efeito de linha ao passar o mouse */
 .icon-container:hover .line {
   background-color:  rgb(255, 69, 69); /* Cor da linha ao passar o mouse */
- }
+}
 
 /* Botão para Sair do GoParty  Começa Aqui !!*/
 .Btn {
@@ -80,7 +80,6 @@ body{
   background-color: rgb(255, 65, 65);
 }
   
-
 .sign {
   width: 100%;
   transition-duration: .3s;
