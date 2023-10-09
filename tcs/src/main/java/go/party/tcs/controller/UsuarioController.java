@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
+import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.repository.UsuarioRepository;
+import go.party.tcs.service.EmailService;
 import go.party.tcs.service.EventoService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,9 +45,15 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private EventoRepository eventoRepository;
     
     @Autowired
     private EventoService eventoService;
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -174,11 +182,21 @@ public class UsuarioController {
     @DeleteMapping("/deletar")
     public String deletarUsuario(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+        //ENVIO DE EMAIL QUANDO O USUÁRIO EXCLUI CONTA
+        String assunto = "Exclusão de conta | GoParty";
+        String mensagem = "Você deletou sua conta no GoParty!"
+                        + "Esperamos que você volte em breve. ";
         
         if (sessionUsuario != null) {
             try {
-                // Aqui você pode usar o repositório JPA para deletar o usuário
-                usuarioRepository.delete(sessionUsuario);
+        
+            // Excluir todos os eventos associados ao usuário
+            eventoRepository.deleteByAutor(sessionUsuario);
+
+            // Em seguida, excluir o usuário
+            usuarioRepository.delete(sessionUsuario);
+            emailService.sendEmailToClient(sessionUsuario.getEmail(), assunto, mensagem);       
                 
                 // Remova o usuário da sessão
                 session.removeAttribute("usuario");
