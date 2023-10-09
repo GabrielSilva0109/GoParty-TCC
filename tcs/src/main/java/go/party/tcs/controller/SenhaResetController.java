@@ -70,6 +70,7 @@ public class SenhaResetController {
      @PostMapping("/digitarCodigo")
     public String checarCodigoDigitado(@RequestParam("codigo") String codigoDigitado, Model model) throws MessagingException { 
         if (codigoDigitado.equalsIgnoreCase(codigoRecuperacao)){
+
             return "trocaDeSenha";
         }else {
             model.addAttribute("mensagemCodigo", "Código inválido!.");
@@ -82,7 +83,7 @@ public class SenhaResetController {
     @PutMapping("/trocaDeSenha")
     public String realizarTrocaSenha(@RequestParam("novaSenha") String senhaNova, Model model) throws MessagingException {
             // RECUPERANDO USUARIO 
-           Optional<Usuario> usuario = usuarioRepository.findByEmail(emailRecuperado); 
+           Usuario usuario = usuarioRepository.findByEmail(emailRecuperado); 
 
            String senhaCriptografada = passwordEncoder.encode(senhaNova);
            usuario.setSenha(senhaCriptografada);
