@@ -87,6 +87,19 @@ public class UsuarioService {
         usuarioRepository.save(seguidor);
     }
 
-   
+    //OBTER NUMEROS DE SEGUIDORES 
+
+     public int contarSeguidores(Long usuarioId) {
+        Usuario usuario = usuarioRepository.findById(usuarioId);
+                
+        return usuario.getSeguidores().size();
+    }
+
+    public int contarSeguindo(Long usuarioId) {
+        Usuario usuario = usuarioRepository.findById(usuarioId);
+                
+        return usuario.getSeguindo().size();
+    }
+
 }
 
