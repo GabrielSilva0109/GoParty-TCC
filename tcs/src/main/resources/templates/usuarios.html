@@ -89,8 +89,12 @@
                                 </svg>
                                 Perfil
                             </a>
-                        </button>                                                 
+                        </button>  
+                        
                     </div>
+                     <!--Botao de seguir usuário-->
+                    <button class="btn-perfil" id="seguirBtn" onclick="seguirUsuario(1)">Seguir</button>
+
                 </div>
             </div>
         </div>
@@ -106,5 +110,25 @@
             <li><a class="links-foot" th:href="@{/evento}">Evento</a></li>
         </ul>
     </footer>
+
+    <!--Lógica de seguir usuário-->
+    <script>
+        // Função para seguir um usuário
+        function seguirUsuario(usuarioId) {
+            fetch(`/api/usuarios/${usuarioId}/seguir/1`, { method: 'POST' }) // Substitua '1' pelo ID do usuário que você deseja seguir
+                .then(response => {
+                    if (response.ok) {
+                        
+                        //MANIPULAR
+                    } else {
+                        alert('Erro ao seguir o usuário.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao seguir o usuário:', error);
+                });
+        }
+
+    </script>
 </body>
 </html>

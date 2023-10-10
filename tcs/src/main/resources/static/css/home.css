@@ -1058,3 +1058,9 @@ body.is-blurred {
   display: flex;
   align-items: center;
 }
+
+/* Seguidores e seguindo */
+
+.qtde-seguir{
+  color: rgb(255, 65, 65);
+}

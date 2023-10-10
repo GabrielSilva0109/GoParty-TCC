@@ -69,6 +69,24 @@ public class UsuarioService {
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado para o email: " + email));
     }
 
+    //TESTE DE SEGUIDORES NO SISTEMA
+
+    public void seguir(Long seguidorId, Long seguirId) {
+        Usuario seguidor = usuarioRepository.findById(seguidorId);
+        Usuario seguir = usuarioRepository.findById(seguirId);
+        
+        seguidor.getSeguindo().add(seguir);
+        usuarioRepository.save(seguidor);
+    }
+    
+    public void deixarDeSeguir(Long seguidorId, Long seguirId) {
+        Usuario seguidor = usuarioRepository.findById(seguidorId);
+        Usuario seguir = usuarioRepository.findById(seguirId);
+        
+        seguidor.getSeguindo().remove(seguir);
+        usuarioRepository.save(seguidor);
+    }
+
    
 }
 
