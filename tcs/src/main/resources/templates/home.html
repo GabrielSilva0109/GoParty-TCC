@@ -98,15 +98,15 @@
                     
                 </div>
                 <div class="bloco-evento-comenta">
-                    <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post" onsubmit="return validarComentario()">
-                        <input name="texto" id="textoComentario" placeholder="Digite seu comentário">
+                    <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
+                        <input name="texto" placeholder="Digite seu comentário">
                         <button type="submit">Comentar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!--Função para caso o INPUT estiver vazio, ele não faz o evento-->
+    <!--Função para caso o INPUT estiver vazio, ele-->
     <script>
         function validarComentario() {
             var textoComentario = document.getElementById("textoComentario").value.trim();

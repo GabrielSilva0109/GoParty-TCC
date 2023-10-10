@@ -984,6 +984,7 @@ body.is-blurred {
   opacity: 0.3;
   pointer-events: none; 
 }
+
 /* Estilize o bloco de comentários */
 .comentarios {
   list-style-type: none; /* Remova os marcadores de lista padrão */
@@ -1001,14 +1002,13 @@ body.is-blurred {
   margin-bottom: 5px; /* Adicione um espaço entre o bloco do usuário e o bloco de comentário */
 }
 
-/* Estilize o texto do nome de usuário */
 .bloco-usuario p {
-  font-weight: bold; /* Defina o nome de usuário em negrito, se desejar */
-  margin: 0; /* Remova as margens para evitar espaços indesejados */
+  font-weight: bold;
+  margin: 0;
 }
 
 /* Estilize o bloco de comentário */
 .bloco-comentario {
   display: flex;
-  margin-top: -20px; /* Remova as margens para evitar espaços indesejados */
+  margin-top: -20px; 
 }
