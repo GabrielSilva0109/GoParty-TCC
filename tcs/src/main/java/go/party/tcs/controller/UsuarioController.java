@@ -314,5 +314,19 @@ public class UsuarioController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    // TESTE DE SEGUIDORES NO SISTEMA
+
+     @PostMapping("/{id}/seguir/{idSeguir}")
+    public ResponseEntity<?> seguirUsuario(@PathVariable Long id, @PathVariable Long idSeguir) {
+        usuarioService.seguir(id, idSeguir);
+        return ResponseEntity.ok().build();
+    }
+    
+    @PostMapping("/{id}/deixar-de-seguir/{idSeguir}")
+    public ResponseEntity<?> deixarDeSeguirUsuario(@PathVariable Long id, @PathVariable Long idSeguir) {
+        usuarioService.deixarDeSeguir(id, idSeguir);
+        return ResponseEntity.ok().build();
+    }
+
 }
 

@@ -73,16 +73,18 @@
                 <h3 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h3>
                 <h4><span th:text="${usuario.email}"></span></h4>
                 <h4><span th:text="${usuario.cpf}"></span></h4>
-<!--Seguidores e seguindo (EM TESTE)-->
+                <!--Seguidores e seguindo (EM TESTE)-->
                 <h4>Seguidores <span class="qtde-seguir">120</span> | Seguindo <span class="qtde-seguir">80</span></h4>
 
-                <h4><span id="dataNascimento2" th:text="${usuario.idade}"></span></h4>
-                <h4><span id="dataNascimentoFormadata2"></span></h4>
+                  <!--Botao de seguir usuário-->
+                  <form method="post" action="/api/usuarios/1/seguir/2">
+                    <button class="btn-perfil" type="submit">Seguir</button>
+                </form>
             </div>
         </div>
     
         <div class="center-content">
-            <h1>Seus Role</h1>
+            <h1>Seus Eventos</h1>
             <div th:each="evento : ${eventos}" class="evento-bloco">
                 <div class="bloco-evento-left">
                     <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
