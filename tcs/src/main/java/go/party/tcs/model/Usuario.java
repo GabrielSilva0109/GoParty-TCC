@@ -54,6 +54,27 @@ public class Usuario {
     @Column(name = "foto_perfil", columnDefinition = "BLOB")
     private byte[] fotoPerfil;
 
+    //SEGUIDORES E SEGUINDO
+    private int seguidores;
+
+    private int seguindo;
+
+    public int getSeguidores() {
+        return seguidores;
+    }
+
+    public void setSeguidores(int seguidores) {
+        this.seguidores = seguidores;
+    }
+
+    public int getSeguindo() {
+        return seguindo;
+    }
+
+    public void setSeguindo(int seguindo) {
+        this.seguindo = seguindo;
+    }
+
     public Integer getId() {
         return id;
     }
