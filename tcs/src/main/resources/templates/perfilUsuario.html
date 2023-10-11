@@ -74,9 +74,15 @@
                 <h4><span th:text="${usuario.email}"></span></h4>
                 <h4><span th:text="${usuario.cpf}"></span></h4>
                 <!--Seguidores e seguindo (EM TESTE)-->
-
-                <!--Seguidores e seguindo (EM TESTE)-->   
-             <h4>Seguidores <span th:text="${followersCount}"> | Seguindo <span th:text="${followingCount}"></h4>
+                
+                <div class="seguidores-seguindo-container"> 
+                    <a href="">
+                         <p>Seguidores : <span class="qtde-seguir" th:text="${followersCount}"></p>
+                     </a>
+                     <a href="">
+                         <p>Seguindo :  <span class="qtde-seguir" th:text="${followingCount}"></p>
+                     </a>
+                    </div>
 
                   <!--Botao de seguir usuário-->
                   <form method="post" action="/follow">

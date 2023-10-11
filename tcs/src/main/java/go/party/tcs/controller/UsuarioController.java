@@ -116,6 +116,14 @@ public class UsuarioController {
         Usuario usuario = usuarioService.findByUsername(usuarioNome);
         usuarioLogado = usuario;
         boolean valida = false;
+
+        //MOSTRAR CONTADOR DE SEGUIDORES
+        List<Usuario> followers = usuarioService.getFollowers(usuario);
+        List<Usuario> following = usuarioService.getFollowing(usuario);
+
+        model.addAttribute("followersCount", followers.size());
+        model.addAttribute("followingCount", following.size());
+
         if (usuario != null) {
             // Verificar se a senha fornecida corresponde à senha criptografada no banco de dados
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -332,7 +340,7 @@ public class UsuarioController {
         Usuario following = usuarioPerfilVisitado;
 
         usuarioService.follow(follower, following);
-        return "perfilUsuario";
+        return "redirect:/home";
     }
 
     @PostMapping("/unfollow")
@@ -341,7 +349,7 @@ public class UsuarioController {
         Usuario following = usuarioService.getUserById(followingId);
 
         usuarioService.unfollow(follower, following);
-        return "perfilUsuario";
+        return "home";
     }
 
 }

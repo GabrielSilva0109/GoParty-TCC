@@ -93,7 +93,9 @@
                         
                     </div>
                      <!--Botao de seguir usuário-->
-                    <button class="btn-perfil" id="seguirBtn" onclick="seguirUsuario(1)">Seguir</button>
+                     <form method="post" action="/follow">
+                        <button class="btn-perfil" type="submit">Seguir</button>
+                    </form>
 
                 </div>
             </div>
@@ -112,23 +114,5 @@
     </footer>
 
     <!--Lógica de seguir usuário-->
-    <script>
-        // Função para seguir um usuário
-        function seguirUsuario(usuarioId) {
-            fetch(`/api/usuarios/${usuarioId}/seguir/1`, { method: 'POST' }) // Substitua '1' pelo ID do usuário que você deseja seguir
-                .then(response => {
-                    if (response.ok) {
-                        
-                        //MANIPULAR
-                    } else {
-                        alert('Erro ao seguir o usuário.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao seguir o usuário:', error);
-                });
-        }
-
-    </script>
 </body>
 </html>
