@@ -1069,3 +1069,27 @@ body.is-blurred {
 .ul-comentarios{
   list-style-type: none;
 }
+
+.bloco-evento-comenta{
+  margin: 10px;
+}
+
+.bloco-evento-comenta input{
+  display: flex;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.bloco-evento-comenta input:focus{
+    border-color: #007bff; /* Cor da borda quando o campo está em foco */
+}
+
+.bloco-evento-comenta input::placeholder
+ {
+    color: #888; /* Cor do texto de placeholder */
+}
