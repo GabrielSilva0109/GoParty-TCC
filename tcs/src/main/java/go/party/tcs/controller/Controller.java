@@ -103,21 +103,25 @@ public class Controller {
     }
 
     //Pagina Usuarios
-    @GetMapping("/usuarios")
-    public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
-        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-        
-        if (sessionUsuario != null) {
-            model.addAttribute("sessionUsuario", sessionUsuario);
-            
-            // Aqui você pode buscar a lista de usuários da mesma forma que antes
-            List<Usuario> usuarios = usuarioService.findAll();
-            model.addAttribute("usuarios", usuarios);
-        
-            return "usuarios";
-        } else {
-            return "redirect:/login";
-        }
+     @GetMapping("/usuarios")
+     public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
+     Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+    if (sessionUsuario != null) {
+        model.addAttribute("sessionUsuario", sessionUsuario);
+
+        // Aqui você pode buscar a lista de usuários da mesma forma que antes
+        List<Usuario> usuarios = usuarioService.findAll();
+
+        // Remove o usuário da sessão da lista de usuários, se estiver presente
+        usuarios.remove(sessionUsuario);
+
+        model.addAttribute("usuarios", usuarios);
+
+        return "usuarios";
+    } else {
+        return "redirect:/login";
     }
+}
  
 }
