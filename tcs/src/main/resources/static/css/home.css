@@ -1069,8 +1069,15 @@ body.is-blurred {
   color: rgb(255, 65, 65);
 }
 
+/* Classe para retirar os comentarios */
+.hidden {
+  display: none;
+}
+
 .ul-comentarios{
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .bloco-evento-comenta{
