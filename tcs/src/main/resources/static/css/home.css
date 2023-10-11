@@ -606,6 +606,7 @@ footer ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;  
 }
 
 
@@ -1063,4 +1064,8 @@ body.is-blurred {
 
 .qtde-seguir{
   color: rgb(255, 65, 65);
+}
+
+.ul-comentarios{
+  list-style-type: none;
 }

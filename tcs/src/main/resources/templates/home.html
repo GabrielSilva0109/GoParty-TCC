@@ -58,6 +58,7 @@
 
     <div class="container">
         
+        <!-- Informações do Usuario -->
         <div class="left-sidebar">
             <img class="imgPerfil" 
             th:if="${sessionUsuario.fotoPerfil != null}" 
@@ -71,7 +72,8 @@
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
             <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>
         </div>
-    
+        
+        <!-- Feed -->
         <div class="center-content">
             <h1>Feed</h1>
             <div th:each="evento : ${eventos}" class="evento-bloco">
@@ -80,31 +82,22 @@
                     <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
                     
                     <div class="alteracoes">
-                        <!-- Botão abrir comentários -->
-                        <button class="chatBtn">
-                            <svg height="1.6em" fill="white" xml:space="preserve" viewBox="0 0 1000 1000" y="0px" x="0px" version="1.1">
-                        <path d="M881.1,720.5H434.7L173.3,941V720.5h-54.4C58.8,720.5,10,671.1,10,610.2v-441C10,108.4,58.8,59,118.9,59h762.2C941.2,59,990,108.4,990,169.3v441C990,671.1,941.2,720.5,881.1,720.5L881.1,720.5z M935.6,169.3c0-30.4-24.4-55.2-54.5-55.2H118.9c-30.1,0-54.5,24.7-54.5,55.2v441c0,30.4,24.4,55.1,54.5,55.1h54.4h54.4v110.3l163.3-110.2H500h381.1c30.1,0,54.5-24.7,54.5-55.1V169.3L935.6,169.3z M717.8,444.8c-30.1,0-54.4-24.7-54.4-55.1c0-30.4,24.3-55.2,54.4-55.2c30.1,0,54.5,24.7,54.5,55.2C772.2,420.2,747.8,444.8,717.8,444.8L717.8,444.8z M500,444.8c-30.1,0-54.4-24.7-54.4-55.1c0-30.4,24.3-55.2,54.4-55.2c30.1,0,54.4,24.7,54.4,55.2C554.4,420.2,530.1,444.8,500,444.8L500,444.8z M282.2,444.8c-30.1,0-54.5-24.7-54.5-55.1c0-30.4,24.4-55.2,54.5-55.2c30.1,0,54.4,24.7,54.4,55.2C336.7,420.2,312.3,444.8,282.2,444.8L282.2,444.8z"></path>
-                        </svg>
-                        <span class="tooltip">Comentarios</span>
-                        </button>
-
-                    <!-- Bloco com imput para fazer um comentario -->
-                    <div class="bloco-evento-comenta">
-                        <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
-                            <input name="texto" placeholder="Digite seu comentário">
-                            <button type="submit">Comentar</button>
-                        </form>
+                        <!-- Bloco com input para fazer um comentário -->
+                        <div class="bloco-evento-comenta">
+                            <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
+                                <input name="texto" placeholder="Digite seu comentário">
+                                <button type="submit">Comentar</button>
+                            </form>
+                        </div>
                     </div>
-                    </div>
-                    
                 </div>
                 <div class="bloco-evento-right">
                     <h2 th:text="${evento.titulo}"></h2>
                     <p th:text="${evento.descricao}"></p>
-
+            
                     <!-- Bloco onde ficam os comentários -->
-                    <div class="comentarios" style="display: flex;">
-                        <ul>
+                    <div class="comentarios" id="comentarios_${evento.id}" >
+                        <ul class="ul-comentarios">
                             <li class="evento-comentarios" th:each="comentario : ${evento.comentarios}">
                                 <div class="bloco-usuario">
                                     <span class="arroba">@</span>
@@ -116,13 +109,37 @@
                             </li>
                         </ul>
                     </div>
-                    
+                    <!-- Botão abrir comentários -->
+                    <button class="chatBtn" id="chatBtn_${evento.id}">
+                        <svg height="1.6em" fill="white" xml:space="preserve" viewBox="0 0 1000 1000" y="0px" x="0px" version="1.1">
+                            <path d="M881.1,720.5H434.7L173.3,941V720.5h-54.4C58.8,720.5,10,671.1,10,610.2v-441C10,108.4,58.8,59,118.9,59h762.2C941.2,59,990,108.4,990,169.3v441C990,671.1,941.2,720.5,881.1,720.5L881.1,720.5z M935.6,169.3c0-30.4-24.4-55.2-54.5-55.2H118.9c-30.1,0-54.5,24.7-54.5,55.2v441c0,30.4,24.4,55.1,54.5,55.1h54.4h54.4v110.3l163.3-110.2H500h381.1c30.1,0,54.5-24.7,54.5-55.1V169.3L935.6,169.3z M717.8,444.8c-30.1,0-54.4-24.7-54.4-55.1c0-30.4,24.3-55.2,54.4-55.2c30.1,0,54.5,24.7,54.5,55.2C772.2,420.2,747.8,444.8,717.8,444.8L717.8,444.8z M500,444.8c-30.1,0-54.4-24.7-54.4-55.1c0-30.4,24.3-55.2,54.4-55.2c30.1,0,54.4,24.7,54.4,55.2C554.4,420.2,530.1,444.8,500,444.8L500,444.8z M282.2,444.8c-30.1,0-54.5-24.7-54.5-55.1c0-30.4,24.4-55.2,54.5-55.2c30.1,0,54.4,24.7,54.4,55.2C336.7,420.2,312.3,444.8,282.2,444.8L282.2,444.8z"></path>
+                        </svg>
+                        <span class="tooltip">Comentarios</span>
+                    </button>
                 </div>
-                
             </div>
+            
         </div>
     </div>
-
+    
+    <script>
+        const buttons = document.querySelectorAll('.chatBtn');
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const eventId = button.id.split('_')[1];
+                const comentariosDiv = document.getElementById(`comentarios_${eventId}`);
+    
+                if (comentariosDiv.style.display === 'none' || comentariosDiv.style.display === '') {
+                    comentariosDiv.style.display = 'block';
+                } else {
+                    comentariosDiv.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    
+    
+    
     <!--Função para caso o INPUT estiver vazio, ele-->
     <script>
         function validarComentario() {
