@@ -907,6 +907,9 @@ animation: chitchat linear both var(--btn-animation-duration);
   .usuario-bloco {
     width: 40% !important;
   }
+  .bloco-evento-left{
+    width: 100%;
+  }
 }
 
 /* Largura máxima de 700px */
