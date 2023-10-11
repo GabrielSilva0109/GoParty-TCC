@@ -1106,8 +1106,6 @@ body.is-blurred {
 .seguidores-seguindo-container{
   background-color: #ddd;
   border-radius: 20px;
-  width: 250px;
-  margin-left: 50px;
   border: 2px solid #888;
   box-shadow: #25142d;
 }
