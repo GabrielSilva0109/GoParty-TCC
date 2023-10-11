@@ -58,6 +58,10 @@ public class UsuarioController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    Usuario usuarioLogado = new Usuario();
+
+    Usuario usuarioPerfilVisitado = new Usuario();
+
     @GetMapping("/cadastro")
     public String exibirFormularioCadastro() {
         return "login"; // Retorne a página que contém o formulário de login e cadastro
@@ -110,6 +114,7 @@ public class UsuarioController {
     public String login(@RequestParam("usuarioNome") String usuarioNome, @RequestParam("senha") String senha, Model model, HttpSession session) {
         // Consulte o banco de dados para verificar se o usuário existe
         Usuario usuario = usuarioService.findByUsername(usuarioNome);
+        usuarioLogado = usuario;
         boolean valida = false;
         if (usuario != null) {
             // Verificar se a senha fornecida corresponde à senha criptografada no banco de dados
@@ -316,16 +321,26 @@ public class UsuarioController {
 
     // TESTE DE SEGUIDORES NO SISTEMA
 
-     @PostMapping("/{id}/seguir/{idSeguir}")
-    public ResponseEntity<?> seguirUsuario(@PathVariable Long id, @PathVariable Long idSeguir) {
-        usuarioService.seguir(id, idSeguir);
-        return ResponseEntity.ok().build();
+    @PostMapping("/follow")
+    public ResponseEntity<String> followUser( @RequestParam Integer followingId) {
+
+       // Usuario follower = usuarioService.getUserById(followerId);
+       // Usuario following = usuarioService.getUserById(followingId);
+
+         Usuario follower = usuarioLogado;
+        Usuario following = usuarioService.getUserById(followingId);
+
+        usuarioService.follow(follower, following);
+        return ResponseEntity.ok("Você está seguindo " + following.getUsername());
     }
-    
-    @PostMapping("/{id}/deixar-de-seguir/{idSeguir}")
-    public ResponseEntity<?> deixarDeSeguirUsuario(@PathVariable Long id, @PathVariable Long idSeguir) {
-        usuarioService.deixarDeSeguir(id, idSeguir);
-        return ResponseEntity.ok().build();
+
+    @PostMapping("/unfollow")
+    public ResponseEntity<String> unfollowUser(@RequestParam Integer followerId, @RequestParam Integer followingId) {
+        Usuario follower = usuarioService.getUserById(followerId);
+        Usuario following = usuarioService.getUserById(followingId);
+
+        usuarioService.unfollow(follower, following);
+        return ResponseEntity.ok("Você parou de seguir " + following.getUsername());
     }
 
 }

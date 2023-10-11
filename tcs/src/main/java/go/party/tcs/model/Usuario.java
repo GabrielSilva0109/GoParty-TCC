@@ -54,18 +54,6 @@ public class Usuario {
     @Column(name = "foto_perfil", columnDefinition = "BLOB")
     private byte[] fotoPerfil;
 
-    @ManyToMany
-    @JoinTable(
-        name = "seguidores_seguindo",
-        joinColumns = @JoinColumn(name = "seguidor_id"),
-        inverseJoinColumns = @JoinColumn(name = "seguindo_id")
-    )
-    
-    private List<Usuario> seguidores = new ArrayList<>();
-    
-    @ManyToMany(mappedBy = "seguidores")
-    private List<Usuario> seguindo = new ArrayList<>();
-
     public Integer getId() {
         return id;
     }
@@ -144,22 +132,6 @@ public class Usuario {
 
     public void setFotoPerfil(byte[] fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
-    }
-
-    public List<Usuario> getSeguidores() {
-        return seguidores;
-    }
-
-    public void setSeguidores(List<Usuario> seguidores) {
-        this.seguidores = seguidores;
-    }
-
-    public List<Usuario> getSeguindo() {
-        return seguindo;
-    }
-
-    public void setSeguindo(List<Usuario> seguindo) {
-        this.seguindo = seguindo;
     }
 
     

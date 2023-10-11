@@ -2,12 +2,15 @@ package go.party.tcs.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import go.party.tcs.model.Follower;
 import go.party.tcs.model.Usuario;
+import go.party.tcs.repository.FollowerRepository;
 import go.party.tcs.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 
@@ -16,6 +19,9 @@ public class UsuarioService {
     
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private FollowerRepository followerRepository;
 
     public void cadastrarUsuario(Usuario usuario, Model model) {
        
@@ -69,37 +75,78 @@ public class UsuarioService {
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado para o email: " + email));
     }
 
+     public Usuario getUserById(Integer userId) {
+        Optional<Usuario> userOptional = usuarioRepository.findById(userId);
+
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        } else {
+            // Você pode tratar o caso em que o usuário não é encontrado, por exemplo, lançando uma exceção.
+            return null;
+        }
+
+    }
+
     //TESTE DE SEGUIDORES NO SISTEMA
 
-    public void seguir(Long seguidorId, Long seguirId) {
-        Usuario seguidor = usuarioRepository.findById(seguidorId);
-        Usuario seguir = usuarioRepository.findById(seguirId);
-        
-        seguidor.getSeguindo().add(seguir);
-        usuarioRepository.save(seguidor);
+    public void follow(Usuario follower, Usuario following) {
+        // Verifique se o usuário já está seguindo o outro usuário
+        Follower existingFollower = followerRepository.findByFollowerAndFollowing(follower, following);
+
+        if (existingFollower == null) {
+            // Se não existir uma relação de seguidor, crie uma nova
+            Follower newFollower = new Follower();
+            newFollower.setFollower(follower);
+            newFollower.setFollowing(following);
+            followerRepository.save(newFollower);
+        }
+    }
+
+    public void unfollow(Usuario follower, Usuario following) {
+        // Verifique se o usuário está seguindo o outro usuário
+        Follower existingFollower = followerRepository.findByFollowerAndFollowing(follower, following);
+
+        if (existingFollower != null) {
+            // Se existir uma relação de seguidor, remova-a
+            followerRepository.delete(existingFollower);
+        }
     }
     
-    public void deixarDeSeguir(Long seguidorId, Long seguirId) {
-        Usuario seguidor = usuarioRepository.findById(seguidorId);
-        Usuario seguir = usuarioRepository.findById(seguirId);
-        
-        seguidor.getSeguindo().remove(seguir);
-        usuarioRepository.save(seguidor);
-    }
 
     //OBTER NUMEROS DE SEGUIDORES 
 
-     public int contarSeguidores(Long usuarioId) {
-        Usuario usuario = usuarioRepository.findById(usuarioId);
-                
-        return usuario.getSeguidores().size();
+    public List<Usuario> getFollowers(Usuario user) {
+        // Obtenha os seguidores do usuário
+        List<Follower> followers = followerRepository.findByFollowing(user);
+
+        List<Usuario> followerUsers = followers.stream()
+            .map(Follower::getFollower)
+            .collect(Collectors.toList());
+
+        return followerUsers;
     }
 
-    public int contarSeguindo(Long usuarioId) {
-        Usuario usuario = usuarioRepository.findById(usuarioId);
-                
-        return usuario.getSeguindo().size();
+    public List<Usuario> getFollowing(Usuario user) {
+        // Obtenha quem o usuário está seguindo
+        List<Follower> following = followerRepository.findByFollower(user);
+
+        List<Usuario> followingUsers = following.stream()
+            .map(Follower::getFollowing)
+            .collect(Collectors.toList());
+
+        return followingUsers;
     }
+
+    public int getFollowersCount(Usuario user) {
+        List<Usuario> followers = getFollowers(user);
+        return followers.size();
+    }
+
+    public int getFollowingCount(Usuario user) {
+        List<Usuario> following = getFollowing(user);
+        return following.size();
+    }
+
 
 }
 
