@@ -64,13 +64,6 @@ public class Controller {
         if (usuarioOptional.isPresent()) {
             Usuario usuario = usuarioOptional.get();
 
-           // int seguidores = usuarioService.contarSeguidores(usuario.getId());
-           // int seguindo = usuarioService.contarSeguindo(usuario.getId());
-
-            model.addAttribute("seguidores", 0);
-            model.addAttribute("seguindo", 0);
-
-
             // Adicionar o usuário ao modelo para que ele possa ser exibido na página de perfil
             model.addAttribute("usuario", usuario);
 
@@ -79,6 +72,13 @@ public class Controller {
 
             // Adicionar a lista de eventos ao modelo para exibição na página
             model.addAttribute("eventos", eventosDoUsuario);
+
+            //MOSTRAR CONTADOR DE SEGUIDORES
+            List<Usuario> followers = usuarioService.getFollowers(usuario);
+            List<Usuario> following = usuarioService.getFollowing(usuario);
+
+            model.addAttribute("followersCount", followers.size());
+            model.addAttribute("followingCount", following.size());
 
             return "perfilUsuario"; // Isso renderizará a página de perfil do usuário específico
         } else {

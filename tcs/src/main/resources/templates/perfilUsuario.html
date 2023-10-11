@@ -74,7 +74,9 @@
                 <h4><span th:text="${usuario.email}"></span></h4>
                 <h4><span th:text="${usuario.cpf}"></span></h4>
                 <!--Seguidores e seguindo (EM TESTE)-->
-                <h4>Seguidores <span class="qtde-seguir">120</span> | Seguindo <span class="qtde-seguir">80</span></h4>
+
+                <!--Seguidores e seguindo (EM TESTE)-->   
+             <h4>Seguidores <span th:text="${followersCount}"> | Seguindo <span th:text="${followingCount}"></h4>
 
                   <!--Botao de seguir usuário-->
                   <form method="post" action="/follow">

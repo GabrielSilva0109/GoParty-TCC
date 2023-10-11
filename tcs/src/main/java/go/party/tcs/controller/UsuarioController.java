@@ -300,6 +300,7 @@ public class UsuarioController {
     public ResponseEntity<byte[]> getImagemPerfil(@PathVariable Integer usuarioId) {
         // Recupere os detalhes do usuário com base no ID do usuário
         Usuario usuario = usuarioService.encontrarId(usuarioId);
+        usuarioPerfilVisitado = usuario;
 
         // Verifique se o usuário foi encontrado
         if (usuario != null) {
@@ -322,25 +323,25 @@ public class UsuarioController {
     // TESTE DE SEGUIDORES NO SISTEMA
 
     @PostMapping("/follow")
-    public ResponseEntity<String> followUser( @RequestParam Integer followingId) {
+    public String followUser() {
 
        // Usuario follower = usuarioService.getUserById(followerId);
        // Usuario following = usuarioService.getUserById(followingId);
 
-         Usuario follower = usuarioLogado;
-        Usuario following = usuarioService.getUserById(followingId);
+        Usuario follower = usuarioLogado;
+        Usuario following = usuarioPerfilVisitado;
 
         usuarioService.follow(follower, following);
-        return ResponseEntity.ok("Você está seguindo " + following.getUsername());
+        return "perfilUsuario";
     }
 
     @PostMapping("/unfollow")
-    public ResponseEntity<String> unfollowUser(@RequestParam Integer followerId, @RequestParam Integer followingId) {
+    public String unfollowUser(@RequestParam Integer followerId, @RequestParam Integer followingId) {
         Usuario follower = usuarioService.getUserById(followerId);
         Usuario following = usuarioService.getUserById(followingId);
 
         usuarioService.unfollow(follower, following);
-        return ResponseEntity.ok("Você parou de seguir " + following.getUsername());
+        return "perfilUsuario";
     }
 
 }
