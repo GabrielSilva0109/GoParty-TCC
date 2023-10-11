@@ -82,9 +82,10 @@ public class Controller {
 
             return "perfilUsuario"; // Isso renderizará a página de perfil do usuário específico
         } else {
-            // Lide com o caso em que o usuário não foi encontrado
-            return "redirect:/usuarios"; // Redirecione para uma página de lista de usuários, por exemplo
+            return "redirect:/usuarios";
+            // Lide com o caso em que o usuário não foi encontrado return "redirect:/usuarios"; // Redirecione para uma página de lista de usuários, por exemplo
         }
+        
     }
 
 

@@ -121,8 +121,8 @@ public class UsuarioController {
         List<Usuario> followers = usuarioService.getFollowers(usuario);
         List<Usuario> following = usuarioService.getFollowing(usuario);
 
-        model.addAttribute("followersCount", followers.size());
-        model.addAttribute("followingCount", following.size());
+        usuario.setSeguidores(followers.size());;
+        usuario.setSeguindo(following.size());
 
         if (usuario != null) {
             // Verificar se a senha fornecida corresponde à senha criptografada no banco de dados
