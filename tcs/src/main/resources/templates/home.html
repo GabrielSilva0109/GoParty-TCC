@@ -77,20 +77,23 @@
         <div class="center-content">
             <h1>Feed</h1>
             <div th:each="evento : ${eventos}" class="evento-bloco">
+
+                <!-- Bloco Esquerdo Evento -->
                 <div class="bloco-evento-left">
                     <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
                     <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
                     
-                    <div class="alteracoes">
-                        <!-- Bloco com input para fazer um comentário -->
-                        <div class="bloco-evento-comenta">
+                    <!-- Bloco com input para fazer um comentário -->
+                    <div class="bloco-evento-comenta">
                             <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
-                                <input name="texto" placeholder="Digite seu comentário">
+                                <input name="texto" placeholder="Digite seu comentário" required>
                                 <button type="submit">Comentar</button>
                             </form>
-                        </div>
                     </div>
+                    
                 </div>
+
+                <!-- Bloco da Direita Evento -->
                 <div class="bloco-evento-right">
                     <h2 th:text="${evento.titulo}"></h2>
                     <p th:text="${evento.descricao}"></p>
@@ -122,6 +125,7 @@
         </div>
     </div>
     
+    <!-- Função para aparecer os comentarios -->
     <script>
         const buttons = document.querySelectorAll('.chatBtn');
     
@@ -142,41 +146,8 @@
             });
         });
     </script>
-    
-    
-    
-    
-    <!--Função para caso o INPUT estiver vazio, ele-->
-    <script>
-        function validarComentario() {
-            var textoComentario = document.getElementById("textoComentario").value.trim();
-            
-            if (textoComentario === "") {
-                alert("Por favor, digite um comentário antes de enviar.");
-                return false; // Impede o envio do formulário
-            }
-            
-            return true; // Permite o envio do formulário se o campo não estiver vazio
-        }
-    </script>
 
-    <script>
-        // Adicione um evento de clique a todos os ícones
-        const iconContainers = document.querySelectorAll('.icon-container');
-
-        iconContainers.forEach((container) => {
-            container.addEventListener('click', () => {
-                // Remova a classe 'active' de todos os ícones
-                iconContainers.forEach((otherContainer) => {
-                    otherContainer.classList.remove('active');
-                });
-
-                // Adicione a classe 'active' ao ícone clicado
-                container.classList.add('active');
-            });
-        });
-
-    </script>
+    
 
 
     <footer>
