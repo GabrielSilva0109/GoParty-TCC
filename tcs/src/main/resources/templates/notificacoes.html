@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="header"> 
-        <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home2">
+        <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio">
         
 
         <ul class="ulContainer">
@@ -64,23 +64,6 @@
         </a>
     </header>
 
-    <div class="container">
-
-        <!--Informações do Usuario-->
-        <div class="left-sidebar">
-            <img class="imgPerfil" 
-            th:if="${sessionUsuario.fotoPerfil != null}" 
-            th:src="@{'/perfil-imagem/' + ${sessionUsuario.id}}" 
-            alt="Foto de Perfil" />
-       
-            <img class="imgPerfil" 
-                th:unless="${sessionUsuario.fotoPerfil != null}" 
-                src="/css/img/fotoPerfil.jpg" 
-                alt="" 
-                id="imgPerfil-vazio"/>
-            <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
-            <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>
-        </div>
 
         <!--Exibindo a notificacao do usuario-->
 

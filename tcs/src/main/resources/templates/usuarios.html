@@ -65,7 +65,7 @@
     </header>
 
     <div class="container">
-        <div class="left-sidebar">
+        <div class="left-sidebar" id="container-left">
             <img class="imgPerfil" 
             th:if="${sessionUsuario.fotoPerfil != null}" 
             th:src="@{'/perfil-imagem/' + ${sessionUsuario.id}}" 
@@ -80,7 +80,7 @@
             <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>
             
         </div>
-    
+
         <div class="center-content">
        <div class="input-pesquisa">
 
@@ -89,8 +89,8 @@
             <!--Search bar -->
         
             <div class="search">
-                <form action="" method="post">
-                <input type="text" class="search__input" placeholder="Pesquise aqui" name="nomeDigitado">
+                <form action="/pesquisar" method="post">
+                <input type="text" class="search__input" placeholder="Pesquise aqui" name="nomeDigitado" id="input-pesquisar">
                 <button class="search__button" type="submit">
                     <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
                         <g>
@@ -101,9 +101,15 @@
             </form>
         </div>
 
-        </div>
+        <table>
+            <tr th:each="usuario : ${usuariosFiltrado}">
+                <td th:text="${usuario.nome}"></td>
+                <td th:text="${usuario.email}"></td>
+                <!-- Outras colunas -->
+            </tr>
+        </table>
 
-        
+        </div>
 
             <div class="bloco-user">
                 <div th:each="usuario : ${usuarios}" class="usuario-bloco">
@@ -140,6 +146,20 @@
         </ul>
     </footer>
 
-    <!--Lógica de seguir usuário-->
+
+    <script>
+        var inputPesquisar = document.getElementById('input-pesquisar');
+        var blocoUser = document.querySelector('.bloco-user');
+        const left = document.getElementById('container-left');
+
+        // Adicione um ouvinte de evento para o evento 'input' no input
+        inputPesquisar.addEventListener('input', function() {
+            if (inputPesquisar.value.length > 0) {
+                blocoUser.style.display = 'none';
+            } else {
+                blocoUser.style.display = ""; 
+            }
+        });
+    </script>
 </body>
 </html>

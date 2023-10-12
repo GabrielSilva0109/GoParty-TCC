@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
@@ -49,16 +51,12 @@ public class Controller {
         return "recuperarSenha"; // Retorna o nome do arquivo HTML
     }
 
-    @GetMapping("/notificacoes")
-    public String notificacoes() {
-        return "notificacoes"; // Retorna o nome do arquivo HTML
-    }
-
     //Sem mapeamento redireciona para o Login
     @GetMapping("/")
     public String redirectToHomePage() {
         return "redirect:/login";
     }
+
 
     @GetMapping("/perfilUsuario/{id}")
     public String exibirPerfil(@PathVariable Integer id, Model model) {
@@ -107,6 +105,14 @@ public class Controller {
         }
     }
 
+    @PostMapping("/pesquisar")
+    public String pesquisarUsuarios(@RequestParam("nomeDigitado") String nomeDigitado, Model model) {
+        List<Usuario> usuariosFiltrados = usuarioRepository.findByNomeContaining(nomeDigitado);
+        model.addAttribute("usuariosFiltrado", usuariosFiltrados);
+        return "usuarios";
+    }
+
+
     //Pagina Usuarios
      @GetMapping("/usuarios")
      public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
@@ -127,6 +133,7 @@ public class Controller {
     } else {
         return "redirect:/login";
     }
-}
+  }
+
  
 }
