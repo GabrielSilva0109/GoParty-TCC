@@ -27,6 +27,7 @@ import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.repository.UsuarioRepository;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.EventoService;
+import go.party.tcs.service.NotificationService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -54,6 +55,9 @@ public class UsuarioController {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -333,13 +337,17 @@ public class UsuarioController {
     @PostMapping("/follow")
     public String followUser() {
 
-       // Usuario follower = usuarioService.getUserById(followerId);
-       // Usuario following = usuarioService.getUserById(followingId);
-
         Usuario follower = usuarioLogado;
         Usuario following = usuarioPerfilVisitado;
 
         usuarioService.follow(follower, following);
+
+        // NOTIFICAR O USUÀRIO
+
+        // Crie uma notificação
+        String message = follower.getUsername()+" seguiu você";
+        Integer userIdToNotify =  usuarioPerfilVisitado.getId();
+        notificationService.createNotification(message, userIdToNotify);
         return "redirect:/home";
     }
 

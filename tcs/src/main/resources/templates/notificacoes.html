@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoParty | Usuarios</title>
-    <link rel="stylesheet"  href="/css/home.css">
+    <title>GoParty | Notificações</title>
+    <link rel="stylesheet"  href="/css/evento.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body>
     <header class="header"> 
-        <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">
+        <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home2">
         
+
         <ul class="ulContainer">
             <li>
                 <a class="links" th:href="@{/perfil}">
@@ -26,8 +27,8 @@
          <li>
         <a class="links" th:href="@{/usuarios}">
             <div class="icon-container">
-                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon"  style="border-bottom: 4px solid rgb(255, 69, 69);">
-                
+                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
+                <div class="line"></div>
             </div>
         </a>
         </li>
@@ -43,8 +44,7 @@
         <li>
             <a class="links" th:href="@{/evento}">
                 <div class="icon-container">
-                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
-                    <div class="line"></div>
+                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" >
                 </div>
             </a>
         </li>
@@ -52,19 +52,21 @@
         <li>
             <a class="links" th:href="@{/notificacoes}">
                 <div class="icon-container">
-                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
+                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" style="border-bottom: 4px solid rgb(255, 69, 69);" >
                 </div>
             </a>
         </li>
         </ul>
         
-        <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link2">
+        <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link3">
             <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
             <div class="text">Sair</div>
         </a>
     </header>
 
     <div class="container">
+
+        <!--Informações do Usuario-->
         <div class="left-sidebar">
             <img class="imgPerfil" 
             th:if="${sessionUsuario.fotoPerfil != null}" 
@@ -75,71 +77,32 @@
                 th:unless="${sessionUsuario.fotoPerfil != null}" 
                 src="/css/img/fotoPerfil.jpg" 
                 alt="" 
-                id="imgPerfil-vazio" />
+                id="imgPerfil-vazio"/>
             <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
             <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>
-            
-        </div>
-    
-        <div class="center-content">
-       <div class="input-pesquisa">
-
-            <h1>Usuários</h1>
-
-            <!--Search bar -->
-        
-            <div class="search">
-                <form action="" method="post">
-                <input type="text" class="search__input" placeholder="Pesquise aqui" name="nomeDigitado">
-                <button class="search__button" type="submit">
-                    <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
-                        <g>
-                            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
-                        </g>
-                    </svg>
-                </button>
-            </form>
         </div>
 
+        <!--Exibindo a notificacao do usuario-->
+
+        <div id="notifications">
+            <ul>
+                <li th:each="notification : ${notifications}">
+                    <span th:text="${notification.message}"></span>
+                    em
+                    <span th:text="${#dates.format(notification.date, 'dd-MM-yyyy HH:mm:ss')}"></span>
+                </li>
+            </ul>
         </div>
 
-        
-
-            <div class="bloco-user">
-                <div th:each="usuario : ${usuarios}" class="usuario-bloco">
-                    <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="foto">
-                    <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
-                    <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
-                    
-                    <div class="interacoes">
-                        <button class="btn-perfil" >
-                            <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
-                                <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Ícone do perfil -->
-                                </svg>
-                                Perfil
-                            </a>
-                        </button>  
-                        
-                    </div>
-                     <!--Botao de seguir usuário-->
-
-                </div>
-            </div>
-        </div>
-        
     </div>
-
-
+    
     <footer>
         <ul>
             <li><a class="links-foot" th:href="@{/perfil}">Perfil</a></li>
             <li><a class="links-foot" th:href="@{/home}">Feed</a></li>
-            <li><a class="links-foot" th:href="@{/usuarios}" style=" border-bottom: 4px solid rgb(255, 65, 65);">Usuarios</a></li>
-            <li><a class="links-foot" th:href="@{/evento}">Evento</a></li>
+            <li><a class="links-foot" th:href="@{/usuarios}">Usuarios</a></li>
+            <li><a class="links-foot" th:href="@{/evento}"  style=" border-bottom: 4px solid rgb(255, 65, 65);">Evento</a></li>
         </ul>
     </footer>
-
-    <!--Lógica de seguir usuário-->
 </body>
 </html>

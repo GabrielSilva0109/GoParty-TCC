@@ -49,6 +49,11 @@ public class Controller {
         return "recuperarSenha"; // Retorna o nome do arquivo HTML
     }
 
+    @GetMapping("/notificacoes")
+    public String notificacoes() {
+        return "notificacoes"; // Retorna o nome do arquivo HTML
+    }
+
     //Sem mapeamento redireciona para o Login
     @GetMapping("/")
     public String redirectToHomePage() {
