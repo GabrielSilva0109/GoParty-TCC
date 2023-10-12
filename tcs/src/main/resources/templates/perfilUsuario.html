@@ -72,7 +72,7 @@
             <div class="info">
                 <h3 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h3>
                 <h4><span th:text="${usuario.email}"></span></h4>
-                <h4><span th:text="${usuario.cpf}"></span></h4>
+                
                 <!--Seguidores e seguindo (EM TESTE)-->
                 
                 <div class="seguidores-seguindo-container"> 
@@ -87,6 +87,10 @@
                   <!--Botao de seguir usuário-->
                   <form method="post" action="/follow">
                     <button class="btn-perfil" type="submit">Seguir</button>
+                </form>
+
+                <form method="post" action="/unfollow">
+                    <button class="btn-perfil" type="submit">Deixar de seguir</button>
                 </form>
             </div>
         </div>

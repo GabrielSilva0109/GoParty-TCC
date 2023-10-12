@@ -566,14 +566,14 @@ footer ul {
 /* Imagem de Perfil usuarios que ficara de perfil */
 #imgPerfil-vazio, .imgPerfil, #fotoExibida{
   width: 145px;
-  border-radius: 50px;
+  border-radius: 65px;
 }
 
 /* Imagem de Perfil de usuarios */
 .imgUsuarios{
   max-width: 130px;
   max-height: 120px;
-  border-radius: 20px;
+  border-radius: 35px;
 }
 
 #fotoPerfil {
