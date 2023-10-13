@@ -356,6 +356,7 @@ public class UsuarioController {
         // Crie uma notificação
         String message = follower.getUsername()+" seguiu você";
         Integer userIdToNotify =  usuarioPerfilVisitado.getId();
+
         notificationService.createNotification(message, userIdToNotify);
         return "redirect:/home";
     }

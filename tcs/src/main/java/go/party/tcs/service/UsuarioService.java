@@ -99,7 +99,7 @@ public class UsuarioService {
             newFollower.setFollower(follower);
             newFollower.setFollowing(following);
             followerRepository.save(newFollower);
-        }
+        } 
     }
 
     public void unfollow(Usuario follower, Usuario following) {

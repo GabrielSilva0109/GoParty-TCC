@@ -31,15 +31,17 @@ public class Controller {
     private EventoService eventoService;
 
     private String nomeDigitadoP;
-    
-    //Mapea o Login
+
+    private Usuario userLogado;
+
+    // Mapea o Login
     @GetMapping("/login")
-    public String homePage(){
+    public String homePage() {
         return "login";
     }
 
     @GetMapping("/trocaDeSenha")
-    public String trocarSenha(){
+    public String trocarSenha() {
         return "trocaDeSenha";
     }
 
@@ -53,51 +55,16 @@ public class Controller {
         return "recuperarSenha"; // Retorna o nome do arquivo HTML
     }
 
-    //Sem mapeamento redireciona para o Login
+    // Sem mapeamento redireciona para o Login
     @GetMapping("/")
     public String redirectToHomePage() {
         return "redirect:/login";
     }
 
-
-    @GetMapping("/perfilUsuario/{id}")
-    public String exibirPerfil(@PathVariable Integer id, Model model) {
-        
-        // Buscar o usuário com o ID especificado no banco de dados
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
-
-        if (usuarioOptional.isPresent()) {
-            Usuario usuario = usuarioOptional.get();
-
-            // Adicionar o usuário ao modelo para que ele possa ser exibido na página de perfil
-            model.addAttribute("usuario", usuario);
-
-            // Buscar os eventos criados por esse usuário com base no ID do usuário
-            List<Evento> eventosDoUsuario = eventoService.buscarEventosPorAutor(id);
-
-            // Adicionar a lista de eventos ao modelo para exibição na página
-            model.addAttribute("eventos", eventosDoUsuario);
-
-            //MOSTRAR CONTADOR DE SEGUIDORES
-            List<Usuario> followers = usuarioService.getFollowers(usuario);
-            List<Usuario> following = usuarioService.getFollowing(usuario);
-
-            model.addAttribute("followersCount", followers.size());
-            model.addAttribute("followingCount", following.size());
-
-            return "perfilUsuario"; // Isso renderizará a página de perfil do usuário específico
-        } else {
-            return "redirect:/usuarios";
-            // Lide com o caso em que o usuário não foi encontrado return "redirect:/usuarios"; // Redirecione para uma página de lista de usuários, por exemplo
-        }
-        
-    }
-
-
     @GetMapping("/evento")
-    public String paginaEvento(Model model, HttpSession session, HttpServletRequest request){
+    public String paginaEvento(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-        if(sessionUsuario != null){
+        if (sessionUsuario != null) {
             // ... outras atribuições ao modelo
             model.addAttribute("sessionUsuario", sessionUsuario);
             // ...
@@ -106,8 +73,6 @@ public class Controller {
             return "redirect:/home";
         }
     }
-
-    //CONTINUAR
 
     @PostMapping("/usuarios")
     public String pesquisarUsuarios(@RequestParam("nomeDigitado") String nomeDigitado, Model model) {
@@ -120,31 +85,84 @@ public class Controller {
         return "usuarios";
     }
 
+    // Pagina Usuarios
+    @GetMapping("/usuarios")
+    public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
-    //Pagina Usuarios
-     @GetMapping("/usuarios")
-     public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
-     Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        userLogado = sessionUsuario;
 
-    if (sessionUsuario != null && nomeDigitadoP == null) {
-        model.addAttribute("sessionUsuario", sessionUsuario);
+        if (sessionUsuario != null && nomeDigitadoP == null) {
+            model.addAttribute("sessionUsuario", sessionUsuario);
 
-        // Aqui você pode buscar a lista de usuários da mesma forma que antes
-        List<Usuario> usuarios = usuarioService.findAll();
+            // Aqui você pode buscar a lista de usuários da mesma forma que antes
+            List<Usuario> usuarios = usuarioService.findAll();
 
-        for (Usuario usuario : usuarios) {
-            if (usuario.getId() == sessionUsuario.getId()) {
-                 usuarios.remove(sessionUsuario);
+            for (Usuario usuario : usuarios) {
+                if (usuario.getId() == sessionUsuario.getId()) {
+                    usuarios.remove(sessionUsuario);
+                }
             }
+
+            model.addAttribute("usuarios", usuarios);
+
+            return "usuarios";
+        } else {
+            return "usuarios";
+        }
+    }
+
+    @GetMapping("/perfilUsuario/{id}")
+    public String exibirPerfil(@PathVariable Integer id, Model model) {
+
+        // Buscar o usuário com o ID especificado no banco de dados
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+
+        if (usuarioOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
+
+            // Adicionar o usuário ao modelo para que ele possa ser exibido na página de
+            // perfil
+            model.addAttribute("usuario", usuario);
+
+            // Buscar os eventos criados por esse usuário com base no ID do usuário
+            List<Evento> eventosDoUsuario = eventoService.buscarEventosPorAutor(id);
+
+            // Adicionar a lista de eventos ao modelo para exibição na página
+            model.addAttribute("eventos", eventosDoUsuario);
+
+            // MOSTRAR CONTADOR DE SEGUIDORES
+            List<Usuario> followers = usuarioService.getFollowers(usuario);
+            List<Usuario> following = usuarioService.getFollowing(usuario);
+
+            // Verificar se o sessionUsuario está na lista de followers
+            boolean isUserInFollowers = isUserInFollowersList(userLogado, usuario);
+
+            model.addAttribute("followersCount", followers.size());
+            model.addAttribute("followingCount", following.size());
+
+            // Adicionar apenas se sessionUsuarioIsFollower for verdadeira
+            if (isUserInFollowers) {
+               model.addAttribute("sessionUsuarioIsFollower","Você segue "+ usuario.getUsername());
+            }
+
+            return "perfilUsuario"; // Isso renderizará a página de perfil do usuário específico
+        } else {
+            return "redirect:/usuarios";
         }
 
-        model.addAttribute("usuarios", usuarios);
-
-        return "usuarios";
-    }else {
-       return "usuarios";
     }
-  }
 
- 
+    private boolean isUserInFollowersList(Usuario userToCheck, Usuario user) {
+        List<Usuario> followers = usuarioService.getFollowers(user);
+    
+        for (Usuario follower : followers) {
+            if (follower.getId().equals(userToCheck.getId())) {
+                return true;
+            }
+        }
+    
+        return false;
+    }
+    
 }

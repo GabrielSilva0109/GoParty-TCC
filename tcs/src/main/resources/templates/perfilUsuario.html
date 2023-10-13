@@ -65,7 +65,10 @@
     </header>
 
     <div class="container">
+         <!-- Onde ficará (Estou seguindo)  -->
+         
         <div class="left-sidebar">
+
             <img class="imgPerfil" 
             th:if="${usuario.fotoPerfil != null}" 
             th:src="@{'/perfil-imagem/' + ${usuario.id}}" 
@@ -79,9 +82,10 @@
             <h2><span class="arroba">@</span><span th:text="${usuario.username}"></span></h2>
             <div class="info">
                 <h3 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h3>
+                <h4 class="descricaoUser"><span th:text="${sessionUsuarioIsFollower}"></h4>
+               
                 <h4><span th:text="${usuario.email}"></span></h4>
-                
-                <!--Seguidores e seguindo (EM TESTE)-->
+                <!--Seguidores e seguindo -->
                 
                 <div class="seguidores-seguindo-container"> 
                     <a href="">
