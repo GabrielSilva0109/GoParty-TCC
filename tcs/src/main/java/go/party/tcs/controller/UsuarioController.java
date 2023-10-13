@@ -127,7 +127,7 @@ public class UsuarioController {
         boolean valida = false;
 
         List<Notification> notifications = notificationRepository.findByUserId(usuario.getId());
-        model.addAttribute("notifications", notifications);
+        
 
         //MOSTRAR CONTADOR DE SEGUIDORES
         List<Usuario> followers = usuarioService.getFollowers(usuario);
@@ -142,6 +142,7 @@ public class UsuarioController {
             if (passwordEncoder.matches(senha, usuario.getSenha())) {
                 // Autenticação bem-sucedida
                 session.setAttribute("usuario", usuario); // Armazena o usuário na sessão
+                model.addAttribute("notifications", notifications);
                 valida  = true;
             }
         }

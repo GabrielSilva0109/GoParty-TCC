@@ -56,8 +56,6 @@
                 <div class="icon-container">
                     
                     <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" > 
-                    <legend class="contador">5</legend> 
-                    
                     
                 </div>
             </a>
@@ -144,20 +142,5 @@
         </ul>
     </footer>
 
-
-    <script>
-        var inputPesquisar = document.getElementById('input-pesquisar');
-        var blocoUser = document.querySelector('.bloco-user');
-        const left = document.getElementById('container-left');
-
-        // Adicione um ouvinte de evento para o evento 'input' no input
-        inputPesquisar.addEventListener('input', function() {
-            if (inputPesquisar.value.length > 0) {
-                blocoUser.style.display = 'none';
-            } else {
-                blocoUser.style.display = ""; 
-            }
-        });
-    </script>
 </body>
 </html>
