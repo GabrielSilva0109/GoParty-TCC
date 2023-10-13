@@ -80,13 +80,7 @@
         
 
         <style>
-            .left-sidebar{
-                border: 1px dotted #324;
-            }
-
-            .container{
-                border: 1px dotted #324;
-            }
+           
         </style>
 
     <div class="center-content" id="center-usuarios">
@@ -109,36 +103,24 @@
              </form>
          </div>
  
-         <table>
-             <tr th:each="usuario : ${usuariosFiltrado}">
-                 <td th:text="${usuario.nome}"></td>
-                 <td th:text="${usuario.email}"></td>
-                 <!-- Outras colunas -->
-             </tr>
-         </table>
- 
          </div>
  
              <div class="bloco-user">
+                
                  <div th:each="usuario : ${usuarios}" class="usuario-bloco">
+                    <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
                      <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="foto">
                      <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
                      <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
-                     
-                     <div class="interacoes">
-                         <button class="btn-perfil" >
-                             <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
-                                 <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                                     <!-- Ícone do perfil -->
-                                 </svg>
-                                 Perfil
-                             </a>
-                         </button>  
-                         
-                     </div>
-                      <!--Botao de seguir usuário-->
- 
+                  </a>
+
                  </div>
+
+                 <style>
+                    .usuario-bloco a{
+                        text-decoration: none;
+                    }
+                 </style>
              </div>
          </div>
         
