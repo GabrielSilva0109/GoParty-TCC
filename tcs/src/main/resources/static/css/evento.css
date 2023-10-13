@@ -142,6 +142,8 @@ body{
   display: flex;
   justify-content: space-between; 
   padding: 20px; 
+  border: 1px dotted #324;
+  
 }
 
 /* Estilos para as Duas partes */
@@ -158,7 +160,7 @@ body{
 /* Container Principal */
 .center-content {
   display: block;
-  width: 68%; 
+  width: 67%; 
   border-radius: 20px;
   text-align: center;
   background-color: #e0e0e0;
