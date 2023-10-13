@@ -11,9 +11,8 @@
 </head>
 <body>
     <header class="header"> 
-        <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio">
+        <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">
         
-
         <ul class="ulContainer">
             <li>
                 <a class="links" th:href="@{/perfil}">
@@ -27,8 +26,8 @@
          <li>
         <a class="links" th:href="@{/usuarios}">
             <div class="icon-container">
-                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
-                <div class="line"></div>
+                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon" >
+                
             </div>
         </a>
         </li>
@@ -44,48 +43,104 @@
         <li>
             <a class="links" th:href="@{/evento}">
                 <div class="icon-container">
-                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" >
+                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
+                    <div class="line"></div>
                 </div>
             </a>
         </li>
 
         <li>
-            <a class="links" th:href="@{/notificacoes}">
+            <a class="links" th:href="@{/notificacoes}" style="border-bottom: 4px solid rgb(255, 69, 69);">
                 <div class="icon-container">
-                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" style="border-bottom: 4px solid rgb(255, 69, 69);" >
+                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
                 </div>
             </a>
         </li>
         </ul>
         
-        <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link3">
+        <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link2">
             <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
             <div class="text">Sair</div>
         </a>
     </header>
 
+    <div class="container">
+        <div class="left-sidebar" id="container-left">
+           <h1>
+            Indique o GoParty para os seus amigos
+           </h1>
 
-        <!--Exibindo a notificacao do usuario-->
-
-        <div id="notifications">
-            <ul>
-                <li th:each="notification : ${notifications}">
-                    <span th:text="${notification.message}"></span>
-                    em
-                    <span th:text="${#dates.format(notification.date, 'dd-MM-yyyy HH:mm:ss')}"></span>
-                </li>
-            </ul>
+           <p>Basta copiar e compartilhar este link <br>
+        <span>
+            <a href="">goparty/convite/23323.com</a>
+        </span></p>
+            
+           <img src="/css/img/wedding-card.png" alt="">
         </div>
+        
 
+        <style>
+           
+        </style>
+
+    <div class="center-content" id="center-usuarios">
+        <div class="input-pesquisa">
+ 
+             <h1>Notificações</h1>
+ 
+         </div>
+ 
+             <div class="bloco-notificacoes">
+                <!--Lista de notificações-->
+                <ul>
+                    <li th:each="notification : ${notifications}">
+                        <span th:text="${notification.message}"></span>
+                        em
+                        <span th:text="${#dates.format(notification.date, 'dd-MM-yyyy HH:mm:ss')}"></span>
+                    </li>
+                </ul>
+        
+             </div>
+         </div>
+
+         <style>
+            .bloco-notificacoes{
+                border: 1px solid #333;
+                width: 900px;
+                margin-left: 40px;
+                padding: 20px;
+                height: 60px;
+
+                border-radius: 30px;
+            }
+         </style>
+        
     </div>
-    
+
+
     <footer>
         <ul>
             <li><a class="links-foot" th:href="@{/perfil}">Perfil</a></li>
             <li><a class="links-foot" th:href="@{/home}">Feed</a></li>
-            <li><a class="links-foot" th:href="@{/usuarios}">Usuarios</a></li>
-            <li><a class="links-foot" th:href="@{/evento}"  style=" border-bottom: 4px solid rgb(255, 65, 65);">Evento</a></li>
+            <li><a class="links-foot" th:href="@{/usuarios}" style=" border-bottom: 4px solid rgb(255, 65, 65);">Usuarios</a></li>
+            <li><a class="links-foot" th:href="@{/evento}">Evento</a></li>
         </ul>
     </footer>
+
+
+    <script>
+        var inputPesquisar = document.getElementById('input-pesquisar');
+        var blocoUser = document.querySelector('.bloco-user');
+        const left = document.getElementById('container-left');
+
+        // Adicione um ouvinte de evento para o evento 'input' no input
+        inputPesquisar.addEventListener('input', function() {
+            if (inputPesquisar.value.length > 0) {
+                blocoUser.style.display = 'none';
+            } else {
+                blocoUser.style.display = ""; 
+            }
+        });
+    </script>
 </body>
 </html>

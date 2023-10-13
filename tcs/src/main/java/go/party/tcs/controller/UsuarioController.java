@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import go.party.tcs.model.Evento;
+import go.party.tcs.model.Notification;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.EventoRepository;
+import go.party.tcs.repository.NotificationRepository;
 import go.party.tcs.repository.UsuarioRepository;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.EventoService;
@@ -40,6 +42,9 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usuarioService){
         this.usuarioService = usuarioService;
     }
+
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -120,6 +125,9 @@ public class UsuarioController {
         Usuario usuario = usuarioService.findByUsername(usuarioNome);
         usuarioLogado = usuario;
         boolean valida = false;
+
+        List<Notification> notifications = notificationRepository.findByUserId(usuario.getId());
+        model.addAttribute("notifications", notifications);
 
         //MOSTRAR CONTADOR DE SEGUIDORES
         List<Usuario> followers = usuarioService.getFollowers(usuario);

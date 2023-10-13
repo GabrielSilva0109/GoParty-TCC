@@ -21,9 +21,7 @@ public class NotificationController {
 
     @GetMapping("/notificacoes")
     public String getUserNotifications() {
-        //@PathVariable Long userId, Model model
-        //List<Notification> notifications = notificationRepository.findByUserId(userId);
-        //model.addAttribute("notifications", notifications);
+        
         return "notificacoes"; // Nome do template Thymeleaf
     }
 }
