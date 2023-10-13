@@ -29,6 +29,8 @@ public class Controller {
 
     @Autowired
     private EventoService eventoService;
+
+    private String nomeDigitadoP;
     
     //Mapea o Login
     @GetMapping("/login")
@@ -105,10 +107,16 @@ public class Controller {
         }
     }
 
-    @PostMapping("/pesquisar")
+    //CONTINUAR
+
+    @PostMapping("/usuarios")
     public String pesquisarUsuarios(@RequestParam("nomeDigitado") String nomeDigitado, Model model) {
-        List<Usuario> usuariosFiltrados = usuarioRepository.findByNomeContaining(nomeDigitado);
-        model.addAttribute("usuariosFiltrado", usuariosFiltrados);
+
+        nomeDigitadoP = nomeDigitado;
+
+        List<Usuario> usuarios = usuarioRepository.findByNomeContaining(nomeDigitadoP);
+        model.addAttribute("usuarios", usuarios);
+
         return "usuarios";
     }
 
@@ -118,20 +126,23 @@ public class Controller {
      public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
      Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
-    if (sessionUsuario != null) {
+    if (sessionUsuario != null && nomeDigitadoP == null) {
         model.addAttribute("sessionUsuario", sessionUsuario);
 
         // Aqui você pode buscar a lista de usuários da mesma forma que antes
         List<Usuario> usuarios = usuarioService.findAll();
 
-        // Remove o usuário da sessão da lista de usuários, se estiver presente
-        usuarios.remove(sessionUsuario);
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId() == sessionUsuario.getId()) {
+                 usuarios.remove(sessionUsuario);
+            }
+        }
 
         model.addAttribute("usuarios", usuarios);
 
         return "usuarios";
-    } else {
-        return "redirect:/login";
+    }else {
+       return "redirect:/login";
     }
   }
 

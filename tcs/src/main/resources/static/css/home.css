@@ -163,7 +163,7 @@ body{
 /* Container Principal */
 .center-content {
   display: block;
-  width: 68%; 
+  width: 65%; 
   border-radius: 20px;
   text-align: center;
   background-color: #e0e0e0;
@@ -173,6 +173,11 @@ body{
 .center-content, .left-sidebar, .left-sidebar-perfil{
   border-radius: 20px;
   text-align: center;
+  
+}
+
+#center-usuarios{
+  margin-left: 340px;
 }
 
 footer {
@@ -223,7 +228,8 @@ footer ul {
   background-color: #ccc;
   text-align: center;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 20px;
+  border: 1px solid #888;
 }
 
 /* Padrões de Botão */
