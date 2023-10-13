@@ -142,7 +142,7 @@ public class Controller {
 
         return "usuarios";
     }else {
-       return "redirect:/login";
+       return "usuarios";
     }
   }
 

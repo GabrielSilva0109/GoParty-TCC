@@ -176,8 +176,12 @@ body{
   
 }
 
-#center-usuarios{
-  margin-left: 340px;
+.left-sidebar{
+  border: 1px dotted #324;
+}
+
+.container{
+  border: 1px dotted #324;
 }
 
 footer {
