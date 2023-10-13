@@ -97,12 +97,16 @@
                     </div>
 
                   <!--Botao de seguir usuário-->
-                  <form method="post" action="/follow">
-                    <button class="btn-perfil" type="submit">Seguir</button>
-                </form>
+
+                  <span th:if="${isNotFollower}">
+                    <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
+                    <form method="post" action="/follow">
+                        <button class="btn-perfil" id="btn-follow" type="submit">Seguir</button>
+                    </form>
+                </span>
 
                 <form method="post" action="/unfollow">
-                    <button class="btn-perfil" type="submit">Deixar de seguir</button>
+                    <button class="btn-perfil" id="btn-unfollow" type="submit">Deixar de seguir</button>
                 </form>
             </div>
         </div>
@@ -121,24 +125,6 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        // Recuperar o elemento span pelo ID
-        var spanElement = document.getElementById("dataNascimento2");
-
-        // Obter o valor não formatado da data de nascimento
-        var dataNascimentoNaoFormatada = spanElement.textContent;
-
-        // Formatar a data usando JavaScript (supondo que a data esteja no formato "yyyy-MM-dd")
-        var partesData = dataNascimentoNaoFormatada.split("-");
-        var dataFormatada = partesData[2] + "/" + partesData[1] + "/" + partesData[0];
-
-        // Exibir a data formatada em outro elemento, por exemplo, em um div com o ID "dataFormatada"
-        spanElement.style.display = "none";
-        var divElement = document.getElementById("dataNascimentoFormadata2");
-        divElement.textContent = dataFormatada;
-
-    </script>
     
 </body>
 </html>

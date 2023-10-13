@@ -137,6 +137,7 @@ public class Controller {
 
             // Verificar se o sessionUsuario está na lista de followers
             boolean isUserInFollowers = isUserInFollowersList(userLogado, usuario);
+            boolean isNotFollower = !isUserInFollowers;
 
             model.addAttribute("followersCount", followers.size());
             model.addAttribute("followingCount", following.size());
@@ -144,6 +145,8 @@ public class Controller {
             // Adicionar apenas se sessionUsuarioIsFollower for verdadeira
             if (isUserInFollowers) {
                model.addAttribute("sessionUsuarioIsFollower","Você segue "+ usuario.getUsername());
+            } else{
+                model.addAttribute("isNotFollower", isNotFollower);
             }
 
             return "perfilUsuario"; // Isso renderizará a página de perfil do usuário específico
