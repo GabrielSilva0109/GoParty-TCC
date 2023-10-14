@@ -418,7 +418,7 @@ input[type="date"]:focus {
   }
   
   .button:active {
-    scale: 1;
+    scale: 3;
   }
 
   #btn-cadastrar{
@@ -481,6 +481,68 @@ input[type="date"]:focus {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
     background-color: rgb(255, 65, 65);
   }
+
+  /* Logar google */
+
+    .google-login-button {
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  gap: 5px;
+}
+
+.apple-login-button {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #000;
+}
+
+.google-login-button {
+  border: 2px solid #747474;
+}
+
+.apple-icon,
+    .google-icon {
+  font-size: 18px;
+  margin-bottom: 1px;
+}
+
+.logar-google-container{
+  font-size: 13px;
+}
+
+#btn-logar{
+  width: 179px;
+}
+
+#btn-logar:active {
+  scale: 3;
+}
+
+#link-ou-senha {
+  display: flex;
+  align-items: center;
+  color: #333; /* Cor do texto */
+}
+
+#link-ou::before,
+#link-ou-senha::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #ccc; /* Cor da linha cinza claro */
+    margin: 0 10px; /* Espaçamento entre o texto "Ou" e as linhas */
+}
+
 
 
   
