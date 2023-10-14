@@ -45,6 +45,9 @@ public class Evento {
 
     @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
     private List<Comentario> comentarios = new ArrayList<>();
+
+    @OneToMany(mappedBy = "evento")
+    private List<Curtida> curtidas;
     
     // Construtor vazio
     public Evento() {

@@ -12,4 +12,6 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
 
     @Transactional
     void deleteByAutor(Usuario autor);
+
+    Evento findById(Long id);
 }

@@ -22,6 +22,7 @@ import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.service.EventoService;
+import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -34,6 +35,9 @@ public class EventoController {
 
     @Autowired
     private EventoService eventoService;
+
+    @Autowired
+    private UsuarioService usuarioService;
     
     //Método para Criar um Evento
     @PostMapping("/criar-evento")
@@ -161,5 +165,21 @@ public class EventoController {
         session.setAttribute("usuario", sessionUsuario);
 
         return "redirect:/perfil";  
+    }
+
+    @PostMapping("/like")
+    public String likeEvento() {
+        // Implemente a lógica para adicionar uma curtida ao evento
+        //Usuario usuario = usuarioService.findByUsername(principal.getName());
+        //eventoService.likeEvento(eventoId, usuario);
+        return "home";
+    }
+
+    @PostMapping("/unlike")
+    public String unlikeEvento() {
+        // Implemente a lógica para remover uma curtida do evento
+       // Usuario usuario = usuarioService.findByUsername(principal.getName());
+        //eventoService.unlikeEvento(eventoId, usuario);
+        return "home";
     }
 }

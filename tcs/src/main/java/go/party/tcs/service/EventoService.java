@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import go.party.tcs.model.Curtida;
 import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
+import go.party.tcs.repository.CurtidaRepository;
 import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.repository.UsuarioRepository;
 
@@ -19,6 +21,9 @@ public class EventoService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private CurtidaRepository curtidaRepository;
 
     public List<Evento> getAllEventos() {
         return eventoRepository.findAll();
@@ -53,5 +58,42 @@ public class EventoService {
 
     public void editarEvento(Integer id) {
         eventoRepository.save(null);
+    }
+
+    public void likeEvento(Long eventoId, Usuario usuario) {
+        Evento evento = eventoRepository.findById(eventoId);
+
+        if (evento != null) {
+            Curtida curtida = curtidaRepository.findByEventoAndUsuario(evento, usuario);
+
+            if (curtida == null) {
+                curtida = new Curtida();
+                curtida.setEvento(evento);
+                curtida.setUsuario(usuario);
+                curtidaRepository.save(curtida);
+            }
+        }
+    }
+
+    public void unlikeEvento(Long eventoId, Usuario usuario) {
+        Evento evento = eventoRepository.findById(eventoId);
+
+        if (evento != null) {
+            Curtida curtida = curtidaRepository.findByEventoAndUsuario(evento, usuario);
+
+            if (curtida != null) {
+                curtidaRepository.delete(curtida);
+            }
+        }
+    }
+
+    public int getLikesCount(Long eventoId) {
+        Evento evento = eventoRepository.findById(eventoId);
+
+        if (evento != null) {
+            return curtidaRepository.countByEvento(evento);
+        }
+
+        return 0;
     }
 }
