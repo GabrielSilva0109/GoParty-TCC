@@ -125,10 +125,7 @@ public class UsuarioController {
         Usuario usuario = usuarioService.findByUsername(usuarioNome);
         usuarioLogado = usuario;
         boolean valida = false;
-
-        List<Notification> notifications = notificationRepository.findByUserId(usuario.getId());
         
-
         //MOSTRAR CONTADOR DE SEGUIDORES
         List<Usuario> followers = usuarioService.getFollowers(usuario);
         List<Usuario> following = usuarioService.getFollowing(usuario);
@@ -142,7 +139,6 @@ public class UsuarioController {
             if (passwordEncoder.matches(senha, usuario.getSenha())) {
                 // Autenticação bem-sucedida
                 session.setAttribute("usuario", usuario); // Armazena o usuário na sessão
-                model.addAttribute("notifications", notifications);
                 valida  = true;
             }
         }
@@ -354,7 +350,7 @@ public class UsuarioController {
         // NOTIFICAR O USUÀRIO
 
         // Crie uma notificação
-        String message = follower.getUsername()+" seguiu você";
+        String message = "@"+follower.getUsername()+" seguiu você";
         Integer userIdToNotify =  usuarioPerfilVisitado.getId();
 
         notificationService.createNotification(message, userIdToNotify);
@@ -368,6 +364,15 @@ public class UsuarioController {
 
         usuarioService.unfollow(follower, following);
         return "redirect:/home";
+    }
+
+    @GetMapping("/notificacoes")
+    public String getUserNotifications(Model model) {
+        
+        List<Notification> notifications = notificationRepository.findByUserId(usuarioLogado.getId());
+        model.addAttribute("notifications", notifications);
+
+        return "notificacoes"; // Nome do template Thymeleaf
     }
 
 }

@@ -16,7 +16,7 @@ public class NotificationService {
     public void createNotification(String message, Integer userId) {
         Notification notification = new Notification();
         notification.setMessage(message);
-        notification.setDate(LocalDate.now()); // Usando LocalDate.now() para definir a data atual
+        notification.setDate(LocalDate.now()); 
         notification.setUserId(userId);
         notificationRepository.save(notification);
     }

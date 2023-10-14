@@ -98,7 +98,7 @@
            
         </style>
 
-    <div class="center-content" id="center-usuarios">
+    <div class="center-content" id="center-notificacoes">
         <div class="input-pesquisa">
  
              <h1>Notificações</h1>
@@ -109,9 +109,7 @@
                 <!--Lista de notificações-->
                 <ul>
                     <li th:each="notification : ${notifications}">
-                        <span th:text="${notification.message}"></span>
-                        em
-                        <span th:text="${#dates.format(notification.date, 'dd-MM-yyyy HH:mm:ss')}"></span>
+                        <span class="notifications" th:text="${notification.message}"></span>
                     </li>
                 </ul>
         
