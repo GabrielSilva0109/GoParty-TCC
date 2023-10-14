@@ -715,6 +715,22 @@ strong {
   }
 }
 
+.separator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  color: #8B8E98;
+}
+
+.separator .line {
+  display: block;
+  width: 15%;
+  height: 1px;
+  border: 0;
+  background-color: #a5a5b0;
+}
 
 
 
