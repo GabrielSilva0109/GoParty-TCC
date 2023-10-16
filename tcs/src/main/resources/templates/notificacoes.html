@@ -89,14 +89,13 @@
         <div class="input-pesquisa">
              <h1>Notificações</h1>
          </div>
-             <div class="bloco-notificacoes">
+             <div class="bloco-notificacoes"> 
                 <!--Lista de notificações-->
                 <ul>
                     <li class="lista-notificacoes" th:each="notification : ${notifications}">
                         <span class="notifications" th:text="${notification.message}"></span>
                     </li> 
                 </ul>
-        
              </div>
          </div>
 

@@ -237,6 +237,76 @@ footer ul {
 }
 
 /* Padrões de Botão */
+
+/* Botão para Abrir Notificações */
+.btn-notificacoes{
+  width: 140px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; 
+  background: linear-gradient(to left,rgb(255, 65, 65),rgb(43, 35, 77));
+  border-radius: 30px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: .2s;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+}
+
+.bell {
+  width: 13px;
+}
+
+.bell path {
+  fill: rgb(255, 80, 80)!important;
+}
+
+.btn-notificacoes:hover {
+  background: linear-gradient(to left,rgb(255, 80, 80),rgb(63, 52, 113));
+  transform: scale(1.1);
+}
+
+.btn-notificacoes:active {
+  transform: scale(1.1);
+  transition-duration: .2s;
+}
+
+.btn-notificacoes:hover .bell {
+  animation: bellRing 0.9s both;
+}
+
+/* bell ringing animation keyframes*/
+@keyframes bellRing {
+  0%,
+  100% {
+    transform-origin: top;
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  30% {
+    transform: rotateZ(-10deg);
+  }
+
+  45% {
+    transform: rotateZ(5deg);
+  }
+
+  60% {
+    transform: rotateZ(-5deg);
+  }
+
+  75% {
+    transform: rotateZ(2deg);
+  }
+}
+
+
 .btn-excluir {
   width: 50px;
   height: 50px;
@@ -542,6 +612,12 @@ footer ul {
   max-width: 300px;
   margin: 0 auto;
   text-align: center;
+}
+
+.upload-foto:hover{
+  color: #FF2525;
+  transition: 1s;
+  cursor: pointer;
 }
 
 .edit-form input[type="text"] {
@@ -1368,4 +1444,21 @@ strong {
 
 .lista-notificacoes{
   list-style: none;
+  background: #0a0b1d;  
+  border-radius: 20px;
+  padding: 5px;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.bloco-noti{
+  display: none;
+  justify-content: center;
+}
+
+.bloco-noti ul{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
 }

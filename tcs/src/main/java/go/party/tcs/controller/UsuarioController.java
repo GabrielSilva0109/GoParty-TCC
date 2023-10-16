@@ -82,8 +82,8 @@ public class UsuarioController {
        String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
        usuario.setSenha(senhaCriptografada);
 
-       //ENVIO DE EMAIL QUANDO O USUÁRIO EXCLUI CONTA
-        String assunto = "Bem-vindo ao GoParty - Sua Rede Social de Eventos e Festas!";
+       //ENVIO DE EMAIL QUANDO O USUÁRIO CRIA CONTA
+        String assunto = "Bem-vindo ao GoParty - Sua Rede Social de Eventos!";
 
         String mensagem = "Olá " + usuario.getUsername() + ",\r\n" + //
                 "\r\n" + //
@@ -155,12 +155,15 @@ public class UsuarioController {
     @GetMapping("/home")
     public String paginaHome(Model model, HttpSession session, HttpServletRequest request){
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
+        model.addAttribute("notifications", notifications);
         if(sessionUsuario != null){
             // ... outras atribuições ao modelo
             model.addAttribute("sessionUsuario", sessionUsuario);
             List<Evento> eventos = eventoService.getAllEventos(); 
             model.addAttribute("eventos", eventos); 
             return "home"; 
+            
         } else {
             return "redirect:/loginValida";
         }
@@ -255,6 +258,7 @@ public class UsuarioController {
         return "redirect:/loginValida";
     }
     
+    //Metodo para adicionar foto do Perfil
     @PostMapping("/upload")
     public String uploadFotoPerfil(@RequestParam("fotoPerfil") MultipartFile fotoPerfil, Model model, HttpSession session) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
@@ -289,6 +293,7 @@ public class UsuarioController {
         }
     }
 
+    //Metodo para adicionar foto do Perfil do Usuario da Sessão
     @GetMapping("/perfil-imagem-session/{usuarioId}")
     public ResponseEntity<byte[]> getImagemPerfilSession(@PathVariable Integer usuarioId, HttpSession session) {
         // Recupere o usuário da sessão
@@ -313,6 +318,7 @@ public class UsuarioController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     
+    //Metodo para adicionar fotos de Perfil dos Usuarios
     @GetMapping("/perfil-imagem/{usuarioId}")
     public ResponseEntity<byte[]> getImagemPerfil(@PathVariable Integer usuarioId) {
         // Recupere os detalhes do usuário com base no ID do usuário
@@ -338,7 +344,6 @@ public class UsuarioController {
     }
 
     // TESTE DE SEGUIDORES NO SISTEMA
-
     @PostMapping("/follow")
     public String followUser() {
 
@@ -348,7 +353,6 @@ public class UsuarioController {
         usuarioService.follow(follower, following);
 
         // NOTIFICAR O USUÀRIO
-
         // Crie uma notificação
         String message = "@"+follower.getUsername()+" seguiu você";
         Integer userIdToNotify =  usuarioPerfilVisitado.getId();
