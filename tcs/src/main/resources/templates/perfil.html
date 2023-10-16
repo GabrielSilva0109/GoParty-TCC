@@ -52,6 +52,7 @@
             <a class="links" th:href="@{/notificacoes}">
                 <div class="icon-container">
                     <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
+                    <div class="line"></div>
                 </div>
             </a>
         </li>
@@ -153,7 +154,6 @@
                     <!-- Parte de cima do Post aonde tem os Botões -->
                     <div class="evento-up">
                         <h2 th:text="${evento.titulo}"></h2>
-
                         <!-- Botão para Excluir o Post -->
                         <form th:action="@{'/excluir-evento/' + ${evento.id}}" method="post" onsubmit="return confirm('Tem certeza de que deseja excluir este post?')">
                             <input type="hidden" name="_method" value="DELETE">
@@ -163,8 +163,6 @@
                                                 </svg>
                             </button>
                         </form>
-
-                        
 
                         <!-- Botão para Editar o Post -->
                         <button class="edit-button open-modal" th:attr="data-target='#modal-${evento.id}'">

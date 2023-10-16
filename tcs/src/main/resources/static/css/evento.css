@@ -204,7 +204,7 @@ footer ul {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .ulContainer {
     display: none !important; /* Oculta o ulContainer */
   }

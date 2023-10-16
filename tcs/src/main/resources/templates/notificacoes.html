@@ -26,7 +26,7 @@
                 <a class="links" th:href="@{/usuarios}">
                     <div class="icon-container">
                         <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon" >
-                        
+                        <div class="line"></div>
                     </div>
                 </a>
             </li>
@@ -89,13 +89,12 @@
         <div class="input-pesquisa">
              <h1>Notificações</h1>
          </div>
- 
              <div class="bloco-notificacoes">
                 <!--Lista de notificações-->
                 <ul>
-                    <li th:each="notification : ${notifications}">
+                    <li class="lista-notificacoes" th:each="notification : ${notifications}">
                         <span class="notifications" th:text="${notification.message}"></span>
-                    </li>
+                    </li> 
                 </ul>
         
              </div>

@@ -23,39 +23,41 @@
                 </a>
             </li>
 
-         <li>
-        <a class="links" th:href="@{/usuarios}">
-            <div class="icon-container">
-                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon"  style="border-bottom: 4px solid rgb(255, 69, 69);">
-                
-            </div>
-        </a>
-        </li>
+            <li>
+                <a class="links" th:href="@{/usuarios}">
+                    <div class="icon-container">
+                        <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon"  style="border-bottom: 4px solid rgb(255, 69, 69);">
+                        
+                    </div>
+                </a>
+            </li>
 
+            <li>
+                <a class="links" th:href="@{/home}" >
+                    <div class="icon-container">
+                        <img src="/css/img/homeIcon.png" alt="Home" class="icon">
+                        <div class="line"></div>
+                    </div>
+                </a>
+            </li>
 
-        <li><a class="links" th:href="@{/home}" >
-            <div class="icon-container">
-                <img src="/css/img/homeIcon.png" alt="Home" class="icon">
-                <div class="line"></div>
-            </div>
-        </a></li>
+            <li>
+                <a class="links" th:href="@{/evento}">
+                    <div class="icon-container">
+                        <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
+                        <div class="line"></div>
+                    </div>
+                </a>
+            </li>
 
-        <li>
-            <a class="links" th:href="@{/evento}">
-                <div class="icon-container">
-                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
-                    <div class="line"></div>
-                </div>
-            </a>
-        </li>
-
-        <li>
-            <a class="links" th:href="@{/notificacoes}">
-                <div class="icon-container">
-                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
-                </div>
-            </a>
-        </li>
+            <li>
+                <a class="links" th:href="@{/notificacoes}">
+                    <div class="icon-container">
+                        <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
+                        <div class="line"></div>
+                    </div>
+                </a>
+            </li>
         </ul>
         
         <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link2">

@@ -624,6 +624,7 @@ footer ul {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 20px;
 }
 .imgEvento {
   max-width: 300px;
@@ -923,7 +924,7 @@ animation: chitchat linear both var(--btn-animation-duration);
 }
 
 /* Largura máxima de 700px */
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .ulContainer {
     display: none !important; /* Oculta o ulContainer */
   }
@@ -1363,4 +1364,8 @@ strong {
   margin: 40px;
   padding: 20px;
 
+}
+
+.lista-notificacoes{
+  list-style: none;
 }
