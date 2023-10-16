@@ -41,4 +41,11 @@ public class Notification {
         this.userId = userId;
     }
 
+    public boolean isVisto() {
+        return visto;
+    }
+
+    public void setVisto(boolean visto) {
+        this.visto = false;
+    }
 }

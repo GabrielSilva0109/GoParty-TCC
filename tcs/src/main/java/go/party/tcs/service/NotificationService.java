@@ -18,6 +18,7 @@ public class NotificationService {
         notification.setMessage(message);
         notification.setDate(LocalDate.now()); 
         notification.setUserId(userId);
+        notification.setVisto(false);
         notificationRepository.save(notification);
     }
 }

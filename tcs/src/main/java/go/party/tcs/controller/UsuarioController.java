@@ -163,7 +163,6 @@ public class UsuarioController {
             List<Evento> eventos = eventoService.getAllEventos(); 
             model.addAttribute("eventos", eventos); 
             return "home"; 
-            
         } else {
             return "redirect:/loginValida";
         }

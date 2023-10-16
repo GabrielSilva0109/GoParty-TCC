@@ -86,7 +86,7 @@
                 Notificações
             </button>
             
-            <div class="bloco-noti">
+            <div class="bloco-noti"  id="notificationBlock">
                 <ul>
                     <li class="lista-notificacoes" th:each="notification : ${notifications}">
                         <span class="notifications" th:text="${notification.message}"></span>
@@ -176,6 +176,7 @@
         // Adicione um evento de clique ao botão de notificações
         document.getElementById('toggleNotifications').addEventListener('click', function () {
             var blocoNoti = document.querySelector('.bloco-noti');
+
             if (blocoNoti.style.display === 'none' || blocoNoti.style.display === '') {
                 blocoNoti.style.display = 'flex';
             } else {
@@ -183,6 +184,7 @@
             }
         });
     </script>
+
     
     <footer>
         <ul>
