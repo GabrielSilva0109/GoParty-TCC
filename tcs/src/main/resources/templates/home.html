@@ -7,6 +7,8 @@
     <link rel="stylesheet"  href="/css/home.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/home.js"></script>
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body>
@@ -141,7 +143,8 @@
                         <button type="submit">Curtir</button>
                     </form>
 
-                    <form action="/unlike" method="post">
+
+                     <form th:action="@{'/descurtiEvento/' + ${evento.id}}" method="post">
                         <button type="submit">Descurtir</button> 
                     </form>
                 
@@ -195,7 +198,6 @@
         });
     </script>
 
-    
     <footer>
         <ul>
             <li><a class="links-foot" th:href="@{/perfil}">Perfil</a></li>

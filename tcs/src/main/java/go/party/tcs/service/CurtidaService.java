@@ -21,7 +21,12 @@ public class CurtidaService {
     }
 
     public void descurtirEvento(Usuario usuario, Evento evento) {
-        curtidaRepository.deleteByUsuarioAndEvento(usuario, evento);
+        // Implemente a lógica para descurtir o evento
+        // Por exemplo, você pode remover a curtida do evento associada ao usuário
+        Curtida curtida = curtidaRepository.findByUsuarioAndEvento(usuario, evento);
+        if (curtida != null) {
+            curtidaRepository.delete(curtida);
+        }
     }
 
     public long contarCurtidasDoEvento(Evento evento) {

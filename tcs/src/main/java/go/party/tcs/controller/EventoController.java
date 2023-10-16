@@ -188,4 +188,15 @@ public class EventoController {
         return "redirect:/home";
     }
 
+    @PostMapping("/descurtiEvento/{eventoId}")
+    public String descurtirEvento(@PathVariable Integer eventoId, HttpSession session) {
+        Evento evento = eventoService.encontrarPorId(eventoId);
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        curtidaService.descurtirEvento(sessionUsuario, evento);
+
+        return "redirect:/home";
+    }
+
+
+
 }
