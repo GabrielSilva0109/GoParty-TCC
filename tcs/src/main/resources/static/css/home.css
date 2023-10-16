@@ -1363,3 +1363,9 @@ strong {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
+
+.bloco-notificacoes{
+  margin: 40px;
+  padding: 20px;
+
+}
