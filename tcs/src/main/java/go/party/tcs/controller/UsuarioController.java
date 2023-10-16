@@ -123,15 +123,6 @@ public class UsuarioController {
     public String login(@RequestParam("usuarioNome") String usuarioNome, @RequestParam("senha") String senha, Model model, HttpSession session) {
         // Consulte o banco de dados para verificar se o usuário existe
         Usuario usuario = usuarioService.findByUsername(usuarioNome);
-        usuarioLogado = usuario;
-        boolean valida = false;
-        
-        //MOSTRAR CONTADOR DE SEGUIDORES
-        List<Usuario> followers = usuarioService.getFollowers(usuario);
-        List<Usuario> following = usuarioService.getFollowing(usuario);
-
-        usuario.setSeguidores(followers.size());;
-        usuario.setSeguindo(following.size());
 
         if (usuario != null) {
             // Verificar se a senha fornecida corresponde à senha criptografada no banco de dados
@@ -139,17 +130,23 @@ public class UsuarioController {
             if (passwordEncoder.matches(senha, usuario.getSenha())) {
                 // Autenticação bem-sucedida
                 session.setAttribute("usuario", usuario); // Armazena o usuário na sessão
-                valida  = true;
+
+                //MOSTRAR CONTADOR DE SEGUIDORES
+                List<Usuario> followers = usuarioService.getFollowers(usuario);
+                List<Usuario> following = usuarioService.getFollowing(usuario);
+
+                usuario.setSeguidores(followers.size());
+                usuario.setSeguindo(following.size());
+
+                return "redirect:/home";
             }
         }
-        if (valida) {
-            return "redirect:/home";
-        } else {
-            // Autenticação falhou
-            model.addAttribute("error", "Usuário ou senha incorretos!");
-            return "login";
-        }
+
+        // Autenticação falhou
+        model.addAttribute("error", "Usuário ou senha incorretos!");
+        return "login";
     }
+
 
     //Método para atribuir uma sessão ao usuario que fizer login
     @GetMapping("/home")
