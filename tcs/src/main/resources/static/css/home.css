@@ -1097,7 +1097,8 @@ body.is-blurred {
 /* Estilize o bloco de comentário */
 .bloco-comentario {
   display: flex;
-  margin-top: -20px; 
+  margin-top: -20px;
+  margin-bottom: -10px;
 }
 
 .chatBtn {

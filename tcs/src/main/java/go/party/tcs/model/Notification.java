@@ -14,6 +14,8 @@ public class Notification {
     private String message;
     private LocalDate date;
     private Integer userId; // O ID do usuário que receberá a notificação
+    private Boolean visto;
+    
     public Long getId() {
         return id;
     }
