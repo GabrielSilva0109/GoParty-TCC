@@ -1,9 +1,11 @@
 package go.party.tcs.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -13,11 +15,10 @@ public class Curtida {
     private Long id;
     
     @ManyToOne
-    private Evento evento;
-    
+    private Usuario usuario;   // Quem está seguindo
     @ManyToOne
-    private Usuario usuario;
-
+    private Evento evento;  // A quem está sendo seguido
+    
     public Long getId() {
         return id;
     }

@@ -8,6 +8,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Follower {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,6 +16,7 @@ public class Follower {
     private Usuario follower;   // Quem está seguindo
     @ManyToOne
     private Usuario following;  // A quem está sendo seguido
+
     public Long getId() {
         return id;
     }

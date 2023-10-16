@@ -135,6 +135,16 @@
                                 </form>
                             </div>
                     </div>
+
+                    
+                    <form th:action="@{'/curtirEvento/' + ${evento.id}}" method="post">
+                        <button type="submit">Curtir</button>
+                    </form>
+
+                    <form action="/unlike" method="post">
+                        <button type="submit">Descurtir</button> 
+                    </form>
+                
                     
                     <!-- Botão abrir comentários -->
                     <button class="chatBtn">

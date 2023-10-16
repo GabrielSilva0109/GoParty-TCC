@@ -60,40 +60,4 @@ public class EventoService {
         eventoRepository.save(null);
     }
 
-    public void likeEvento(Long eventoId, Usuario usuario) {
-        Evento evento = eventoRepository.findById(eventoId);
-
-        if (evento != null) {
-            Curtida curtida = curtidaRepository.findByEventoAndUsuario(evento, usuario);
-
-            if (curtida == null) {
-                curtida = new Curtida();
-                curtida.setEvento(evento);
-                curtida.setUsuario(usuario);
-                curtidaRepository.save(curtida);
-            }
-        }
-    }
-
-    public void unlikeEvento(Long eventoId, Usuario usuario) {
-        Evento evento = eventoRepository.findById(eventoId);
-
-        if (evento != null) {
-            Curtida curtida = curtidaRepository.findByEventoAndUsuario(evento, usuario);
-
-            if (curtida != null) {
-                curtidaRepository.delete(curtida);
-            }
-        }
-    }
-
-    public int getLikesCount(Long eventoId) {
-        Evento evento = eventoRepository.findById(eventoId);
-
-        if (evento != null) {
-            return curtidaRepository.countByEvento(evento);
-        }
-
-        return 0;
-    }
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.EventoRepository;
+import go.party.tcs.service.CurtidaService;
 import go.party.tcs.service.EventoService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,6 +40,11 @@ public class EventoController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private CurtidaService curtidaService;
+
+    private Usuario usuarioLogado = new Usuario();
     
     //Método para Criar um Evento
     @PostMapping("/criar-evento")
@@ -49,6 +56,7 @@ public class EventoController {
         // Recupere o usuário da sessão
         // chave "usuario"
         Usuario usuario = (Usuario) session.getAttribute("usuario");
+        usuarioLogado = usuario;
 
         // Crie um novo evento
         Evento evento = new Evento(titulo, descricao, usuario);
@@ -167,19 +175,17 @@ public class EventoController {
         return "redirect:/perfil";  
     }
 
-    @PostMapping("/like")
-    public String likeEvento() {
-        // Implemente a lógica para adicionar uma curtida ao evento
-        //Usuario usuario = usuarioService.findByUsername(principal.getName());
-        //eventoService.likeEvento(eventoId, usuario);
-        return "home";
+     @PostMapping("/curtirEvento/{eventoId}")
+    public String curtirEvento(@PathVariable Integer eventoId, HttpSession session) {
+        Evento evento = eventoService.encontrarPorId(eventoId);
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        curtidaService.curtirEvento(sessionUsuario, evento);
+
+        // NOTIFICAR O USUÀRIO
+        String message = "@"+sessionUsuario.getUsername()+" curtiu a sua publicação: "+ evento.getTitulo();
+        Integer userIdToNotify =  evento.getAutor().getId();
+
+        return "redirect:/home";
     }
 
-    @PostMapping("/unlike")
-    public String unlikeEvento() {
-        // Implemente a lógica para remover uma curtida do evento
-       // Usuario usuario = usuarioService.findByUsername(principal.getName());
-        //eventoService.unlikeEvento(eventoId, usuario);
-        return "home";
-    }
 }

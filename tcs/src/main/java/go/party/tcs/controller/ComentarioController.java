@@ -22,6 +22,10 @@ public class ComentarioController {
     @Autowired
     private ComentarioService comentarioService;
 
+    private Usuario usuarioLogado = new Usuario();
+
+    private Integer eventoId;
+
     //Metodo para Criar um Comentario
     @PostMapping("/evento/{eventoId}/comentar")
     public String criarComentario(@PathVariable Integer eventoId,
@@ -31,6 +35,8 @@ public class ComentarioController {
     ) {
         // Recupere o usuário da sessão
         Usuario usuario = (Usuario) session.getAttribute("usuario");
+        usuarioLogado = usuario;
+        eventoId = eventoId;
         
         // Recupere o evento pelo ID
         Evento evento = eventoService.encontrarPorId(eventoId); // Substitua eventoService pelo serviço apropriado
@@ -46,6 +52,7 @@ public class ComentarioController {
         return "redirect:/home";
 
     }
+
 
 
 }

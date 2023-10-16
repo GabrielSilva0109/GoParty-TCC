@@ -12,7 +12,7 @@ public interface CurtidaRepository extends JpaRepository<Curtida, Long> {
     // Método para buscar uma curtida por evento e usuário
     Curtida findByEventoAndUsuario(Evento evento, Usuario usuario);
 
-    // Método para contar o número de curtidas em um evento
-    @Query("SELECT COUNT(c) FROM Curtida c WHERE c.evento = :evento")
-    int countByEvento(@Param("evento") Evento evento);
+    long countByEvento(Evento evento);
+
+    void deleteByUsuarioAndEvento(Usuario usuario, Evento evento);
 }
