@@ -48,14 +48,6 @@
                 </div>
             </a>
         </li>
-
-        <li>
-            <a class="links" th:href="@{/notificacoes}">
-                <div class="icon-container">
-                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
-                </div>
-            </a>
-        </li>
         </ul>
         
         <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link2">
@@ -90,15 +82,6 @@
                 <div class="bloco-evento-left">
                     <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
                     <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
-                    
-                    <!-- Bloco com input para fazer um comentário -->
-                    <div class="bloco-evento-comenta">
-                            <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
-                                <input name="texto" placeholder="Digite seu comentário" required>
-                                <button type="submit">Comentar</button>
-                            </form>
-                    </div>
-                 
                 </div>
 
                 <!-- Bloco da Direita Evento -->
@@ -119,7 +102,15 @@
                                 </div>
                             </li>
                         </ul>
+                            <!-- Bloco com input para fazer um comentário -->
+                            <div class="bloco-evento-comenta">
+                                <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
+                                    <input name="texto" placeholder="Digite seu comentário" required>
+                                    <button type="submit">Comentar</button>
+                                </form>
+                            </div>
                     </div>
+                    
                     <!-- Botão abrir comentários -->
                     <button class="chatBtn">
                         <svg height="1.6em" fill="white" xml:space="preserve" viewBox="0 0 1000 1000" y="0px" x="0px" version="1.1">
@@ -154,9 +145,6 @@
             });
         });
     </script>
-
-    
-
 
     <footer>
         <ul>
