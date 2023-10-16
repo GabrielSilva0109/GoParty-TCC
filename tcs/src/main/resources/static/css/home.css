@@ -1113,12 +1113,7 @@ body.is-blurred {
     color: #888; /* Cor do texto de placeholder */
 }
 
-.seguidores-seguindo-container{
-  background-color: #ddd;
-  border-radius: 20px;
-  border: 2px solid #888;
-  box-shadow: #25142d;
-}
+
 
 .seguidores-seguindo-container a{
   font-size: 18px;
