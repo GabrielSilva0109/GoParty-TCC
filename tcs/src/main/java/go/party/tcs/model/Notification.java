@@ -14,7 +14,7 @@ public class Notification {
     private String message;
     private LocalDate date;
     private Integer userId; // O ID do usuário que receberá a notificação
-    private Boolean visto;
+    private boolean visualizado;
     
     public Long getId() {
         return id;
@@ -40,12 +40,12 @@ public class Notification {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
-    public boolean isVisto() {
-        return visto;
+    public boolean isVisualizado() {
+        return visualizado;
+    }
+    public void setVisualizado(boolean visualizado) {
+        this.visualizado = visualizado;
     }
 
-    public void setVisto(boolean visto) {
-        this.visto = false;
-    }
+
 }

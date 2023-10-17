@@ -345,9 +345,9 @@ public class UsuarioController {
 
         Usuario follower = usuarioLogado;
         Usuario following = usuarioPerfilVisitado;
-
+ 
         usuarioService.follow(follower, following);
-
+    
         // NOTIFICAR O USUÀRIO
         // Crie uma notificação
         String message = "@"+follower.getUsername()+" seguiu você";
@@ -370,6 +370,10 @@ public class UsuarioController {
     public String getUserNotifications(Model model) {
         
         List<Notification> notifications = notificationRepository.findByUserId(usuarioLogado.getId());
+
+        // Marcando como vistas as notificacoes 
+        notificationService.marcarNotificacoesComoVisualizadas(usuarioLogado.getId());
+
         model.addAttribute("notifications", notifications);
 
         return "notificacoes"; // Nome do template Thymeleaf

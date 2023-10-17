@@ -1,6 +1,7 @@
 package go.party.tcs.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,15 @@ public class NotificationService {
         notification.setMessage(message);
         notification.setDate(LocalDate.now()); 
         notification.setUserId(userId);
-        notification.setVisto(false);
+        notification.setVisualizado(false);
         notificationRepository.save(notification);
+    }
+
+    public void marcarNotificacoesComoVisualizadas(Integer userId) {
+        List<Notification> notificacoes = notificationRepository.findByUserId(userId);
+        for (Notification notification : notificacoes) {
+            notification.setVisualizado(true);
+        }
+        notificationRepository.saveAll(notificacoes);
     }
 }

@@ -154,7 +154,5 @@ public class Usuario {
     public void setFotoPerfil(byte[] fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
-
-    
-    
+  
 }
