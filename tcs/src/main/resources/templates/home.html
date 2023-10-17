@@ -107,10 +107,20 @@
                     <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
                     <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
                     
+                    <div class="evento-curtidas">
+                        <!--Curtir Evento-->
+                        <form th:action="@{'/curtirEvento/' + ${evento.id}}" method="post">
+                            <button class="curtir" type="submit">Curtir</button>
+                        </form>
+
+                        <!--Descurtir Evento-->
+                        <form th:action="@{'/descurtiEvento/' + ${evento.id}}" method="post">
+                            <button class="descurtir" type="submit">Descurtir</button> 
+                        </form>
+                    </div>
+                    
                 </div>
                 
-
-
                 <!-- Bloco da Direita Evento -->
                 <div class="bloco-evento-right">
                     <h2 th:text="${evento.titulo}"></h2>
@@ -139,14 +149,6 @@
                     </div>
 
                     
-                    <form th:action="@{'/curtirEvento/' + ${evento.id}}" method="post">
-                        <button type="submit">Curtir</button>
-                    </form>
-
-
-                     <form th:action="@{'/descurtiEvento/' + ${evento.id}}" method="post">
-                        <button type="submit">Descurtir</button> 
-                    </form>
                 
                     
                     <!-- Botão abrir comentários -->
