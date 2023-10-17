@@ -24,6 +24,7 @@ import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.service.CurtidaService;
 import go.party.tcs.service.EventoService;
+import go.party.tcs.service.NotificationService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -43,6 +44,9 @@ public class EventoController {
 
     @Autowired
     private CurtidaService curtidaService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     private Usuario usuarioLogado = new Usuario();
     
@@ -181,9 +185,9 @@ public class EventoController {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         curtidaService.curtirEvento(sessionUsuario, evento);
 
-        // NOTIFICAR O USUÀRIO
         String message = "@"+sessionUsuario.getUsername()+" curtiu a sua publicação: "+ evento.getTitulo();
         Integer userIdToNotify =  evento.getAutor().getId();
+        notificationService.createNotification(message, userIdToNotify);
 
         return "redirect:/home";
     }
@@ -196,7 +200,5 @@ public class EventoController {
 
         return "redirect:/home";
     }
-
-
 
 }
