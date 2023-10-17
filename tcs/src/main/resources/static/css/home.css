@@ -5,8 +5,9 @@
 body{
   margin: 0;
   padding: 0;
-  background: #0a0b1d;
   font-family: 'Poppins';
+  background-image: url('/css/img/fundosTeste3.jpg');
+
 }
 
 .header {
@@ -27,11 +28,11 @@ body{
 }
 
 .ulContainer {          
-  background: #25142d;
+  background: #25142d; /* Cor de fundo com transparência */
   backdrop-filter: blur(20px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
   border-radius: 30px; /* Borda arredondada (ajuste conforme necessário) */
   list-style: none; /* Remova os marcadores de lista */
-  box-shadow: #25142d;
+  border: 1px solid rgb(138, 9, 9);
 }
 
 /* Estilo padrão para o ícone e a linha */ 

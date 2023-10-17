@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+body{
+    background-image: url('/css/img/fundosTeste3.jpg');
+}
+
 input:required{
     color: #000000;
 }
@@ -40,10 +44,6 @@ input{
     cursor: pointer;
   }
 
-body {
-    background-color: #0a0b1d;
-    margin: 0; 
-}
 
 h1 {
     margin: 0; 
@@ -69,7 +69,6 @@ p{
 
 .container {
     display: contents;
-    background: #0a0b1d;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     position: relative;
@@ -81,7 +80,6 @@ p{
 
 
 .form-container form {
-    background: #0a0b1d;
     display: flex;
     flex-direction: column;
     padding:  0 50px;
@@ -731,6 +729,9 @@ strong {
   border: 0;
   background-color: #a5a5b0;
 }
+
+/* Teste */
+
 
 
 
