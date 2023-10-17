@@ -1637,13 +1637,19 @@ strong {
 
 .evento-curtidas{
   display: flex;
-  gap: 20px;
+  gap: 5px;
   margin: 10px;
 }
 
 /* inspired form gumroad website */
+.curtir, .descurtir{
+  width: 85px;
+  
+}
 .curtir{
-  background: #000;
+  --bg: rgb(255, 65, 65);
+  --hover-bg: rgb(255, 38, 38);
+  --hover-text: #000;
   color: #fff;
   font-weight: bold;
   border: 1px solid var(--bg);
@@ -1654,7 +1660,6 @@ strong {
 }
 
 .curtir:hover {
-  color: var(--hover-text);
   transform: translate(-0.25rem,-0.25rem);
   background: var(--hover-bg);
   box-shadow: 0.25rem 0.25rem var(--bg);
@@ -1667,24 +1672,22 @@ strong {
 
 /* inspired from the gumroad website */
 .descurtir {
-  --bg: rgb(255, 65, 65);
+  --bg: rgb(83, 69, 148);
   --hover-bg: rgb(43, 35, 77);
   --hover-text: #000;
   color: #fff;
   font-weight: bold;
   border: 1px solid var(--bg);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.4em 1em;
   background: var(--bg);
   transition: 0.2s;
 }
 
-
 .descurtir:hover {
-  color: var(--hover-text);
-  transform: translate(0.25rem, -0.25rem); /* Move para cima e para a direita */
+  transform: translate(0.25rem, -0.25rem);
   background: var(--hover-bg);
-  box-shadow: -0.25rem 0.25rem var(--bg); /* Adicione sombra na direção oposta */
+  box-shadow: -0.25rem 0.25rem var(--bg);
 }
 
 .descurtir:active {
