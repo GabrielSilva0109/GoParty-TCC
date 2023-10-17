@@ -13,7 +13,8 @@
 }
 
 body{
-    background-image: url('/css/img/fundosTeste3.jpg');
+   /* background-image: url('/css/img/fundosTeste3.jpg');*/
+    background-color: #25142d;
 }
 
 input:required{
