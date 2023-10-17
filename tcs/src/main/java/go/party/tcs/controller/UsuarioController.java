@@ -138,6 +138,11 @@ public class UsuarioController {
                 usuario.setSeguidores(followers.size());
                 usuario.setSeguindo(following.size());
 
+                // CONTADOR DE NOTIFICACOES NAO LIDAS
+
+                long notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(usuario.getId());
+                model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+
                 return "redirect:/home";
             }
         }
@@ -341,11 +346,13 @@ public class UsuarioController {
 
     // TESTE DE SEGUIDORES NO SISTEMA
     @PostMapping("/follow")
-    public String followUser() {
+    public String followUser(HttpSession session) {
 
-        Usuario follower = usuarioLogado;
-        Usuario following = usuarioPerfilVisitado;
- 
+         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+        Usuario follower = usuarioService.getUserById(sessionUsuario.getId());
+        Usuario following = usuarioService.getUserById(usuarioPerfilVisitado.getId());
+
         usuarioService.follow(follower, following);
     
         // NOTIFICAR O USUÀRIO
@@ -359,8 +366,8 @@ public class UsuarioController {
 
     @PostMapping("/unfollow")
     public String unfollowUser() {
-       Usuario follower = usuarioLogado;
-        Usuario following = usuarioPerfilVisitado;
+        Usuario follower = usuarioService.encontrarId(usuarioLogado.getId());
+        Usuario following = usuarioService.encontrarId(usuarioPerfilVisitado.getId());
 
         usuarioService.unfollow(follower, following);
         return "redirect:/home";

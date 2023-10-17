@@ -53,9 +53,12 @@
         <li>
             <a class="links" th:href="@{/notificacoes}">
                 <div class="icon-container">
+                    <!--Teste de contador de notific não vistas-->
+                    <span class="badge" th:text="${notificacoesNaoVisualizadas}"></span>
                     <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
                     <div class="line"></div>
                 </div>
+                
             </a>
         </li>
         </ul>

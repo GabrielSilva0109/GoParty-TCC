@@ -9,6 +9,9 @@ import go.party.tcs.model.Notification;
 
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
+    
     List<Notification> findByUserId(Integer userId);
+
+    long countByUserIdAndVisualizadoFalse(Integer userId);
 
 }
