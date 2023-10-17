@@ -117,7 +117,12 @@
                         <form th:action="@{'/descurtiEvento/' + ${evento.id}}" method="post">
                             <button class="descurtir" type="submit">Descurtir</button> 
                         </form>
+
+                        <form th:action="@{'/curtidas/' + ${evento.id}}" method="GET">
+                            <span>Curtidas </span>
+                        </form>
                     </div>
+                    
                     
                 </div>
                 
