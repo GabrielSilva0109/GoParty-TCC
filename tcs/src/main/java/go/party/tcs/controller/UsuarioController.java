@@ -170,6 +170,13 @@ public class UsuarioController {
         }
     }
     
+    @GetMapping("/notificacao")
+    public String notificacoes(Model model, HttpSession session, HttpServletRequest request) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
+        model.addAttribute("notifications", notifications);
+        return "notificacao";
+    }
     //Metodo para Editar a Conta do Usuario
     @PutMapping("/editar")
     public String editarUsuario(
