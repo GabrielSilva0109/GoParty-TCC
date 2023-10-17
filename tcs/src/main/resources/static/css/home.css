@@ -177,10 +177,6 @@ body{
   
 }
 
-.left-sidebar{
-  border: 1px dotted #324;
-}
-
 .container{
   border: 1px dotted #324;
 }
@@ -234,7 +230,6 @@ footer ul {
   text-align: center;
   padding: 10px;
   border-radius: 20px;
-  border: 1px solid #888;
 }
 
 /* Padrões de Botão */
