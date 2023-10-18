@@ -143,16 +143,6 @@ public class UsuarioController {
 
                 // CONTADOR DE NOTIFICACOES NAO LIDAS
 
-                int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(usuario.getId());
-                
-
-                boolean existeNotific = false;
-
-                if(notificacoesNaoVisualizadas > 0){
-                      existeNotific = true;
-                      model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
-                }
-
                 usuario.setSeguidores(followers.size());
                 usuario.setSeguindo(following.size());
 
@@ -174,15 +164,17 @@ public class UsuarioController {
         List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
         model.addAttribute("notifications", notifications);
         if(sessionUsuario != null){
-            // ... outras atribuições ao modelo
-
+            
+              //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
               int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
               model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
 
-
             model.addAttribute("sessionUsuario", sessionUsuario);
+
             List<Evento> eventos = eventoService.getAllEventos(); 
             model.addAttribute("eventos", eventos); 
+
+
             return "home"; 
         } else {
             return "redirect:/loginValida";

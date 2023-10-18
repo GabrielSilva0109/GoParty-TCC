@@ -1663,3 +1663,139 @@ strong {
   top: -7px; 
   right: -7px; 
 }
+
+/* Botao de curtir (TESTE) */
+
+.Btn-curtir {
+  width: 140px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  border-radius: 17px;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.089);
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.leftContainer {
+  width: 60%;
+  height: 100%;
+  background-color: #25142d;
+  display: flex;
+  align-items: center;
+  border-radius: 17px;
+  justify-content: center;
+  gap: 8px;
+}
+
+.leftContainer .like {
+  color: white;
+  font-weight: 600;
+}
+
+.likeCount {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(238, 0, 0);
+  font-weight: 600;
+  position: relative;
+  background-color: white;
+}
+
+.likeCount::before {
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  content: "";
+  background-color: rgb(255, 255, 255);
+  transform: rotate(45deg);
+  left: -4px;
+}
+
+.Btn-curtir:hover .leftContainer {
+  background-color: rgb(219, 0, 0);
+}
+
+.Btn-curtir:active .leftContainer {
+  background-color: rgb(201, 0, 0);
+}
+
+.Btn-curtir:active .leftContainer svg {
+  transform: scale(1.15);
+  transform-origin: top;
+}
+
+/* Botao de descurtir (TESTE) */
+
+.Btn-descurtir {
+  width: 140px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  border-radius: 17px;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.089);
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.leftContainer {
+  width: 60%;
+  height: 100%;
+  background-color: #25142d;
+  display: flex;
+  align-items: center;
+  border-radius: 17px;
+  justify-content: center;
+  gap: 8px;
+}
+
+.leftContainer .like {
+  color: white;
+  font-weight: 600;
+}
+
+.likeCount {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(238, 0, 0);
+  font-weight: 600;
+  position: relative;
+  background-color: white;
+}
+
+.likeCount::before {
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  content: "";
+  background-color: rgb(255, 255, 255);
+  transform: rotate(45deg);
+  left: -4px;
+}
+
+.Btn-descurtir:hover .leftContainer {
+  background-color: rgb(219, 0, 0);
+}
+
+.Btn-descurtir:active .leftContainer {
+  background-color: rgb(201, 0, 0);
+}
+
+.Btn-descurtir:active .leftContainer svg {
+  transform: scale(1.15);
+  transform-origin: top;
+}
+
+

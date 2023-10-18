@@ -206,10 +206,14 @@ public class EventoController {
     }
 
     @GetMapping("/curtidas/{eventoId}")
-    public int obterQuantidadeCurtidas(@PathVariable Integer eventoId) {
+    public int obterQuantidadeCurtidas(@PathVariable Integer eventoId, Model model, HttpSession session) {
+
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         // Aqui você deve implementar a lógica para obter a quantidade de curtidas do evento com o ID fornecido
         // Substitua o código abaixo pela lógica real de obtenção de curtidas
         int quantidadeCurtidas = eventoService.obterQuantidadeCurtidas(eventoId);
+        model.addAttribute("quantidadeCurtidas", quantidadeCurtidas);
+        
         return quantidadeCurtidas;
     }
 }
