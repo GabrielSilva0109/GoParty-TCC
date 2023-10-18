@@ -81,6 +81,10 @@ public class EventoController {
     public String mostrarPerfil(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
+        //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
+        int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
+        model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+
         if (sessionUsuario != null) {
             // Obtenha o ID do usuário da sessão
             Integer userId = sessionUsuario.getId();

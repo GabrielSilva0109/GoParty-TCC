@@ -14,6 +14,7 @@ import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
 import go.party.tcs.service.EventoService;
+import go.party.tcs.service.NotificationService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -29,6 +30,9 @@ public class Controller {
 
     @Autowired
     private EventoService eventoService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     private String nomeDigitadoP;
 
@@ -66,6 +70,9 @@ public class Controller {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         if (sessionUsuario != null) {
             // ... outras atribuições ao modelo
+            //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
+            int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
+            model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
             model.addAttribute("sessionUsuario", sessionUsuario);
             // ...
             return "evento";
@@ -75,9 +82,15 @@ public class Controller {
     }
 
     @PostMapping("/usuarios")
-    public String pesquisarUsuarios(@RequestParam("nomeDigitado") String nomeDigitado, Model model) {
+    public String pesquisarUsuarios(@RequestParam("nomeDigitado") String nomeDigitado, Model model, HttpSession session) {
 
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         nomeDigitadoP = nomeDigitado;
+
+        //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
+            int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
+            model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+            model.addAttribute("sessionUsuario", sessionUsuario);
 
         List<Usuario> usuarios = usuarioRepository.findByNomeContaining(nomeDigitadoP);
         model.addAttribute("usuarios", usuarios);
@@ -89,6 +102,10 @@ public class Controller {
     @GetMapping("/usuarios")
     public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+            //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
+            int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
+            model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
 
         userLogado = sessionUsuario;
 
@@ -113,10 +130,16 @@ public class Controller {
     }
 
     @GetMapping("/perfilUsuario/{id}")
-    public String exibirPerfil(@PathVariable Integer id, Model model) {
-
+    public String exibirPerfil(@PathVariable Integer id, HttpSession session, Model model) {
+        
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         // Buscar o usuário com o ID especificado no banco de dados
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+
+            //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
+            int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
+            model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+
 
         if (usuarioOptional.isPresent()) {
             Usuario usuario = usuarioOptional.get();

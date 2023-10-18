@@ -53,8 +53,8 @@
         <li>
             <a class="links" th:href="@{/notificacoes}">
                 <div class="icon-container">
-                    <div class="contador-notificacao">
-                        <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
+                    <div th:if="${notificacoesNaoVisualizadas > 0}" class="contador-notificacao">
+                        <div class="circulo">
                             <span th:text="${notificacoesNaoVisualizadas}"></span>
                         </div>
                     </div>

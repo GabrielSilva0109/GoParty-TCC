@@ -141,13 +141,20 @@ public class UsuarioController {
                 List<Usuario> followers = usuarioService.getFollowers(usuario);
                 List<Usuario> following = usuarioService.getFollowing(usuario);
 
-                usuario.setSeguidores(followers.size());
-                usuario.setSeguindo(following.size());
-
                 // CONTADOR DE NOTIFICACOES NAO LIDAS
 
                 int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(usuario.getId());
-                model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+                
+
+                boolean existeNotific = false;
+
+                if(notificacoesNaoVisualizadas > 0){
+                      existeNotific = true;
+                      model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+                }
+
+                usuario.setSeguidores(followers.size());
+                usuario.setSeguindo(following.size());
 
                 return "redirect:/home";
             }
@@ -162,10 +169,17 @@ public class UsuarioController {
     @GetMapping("/home")
     public String paginaHome(Model model, HttpSession session, HttpServletRequest request){
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+
         List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
         model.addAttribute("notifications", notifications);
         if(sessionUsuario != null){
             // ... outras atribuições ao modelo
+
+              int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
+              model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+
+
             model.addAttribute("sessionUsuario", sessionUsuario);
             List<Evento> eventos = eventoService.getAllEventos(); 
             model.addAttribute("eventos", eventos); 
