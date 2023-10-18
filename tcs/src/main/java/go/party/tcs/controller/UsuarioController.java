@@ -175,7 +175,15 @@ public class UsuarioController {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
         model.addAttribute("notifications", notifications);
-        return "notificacao";
+         if(sessionUsuario != null){
+            // ... outras atribuições ao modelo
+            model.addAttribute("sessionUsuario", sessionUsuario);
+            List<Evento> eventos = eventoService.getAllEventos(); 
+            model.addAttribute("eventos", eventos); 
+            return "home"; 
+        } else {
+            return "redirect:/loginValida";
+        }
     }
     //Metodo para Editar a Conta do Usuario
     @PutMapping("/editar")

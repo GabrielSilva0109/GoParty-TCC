@@ -179,7 +179,7 @@ public class EventoController {
         return "redirect:/perfil";  
     }
 
-     @PostMapping("/curtirEvento/{eventoId}")
+    @PostMapping("/curtirEvento/{eventoId}")
     public String curtirEvento(@PathVariable Integer eventoId, HttpSession session) {
         Evento evento = eventoService.encontrarPorId(eventoId);
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
@@ -201,5 +201,11 @@ public class EventoController {
         return "redirect:/home";
     }
 
-    
+    @GetMapping("/curtidas/{eventoId}")
+    public int obterQuantidadeCurtidas(@PathVariable Integer eventoId) {
+        // Aqui você deve implementar a lógica para obter a quantidade de curtidas do evento com o ID fornecido
+        // Substitua o código abaixo pela lógica real de obtenção de curtidas
+        int quantidadeCurtidas = eventoService.obterQuantidadeCurtidas(eventoId);
+        return quantidadeCurtidas;
+    }
 }

@@ -60,4 +60,8 @@ public class EventoService {
         eventoRepository.save(null);
     }
 
+    public int obterQuantidadeCurtidas(Integer eventoId) {
+        return 0;
+    }
+
 }

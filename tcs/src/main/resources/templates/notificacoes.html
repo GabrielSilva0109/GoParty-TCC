@@ -82,23 +82,27 @@
            <img src="/css/img/wedding-card.png" alt="">
         </div>
         
-        <div class="center-content" id="center-notificacoes-usuario">
-            <div class="input-pesquisa">
+
     
-         <h1>Notificações</h1>
+
+    <div class="center-content" id="center-notificacoes">
+        <div class="input-pesquisa">
+             <h1>Notificações</h1>
+            </div>
+                <div class="bloco-notificacoes"> 
                     <!--Lista de notificações-->
                     <ul>
-                        <li th:each="notification : ${notifications}">
+                        <li class="lista-notificacoes" th:each="notification : ${notifications}">
                             <span class="notifications" th:text="${notification.message}"></span>
-                        </li>
+                        </li> 
                     </ul>
-             </div>
-         </div>
+                </div>
+            </div>
+
+         
+        
     </div>
 
-    <li th:each="notification : ${notifications}">
-        <span class="notifications" th:text="${notification.message}"></span>
-    </li>
 
     <footer>
         <ul>
