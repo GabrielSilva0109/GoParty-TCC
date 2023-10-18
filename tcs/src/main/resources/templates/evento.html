@@ -55,6 +55,9 @@
             <li>
                 <a class="links" th:href="@{/notificacoes}">
                     <div class="icon-container">
+                        <div class="contador-notificacao">
+                            <div class="circulo"><span th:text="${notificacoesNaoVisualizadas}"></span></div> 
+                        </div>
                         <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
                         <div class="line"></div>
                     </div>

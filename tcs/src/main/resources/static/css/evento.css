@@ -527,3 +527,20 @@ footer ul {
   gap: 20px;
   padding: 0;
 }
+
+.contador-notificacao {
+  position: relative;
+}
+
+.circulo {
+  width: 22px; 
+  height: 22px;
+  background-color: red;
+  color: white; 
+  border-radius: 50%; 
+  text-align: center;
+  line-height: 22px; 
+  position: absolute;
+  top: -7px; 
+  right: -7px; 
+}

@@ -33,7 +33,7 @@ public class NotificationService {
         notificationRepository.saveAll(notificacoes);
     }
 
-    public long contarNotificacoesNaoVisualizadas(Integer userId) {
+    public int contarNotificacoesNaoVisualizadas(Integer userId) {
         return notificationRepository.countByUserIdAndVisualizadoFalse(userId);
     }
 

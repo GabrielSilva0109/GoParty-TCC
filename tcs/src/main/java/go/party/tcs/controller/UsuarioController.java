@@ -146,7 +146,7 @@ public class UsuarioController {
 
                 // CONTADOR DE NOTIFICACOES NAO LIDAS
 
-                long notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(usuario.getId());
+                int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(usuario.getId());
                 model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
 
                 return "redirect:/home";
