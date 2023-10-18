@@ -2,7 +2,9 @@ package go.party.tcs.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ import go.party.tcs.model.Evento;
 import go.party.tcs.model.Follower;
 import go.party.tcs.model.Notification;
 import go.party.tcs.model.Usuario;
+import go.party.tcs.repository.CurtidaRepository;
 import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.repository.NotificationRepository;
 import go.party.tcs.repository.UsuarioRepository;
@@ -55,6 +58,9 @@ public class UsuarioController {
 
     @Autowired
     private CurtidaService curtidaService;
+
+    @Autowired
+    private CurtidaRepository curtidaRepository;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -169,20 +175,23 @@ public class UsuarioController {
         model.addAttribute("notifications", notifications);
         if(sessionUsuario != null){
             
-              //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
-              int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
-              model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+             //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
+             int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
+             model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
 
             model.addAttribute("sessionUsuario", sessionUsuario);
 
-            //SE USUARIO JA CURTIU EVENTO 
-
-            model.addAttribute("usuarioJaCurtiuEvento", curtidaService.usuarioJaCurtiuEvento(3, sessionUsuario));
-            
             List<Evento> eventos = eventoService.getAllEventos(); 
-            model.addAttribute("eventos", eventos); 
-
-
+        
+             //SE USUARIO JA CURTIU EVENTO 
+             model.addAttribute("usuarioJaCurtiuEvento", curtidaService.usuarioJaCurtiuEvento(3, sessionUsuario));
+            
+             //CONTADOR DE CURTIDAS
+             int numeroCurtidas = curtidaRepository.countCurtidasPorEvento(3);
+          
+             model.addAttribute("eventos", eventos); 
+             model.addAttribute("quantidadeCurtidasPorEvento", numeroCurtidas);
+             
             return "home"; 
         } else {
             return "redirect:/loginValida";
