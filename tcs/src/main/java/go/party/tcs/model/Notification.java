@@ -16,7 +16,7 @@ public class Notification {
     private String message;
     private LocalDate date;
     private Integer userId; // O ID do usuário que receberá a notificação
-    private boolean visualizado;
+    private Boolean visualizado;
     @Column(name = "foto_perfil", columnDefinition = "BLOB")
     private byte[] fotoPerfil;
     
