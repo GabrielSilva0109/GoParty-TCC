@@ -510,11 +510,16 @@ input[type="date"]:focus {
 }
 
 .apple-icon,
-    .google-icon {
+  .google-icon {
   font-size: 18px;
   margin-bottom: 1px;
 }
-
+.google-login-button:hover{
+  background: white;
+}
+.logar-google-container:hover{
+  color: black;
+}
 .logar-google-container{
   font-size: 13px;
 }

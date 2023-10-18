@@ -7,7 +7,6 @@ body{
   padding: 0;
   font-family: 'Poppins';
   background-image: url('/css/img/fundosTeste3.jpg');
-  
 }
 
 .header {
@@ -28,7 +27,6 @@ body{
 }
 
 .ulContainer {          
-  
   backdrop-filter: blur(20px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
   border-radius: 30px; /* Borda arredondada (ajuste conforme necessário) */
   list-style: none; /* Remova os marcadores de lista */
@@ -1651,4 +1649,21 @@ strong {
 
 .notifications{
   font-weight: bold;
+}
+
+.contador-notificacao {
+  position: relative;
+}
+
+.circulo {
+  width: 22px; 
+  height: 22px;
+  background-color: red;
+  color: white; 
+  border-radius: 50%; 
+  text-align: center;/
+  line-height: 22px; 
+  position: absolute;
+  top: -7px; 
+  right: -7px; 
 }
