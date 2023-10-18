@@ -55,8 +55,7 @@ public class ComentarioController {
         // NOTIFICAR O USUÀRIO
         // Crie uma notificação
         byte[] fotoPerfil = usuario.getFotoPerfil();
-        String message = usuario.getUsername()+" fez um comentário: " +comentario.getTexto()+
-         " no seu post: "+evento.getTitulo();
+        String message = usuario.getUsername()+" fez um comentário no seu post: " +comentario.getTexto();
         Integer userIdToNotify =  evento.getAutor().getId();
 
         notificationService.createNotification(message, userIdToNotify, fotoPerfil);
