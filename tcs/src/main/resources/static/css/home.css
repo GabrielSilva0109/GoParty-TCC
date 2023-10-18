@@ -1219,10 +1219,9 @@ body.is-blurred {
 /* btn de follow  */
 
 .btn-perfil-follow {
-  display: flex;
   justify-content: center;
   align-items: center;
-  width: 11.2rem;
+  width:70%;
   overflow: hidden;
   height: 2.8rem;
   background-size: 300% 300%;
@@ -1233,9 +1232,7 @@ body.is-blurred {
   border: double 4px transparent;
   background-image: linear-gradient(#212121, #212121),  linear-gradient(137.48deg, #ffdb3b 10%,#FE53BB 45%, #8F51EA 67%, #0044ff 87%);
   background-origin: border-box;
-  background-clip: content-box, border-box;
-  margin-left: 84px;
-  margin-top: 14px;
+ 
 }
 
 #container-stars {
@@ -1251,7 +1248,6 @@ body.is-blurred {
 
 strong {
   z-index: 2;
-  font-family: 'Avalors Personal Use';
   font-size: 12px;
   letter-spacing: 5px;
   color: #FFFFFF;
@@ -1661,7 +1657,7 @@ strong {
   background-color: red;
   color: white; 
   border-radius: 50%; 
-  text-align: center;/
+  text-align: center;
   line-height: 22px; 
   position: absolute;
   top: -7px; 
