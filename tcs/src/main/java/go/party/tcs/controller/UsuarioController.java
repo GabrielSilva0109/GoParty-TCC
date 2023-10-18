@@ -397,9 +397,12 @@ public class UsuarioController {
     }
 
     @PostMapping("/unfollow")
-    public String unfollowUser() {
-        Usuario follower = usuarioService.encontrarId(usuarioLogado.getId());
-        Usuario following = usuarioService.encontrarId(usuarioPerfilVisitado.getId());
+    public String unfollowUser(HttpSession session) {
+
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+        Usuario follower = usuarioService.getUserById(sessionUsuario.getId());
+        Usuario following = usuarioService.getUserById(usuarioPerfilVisitado.getId());
 
         usuarioService.unfollow(follower, following);
         return "redirect:/home";
