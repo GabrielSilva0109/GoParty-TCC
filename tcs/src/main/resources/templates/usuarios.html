@@ -111,10 +111,10 @@
                 
                  <div th:each="usuario : ${usuarios}" class="usuario-bloco">
                     <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
-                     <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="foto">
-                     <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
-                     <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
-                  </a>
+                        <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="foto">
+                        <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
+                        <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
+                    </a>
 
                  </div>
 

@@ -374,7 +374,7 @@ public class UsuarioController {
     @PostMapping("/follow")
     public String followUser(HttpSession session) {
 
-         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
         Usuario follower = usuarioService.getUserById(sessionUsuario.getId());
         Usuario following = usuarioService.getUserById(usuarioPerfilVisitado.getId());
@@ -384,7 +384,7 @@ public class UsuarioController {
         // NOTIFICAR O USUÀRIO
         // Crie uma notificação
         byte[] fotoPerfil = sessionUsuario.getFotoPerfil();
-        String message = "@"+follower.getUsername()+" seguiu você";
+        String message = follower.getUsername()+" seguiu você";
         Integer userIdToNotify =  usuarioPerfilVisitado.getId();
 
         notificationService.createNotification(message, userIdToNotify, fotoPerfil);

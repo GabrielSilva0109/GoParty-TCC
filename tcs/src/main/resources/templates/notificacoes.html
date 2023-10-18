@@ -92,11 +92,7 @@
                 <ul>
                     <li class="lista-notificacoes" th:each="notification : ${notifications}">
                         <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
-                        <h3>
-                            <span class="arroba">@</span>
-                            <span th:text="${usuarioService.encontrarId(notification.userId).username}"></span>
-                        </h3>
-                        <span class="notifications" th:text="${notification.message}"></span>
+                        <span class="arroba">@</span><span class="notifications" th:text="${notification.message}"></span>
                     </li>                                   
                 </ul>
             </div>
