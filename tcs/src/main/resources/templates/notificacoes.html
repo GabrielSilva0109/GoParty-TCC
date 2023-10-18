@@ -81,9 +81,7 @@
             
            <img src="/css/img/wedding-card.png" alt="">
         </div>
-        
 
-    
 
     <div class="center-content" id="center-notificacoes">
         <div class="input-pesquisa">
@@ -93,8 +91,13 @@
                 <!--Lista de notificações-->
                 <ul>
                     <li class="lista-notificacoes" th:each="notification : ${notifications}">
+                        <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
+                        <h3>
+                            <span class="arroba">@</span>
+                            <span th:text="${usuarioService.encontrarId(notification.userId).username}"></span>
+                        </h3>
                         <span class="notifications" th:text="${notification.message}"></span>
-                    </li> 
+                    </li>                                   
                 </ul>
             </div>
             

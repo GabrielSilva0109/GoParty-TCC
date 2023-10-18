@@ -184,11 +184,11 @@ public class EventoController {
         Evento evento = eventoService.encontrarPorId(eventoId);
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         curtidaService.curtirEvento(sessionUsuario, evento);
-
+        //Pega a Foto de perfil de quem fez a curtida
+        byte[] fotoPerfil = sessionUsuario.getFotoPerfil();
         String message = "@"+sessionUsuario.getUsername()+" curtiu a sua publicação: "+ evento.getTitulo();
         Integer userIdToNotify =  evento.getAutor().getId();
-        notificationService.createNotification(message, userIdToNotify);
-
+        notificationService.createNotification(message, userIdToNotify, fotoPerfil);
         return "redirect:/home";
     }
 

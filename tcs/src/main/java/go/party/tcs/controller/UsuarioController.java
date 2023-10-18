@@ -3,6 +3,7 @@ package go.party.tcs.controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -303,7 +304,6 @@ public class UsuarioController {
         if (sessionUsuario != null && sessionUsuario.getId().equals(usuarioId)) {
             // Recupere a imagem de perfil do usuário da sessão
             byte[] imagemPerfil = sessionUsuario.getFotoPerfil();
-            
             if (imagemPerfil != null && imagemPerfil.length > 0) {
                 // Defina os cabeçalhos de resposta
                 HttpHeaders headers = new HttpHeaders();
@@ -331,7 +331,7 @@ public class UsuarioController {
             byte[] imagemPerfil = usuario.getFotoPerfil();
 
             if (imagemPerfil != null && imagemPerfil.length > 0) {
-                // Defina os cabeçalhos de resposta
+                
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.IMAGE_JPEG); // ou MediaType.IMAGE_PNG, dependendo do tipo de imagem
 
@@ -341,6 +341,33 @@ public class UsuarioController {
         }
         // Se o usuário não for encontrado ou não tiver uma imagem de perfil, retorne uma resposta vazia ou um erro
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    //Metodo para mostrar a foto do Perfil do Usuario que fez a notificação 
+    @GetMapping("/perfil-imagem-notification/{id}")
+    public ResponseEntity<byte[]> getImagemPerfilNotification(@PathVariable Long id) {
+
+        // Recupera a notificação com o id especificado
+        Notification notification = notificationRepository.findById(id).orElse(null);
+       
+        // Verifica se a notificação foi encontrada
+        if (notification == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        // Recupera o usuário com o id especificado
+        Usuario usuario = usuarioRepository.findById(notification.getUserId()).orElse(null);
+
+        // Verifica se o usuário foi encontrado
+        if (usuario == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        // Recupera a imagem de perfil do usuário
+        byte[] imagemPerfil = notification.getFotoPerfil();
+
+        // Retorna a imagem de perfil
+        return new ResponseEntity<>(imagemPerfil, HttpStatus.OK);
     }
 
     // TESTE DE SEGUIDORES NO SISTEMA
@@ -356,10 +383,11 @@ public class UsuarioController {
     
         // NOTIFICAR O USUÀRIO
         // Crie uma notificação
+        byte[] fotoPerfil = sessionUsuario.getFotoPerfil();
         String message = "@"+follower.getUsername()+" seguiu você";
         Integer userIdToNotify =  usuarioPerfilVisitado.getId();
 
-        notificationService.createNotification(message, userIdToNotify);
+        notificationService.createNotification(message, userIdToNotify, fotoPerfil);
         return "redirect:/home";
     }
 

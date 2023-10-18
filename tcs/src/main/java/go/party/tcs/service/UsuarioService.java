@@ -88,7 +88,6 @@ public class UsuarioService {
     }
 
     //TESTE DE SEGUIDORES NO SISTEMA
-
     public void follow(Usuario follower, Usuario following) {
         // Verifique se o usuário já está seguindo o outro usuário
         Follower existingFollower = followerRepository.findByFollowerAndFollowing(follower, following);
@@ -114,7 +113,6 @@ public class UsuarioService {
     
 
     //OBTER NUMEROS DE SEGUIDORES 
-
     public List<Usuario> getFollowers(Usuario user) {
         // Obtenha os seguidores do usuário
         List<Follower> followers = followerRepository.findByFollowing(user);
@@ -126,8 +124,9 @@ public class UsuarioService {
         return followerUsers;
     }
 
+    // Obtenha quem o usuário está seguindo
     public List<Usuario> getFollowing(Usuario user) {
-        // Obtenha quem o usuário está seguindo
+        
         List<Follower> following = followerRepository.findByFollower(user);
 
         List<Usuario> followingUsers = following.stream()

@@ -1,6 +1,8 @@
 package go.party.tcs.model;
 
 import java.time.LocalDate;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,8 @@ public class Notification {
     private LocalDate date;
     private Integer userId; // O ID do usuário que receberá a notificação
     private boolean visualizado;
+    @Column(name = "foto_perfil", columnDefinition = "BLOB")
+    private byte[] fotoPerfil;
     
     public Long getId() {
         return id;
@@ -47,5 +51,12 @@ public class Notification {
         this.visualizado = visualizado;
     }
 
+    public byte[] getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(byte[] fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
 
 }

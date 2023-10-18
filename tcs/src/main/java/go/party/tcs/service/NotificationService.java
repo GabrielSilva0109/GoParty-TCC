@@ -2,6 +2,7 @@ package go.party.tcs.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +15,13 @@ public class NotificationService {
     @Autowired
     private NotificationRepository notificationRepository;
 
-    public void createNotification(String message, Integer userId) {
+    public void createNotification(String message, Integer userId, byte[] fotoPerfil) {
         Notification notification = new Notification();
         notification.setMessage(message);
         notification.setDate(LocalDate.now()); 
         notification.setUserId(userId);
         notification.setVisualizado(false);
+        notification.setFotoPerfil(fotoPerfil);
         notificationRepository.save(notification);
     }
 
@@ -34,4 +36,11 @@ public class NotificationService {
     public long contarNotificacoesNaoVisualizadas(Integer userId) {
         return notificationRepository.countByUserIdAndVisualizadoFalse(userId);
     }
+
+    public Optional<Notification> findById(Long id) {
+        return notificationRepository.findById(id);
+    }
+
+    
+
 }
