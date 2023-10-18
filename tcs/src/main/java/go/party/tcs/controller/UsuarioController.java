@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import go.party.tcs.model.Evento;
+import go.party.tcs.model.Follower;
 import go.party.tcs.model.Notification;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.EventoRepository;
@@ -30,6 +31,7 @@ import go.party.tcs.repository.NotificationRepository;
 import go.party.tcs.repository.UsuarioRepository;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.EventoService;
+import go.party.tcs.service.FollowerService;
 import go.party.tcs.service.NotificationService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.mail.MessagingException;
@@ -67,6 +69,9 @@ public class UsuarioController {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private FollowerService followerService;
 
     Usuario usuarioLogado = new Usuario();
 
@@ -424,5 +429,17 @@ public class UsuarioController {
     }
     
 
+    @GetMapping("/amigos")
+    public String amigos(Model model, HttpSession session){
+        // Passo 1: Recupere o usuário da sessão.
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+        // Passo 2: Obtenha o ID do usuário da sessão.
+        Integer userId = sessionUsuario.getId();
+
+        // Passo 3: Consulte os seguidores usando o serviço de seguidores.
+        List<Follower> seguidores = followerService.obterSeguidores(userId);
+        return "home";
+    }
 }
 
