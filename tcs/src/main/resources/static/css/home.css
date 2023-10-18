@@ -232,10 +232,6 @@ footer ul {
   border-radius: 20px;
 }
 
-/* Padrões de Botão */
-
-
-
 /* bell ringing animation keyframes*/
 @keyframes bellRing {
   0%,
@@ -263,7 +259,6 @@ footer ul {
     transform: rotateZ(2deg);
   }
 }
-
 
 .btn-excluir {
   width: 50px;
@@ -1626,3 +1621,18 @@ strong {
   box-shadow: none;
 }
 
+.bloco-notificacoes{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.bloco-notificacoes ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  width: 100%;
+}

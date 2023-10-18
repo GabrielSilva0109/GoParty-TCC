@@ -152,7 +152,6 @@ public class UsuarioController {
         return "login";
     }
 
-
     //Método para atribuir uma sessão ao usuario que fizer login
     @GetMapping("/home")
     public String paginaHome(Model model, HttpSession session, HttpServletRequest request){
@@ -169,22 +168,7 @@ public class UsuarioController {
             return "redirect:/loginValida";
         }
     }
-    
-    @GetMapping("/notificacao")
-    public String notificacoes(Model model, HttpSession session, HttpServletRequest request) {
-        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-        List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
-        model.addAttribute("notifications", notifications);
-         if(sessionUsuario != null){
-            // ... outras atribuições ao modelo
-            model.addAttribute("sessionUsuario", sessionUsuario);
-            List<Evento> eventos = eventoService.getAllEventos(); 
-            model.addAttribute("eventos", eventos); 
-            return "home"; 
-        } else {
-            return "redirect:/loginValida";
-        }
-    }
+
     //Metodo para Editar a Conta do Usuario
     @PutMapping("/editar")
     public String editarUsuario(
@@ -389,17 +373,28 @@ public class UsuarioController {
     }
 
     @GetMapping("/notificacoes")
-    public String getUserNotifications(Model model) {
-        
-        List<Notification> notifications = notificationRepository.findByUserId(usuarioLogado.getId());
-
-        // Marcando como vistas as notificacoes 
-        notificationService.marcarNotificacoesComoVisualizadas(usuarioLogado.getId());
-
-        model.addAttribute("notifications", notifications);
-
-        return "notificacoes"; // Nome do template Thymeleaf
+    public String notificacoes(Model model, HttpSession session, HttpServletRequest request) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+    
+        if (sessionUsuario != null) {
+            // Obtenha as notificações do usuário logado
+            List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
+    
+            // Marque as notificações como visualizadas
+            notificationService.marcarNotificacoesComoVisualizadas(sessionUsuario.getId());
+    
+            model.addAttribute("notifications", notifications);
+            model.addAttribute("sessionUsuario", sessionUsuario);
+    
+            List<Evento> eventos = eventoService.getAllEventos();
+            model.addAttribute("eventos", eventos);
+    
+            return "notificacoes"; // Redirecione o usuário para a página de notificações
+        } else {
+            return "redirect:/loginValida";
+        }
     }
+    
 
 }
 
