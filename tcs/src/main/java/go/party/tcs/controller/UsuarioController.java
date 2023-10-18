@@ -29,6 +29,7 @@ import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.repository.NotificationRepository;
 import go.party.tcs.repository.UsuarioRepository;
+import go.party.tcs.service.CurtidaService;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.EventoService;
 import go.party.tcs.service.FollowerService;
@@ -51,6 +52,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private CurtidaService curtidaService;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -171,6 +175,10 @@ public class UsuarioController {
 
             model.addAttribute("sessionUsuario", sessionUsuario);
 
+            //SE USUARIO JA CURTIU EVENTO 
+
+            model.addAttribute("usuarioJaCurtiuEvento", curtidaService.usuarioJaCurtiuEvento(3, sessionUsuario));
+            
             List<Evento> eventos = eventoService.getAllEventos(); 
             model.addAttribute("eventos", eventos); 
 

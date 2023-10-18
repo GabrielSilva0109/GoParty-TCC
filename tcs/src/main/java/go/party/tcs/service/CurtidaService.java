@@ -46,7 +46,7 @@ public class CurtidaService {
         return curtidaRepository.countByEvento(evento);
     }
 
-    private boolean usuarioJaCurtiuEvento(Integer eventoId, Usuario usuario) {
+    public boolean usuarioJaCurtiuEvento(Integer eventoId, Usuario usuario) {
         Evento evento = eventoService.encontrarPorId(eventoId);
         return curtidaRepository.findByEventoAndUsuario(evento, usuario) != null;
     }

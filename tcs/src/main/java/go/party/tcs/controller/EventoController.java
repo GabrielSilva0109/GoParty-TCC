@@ -213,6 +213,7 @@ public class EventoController {
         // Substitua o código abaixo pela lógica real de obtenção de curtidas
         int quantidadeCurtidas = eventoService.obterQuantidadeCurtidas(eventoId);
         model.addAttribute("quantidadeCurtidas", quantidadeCurtidas);
+
         
         return quantidadeCurtidas;
     }
