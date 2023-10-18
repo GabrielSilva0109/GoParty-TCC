@@ -53,12 +53,9 @@
         <li>
             <a class="links" th:href="@{/notificacoes}">
                 <div class="icon-container">
-                    <!--Teste de contador de notific não vistas-->
-                    <span class="badge" th:text="${notificacoesNaoVisualizadas}"></span>
                     <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
                     <div class="line"></div>
                 </div>
-                
             </a>
         </li>
         </ul>
@@ -106,13 +103,9 @@
                         <form th:action="@{'/descurtiEvento/' + ${evento.id}}" method="post">
                             <button class="descurtir" type="submit">Descurtir</button> 
                         </form>
-
-                        <form th:action="@{'/curtidas/' + ${evento.id}}" method="GET">
-                            <span>Curtidas </span>
-                        </form>
+                        
                     </div>
-                    
-                    
+                    <span id="quantidadeCurtidas">Curtidas <span th:text="${quantidadeCurtidas}"></span></span>                    
                 </div>
                 
                 <!-- Bloco da Direita Evento -->
@@ -142,6 +135,9 @@
                             </div>
                     </div>
 
+                    
+                
+                    
                     <!-- Botão abrir comentários -->
                     <button class="chatBtn">
                         <svg height="1.6em" fill="white" xml:space="preserve" viewBox="0 0 1000 1000" y="0px" x="0px" version="1.1">
@@ -174,6 +170,20 @@
                     comentariosDiv.classList.add('hidden');
                 }
             });
+        });
+    </script>
+
+    <!-- Função para mostar as notificações -->
+    <script>
+        // Adicione um evento de clique ao botão de notificações
+        document.getElementById('toggleNotifications').addEventListener('click', function () {
+            var blocoNoti = document.querySelector('.bloco-noti');
+
+            if (blocoNoti.style.display === 'none' || blocoNoti.style.display === '') {
+                blocoNoti.style.display = 'flex';
+            } else {
+                blocoNoti.style.display = 'none';
+            }
         });
     </script>
 
