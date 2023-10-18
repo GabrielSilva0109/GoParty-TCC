@@ -421,8 +421,6 @@ public class UsuarioController {
                 notification.setVisualizado(true);
             }
             notificationRepository.saveAll(notifications);
-
-            //notificationService.marcarNotificacoesComoVisualizadas(sessionUsuario.getId());
     
             model.addAttribute("notifications", notifications);
             model.addAttribute("sessionUsuario", sessionUsuario);

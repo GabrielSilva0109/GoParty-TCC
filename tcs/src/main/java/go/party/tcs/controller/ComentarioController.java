@@ -11,6 +11,7 @@ import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.service.ComentarioService;
 import go.party.tcs.service.EventoService;
+import go.party.tcs.service.NotificationService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -18,6 +19,9 @@ public class ComentarioController {
     
     @Autowired
     private EventoService eventoService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @Autowired
     private ComentarioService comentarioService;
@@ -47,6 +51,16 @@ public class ComentarioController {
         
         // Salve o comentário no banco de dados (você deve implementar esse método em seu serviço)
         comentarioService.save(comentario); // Substitua comentarioService pelo serviço apropriado
+
+        // NOTIFICAR O USUÀRIO
+        // Crie uma notificação
+        byte[] fotoPerfil = usuario.getFotoPerfil();
+        String message = usuario.getUsername()+" fez um comentário: " +comentario.getTexto()+
+         " no seu post: "+evento.getTitulo();
+        Integer userIdToNotify =  evento.getAutor().getId();
+
+        notificationService.createNotification(message, userIdToNotify, fotoPerfil);
+
         model.addAttribute("sessionUsuario", usuario);
         // Redirecione de volta para a página do evento
         return "redirect:/home";
