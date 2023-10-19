@@ -182,15 +182,23 @@ public class UsuarioController {
             model.addAttribute("sessionUsuario", sessionUsuario);
 
             List<Evento> eventos = eventoService.getAllEventos(); 
+
+              // Crie um mapa para armazenar a contagem de curtidas para cada evento
+              Map<Integer, Integer> quantidadeCurtidasPorEvento = new HashMap<>();
+
+              for (Evento evento : eventos) {
+                int numeroCurtidas = curtidaRepository.quantidadeCurtidasPorEvento(evento.getId());
+                quantidadeCurtidasPorEvento.put(evento.getId(), numeroCurtidas);
+            }
+
         
              //SE USUARIO JA CURTIU EVENTO 
              model.addAttribute("usuarioJaCurtiuEvento", curtidaService.usuarioJaCurtiuEvento(3, sessionUsuario));
             
              //CONTADOR DE CURTIDAS
-             int numeroCurtidas = curtidaRepository.countCurtidasPorEvento(3);
           
              model.addAttribute("eventos", eventos); 
-             model.addAttribute("quantidadeCurtidasPorEvento", numeroCurtidas);
+             model.addAttribute("quantidadeCurtidasPorEvento", quantidadeCurtidasPorEvento);
              
             return "home"; 
         } else {
