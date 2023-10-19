@@ -89,15 +89,39 @@
                 <!--Lista de notificações-->
                 <ul>
                     <li class="lista-notificacoes" th:each="notification : ${notifications}">
+                        <!--Bloco especifico-->
+                     <div class="notification-container">
+                         <!--Tempo da notificacao-->
+                        <div class="data-noti"> 
+                              <span>5 h</span>
+                        </div>
                         <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
-                        <span class="arroba">@</span><span class="notifications" th:text="${notification.message}"></span>
+                        <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"></span>
+                     </div>
                     </li>                                   
                 </ul>
-            </div>
-            
+            </div> 
 
-         
-        
+            <style>
+                .notification-container{
+                    border: 1px solid #ccc;
+                    border-radius: 14px;
+                    width: 800px;
+                    padding: 30px;
+                    display: flex;
+                }
+
+                #arroba-id{
+                    margin-top: 50px;
+                }
+
+                .imgNoti{
+                    margin-top: 30px;
+                }
+
+
+                 
+            </style>
     </div>
 
 

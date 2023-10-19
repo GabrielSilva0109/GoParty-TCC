@@ -1645,6 +1645,7 @@ strong {
 
 .notifications{
   font-weight: bold;
+  margin-top: 50px;
 }
 
 .contador-notificacao {
