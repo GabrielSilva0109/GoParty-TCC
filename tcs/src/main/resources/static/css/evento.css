@@ -6,7 +6,7 @@ body{
   margin: 0;
   padding: 0;
   background-image: url('/css/img/fundosTeste3.jpg');
-  
+  transition: background-image 0.3s ease;
   font-family: 'Poppins';
   }
 

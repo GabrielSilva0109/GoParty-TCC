@@ -15,6 +15,7 @@
 body{
    background-image: url('/css/img/fundosTeste3.jpg');
    background-position: absolute;
+   transition: background-image 0.3s ease;
 }
 
 input:required{
