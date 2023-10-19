@@ -1,6 +1,7 @@
 package go.party.tcs.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class NotificationService {
     public void createNotification(String message, Integer userId, byte[] fotoPerfil) {
         Notification notification = new Notification();
         notification.setMessage(message);
-        notification.setDate(LocalDate.now()); 
+        notification.setDate(LocalDateTime.now()); 
         notification.setUserId(userId);
         notification.setVisualizado(false);
         notification.setFotoPerfil(fotoPerfil);

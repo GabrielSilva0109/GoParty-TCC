@@ -1,6 +1,7 @@
 package go.party.tcs.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +15,7 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String message;
-    private LocalDate date;
+    private LocalDateTime date;
     private Integer userId; // O ID do usuário que receberá a notificação
     private Boolean visualizado;
     @Column(name = "foto_perfil", columnDefinition = "BLOB")
@@ -32,10 +33,11 @@ public class Notification {
     public void setMessage(String message) {
         this.message = message;
     }
-    public LocalDate getDate() {
+
+    public LocalDateTime getDate() {
         return date;
     }
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
     public Integer getUserId() {
