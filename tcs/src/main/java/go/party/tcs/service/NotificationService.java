@@ -1,5 +1,6 @@
 package go.party.tcs.service;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -42,6 +43,23 @@ public class NotificationService {
         return notificationRepository.findById(id);
     }
 
-    
+    // METODO PARA CALCULAR O TEMPO DA ANOTIFICAÇÃO
+    public String calcularTempoDecorrido(LocalDateTime notificationDate) {
+        LocalDateTime now = LocalDateTime.now();
+        Duration duration = Duration.between(notificationDate, now);
+
+        long minutes = duration.toMinutes();
+        if (minutes < 60) {
+            return minutes + " min";
+        }
+
+        long hours = duration.toHours();
+        if (hours < 24) {
+            return hours + " h";
+        }
+
+        long days = duration.toDays();
+        return days + " d";
+    }
 
 }

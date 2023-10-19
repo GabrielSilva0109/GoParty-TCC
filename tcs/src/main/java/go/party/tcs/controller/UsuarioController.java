@@ -2,6 +2,9 @@ package go.party.tcs.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -448,15 +451,21 @@ public class UsuarioController {
         if (sessionUsuario != null) {
             // Obtenha as notificações do usuário logado
             List<Notification> notifications = notificationRepository.findNotificationsByUserIdOrderByDateDesc(sessionUsuario.getId());
-    
+            List<String> temposDecorridos = new ArrayList<>();
+
             // Marque as notificações como visualizadas
             for (Notification notification : notifications) {
                 notification.setVisualizado(true);
+                String tempoDecorrido = notificationService.calcularTempoDecorrido(notification.getDate());
+                temposDecorridos.add(tempoDecorrido);
             }
             notificationRepository.saveAll(notifications);
     
             model.addAttribute("notifications", notifications);
+            model.addAttribute("temposDecorridos", temposDecorridos);
             model.addAttribute("sessionUsuario", sessionUsuario);
+
+            //model.addAttribute("calcularTempoDecorrido", notificationService.calcularTempoDecorrido(ontemInicioDoDia));
     
             List<Evento> eventos = eventoService.getAllEventos();
             model.addAttribute("eventos", eventos);
