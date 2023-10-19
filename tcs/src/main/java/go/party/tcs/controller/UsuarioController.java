@@ -181,28 +181,26 @@ public class UsuarioController {
 
             model.addAttribute("sessionUsuario", sessionUsuario);
 
+            //LISTA DE EVENTOS
             List<Evento> eventos = eventoService.getAllEventos(); 
 
-              // Mapa para armazenar a contagem de curtidas para cada evento
-              Map<Integer, Integer> quantidadeCurtidasPorEvento = new HashMap<>();
+            // Crie um mapa para armazenar a quantidade de curtidas por evento
+            Map<Integer, Integer> quantidadeCurtidasPorEvento = new HashMap<>();
 
-              // Mapa para armazenar se o usuário curtiu cada evento
-              Map<Integer, Boolean> usuarioJaCurtiuEventoMap = new HashMap<>();
+            // Crie um mapa para armazenar se o usuário já curtiu cada evento
+            Map<Integer, Boolean> usuarioJaCurtiuEventoMap = new HashMap<>();
 
-              for (Evento evento : eventos) {
-                int numeroCurtidas = curtidaRepository.quantidadeCurtidasPorEvento(evento.getId());
-                boolean usuarioJaCurtiuEvento = curtidaService.usuarioJaCurtiuEvento(evento.getId(), sessionUsuario);
-                quantidadeCurtidasPorEvento.put(evento.getId(), numeroCurtidas);
-            }
+        for (Evento evento : eventos) {
+            int numeroCurtidas = curtidaRepository.quantidadeCurtidasPorEvento(evento.getId());
+            boolean usuarioJaCurtiuEvento = curtidaService.usuarioJaCurtiuEvento(evento.getId(), sessionUsuario);
 
-        
-             //SE USUARIO JA CURTIU EVENTO 
-             model.addAttribute("usuarioJaCurtiuEventoMap", usuarioJaCurtiuEventoMap);
-            
-             //CONTADOR DE CURTIDAS
-          
-             model.addAttribute("eventos", eventos); 
-             model.addAttribute("quantidadeCurtidasPorEvento", quantidadeCurtidasPorEvento);
+            quantidadeCurtidasPorEvento.put(evento.getId(), numeroCurtidas);
+            usuarioJaCurtiuEventoMap.put(evento.getId(), usuarioJaCurtiuEvento);
+        }
+
+        model.addAttribute("eventos", eventos); 
+        model.addAttribute("quantidadeCurtidasPorEvento", quantidadeCurtidasPorEvento);
+        model.addAttribute("usuarioJaCurtiuEventoMap", usuarioJaCurtiuEventoMap);
              
             return "home"; 
         } else {
