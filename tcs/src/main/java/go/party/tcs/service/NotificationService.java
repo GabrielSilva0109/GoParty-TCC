@@ -48,6 +48,11 @@ public class NotificationService {
         LocalDateTime now = LocalDateTime.now();
         Duration duration = Duration.between(notificationDate, now);
 
+        long segundos = duration.toSeconds();
+        if (segundos < 60){
+            return "agora";
+        }
+
         long minutes = duration.toMinutes();
         if (minutes < 60) {
             return minutes + " min";
