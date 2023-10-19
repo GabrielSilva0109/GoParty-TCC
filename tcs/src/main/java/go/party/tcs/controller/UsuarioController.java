@@ -468,15 +468,17 @@ public class UsuarioController {
 
     @GetMapping("/amigos")
     public String amigos(Model model, HttpSession session){
-        // Passo 1: Recupere o usuário da sessão.
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
-        // Passo 2: Obtenha o ID do usuário da sessão.
         Integer userId = sessionUsuario.getId();
 
-        // Passo 3: Consulte os seguidores usando o serviço de seguidores.
-        List<Follower> seguidores = followerService.obterSeguidores(userId);
-        return "home";
+        List<Follower> seguidos = usuarioService.obterSeguidores(userId);
+
+        model.addAttribute("seguidos", seguidos);
+
+        return "perfil";
     }
+
+
 }
 

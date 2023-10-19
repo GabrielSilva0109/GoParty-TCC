@@ -223,6 +223,15 @@
 
         </div>
     </section>
+    
+    <div class="modal-seguidores">
+        <h1>Seguidores</h1>
+        <div th:each="usuario : ${seguidos}" class="usuario-bloco">
+            <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="foto">
+            <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
+            <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
+        </div>
+    </div>
 
     <footer>
         <ul>
