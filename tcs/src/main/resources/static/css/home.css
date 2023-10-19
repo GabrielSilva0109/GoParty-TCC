@@ -1799,4 +1799,20 @@ strong {
   transform-origin: top;
 }
 
+.notification-container{
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  width: 800px;
+  padding: 30px;
+  display: flex;
+}
+
+#arroba-id{
+  margin-top: 50px;
+}
+
+.imgNoti{
+  margin-top: 30px;
+}
+
 

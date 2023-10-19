@@ -447,7 +447,7 @@ public class UsuarioController {
     
         if (sessionUsuario != null) {
             // Obtenha as notificações do usuário logado
-            List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
+            List<Notification> notifications = notificationRepository.findNotificationsByUserIdOrderByDateDesc(sessionUsuario.getId());
     
             // Marque as notificações como visualizadas
             for (Notification notification : notifications) {
