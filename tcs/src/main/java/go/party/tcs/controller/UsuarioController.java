@@ -466,19 +466,17 @@ public class UsuarioController {
     }
     
 
-    @GetMapping("/amigos")
-    public String amigos(Model model, HttpSession session){
+    @PostMapping("/perfil/amigos")
+    public String amigos(Model model, HttpSession session) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
         Integer userId = sessionUsuario.getId();
 
-        List<Follower> seguidos = usuarioService.obterSeguidores(userId);
+        List<Follower> seguidos = followerService.obterSeguidores(userId);
 
         model.addAttribute("seguidos", seguidos);
 
+        // Retorna a mesma página "perfil" com a lista de amigos
         return "perfil";
     }
-
-
 }
-
