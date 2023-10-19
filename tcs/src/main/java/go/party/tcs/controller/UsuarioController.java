@@ -490,4 +490,13 @@ public class UsuarioController {
         // Retorna a mesma página "perfil" com a lista de amigos
         return "perfil";
     }
+
+    @PostMapping("/limparNotificacoes")
+      public String limparNotificacoes(HttpSession session) {
+      // Lógica para apagar as notificações
+      Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+       notificationService.apagarTodasNotificacoes(sessionUsuario);
+
+      return "redirect:/notificacoes";
+}
 }

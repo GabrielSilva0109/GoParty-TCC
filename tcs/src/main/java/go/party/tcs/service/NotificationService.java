@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import go.party.tcs.model.Notification;
+import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.NotificationRepository;
 
 @Service
@@ -65,6 +66,18 @@ public class NotificationService {
 
         long days = duration.toDays();
         return days + " d";
+    }
+
+    //LIMPAR AS NOTIFICACOES DO USUARIO
+    public void apagarTodasNotificacoes(Usuario user) {
+        // Certifique-se de que o usuário não é nulo.
+        if (user != null) {
+            // Encontre todas as notificações associadas a esse usuário.
+            List<Notification> userNotifications = notificationRepository.findByUserId(user.getId());
+
+            // Apague as notificações encontradas.
+            notificationRepository.deleteAll(userNotifications);
+        }
     }
 
 }
