@@ -218,14 +218,19 @@ footer ul {
   flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
+  margin-left: 10%;
+  margin-top: 4%;
 }
 
 .usuario-bloco {
-  width: 29%;
+  width: 26%;
+  height: 13rem;
   background-color: #ccc;
   text-align: center;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 46px;
+  border-style: double;
+  box-shadow: #000;
 }
 
 /* bell ringing animation keyframes*/

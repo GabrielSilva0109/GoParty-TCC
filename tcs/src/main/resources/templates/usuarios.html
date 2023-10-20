@@ -134,6 +134,17 @@
                               </button>
                         </form>
 
+                        <!--<span class="seguido-por">Seguido por <span class="arroba">@</span>joao12 e 20+</span> 
+                        <style>
+                            .seguido-por{
+                                font-size: 13px;
+                                padding: 2px;
+                                margin-top: 4px;
+                                margin-bottom: 4px;
+                            }
+                        </style>
+                        -->
+
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
                         <form method="post" action="/unfollow"  th:if="${isUserFollowing}">
                             <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" type="submit">
