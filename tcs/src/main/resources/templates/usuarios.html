@@ -108,16 +108,47 @@
          </div>
  
          </div>
- 
              <div class="bloco-user">
                 
                  <div th:each="usuario : ${usuarios}" class="usuario-bloco">
                     <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
-                        <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="foto">
+                        <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser">
                         <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
                         <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
                     </a>
+                     <!--Botões de seguir o usuário mostrado (TESTE)-->
+                     <th:block th:with="isUserFollowing=${seguirStatusMap[usuario.id]}"></th:block>
 
+                        <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
+                        <form method="post" action="/follow"  th:if="${isUserFollowing == null || !isUserFollowing}">
+                            <button class="btn-perfil-follow-usuarios" id="btn-follow" type="submit">
+                                <strong>SEGUIR</strong>
+                                <div id="container-stars">
+                                  <div id="stars"></div>
+                                </div>
+                              
+                                <div id="glow">
+                                  <div class="circle"></div>
+                                  <div class="circle"></div>
+                                </div>
+                              </button>
+                        </form>
+
+                        <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
+                        <form method="post" action="/unfollow"  th:if="${isUserFollowing}">
+                            <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" type="submit">
+                                <strong>Deixar de seguir</strong>
+                                <div id="container-stars">
+                                  <div id="stars"></div>
+                                </div>
+                              
+                                <div id="glow">
+                                  <div class="circle"></div>
+                                  <div class="circle"></div>
+                                </div>
+                              </button>
+                        </form>
+                   
                  </div>
 
                  <style>

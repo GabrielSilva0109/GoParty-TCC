@@ -1,6 +1,8 @@
 package go.party.tcs.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.UsuarioRepository;
 import go.party.tcs.service.EventoService;
+import go.party.tcs.service.FollowerService;
 import go.party.tcs.service.NotificationService;
 import go.party.tcs.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +24,9 @@ import jakarta.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
 public class Controller {
+
+    @Autowired
+    private FollowerService followerService;
 
     @Autowired
     private UsuarioService usuarioService;
@@ -106,23 +112,28 @@ public class Controller {
             //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
             int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
             model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
-
-        userLogado = sessionUsuario;
-
-        if (sessionUsuario != null && nomeDigitadoP == null) {
-            model.addAttribute("sessionUsuario", sessionUsuario);
-
-            // Aqui você pode buscar a lista de usuários da mesma forma que antes
+            
+            userLogado = sessionUsuario;
             List<Usuario> usuarios = usuarioService.findAll();
+            model.addAttribute("usuarios", usuarios);  
+         
 
+            if (sessionUsuario != null && nomeDigitadoP == null) {
+            // Crie um Map para armazenar o status de seguir para cada usuário
+            Map<Integer, Boolean> seguirStatusMap = new HashMap<>();
+
+            // Preencha o Map com informações sobre se o usuário da sessão está seguindo cada usuário
             for (Usuario usuario : usuarios) {
-                if (usuario.getId() == sessionUsuario.getId()) {
-                    usuarios.remove(sessionUsuario);
-                }
+                boolean isUserFollowing = followerService.isUserInFollowersList(sessionUsuario, usuario);
+                seguirStatusMap.put(usuario.getId(), isUserFollowing);
             }
 
-            model.addAttribute("usuarios", usuarios);
-
+            // Passe o Map para o modelo
+            model.addAttribute("seguirStatusMap", seguirStatusMap);
+            
+            //serviço FollowerService para o modelo
+            
+            
             return "usuarios";
         } else {
             return "usuarios";
@@ -159,7 +170,7 @@ public class Controller {
             List<Usuario> following = usuarioService.getFollowing(usuario);
 
             // Verificar se o sessionUsuario está na lista de followers
-            boolean isUserInFollowers = isUserInFollowersList(userLogado, usuario);
+            boolean isUserInFollowers = followerService.isUserInFollowersList(userLogado, usuario);
             boolean isNotFollower = !isUserInFollowers;
 
             model.addAttribute("followersCount", followers.size());
@@ -179,15 +190,4 @@ public class Controller {
 
     }
 
-    private boolean isUserInFollowersList(Usuario userToCheck, Usuario user) {
-        List<Usuario> followers = usuarioService.getFollowers(user);
-    
-        for (Usuario follower : followers) {
-            if (follower.getId().equals(userToCheck.getId())) {
-                return true;
-            }
-        }
-    
-        return false;
-    }
 }

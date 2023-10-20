@@ -146,6 +146,6 @@ public class UsuarioService {
         return following.size();
     }
 
-
+   
 }
 

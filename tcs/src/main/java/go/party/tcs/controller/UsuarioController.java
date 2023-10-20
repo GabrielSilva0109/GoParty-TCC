@@ -497,6 +497,6 @@ public class UsuarioController {
       Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
        notificationService.apagarTodasNotificacoes(sessionUsuario);
 
-      return "redirect:/notificacoes";
+      return "notificacoes";
 }
 }
