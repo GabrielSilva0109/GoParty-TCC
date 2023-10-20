@@ -44,8 +44,6 @@ body{
 .icon {
  width: 40px; /* Defina o tamanho desejado para o ícone */
  height: 40px;
- 
- 
  padding: 10px;
 }
 
@@ -1644,7 +1642,6 @@ strong {
 
 .notifications{
   font-weight: bold;
-  margin-top: 50px;
 }
 
 .contador-notificacao {
@@ -1801,17 +1798,11 @@ strong {
 .notification-container{
   border: 1px solid #ccc;
   border-radius: 14px;
-  width: 800px;
-  padding: 30px;
+  width: 100%;
   display: flex;
-}
+  align-items: center;
+  padding: 10px
 
-#arroba-id{
-  margin-top: 50px;
-}
-
-.imgNoti{
-  margin-top: 30px;
 }
 
 /* Limpar notis */
@@ -1830,8 +1821,6 @@ strong {
   transition-duration: .3s;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
   background-color: #25142d;
-  margin-left: 730px;
-  margin-top: -63px;
 }
 
 /* plus sign */
@@ -1885,4 +1874,9 @@ strong {
   transform: translate(2px ,2px);
 }
 
-
+.noti-topo{
+  display: flex;
+  align-items: center ;
+  justify-content: space-between;
+  width: 100%;
+}
