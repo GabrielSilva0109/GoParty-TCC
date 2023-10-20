@@ -98,7 +98,7 @@
                     
                     <div class="evento-curtidas">
 
-                         <!--Curtir Evento-->
+                        <!--Curtir Evento-->
                         <form th:action="@{'/curtirEvento/' + ${evento.id}}" method="post" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == false">
                             <button class="Btn-curtir">
                                 <span class="leftContainer">
