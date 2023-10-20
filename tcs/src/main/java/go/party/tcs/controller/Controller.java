@@ -131,8 +131,6 @@ public class Controller {
             // Passe o Map para o modelo
             model.addAttribute("seguirStatusMap", seguirStatusMap);
             
-            //serviço FollowerService para o modelo
-            
             
             return "usuarios";
         } else {

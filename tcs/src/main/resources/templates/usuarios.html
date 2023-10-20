@@ -117,10 +117,8 @@
                         <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
                     </a>
                      <!--Botões de seguir o usuário mostrado (TESTE)-->
-                     <th:block th:with="isUserFollowing=${seguirStatusMap[usuario.id]}"></th:block>
-
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                        <form method="post" action="/follow"  th:if="${isUserFollowing == null || !isUserFollowing}">
+                        <form method="post" action="/follow"  th:if="${seguirStatusMap[usuario.id] == false}">
                             <button class="btn-perfil-follow-usuarios" id="btn-follow" type="submit">
                                 <strong>SEGUIR</strong>
                                 <div id="container-stars">
@@ -146,7 +144,7 @@
                         -->
 
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                        <form method="post" action="/unfollow"  th:if="${isUserFollowing}">
+                        <form method="post" action="/unfollow" th:if="${seguirStatusMap[usuario.id] == true}">
                             <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" type="submit">
                                 <strong>Deixar de seguir</strong>
                                 <div id="container-stars">
