@@ -11,9 +11,13 @@ body{
 
 .header {
   padding: 0 5px; /* Espaçamento interno do header */
-  display: flex; 
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
   
 .header ul {
@@ -30,7 +34,6 @@ body{
   backdrop-filter: blur(20px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
   border-radius: 30px; /* Borda arredondada (ajuste conforme necessário) */
   list-style: none; /* Remova os marcadores de lista */
-  
 }
 
 /* Estilo padrão para o ícone e a linha */ 
@@ -140,6 +143,7 @@ body{
   display: flex;
   justify-content: space-between; 
   padding: 20px; 
+  margin-top: 100px;
 }
 
 /* Estilos para as Duas partes */
@@ -208,6 +212,8 @@ footer ul {
 
 #logo-inicio-home{
   width: 290px;
+  backdrop-filter: blur(5px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
+  border-radius: 30px;
 }
 
 #imgPerfil-vazio, .imgPerfil, #fotoExibida{

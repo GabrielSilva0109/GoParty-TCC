@@ -110,11 +110,6 @@ public class UsuarioService {
             followerRepository.delete(existingFollower);
         }
     }
-
-    public List<Follower> obterSeguidores(Integer userId) {
-        // Aqui, você deve chamar o método do repositório para buscar os seguidores com base no ID do usuário.
-        return followerRepository.findByFollowerId(userId);
-    }
     
 
     //OBTER NUMEROS DE SEGUIDORES 
