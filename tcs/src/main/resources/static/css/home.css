@@ -6,7 +6,7 @@ body{
   margin: 0;
   padding: 0;
   font-family: 'Poppins';
-  background-image: url('/css/img/fundosTeste3.jpg');
+  background-image: url('/css/img/fundo.webp');
 }
 
 .header {
@@ -39,15 +39,13 @@ body{
 /* Estilo padrão para o ícone e a linha */ 
 .icon-container {
   position: relative;
-  display: inline-block;
-  text-align: center;
 }
 
 .icon {
  width: 40px; /* Defina o tamanho desejado para o ícone */
  height: 40px;
- display: block; /* Certifique-se de que o ícone seja um bloco para ocupar espaço */
- margin: 0 auto; /* Centralizar verticalmente o ícone */
+ 
+ 
  padding: 10px;
 }
 
@@ -177,12 +175,7 @@ body{
 .center-content, .left-sidebar, .left-sidebar-perfil{
   border-radius: 20px;
   text-align: center;
-  
-}
-
-.container{
-  border: 1px dotted #324;
-}
+} 
 
 footer {
   display: none;
@@ -190,7 +183,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  color: #fff;
+  
 }
 
 /* Estilos para a lista no footer */
