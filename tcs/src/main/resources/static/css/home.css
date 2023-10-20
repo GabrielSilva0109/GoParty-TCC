@@ -1624,9 +1624,8 @@ strong {
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: start;
   gap: 20px;
-  width: 100%;
+  
 }
 
 .imgNoti{
@@ -1802,11 +1801,9 @@ strong {
   display: flex;
   align-items: center;
   padding: 10px
-
 }
 
 /* Limpar notis */
-
 .Btn-limpar {
   display: flex;
   align-items: center;
