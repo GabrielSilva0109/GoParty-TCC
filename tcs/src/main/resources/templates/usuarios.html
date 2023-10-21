@@ -105,20 +105,23 @@
                  </button>
              </form>
          </div>
- 
+
          </div>
-             <div class="bloco-user">
+         <div class="main-container">
                 
-                 <div th:each="usuario : ${usuarios}" class="usuario-bloco">
+                 <div th:each="usuario : ${usuarios}" class="cards">
+
                     <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
-                        <img class="imgUsuarios" th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser">
-                        <h3><span class="arroba">@</span><span th:text="${usuario.username}"></span></h3>
-                        <h4 class="descricaoUser"><span th:text="${usuario.descricao}"></span></h4>
+
+                        <img th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser"/>
+                        <h4><span class="arroba">@</span><span th:text="${usuario.username}"></span></h4>
+                        <p class="descricaoUser"><span th:text="${usuario.descricao}"></span></p>
+
                     </a>
                      <!--Botões de seguir o usuário mostrado (TESTE)-->
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
                         <form method="post" action="/follow"  th:if="${seguirStatusMap[usuario.id] == false}">
-                            <button class="btn-perfil-follow-usuarios" id="btn-follow" type="submit">
+                            <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" type="submit">
                                 <strong>SEGUIR</strong>
                                 <div id="container-stars">
                                   <div id="stars"></div>
@@ -144,7 +147,7 @@
 
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
                         <form method="post" action="/unfollow" th:if="${seguirStatusMap[usuario.id] == true}">
-                            <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" type="submit">
+                            <button class="btn-perfil-follow-usuarios" id="btn-unfollow-usuarios" type="submit">
                                 <strong>Seguindo</strong>
                                 <div id="container-stars">
                                   <div id="stars"></div>
@@ -156,17 +159,11 @@
                                 </div>
                               </button>
                         </form>
-                   
-                 </div>
 
-                 <style>
-                    .usuario-bloco a{
-                        text-decoration: none;
-                    }
-                 </style>
-             </div>
-         </div>
-        
+                     </div>
+                  </div>
+                </div>
+         </div> 
     </div>
 
 

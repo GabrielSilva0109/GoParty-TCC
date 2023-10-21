@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
+*{
+  text-transform: capitalize;
+}
+
 body{
   margin: 0;
   padding: 0;
@@ -2057,4 +2061,70 @@ strong {
 .active-button {
   border-bottom: 4px solid rgb(255, 69, 69);
 }
+
+/* Novos cards */
+
+.cards{
+  display: inline-block;
+  padding: 20px 30px;
+  border-radius: 20px;
+  border: 3px rgba(211, 211, 211, 0.486) solid;
+  margin: 10px;
+  transition: 0.6s;
+}
+
+.cards:hover{
+  transition: 0.6s;
+  box-shadow: 5px 5px 20px lightgray;
+}
+
+.cards img{
+  transition: 0.2s;
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.cards:hover img{
+  transition: 0.2s;
+  outline: 4px solid grey;
+}
+
+.cards p{
+  color: grey;
+}
+
+.main-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-follow-usuarios{
+
+  width: 78%;
+  height: 30%;
+}
+
+#btn-follow-usuarios{
+  
+  width: 78%;
+  height: 30%;
+}
+
+#btn-follow-usuarios strong{
+  
+  font-size: 8px;
+}
+
+.cards a{
+  text-decoration: none;
+}
+
+
+
+
+
 
