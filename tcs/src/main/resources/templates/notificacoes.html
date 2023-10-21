@@ -101,7 +101,11 @@
 
                 <!--Lista de notificações-->
                 <ul>
+                    <li th:if="${#lists.isEmpty(notifications)}">
+                        <span>Não há notificações.</span>
+                    </li>
                     <li class="lista-notificacoes" th:each="notification, index : ${notifications}">
+                        
                         <!--Bloco especifico-->
                      <div class="notification-container">
                          <!--Tempo da notificacao-->
