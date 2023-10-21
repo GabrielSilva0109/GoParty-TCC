@@ -20,8 +20,8 @@
             <li>
                 <a class="links" th:href="@{/perfil}">
                     <div class="icon-container">
-                        <img src="/css/img/profileIcon.png" alt="Perfil" class="icon">
-                        <div class="line"></div>
+                        <img src="/css/img/profileIcon.png" alt="Perfil" class="icon" >
+                        
                     </div>
                 </a>
             </li>
@@ -35,31 +35,31 @@
         </a>
         </li>
 
-        <li>
-            <button class="links" id="home-link">
+        <li><a class="links" th:href="@{/home}" >
             <div class="icon-container">
-                <img src="/css/img/homeIcon.png" alt="Home" class="icon" id="iconeBotaoHome">
+                <img src="/css/img/homeIcon.png" alt="Home" class="icon" style="border-bottom: 4px solid rgb(255, 69, 69);">
+                <div class="line"></div>
             </div>
-            </button>
-        </li>
+        </a></li>
 
         <li>
-            <button class="links" id="meuLink">
+            <a class="links" th:href="@{/evento}" >
                 <div class="icon-container">
                     <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
                     <div class="line"></div>
                 </div>
-            </button>
+            </a>
         </li>
+
         <li>
             <a class="links" th:href="@{/notificacoes}">
                 <div class="icon-container">
-                    <div th:if="${notificacoesNaoVisualizadas > 0}" class="contador-notificacao">
-                        <div class="circulo">
+                    <div class="contador-notificacao">
+                        <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
                             <span th:text="${notificacoesNaoVisualizadas}"></span>
                         </div>
                     </div>
-                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" id="iconeBotaoNotis">
+                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
                     <div class="line"></div>
                 </div>
             </a>
@@ -265,7 +265,6 @@
     </footer>
 
     <script src="/css/js/script.js"></script>
-    <script src="/css/js/trocasContainer.js"></script>
     
 </body>
 
