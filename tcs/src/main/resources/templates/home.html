@@ -52,7 +52,7 @@
             </button>
         </li>
         <li>
-            <button class="links" id="notificacoes-link">
+            <a class="links" th:href="@{/notificacoes}">
                 <div class="icon-container">
                     <div th:if="${notificacoesNaoVisualizadas > 0}" class="contador-notificacao">
                         <div class="circulo">
@@ -62,7 +62,7 @@
                     <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" id="iconeBotaoNotis">
                     <div class="line"></div>
                 </div>
-            </button>
+            </a>
         </li>
         </ul>
         

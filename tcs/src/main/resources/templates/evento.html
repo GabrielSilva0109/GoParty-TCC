@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoParty | Notificações</title>
-    <link rel="stylesheet"  href="/css/home.css">
+    <link rel="stylesheet"  href="/css/evento.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
@@ -42,12 +42,12 @@
             </li>
 
             <li>
-                <a class="links" th:href="@{/evento}" >
+                <button class="links" id="meuLink">
                     <div class="icon-container">
                         <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
                         <div class="line"></div>
                     </div>
-                </a>
+                </button>
             </li>
 
        
@@ -85,33 +85,26 @@
 
     <div class="center-content" id="center-notificacoes">
                    
-            <div class="bloco-notificacoes"> 
-                <div class="noti-topo">
-                    <h1>Notificações</h1>
-                    <!--Botão para limpar notis-->
-                    <form action="/limparNotificacoes" id="btn-limpar-id" method="post">
-                        <button class="Btn-limpar" id="btn-limpar-id">
-                            <div class="limpar-notis"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAADgElEQVR4nO2Wz0/bZhzG8x9YyrU9JeqPCMLWRFRkaGwICExDQuqUVogt66CJikg1bYvjwrIYqWo3teVQeinssPSwjWyFBJYWllLqAc0cabm0Ny6dOOyf6OEzfXFYIwZOoEy79JGs+H3f5/M8tuJXtsPxWv+njgzTdDRG5kiMyIEzYkQk4+gI3roA9wg+10U23cOE3cOU3BcZ22+pMFvsMOGtrBF8tkDjEE2eCJueKG2f/o7HFUXxRCh5ovWXi1cYYSVDsiTzRNTmzk8NkXnzE8ICfF7kxRdFUv4oyqlBSr7B2uXiEa8wwkqGZEmmb5CZPcG3PiYSOG+Bo+skRtfh8jq6jGW+5fze5bK2zV5eQxN2dN268Ap7wfaq2wdQ3/2QcjCEU18lMb4G46vonSGU9gHM9gG+smPG19CE0VdJ2TG7qrsftaffCrpqkLj2G1wzrPLufszu/pdB1d6vDTTxXjWs0p3eutQXYqzvLKVQCOWmQWLCgJsGuoxlfmu9yjNhoIlnwiBV7XEcROfOoJ77gHIohPP2CtrtFZhcscrPnsGssba/O92pcB9jH/VRioZQ7iyjTT2CO8voMt5tTrzCOA5DkV7i0fcpDwVxflcglX4I8lt9Hu1EifZiRntJOg5Tl3qIX3qP8mdBnN8X0H4oQOXQpTTWgxnrPuRSkdqFGu+yimeX0GaXQI57S+haJ4oaxIx3veL/ulPJDtRkB2U9iDP/AO2XRVh4gF59LuVfdmAmOw6p/EobY1feofRNJ0ohj1a4D4U8uox3mxOvMK9UeuNt1ButlCdacBp5NCMPRqXgeium3dr11gPe+WQL6q2AFfxkHq24AMUF9Ck/ymQAczJA8laAeA3P/sqnT6NON1P+tgVneR6tPA9/5KzA6WbM6eaXT+/UaeJ23qnmOsvv+lDTfivoaRbtWRaezpGSoLQfM+3/95ZJ+4hvM8+yJCqMvs3c9dcoz7xBZKaJ0k9+lI1ZtI052JgjJWOZz3j3fmhk7R82S6LC6tvsjNfmtZhrIJNrIPx8Ds/zn3nx5z2rNNdIKdtQ+0kVj3iFEVYyJEsyc402HwL3T+BdPMnmrx7a/voRz0MXyuJJSoue+reHeIURVjIkSzIl2xZcduNbOc7mo2OEHx+ntHJs/3tSGGElQ7Iksy6w6ML7xMVM0V3jc8Uuw82FrQxXnZ+3r+X4j/Q3CYE5BD0RH5QAAAAASUVORK5CYII="></div>
-                            
-                            <div class="text">Limpar</div>
-                        </button>
-                    </form>
-                </div>
-                
-
-                <!--Lista de notificações-->
-                <ul>
-                    <li class="lista-notificacoes" th:each="notification, index : ${notifications}">
-                        <!--Bloco especifico-->
-                     <div class="notification-container">
-                         <!--Tempo da notificacao-->
-                         <span class="tempo-decorrido" th:text="${temposDecorridos[__${index.index}__]}"></span>
-                        <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
-                        <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"></span>
-                     </div>
-                    </li>                                   
-                </ul>
-            </div> 
+            <!--Container de criar evento-->
+        <!--Fazer o Post-->
+        <section id="criar-evento-section">
+            <div class="container-ev">
+                <h1>
+                    Criar Evento
+                </h1>
+                <form action="criar-evento" method="POST" enctype="multipart/form-data">
+                    <input type="text" name="titulo" placeholder="Titulo" required>
+                    <textarea placeholder="Descrição"  name="descricao" id="" cols="10" rows="10" required></textarea>
+                    <input class="btn-foto" type="file" name="imagemEvento" required>
+                    <button class="ui-btn" type="submit">
+                        <span>
+                          Criar
+                        </span>
+                    </button>
+                </form>
+                             
+            </div>              
+    </section>
    
 
 
@@ -124,6 +117,6 @@
         </ul>
     </footer>
 
-    <script src="/css/js/trocasContainer.js"></script>
+    
 </body>
 </html>

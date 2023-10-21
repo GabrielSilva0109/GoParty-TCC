@@ -1,7 +1,6 @@
  // elemento <a> com a classe "links"
  var meuLink = document.getElementById("meuLink");
  var homeLink = document.getElementById("home-link");
- var notificLink = document.getElementById("notificacoes-link");
 
  //as seções
  var feedSection = document.getElementById("feed-section");
@@ -22,23 +21,9 @@
      notiSection.style.display = "none";
      criarEventoSection.style.display = "flex";
      iconeBotao.classList.add("active-button");
+
      
  });
-
-  //ouvinte de evento de clique ao link
-  notificLink.addEventListener("click", function() {
-
-    var botoes = document.querySelectorAll(".icon");
-    botoes.forEach(function(item) {
-        item.classList.remove("active-button");
-    });
-      // Altera o estilo das seções para ocultar/exibir
-      feedSection.style.display = "none";
-      criarEventoSection.style.display = "none";
-      notiSection.style.display = "flex";
-      iconeBotaoNotis.classList.add("active-button");
-  });
-
   
   //ouvinte de evento de clique ao link
   homeLink.addEventListener("click", function() {
@@ -52,6 +37,7 @@
     notiSection.style.display = "none";
     feedSection.style.display = "";
     iconeBotaoHome.classList.add("active-button");
+
 });
 
 
