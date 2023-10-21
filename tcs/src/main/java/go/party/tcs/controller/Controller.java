@@ -81,9 +81,9 @@ public class Controller {
             model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
             model.addAttribute("sessionUsuario", sessionUsuario);
             // ...
-            return "evento";
+            return "home";
         } else {
-            return "redirect:/home";
+            return "home";
         }
     }
 

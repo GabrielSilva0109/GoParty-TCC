@@ -21,3 +21,6 @@ fotoInput.addEventListener("change", function () {
         alert("Por favor, selecione uma imagem válida.");
     }
 });
+
+   
+

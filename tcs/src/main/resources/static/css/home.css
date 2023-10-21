@@ -54,6 +54,7 @@ body{
   height: 4px; 
   background-color: transparent;
   transition: background-color 0.3s ease-in-out;
+  border-radius: 10px;
 }
 
 /* Efeito de linha ao passar o mouse */
@@ -2051,3 +2052,9 @@ strong {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
+
+/* Estilo para o botão quando clicado */
+.active-button {
+  border-bottom: 4px solid rgb(255, 69, 69);
+}
+
