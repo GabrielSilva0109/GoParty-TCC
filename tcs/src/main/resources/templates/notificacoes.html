@@ -8,6 +8,9 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header"> 
@@ -76,7 +79,7 @@
 
            <p>Basta copiar e compartilhar este link <br>
         <span>
-            <a href="">goparty/convite/23323.com</a>
+            <a href="#">goparty/convite/23323.com</a>
         </span></p>
             
            <img src="/css/img/wedding-card.png" alt="">
@@ -116,9 +119,23 @@
                         <!--Bloco especifico-->
                      <div class="notification-container">
                          <!--Tempo da notificacao-->
-                         <span class="tempo-decorrido" th:text="${temposDecorridos[__${index.index}__]}"></span>
+                         
                         <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
-                        <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"></span>
+
+                        <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"> </span>
+
+                        <span class="tempo-decorrido" th:text="${temposDecorridos[__${index.index}__]}"></span>
+                        
+
+                   <style>
+
+                     .tempo-decorrido{   
+                        margin-left: 4px; 
+                        font-size: 12px;  
+                     }
+
+                   </style>
+
                      </div>
                     </li>                                   
                 </ul>
