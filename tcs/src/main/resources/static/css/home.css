@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 
-
 body{
   margin: 0;
   padding: 0;
@@ -2130,11 +2129,11 @@ strong {
 /* Nav Bar Left */
 
 nav.menu-lateral{
-  width: 76px;
+  width: 70px;
   height: 100%;
-  background-color: #25142d;
+  background-color: #202020;
   padding: 40px 0 40px 1%;
-  box-shadow: 3px 0 0 #646464;
+  box-shadow: 3px 0 0 #25142d;
   position: fixed;
   top: 0;
   left: 0;
@@ -2146,11 +2145,8 @@ nav.menu-lateral.expandir{
   width: 300px;
 }
 
-nav.menu-lateral.expandir .icon > i{
-  margin-left: -30px;
-}
-
 .btn-expandir{
+  width: 100%;
   padding-left: 10px;
 }
 
@@ -2163,20 +2159,20 @@ nav.menu-lateral.expandir .icon > i{
 ul{
   height: 100%;
   list-style-type: none;
+  padding: 0;
 }
 
 ul li.item-menu{
   transition: .2s;
-  margin-left: -40px;
 }
 
 ul li.ativo{
-  background-color: #888;
-  border-radius: 17px;
+  background-color: #25142d;
 }
 
 ul li.item-menu:hover{
-  background: #888;
+  background: #25142d;
+  border-radius: 17px;
 }
 
 ul li.item-menu a{
@@ -2186,32 +2182,26 @@ ul li.item-menu a{
   padding: 20px 4%;
   display: flex;
   margin-bottom: 20px;
-  line-height: 30px;
+  line-height: 40px;
 }
 
 ul li.item-menu a .txt-link{
-  margin-left: -70px;
+  margin-left: 70px;
   transition: .5s;
+  padding: 0;
   opacity: 0;
 }
 
 nav.menu-lateral.expandir .txt-link{
-  margin-left: -70px;
+  margin-left: 40px;
+  padding: 0;
   opacity: 1;
 }
 
 ul li.item-menu a .icon > i{
   font-size: 30px;
   margin-left: 10px;
-}
-
-#sair-btn{
-  margin-left: -14px;
-}
-
-#btn-exp{
-  width: 45%;
-  cursor: pointer;
+  padding: 0;
 }
 
 /* Conversas */
