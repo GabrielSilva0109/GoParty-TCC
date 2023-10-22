@@ -91,7 +91,15 @@
         
         
         <!-- Feed -->
-        <div class="center-content">
+        <div class="center-content" id="center-feed">
+
+            <style>
+                #center-feed{
+                    transition: 0.6s;
+                    box-shadow: 5px 5px 20px purple;
+                }
+            </style>
+
             <section id="feed-section">
             <div th:each="evento : ${eventos}" class="evento-bloco">
 
