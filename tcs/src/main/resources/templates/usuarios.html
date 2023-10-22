@@ -7,11 +7,55 @@
     <link rel="stylesheet"  href="/css/home.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body>
+
+    <nav class="menu-lateral">
+
+        <!--Btn Expandir-->
+       <div class="btn-expandir">
+          <i class="bi bi-list" id="btn-exp"></i>
+       </div>
+
+       <ul>
+          <li class="item-menu">
+              <a href="#">
+                  <span class="icon"><i class="bi bi-person-circle"></i></span>
+                  <span class="txt-link">Seu perfil</span>
+              </a>
+          </li>
+          <li class="item-menu">
+              <a href="#">
+                  <span class="icon"><i class="bi bi-shield-fill-check"></i></span>
+                  <span class="txt-link">Privacidade</span>
+              </a>
+          </li>
+          <li class="item-menu">
+              <a href="#">
+                  <span class="icon"><i class="bi bi-gear"></i></span>
+                  <span class="txt-link">Configurações</span>
+              </a>
+          </li>
+          <li class="item-menu">
+              <a href="">
+                  <span class="icon"></span>
+                  <span class="txt-link"></span>
+              </a>
+          </li>
+        <li class="item-menu">
+            <a th:href="@{/logout}">
+                <span class="icon"><i class="bi bi-box-arrow-right" id="sair-btn"></i></span>
+                <span class="txt-link">Sair</span>
+            </a>
+        </li>
+       </ul>
+
+  </nav>
+
     <header class="header"> 
-        <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">
+        <!--<img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">-->
         
         <ul class="ulContainer">
             <li>
@@ -64,27 +108,16 @@
             </li>
         </ul>
         
-        <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link2">
-            <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
-            <div class="text">Sair</div>
+        <!--Botao de chat-->
+        <a href="#" class="Btn" type="submit" id="btn-logout-link2">
+            <div class="sign"><i class="bi bi-chat-dots"></i></div>
+            <div class="text" id="conversas-chat">
+                <p id="conversas">Conversas</p>
+            </div>
         </a>
     </header>
 
     <div class="container">
-        <div class="left-sidebar" id="container-left">
-           <h1>
-            Indique o GoParty para os seus amigos
-           </h1>
-
-           <p>Basta copiar e compartilhar este link <br>
-        <span>
-            <a href="">goparty/convite/23323.com</a>
-        </span></p>
-            
-           <img src="/css/img/wedding-card.png" alt="">
-        </div>
-        
-
         <style>
            
         </style>
@@ -96,8 +129,12 @@
                 transition: 0.6s;
                 box-shadow: 5px 5px 20px purple;
             }
-        </style>
 
+            .container{
+                margin-left: 21%;
+                width: 100%;
+            }
+        </style>
 
         <div class="input-pesquisa"> 
              <!--Search bar -->
@@ -126,8 +163,8 @@
                         <img src="/css/img/fotoPerfil.jpg" alt="Imagem Padrão" th:unless="${usuario.temImagemPerfil()}" />
                         <h4><span class="arroba">@</span><span th:text="${usuario.username}"></span></h4>
                         <p class="descricaoUser"><span th:text="${usuario.descricao}"></span></p>
-
                     </a>
+                    
                      <!--Botões de seguir o usuário mostrado (TESTE)-->
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
                         <form method="post" action="/follow"  th:if="${seguirStatusMap[usuario.id] == false}">
@@ -143,6 +180,7 @@
                                 </div>
                               </button>
                         </form>
+
 
                         <!--<span class="seguido-por">Seguido por <span class="arroba">@</span>joao12 e 20+</span> 
                         <style>
@@ -186,22 +224,6 @@
         </ul>
     </footer>
 
-
-    <script>
-        var inputPesquisar = document.getElementById('input-pesquisar');
-        var blocoUser = document.querySelector('.bloco-user');
-        const left = document.getElementById('container-left');
-
-        // Adicione um ouvinte de evento para o evento 'input' no input
-        inputPesquisar.addEventListener('input', function() {
-            if (inputPesquisar.value.length > 0) {
-                blocoUser.style.display = 'none';
-            } else {
-                blocoUser.style.display = ""; 
-            }
-        });
-    </script>
-
-     <script src="/css/js/trocasContainer.js"></script>
+    <script src="/css/js/barraLateral.js"></script>
 </body>
 </html>

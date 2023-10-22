@@ -19,6 +19,7 @@ body{
   top: 0;
   left: 0;
   right: 0;
+  margin-left: 30%;
 }
   
 .header ul {
@@ -149,6 +150,8 @@ body{
   width: 25%;
   background-color: #f0f0f0; /* Cor de fundo do lado esquerdo */
   padding: 20px;
+  margin-left: 14%;
+  margin-right: 3%;
 }
 
 .left-sidebar-perfil {
@@ -165,11 +168,10 @@ body{
 /* Container Principal */
 .center-content {
   display: block;
-  width: 67%; 
+  width: 67%;
   border-radius: 20px;
   text-align: center;
   background-color: #e0e0e0;
-  border-radius: 20px;
 }
 
 .center-content, .left-sidebar, .left-sidebar-perfil{
@@ -2124,6 +2126,107 @@ strong {
 .cards a{
   text-decoration: none;
 }
+
+/* Nav Bar Left */
+
+nav.menu-lateral{
+  width: 76px;
+  height: 100%;
+  background-color: #25142d;
+  padding: 40px 0 40px 1%;
+  box-shadow: 3px 0 0 #646464;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transition: .5s;
+}
+
+nav.menu-lateral.expandir{
+  width: 300px;
+}
+
+nav.menu-lateral.expandir .icon > i{
+  margin-left: -30px;
+}
+
+.btn-expandir{
+  padding-left: 10px;
+}
+
+.btn-expandir > i{
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+ul{
+  height: 100%;
+  list-style-type: none;
+}
+
+ul li.item-menu{
+  transition: .2s;
+  margin-left: -40px;
+}
+
+ul li.ativo{
+  background-color: #888;
+  border-radius: 17px;
+}
+
+ul li.item-menu:hover{
+  background: #888;
+}
+
+ul li.item-menu a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 20px 4%;
+  display: flex;
+  margin-bottom: 20px;
+  line-height: 30px;
+}
+
+ul li.item-menu a .txt-link{
+  margin-left: -70px;
+  transition: .5s;
+  opacity: 0;
+}
+
+nav.menu-lateral.expandir .txt-link{
+  margin-left: -70px;
+  opacity: 1;
+}
+
+ul li.item-menu a .icon > i{
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+#sair-btn{
+  margin-left: -14px;
+}
+
+#btn-exp{
+  width: 45%;
+  cursor: pointer;
+}
+
+/* Conversas */
+
+#conversas{
+  font-size: 10px;
+ }
+
+ .text{
+  padding: 3px;
+ }
+
+ .text p{
+  margin-left: 5px;
+ }
 
 
 
