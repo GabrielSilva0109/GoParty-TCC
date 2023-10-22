@@ -2223,40 +2223,6 @@ ul li.item-menu a .icon > i{
   margin-left: 5px;
  }
 
- /* Footer novo */
-
- .footer {
-  background-color: #202020;
-  box-shadow: 3px 3px 3px #25142d;
-  color: #fff;
-  margin-top: 50%;
-  padding: 20px;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  height: 4.2rem;
-  width: 100%;
-}
-.footer a {
-  color: #fff;
-  font-size: 10px;
-  text-decoration: none;
-}
-
-.footer p {
-  font-size: 12px;
-}
-
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.copyright {
-  font-size: 14px;
-  margin-top: 10px;
-}
-
 
 
 
