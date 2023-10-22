@@ -154,5 +154,11 @@ public class Usuario {
     public void setFotoPerfil(byte[] fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
+
+    //METODO PARA VERIFICAR SE EXISTE FOTO DE PERFIL
+
+    public boolean temImagemPerfil() {
+        return fotoPerfil != null && fotoPerfil.length > 0;
+    }
   
 }
