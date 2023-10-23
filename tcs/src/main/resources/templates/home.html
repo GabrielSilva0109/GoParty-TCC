@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoParty | Home</title>
     <link rel="stylesheet"  href="/css/home.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-        <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
+    <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body>
 
     <nav class="menu-lateral">
 
         <div class="btn-expandir">
-            <i class="bi bi-list" id="btn-exp"></i>
+            <img src="/css/img/LogoSimples.png" alt="" id="btn-exp">
+            
         </div><!--btn-expandir-->
 
         <ul>
@@ -48,6 +48,11 @@
             </li>
             <li class="item-menu">
                 <a class="links" th:href="@{/notificacoes}">
+                    <div class="contador-notificacao">
+                        <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
+                            <span th:text="${notificacoesNaoVisualizadas}"></span>
+                        </div>
+                    </div>
                     <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
                     <span class="txt-link">Notificações</span>
                 </a>
@@ -68,70 +73,9 @@
 
     </nav><!--menu-lateral-->
 
-    <header class="header"> 
-        <!--<img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">-->
- 
-        <ul class="ulContainer">
-            <li>
-                <a class="links" th:href="@{/perfil}">
-                    <div class="icon-container">
-                        <img src="/css/img/profileIcon.png" alt="Perfil" class="icon" >
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-
-        <li>
-        <a class="links" th:href="@{/usuarios}">
-            <div class="icon-container">
-                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
-                <div class="line"></div>
-            </div>
-        </a>
-        </li>
-
-        <li><a class="links" th:href="@{/home}" >
-            <div class="icon-container">
-                <img src="/css/img/homeIcon.png" alt="Home" class="icon" style="border-bottom: 4px solid rgb(255, 69, 69); border-radius: 4px;">
-                <div class="line"></div>
-            </div>
-        </a></li>
-
-        <li>
-            <a class="links" th:href="@{/evento}" >
-                <div class="icon-container">
-                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
-                    <div class="line"></div>
-                </div>
-            </a>
-        </li>
-
-        <li>
-            <a class="links" th:href="@{/notificacoes}">
-                <div class="icon-container">
-                    <div class="contador-notificacao">
-                        <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
-                            <span th:text="${notificacoesNaoVisualizadas}"></span>
-                        </div>
-                    </div>
-                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
-                    <div class="line"></div>
-                </div>
-            </a>
-        </li>
-        </ul>
-        
-        <!--Botao de chat-->
-        <a href="#" class="Btn" type="submit" id="btn-logout-link2">
-            <div class="sign"><i class="bi bi-chat-dots"></i></div>
-            <div class="text" id="conversas-chat">
-                <p id="conversas">Conversas</p>
-            </div>
-        </a>
-    </header>
+    
 
     <div class="container">
-        
         <!-- Feed -->
         <div class="center-content" id="center-feed">
 
@@ -144,7 +88,6 @@
                     <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
                     
                     <div class="evento-curtidas">
-
                         <!--Curtir Evento-->
                         <form th:action="@{'/curtirEvento/' + ${evento.id}}" method="post" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == false">
                             <button class="Btn-curtir">
