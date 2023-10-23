@@ -3,7 +3,7 @@ console.log("Funcionou");
 //Username com mais de 12 caracteres
 document.addEventListener("DOMContentLoaded", function() {
     const usernameInput = document.getElementById("username");
-    const usernameInvalidoDiv = document.querySelector(".usernameInvalido-container");
+    const usernameInvalidoDiv = document.querySelector(".dadoInvalido");
     const submitButton = document.getElementById("btn-cadastrar-space");
 
     usernameInput.addEventListener("input", function() {

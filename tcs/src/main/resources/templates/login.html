@@ -6,6 +6,7 @@
     <title>GoParty | Login</title>
     <link rel="stylesheet"  href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
@@ -25,8 +26,9 @@
           <input type="text" name="username" id="username" class="form-control" placeholder="Nome de usuário" required/>
 
            <!--Username inválido-->
-           <div class="usernameInvalido-container">
-            <p>Nome de usuário deve conter até 10 caracteres</p>
+           <div class="dadoInvalido">
+            <p>Nome de usuário deve conter até 10 caracteres <span>  <i class="bi bi-exclamation-diamond"></i>
+            </span></p>
            </div>
 
           <input type="email" name="email" class="form-control" placeholder="Email" required/>
@@ -35,8 +37,9 @@
             <p th:text="${mensagem}"></p>
           </div>
           <input type="date" id="idade" name="idade" class="form-control" placeholder="Data de nascimento" required/>
-          <div id="idade-nao-permitida">
-            <p>Idade não permitida para utilizar o GoParty! <span id="close-modal-idade">x</span></p>
+          <div class="dadoInvalido" id="idade-nao-permitida">
+            <p>Idade não permitida para utilizar o GoParty!  <span>  <i class="bi bi-exclamation-diamond"></i>
+            </span></p>
           </div>
 
           <input type="password" name="senha" class="form-control" minlength="8" maxlength="8" id="senhaTrocaCadastro" placeholder="Informe a senha" required />

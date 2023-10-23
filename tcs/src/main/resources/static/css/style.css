@@ -320,25 +320,8 @@ button.ghost {
   /* Estilos para o modal */
 #idade-nao-permitida{
     display: none;
-    align-items: center;
-    justify-content: center;
-    height: 20px;
-    color: #ffffff;
-    background-color: #e11313;
-    border-radius: 9px;
-    padding: 10px;
 }
 
-#idade-nao-permitida p{
-    font-size: 10px;
-    color: #151515;
-}
-
-#idade-nao-permitida span{
-    padding: 10px;
-    font-size: 10px;
-    color: #151515;
-}
 
 /* Teste de estilização inputs */
 
@@ -738,16 +721,17 @@ strong {
 }
 
 /* Validacao */
-.usernameInvalido-container{
+.dadoInvalido{
   display: none;
-  padding: 3px;
+  padding: 5px;
   border-radius: 15px;
   background-color: red;
-  width: 85%;
-  margin-left: 7%;
+  width: 63%;
+  margin-left: 19%;
+  height: 40px;
 }
 
-.usernameInvalido-container p{
+.dadoInvalido p{
   font-size: 12px;
 }
 
