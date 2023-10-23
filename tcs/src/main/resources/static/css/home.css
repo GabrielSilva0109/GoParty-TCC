@@ -2155,6 +2155,7 @@ ul li.item-menu{
   align-items: center;
   padding: 2px;
   display: flex;
+  margin-bottom: 22px;
 }
 
 ul li.ativo{
