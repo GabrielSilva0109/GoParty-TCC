@@ -13,7 +13,7 @@
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body>
-
+    <!--menu-lateral-->
     <nav class="menu-lateral">
 
         <div class="btn-expandir">
@@ -71,11 +71,51 @@
             </li>
         </ul>
 
-    </nav><!--menu-lateral-->
+    </nav>
 
     
 
     <div class="container">
+        <div class="left-conta">
+            <!-- Parte Esquerda Informações do Usuario -->
+            <div class="left-sidebar-perfil" style="height: 250px; width: 250px;">
+            
+                <!-- Imagem de Perfil Usuario -->
+                <img class="imgPerfil" 
+                    th:if="${sessionUsuario.fotoPerfil != null}" 
+                    th:src="@{'/perfil-imagem/' + ${sessionUsuario.id}}" 
+                    alt="Foto de Perfil" />
+                    
+                <img class="imgPerfil" 
+                    th:unless="${sessionUsuario.fotoPerfil != null}" 
+                    src="/css/img/fotoPerfil.jpg" 
+                    alt="" 
+                    id="imgPerfil-vazio" />
+
+                <!-- Informações do Usuario -->
+                <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
+                <div class="info">
+                    <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>                 
+                </div>
+            </div>
+
+
+            <div class="left-sidebar-perfil" style="height: 250px; width: 250px;">
+            
+                
+
+                <!-- Informações do Usuario -->
+                <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
+                <div class="info">
+                    <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>                 
+                </div>
+            </div>
+        </div>
+        
+        
+
+
+
         <!-- Feed -->
         <div class="center-content" id="center-feed">
 
