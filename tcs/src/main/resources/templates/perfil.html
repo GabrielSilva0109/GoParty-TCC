@@ -9,65 +9,64 @@
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header"> 
-        <img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">
+    <nav class="menu-lateral">
 
-        <ul class="ulContainer">
-            <li>
-                <a class="links" th:href="@{/perfil}">
-                    <div class="icon-container">
-                        <img src="/css/img/profileIcon.png" alt="Perfil" class="icon"  style="border-bottom: 4px solid rgb(255, 69, 69);">
-                        
-                    </div>
+        <div class="btn-expandir">
+            <img src="/css/img/LogoSimples.png" alt="" id="btn-exp">
+            
+        </div><!--btn-expandir-->
+
+        <ul>
+            <li class="item-menu">
+                <a th:href="@{/perfil}">
+                    <img src="/css/img/profileIcon.png" alt="Perfil" class="icon" >
+                    <span class="txt-link">Perfil</span>
                 </a>
             </li>
-
-         <li>
-        <a class="links" th:href="@{/usuarios}">
-            <div class="icon-container">
-                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
-                <div class="line"></div>
-            </div>
-        </a>
-        </li>
-
-        <li><a class="links" th:href="@{/home}" >
-            <div class="icon-container">
-                <img src="/css/img/homeIcon.png" alt="Home" class="icon">
-                <div class="line"></div>
-            </div>
-        </a></li>
-
-        <li>
-            <a class="links" th:href="@{/evento}" >
-                <div class="icon-container">
+            <li class="item-menu">
+                <a th:href="@{/usuarios}">
+                    <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
+                    <span class="txt-link">Usuarios</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a th:href="@{/home}" >
+                    <img src="/css/img/homeIcon.png" alt="Home" class="icon">
+                    <span class="txt-link">Home</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a  th:href="@{/evento}" >
                     <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
-                    <div class="line"></div>
-                </div>
-            </a>
-        </li>
-
-        <li>
-            <a class="links" th:href="@{/notificacoes}">
-                <div class="icon-container">
+                    <span class="txt-link">Evento</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a class="links" th:href="@{/notificacoes}">
                     <div class="contador-notificacao">
                         <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
                             <span th:text="${notificacoesNaoVisualizadas}"></span>
                         </div>
                     </div>
                     <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
-                    <div class="line"></div>
-                </div>
-            </a>
-        </li>
+                    <span class="txt-link">Notificações</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a th:href="@{/logout}">
+                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                    <span class="txt-link">Configurações</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a th:href="@{/logout}">
+                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                    <span class="txt-link">Sair</span>
+                </a>
+            </li>
         </ul>
-        
-        <a th:href="@{/logout}" class="Btn" type="submit" id="btn-logout-link2">
-            <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
-            <div class="text">Sair</div>
-        </a>
-    </header>
+
+    </nav><!--menu-lateral-->
     
     <!-- Section principal da tela -->
     <section class="container">
@@ -146,13 +145,6 @@
     
         <!-- Feed com seus Post -->
         <div class="center-content" id="center-perfil">
-
-            <style>
-                #center-perfil{
-                    transition: 0.6s;
-                    box-shadow: 5px 5px 20px purple;
-                }
-            </style>
             
             <div th:each="evento : ${eventos}" class="evento-bloco">
 
@@ -241,13 +233,14 @@
     </div>
 
     <footer>
-        <ul>
-            <li><a class="links-foot" th:href="@{/perfil}" style=" border-bottom: 4px solid rgb(255, 65, 65);">Perfil</a></li>
-            <li><a class="links-foot" th:href="@{/home}">Feed</a></li>
-            <li><a class="links-foot" th:href="@{/usuarios}">Usuarios</a></li>
-            <li><a class="links-foot" th:href="@{/evento}">Evento</a></li>
+        <ul class="ul-footer">
+            <li><h4>GoParty © 2023</h4></li>
+            <li><h4>Sobre</h4></li>
+            <li><h4>Desenvolvedores</h4></li>
+
         </ul>
     </footer>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <!-- Abrir e Fechar Modal -->
@@ -427,7 +420,9 @@
 
     </script>
 
-   <script src="/css/js/trocasContainer.js"></script>
+    <script src="/css/js/trocasContainer.js"></script>
+    <script src="/css/js/script.js"></script>
+    <script src="/css/js/barraLateral.js"></script>
 
 </body>
 </html>

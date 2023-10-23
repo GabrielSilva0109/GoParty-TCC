@@ -70,69 +70,6 @@
 
     </nav><!--menu-lateral-->
 
-    <header class="header"> 
-        <!--<img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">-->
-        
-        <ul class="ulContainer">
-            <li>
-                <a class="links" th:href="@{/perfil}">
-                    <div class="icon-container">
-                        <img src="/css/img/profileIcon.png" alt="Perfil" class="icon">
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a class="links" th:href="@{/usuarios}">
-                    <div class="icon-container">
-                        <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon"  style="border-bottom: 4px solid rgb(255, 69, 69);">
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a class="links" th:href="@{/home}" >
-                    <div class="icon-container">
-                        <img src="/css/img/homeIcon.png" alt="Home" class="icon">
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a class="links" th:href="@{/evento}" >
-                    <div class="icon-container">
-                        <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a class="links" th:href="@{/notificacoes}">
-                    <div class="icon-container">
-                        <div class="contador-notificacao">
-                            <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
-                                <span th:text="${notificacoesNaoVisualizadas}"></span>
-                            </div>
-                        </div>
-                        <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-        </ul>
-        
-        <!--Botao de chat-->
-        <a href="#" class="Btn" type="submit" id="btn-logout-link2">
-            <div class="sign"><i class="bi bi-chat-dots"></i></div>
-            <div class="text" id="conversas-chat">
-                <p id="conversas">Conversas</p>
-            </div>
-        </a>
-    </header>
-
     <div class="container">
         
 
@@ -217,11 +154,10 @@
 
 
     <footer>
-        <ul>
-            <li><a class="links-foot" th:href="@{/perfil}">Perfil</a></li>
-            <li><a class="links-foot" th:href="@{/home}">Feed</a></li>
-            <li><a class="links-foot" th:href="@{/usuarios}" style=" border-bottom: 4px solid rgb(255, 65, 65);">Usuarios</a></li>
-            <li><a class="links-foot" th:href="@{/evento}">Evento</a></li>
+        <ul class="ul-footer">
+            <li><h4>GoParty © 2023</h4></li>
+            <li><h4>Sobre</h4></li>
+            <li><h4>Desenvolvedores</h4></li>
         </ul>
     </footer>
 
