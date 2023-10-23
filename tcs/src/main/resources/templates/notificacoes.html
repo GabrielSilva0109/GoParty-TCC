@@ -15,59 +15,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="menu-lateral">
+   <!--menu-lateral-->
+   <nav class="menu-lateral">
 
-        <div class="btn-expandir">
-            <img src="/css/img/LogoSimples.png" alt="" id="btn-exp">
-            
-        </div><!--btn-expandir-->
+    <div class="btn-expandir">
+        <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
+        <span class="txt-link"> <img src="/css/img/LogoGoParty.png" alt="GoParty" id="palavraGoParty"> </span>
+       
+        
+    </div><!--btn-expandir-->
 
-        <ul>
-            <li class="item-menu">
-                <a th:href="@{/perfil}">
-                    <img src="/css/img/profileIcon.png" alt="Perfil" class="icon" >
-                    <span class="txt-link">Perfil</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a th:href="@{/usuarios}">
-                    <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
-                    <span class="txt-link">Usuarios</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a th:href="@{/home}" >
-                    <img src="/css/img/homeIcon.png" alt="Home" class="icon">
-                    <span class="txt-link">Home</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a  th:href="@{/evento}" >
-                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
-                    <span class="txt-link">Evento</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a class="links" th:href="@{/notificacoes}">
-                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon">
-                    <span class="txt-link">Notificações</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a th:href="@{/logout}">
-                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
-                    <span class="txt-link">Configurações</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a th:href="@{/logout}">
-                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
-                    <span class="txt-link">Sair</span>
-                </a>
-            </li>
-        </ul>
+    <ul>
+        <li class="item-menu">
+            <a th:href="@{/perfil}">
+                <img src="/css/img/profileIcon.png" alt="Perfil" class="icon" >
+                <span class="txt-link">Perfil</span>
+            </a>
+        </li>
+        <li class="item-menu">
+            <a th:href="@{/usuarios}">
+                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
+                <span class="txt-link">Explorar</span>
+            </a>
+        </li>
+        <li class="item-menu">
+            <a th:href="@{/home}" >
+                <img src="/css/img/homeIcon.png" alt="Home" class="icon">
+                <span class="txt-link">Home</span>
+            </a>
+        </li>
+        <li class="item-menu">
+            <a  th:href="@{/evento}" >
+                <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
+                <span class="txt-link">Postar</span>
+            </a>
+        </li>
+        <li class="item-menu ativo">
+            <a class="links" th:href="@{/notificacoes}">
+                <div class="contador-notificacao">
+                    <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
+                        <span th:text="${notificacoesNaoVisualizadas}"></span>
+                    </div>
+                </div>
+                <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
+                <span class="txt-link">Notificações</span>
+            </a>
+        </li>
+        <li class="item-menu">
+            <a th:href="@{/logout}">
+                <img src="/css/img/configs.png" alt="Eventos" class="icon">
+                <span class="txt-link">Configurações</span>
+            </a>
+        </li>
+        
+        <li class="item-menu">
+            <a th:href="@{/logout}">
+                <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                <span class="txt-link">Sair</span>
+            </a>
+        </li>
+    </ul>
 
-    </nav><!--menu-lateral-->
+</nav>
 
     <div class="container">
 
@@ -118,16 +127,6 @@
                 </ul>
             </div> 
    
-
-
-    <footer>
-        <ul>
-            <li><a class="links-foot" th:href="@{/perfil}">Perfil</a></li>
-            <li><a class="links-foot" th:href="@{/home}">Feed</a></li>
-            <li><a class="links-foot" th:href="@{/usuarios}" style=" border-bottom: 4px solid rgb(255, 65, 65);">Usuarios</a></li>
-            <li><a class="links-foot" th:href="@{/evento}">Evento</a></li>
-        </ul>
-    </footer>
     <script src="/css/js/barraLateral.js"></script>
 </body>
 </html>

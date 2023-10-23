@@ -2111,8 +2111,20 @@ nav.menu-lateral{
   transition: .5s;
 }
 
+#palavraGoParty{
+  display: none;
+}
+
 nav.menu-lateral.expandir{
   width: 300px;
+}
+
+nav.menu-lateral.expandir #palavraGoParty{
+  display: inline-block;
+  width: 125px;
+  margin-left: -10px;
+  padding: 0;
+  
 }
 
 .btn-expandir{
@@ -2141,6 +2153,7 @@ ul{
 ul li.item-menu{
   transition: .2s;
   align-items: center;
+  padding: 2px;
   display: flex;
 }
 

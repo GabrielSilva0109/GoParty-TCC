@@ -17,7 +17,9 @@
     <nav class="menu-lateral">
 
         <div class="btn-expandir">
-            <img src="/css/img/LogoSimples.png" alt="" id="btn-exp">
+            <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
+            <span class="txt-link"> <img src="/css/img/LogoGoParty.png" alt="GoParty" id="palavraGoParty"> </span>
+           
             
         </div><!--btn-expandir-->
 
@@ -31,10 +33,10 @@
             <li class="item-menu">
                 <a th:href="@{/usuarios}">
                     <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
-                    <span class="txt-link">Usuarios</span>
+                    <span class="txt-link">Explorar</span>
                 </a>
             </li>
-            <li class="item-menu">
+            <li class="item-menu ativo">
                 <a th:href="@{/home}" >
                     <img src="/css/img/homeIcon.png" alt="Home" class="icon">
                     <span class="txt-link">Home</span>
@@ -42,8 +44,8 @@
             </li>
             <li class="item-menu">
                 <a  th:href="@{/evento}" >
-                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
-                    <span class="txt-link">Evento</span>
+                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
+                    <span class="txt-link">Postar</span>
                 </a>
             </li>
             <li class="item-menu">
@@ -59,10 +61,11 @@
             </li>
             <li class="item-menu">
                 <a th:href="@{/logout}">
-                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                    <img src="/css/img/configs.png" alt="Eventos" class="icon">
                     <span class="txt-link">Configurações</span>
                 </a>
             </li>
+    
             <li class="item-menu">
                 <a th:href="@{/logout}">
                     <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
