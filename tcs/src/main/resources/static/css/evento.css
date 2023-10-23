@@ -134,14 +134,15 @@ body{
   transform: translate(2px ,2px);
 }
 /* Botão para Sair do GoParty  Termina Aqui !!*/
-
+#center-notificacoes{
+  transition: 0.6s;
+  box-shadow: 5px 5px 20px purple;
+}
 /* Estilo para a div que envolve todo o conteúdo */
 .container {
   display: flex;
   justify-content: space-between; 
-  padding: 20px; 
-  border: 1px dotted #324;
-  
+  padding: 20px;   
 }
 
 /* Estilos para as Duas partes */
