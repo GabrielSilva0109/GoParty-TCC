@@ -82,7 +82,7 @@
              <!--Search bar -->
          
              <div class="search">
-                 <form action="/usuarios" method="post">
+                 <form action="/explorar" method="post">
                  <input type="text" class="search__input" placeholder="Pesquise aqui" name="nomeDigitado" id="input-pesquisar">
                  <button class="search__button" type="submit">
                      <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -96,9 +96,12 @@
 
          </div>
          <div class="main-container">
-                
+
                  <div th:each="usuario : ${usuarios}" class="cards">
 
+                    <!--Caso não encontrar nenhum usuário ou evento-->
+                    
+                    
                     <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
 
                         <img th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser" th:if="${usuario.temImagemPerfil()}" />

@@ -1,5 +1,6 @@
 package go.party.tcs.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,18 +88,37 @@ public class Controller {
         }
     }
 
-    @PostMapping("/usuarios")
+    @PostMapping("/explorar")
     public String pesquisarUsuarios(@RequestParam("nomeDigitado") String nomeDigitado, Model model, HttpSession session) {
 
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         nomeDigitadoP = nomeDigitado;
-
+         //List<Usuario> usuarios = usuarioRepository.findByNomeContaining(nomeDigitadoP);
+         List<Usuario> usuarios = new ArrayList<Usuario>();
+         if(nomeDigitado.length() == 0 || nomeDigitado.isEmpty()){
+             usuarios = usuarioService.findAll();
+         } else {
+             usuarios = usuarioRepository.findByNomeContaining(nomeDigitadoP);
+         }
+        
         //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
             int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
             model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
             model.addAttribute("sessionUsuario", sessionUsuario);
 
-        List<Usuario> usuarios = usuarioRepository.findByNomeContaining(nomeDigitadoP);
+            Map<Integer, Boolean> seguirStatusMap = new HashMap<>();
+
+             // Preencha o Map com informações sobre se o usuário da sessão está seguindo cada usuário
+            for (Usuario usuario : usuarios) {
+                boolean isUserFollowing = followerService.isUserInFollowersList(sessionUsuario, usuario);
+                seguirStatusMap.put(usuario.getId(), isUserFollowing);
+            }
+
+            if (usuarios.isEmpty()){
+                model.addAttribute("nenhumDado", "Nenhum usuário ou evento encontrado.");
+            }
+
+        model.addAttribute("seguirStatusMap", seguirStatusMap);
         model.addAttribute("usuarios", usuarios);
 
         return "usuarios";
@@ -118,7 +138,7 @@ public class Controller {
             model.addAttribute("usuarios", usuarios);  
          
 
-            if (sessionUsuario != null && nomeDigitadoP == null) {
+            if (sessionUsuario != null) {
             // Crie um Map para armazenar o status de seguir para cada usuário
             Map<Integer, Boolean> seguirStatusMap = new HashMap<>();
 
