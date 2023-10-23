@@ -737,7 +737,19 @@ strong {
   background-color: #a5a5b0;
 }
 
-/* Teste */
+/* Validacao */
+.usernameInvalido-container{
+  display: none;
+  padding: 3px;
+  border-radius: 15px;
+  background-color: red;
+  width: 85%;
+  margin-left: 7%;
+}
+
+.usernameInvalido-container p{
+  font-size: 12px;
+}
 
 
 
