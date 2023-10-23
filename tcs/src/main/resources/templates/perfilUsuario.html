@@ -13,7 +13,7 @@
 <body>
 
    <!--menu-lateral-->
-   <nav class="menu-lateral">
+   <nav class="menu-lateral" id="menu-lateral">
 
     <div class="btn-expandir">
         <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
@@ -54,20 +54,20 @@
                         <span th:text="${notificacoesNaoVisualizadas}"></span>
                     </div>
                 </div>
-                <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
+                <img src="/css/img/notification-bell.png" alt="notificacao" class="icon" >
                 <span class="txt-link">Notificações</span>
             </a>
         </li>
         <li class="item-menu">
-            <a th:href="@{/logout}">
-                <img src="/css/img/configs.png" alt="Eventos" class="icon">
+            <a href="#" id="expandir-configs">
+                <img src="/css/img/configs.png" alt="config" class="icon">
                 <span class="txt-link">Configurações</span>
             </a>
         </li>
-      
+
         <li class="item-menu">
             <a th:href="@{/logout}">
-                <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                <img src="/css/img/log-out.png" alt="logout" class="icon">
                 <span class="txt-link">Sair</span>
             </a>
         </li>

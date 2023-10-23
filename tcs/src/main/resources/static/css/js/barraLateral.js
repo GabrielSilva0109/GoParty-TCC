@@ -19,3 +19,7 @@ var navBar = document.querySelector('.menu-lateral')
 btnExp.addEventListener('click', function(){
     navBar.classList.toggle('expandir')
 })
+
+
+   
+  
