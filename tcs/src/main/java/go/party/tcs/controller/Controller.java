@@ -83,7 +83,7 @@ public class Controller {
             // ...
             return "evento";
         } else {
-            return "redirect:/home";
+            return "evento";
         }
     }
 

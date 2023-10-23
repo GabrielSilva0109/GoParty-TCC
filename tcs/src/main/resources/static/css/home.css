@@ -18,6 +18,7 @@ body{
   top: 0;
   left: 0;
   right: 0;
+  margin-left: 30%;
 }
   
 .header ul {
@@ -54,6 +55,7 @@ body{
   height: 4px; 
   background-color: transparent;
   transition: background-color 0.3s ease-in-out;
+  border-radius: 10px;
 }
 
 /* Efeito de linha ao passar o mouse */
@@ -147,6 +149,8 @@ body{
   width: 25%;
   background-color: #f0f0f0; /* Cor de fundo do lado esquerdo */
   padding: 20px;
+  margin-left: 14%;
+  margin-right: 3%;
 }
 
 .left-sidebar-perfil {
@@ -163,11 +167,10 @@ body{
 /* Container Principal */
 .center-content {
   display: block;
-  width: 67%; 
+  width: 67%;
   border-radius: 20px;
   text-align: center;
   background-color: #e0e0e0;
-  border-radius: 20px;
 }
 
 .center-content, .left-sidebar, .left-sidebar-perfil{
@@ -943,6 +946,10 @@ animation: chitchat linear both var(--btn-animation-duration);
 @media (max-width: 500px) {
   footer {
     display: block !important;
+  }
+
+  .footer{
+    display: none;
   }
   
   .usuario-bloco {
@@ -1899,6 +1906,7 @@ strong {
   border: double 4px transparent;
   background-image: linear-gradient(#212121, #212121),  linear-gradient(137.48deg, #ffdb3b 10%,#FE53BB 45%, #8F51EA 67%, #0044ff 87%);
   background-origin: border-box;
+  cursor: pointer;
  
 }
 
@@ -2051,3 +2059,172 @@ strong {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
+
+/* Estilo para o botão quando clicado */
+.active-button {
+  border-bottom: 4px solid rgb(255, 69, 69);
+}
+
+/* Novos cards */
+
+.cards{
+  display: inline-block;
+  padding: 20px 30px;
+  border-radius: 20px;
+  border: 3px rgba(211, 211, 211, 0.486) solid;
+  margin: 10px;
+  transition: 0.6s;
+}
+
+.cards:hover{
+  transition: 0.6s;
+  box-shadow: 5px 5px 20px lightgray;
+}
+
+.cards img{
+  transition: 0.2s;
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.cards:hover img{
+  transition: 0.2s;
+  outline: 4px solid grey;
+}
+
+.cards p{
+  color: grey;
+}
+
+.main-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-follow-usuarios{
+
+  width: 78%;
+  height: 30%;
+}
+
+#btn-unfollow-usuarios{
+  width: 78%;
+  height: 30%;
+}
+
+#btn-follow-usuarios strong{
+  
+  font-size: 8px;
+}
+
+#btn-unfollow-usuarios strong{
+  
+  font-size: 8px;
+}
+
+.cards a{
+  text-decoration: none;
+}
+
+/* Nav Bar Left */
+
+nav.menu-lateral{
+  width: 70px;
+  height: 100%;
+  background-color: #202020;
+  padding: 40px 0 40px 1%;
+  box-shadow: 3px 0 0 #25142d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transition: .5s;
+}
+
+nav.menu-lateral.expandir{
+  width: 300px;
+}
+
+.btn-expandir{
+  width: 100%;
+  padding-left: 10px;
+}
+
+.btn-expandir > i{
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+ul{
+  height: 100%;
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li.item-menu{
+  transition: .2s;
+}
+
+ul li.ativo{
+  background-color: #25142d;
+  border-radius: 17px;
+}
+
+ul li.item-menu:hover{
+  background: #25142d;
+  border-radius: 17px;
+}
+
+ul li.item-menu a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 20px 4%;
+  display: flex;
+  margin-bottom: 20px;
+  line-height: 40px;
+}
+
+ul li.item-menu a .txt-link{
+  margin-left: 70px;
+  transition: .5s;
+  padding: 0;
+  opacity: 0;
+}
+
+nav.menu-lateral.expandir .txt-link{
+  margin-left: 40px;
+  padding: 0;
+  opacity: 1;
+}
+
+ul li.item-menu a .icon > i{
+  font-size: 30px;
+  margin-left: 10px;
+  padding: 0;
+}
+
+/* Conversas */
+
+#conversas{
+  font-size: 10px;
+ }
+
+ .text{
+  padding: 3px;
+ }
+
+ .text p{
+  margin-left: 5px;
+ }
+
+
+
+
+
+
