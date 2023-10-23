@@ -110,16 +110,18 @@ body{
 /* Estilos para as Duas partes */
 .left-sidebar {
   width: 25%;
-  background-color: #f0f0f0; /* Cor de fundo do lado esquerdo */
+  background-color: #f0f0f064; /* Cor de fundo do lado esquerdo */
   padding: 20px;
   margin-left: 80px;
+  backdrop-filter: blur(5px);
 }
 
 .left-sidebar-perfil {
   width: 25%;
-  background-color: #f0f0f0; /* Cor de fundo do lado esquerdo */
+  background-color: #f0f0f064; /* Cor de fundo do lado esquerdo */
   padding: 20px;
   margin-left: 80px;
+  backdrop-filter: blur(5px);
 }
 
 .arroba{
@@ -133,7 +135,8 @@ body{
   width: 70%;
   border-radius: 20px;
   text-align: center;
-  background-color: #e0e0e0;
+  background-color: #f0f0f064;
+  backdrop-filter: blur(5px);
 }
 
 .center-content, .left-sidebar, .left-sidebar-perfil{
@@ -153,7 +156,17 @@ footer{
   list-style: none;
   padding: 0;
   margin: 0;
+  cursor: pointer;
+  transition: 1s;
+  font-weight: bold;
 }
+
+.ul-footer li:hover{
+  color: #FF2525;
+  transform: scale(1.4);
+  transition: 1s;
+}
+
 #logo-inicio-home{
   width: 290px;
   backdrop-filter: blur(5px); /* Efeito de vidro com desfoque (ajuste o valor conforme necessário) */
@@ -576,12 +589,13 @@ footer{
 .descricaoUser{
   margin-top: -20px;
   color: #25142d;
+  font-weight: bold;
 }
 
 /* Layout do Feed */
 .evento-bloco{
   display: flex;
-  background:  #ffffff;
+  background:  #ffffff6b;
   margin: 20px;
   border-radius: 20px;
 }
@@ -1836,7 +1850,8 @@ strong {
 .noti-topo{
   display: flex;
   align-items: center ;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 5px;
   width: 100%;
 }
 
@@ -2016,7 +2031,9 @@ strong {
 }
 
 /* Novos cards */
-
+.cards h4{
+  color: black;
+}
 .cards{
   display: inline-block;
   padding: 20px 30px;
@@ -2024,6 +2041,8 @@ strong {
   border: 3px rgba(211, 211, 211, 0.486) solid;
   margin: 10px;
   transition: 0.6s;
+  height: 300px;
+  max-width: 200px;
 }
 
 .cards:hover{
@@ -2037,15 +2056,12 @@ strong {
   border-radius: 50%;
   margin-bottom: 10px;
   padding: 2px;
+  max-height: 150px;
 }
 
 .cards:hover img{
   transition: 0.2s;
   outline: 4px solid grey;
-}
-
-.cards p{
-  color: grey;
 }
 
 .main-container{
