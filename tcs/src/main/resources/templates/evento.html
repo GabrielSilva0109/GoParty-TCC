@@ -16,7 +16,8 @@
     <nav class="menu-lateral">
 
         <div class="btn-expandir">
-            <i class="bi bi-list" id="btn-exp"></i>
+            <img src="/css/img/LogoSimples.png" alt="" id="btn-exp">
+            
         </div><!--btn-expandir-->
 
         <ul>
@@ -40,7 +41,7 @@
             </li>
             <li class="item-menu">
                 <a  th:href="@{/evento}" >
-                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
+                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao"  style="border-bottom: 2px solid red;">
                     <span class="txt-link">Evento</span>
                 </a>
             </li>
@@ -66,105 +67,47 @@
 
     </nav><!--menu-lateral-->
 
-    <header class="header"> 
-        <!---<img src="/css/img/Modelo Logo.png" alt="imagem-logo" class="logo-inicio" id="logo-inicio-home">-->
-        <ul class="ulContainer">
-            <li>
-                <a class="links" th:href="@{/perfil}">
-                    <div class="icon-container">
-                        <img src="/css/img/profileIcon.png" alt="Perfil" class="icon">
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a class="links" th:href="@{/usuarios}">
-                    <div class="icon-container">
-                        <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon" >
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-
-
-            <li>
-                <a class="links" th:href="@{/home}" >
-                <div class="icon-container">
-                    <img src="/css/img/homeIcon.png" alt="Home" class="icon">
-                    <div class="line"></div>
-                </div>
-                </a>
-            </li>
-
-            <li>
-                <a class="links">
-                    <div class="icon-container">
-                        <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao" style="border-bottom: 4px solid rgb(255, 69, 69);">
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-
-       
-            <li>
-                <a class="links" th:href="@{/notificacoes}" > 
-                    <div class="icon-container">
-                        <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" > 
-                        <div class="line"></div>
-                    </div>
-                </a>
-            </li>
-        </ul>
-
-        <!--Botao de chat-->
-        <a href="#" class="Btn" type="submit" id="btn-logout-link2">
-            <div class="sign"><i class="bi bi-chat-dots"></i></div>
-            <div class="text" id="conversas-chat">
-                <p id="conversas">Conversas</p>
-            </div>
-        </a>
-    </header>
 
     <div class="container">
 
 
-    <div class="center-content" id="center-notificacoes">
+        <div class="center-content" id="center-notificacoes">
 
 
-                   
-            <!--Container de criar evento-->
-        <!--Fazer o Post-->
-        <section id="criar-evento-section">
-            <div class="container-ev">
-                <h1>
-                    Criar Evento
-                </h1>
-                <form action="criar-evento" method="POST" enctype="multipart/form-data">
-                    <input type="text" name="titulo" placeholder="Titulo" required>
-                    <textarea placeholder="Descrição"  name="descricao" id="" cols="10" rows="10" required></textarea>
-                    <input class="btn-foto" type="file" name="imagemEvento" required>
-                    <button class="ui-btn" type="submit">
-                        <span>
-                          Criar
-                        </span>
-                    </button>
-                </form>
-                             
-            </div>              
-    </section>
-   
-
+                    
+                <!--Container de criar evento-->
+            <!--Fazer o Post-->
+            <section id="criar-evento-section">
+                <div class="container-ev">
+                    <h1>
+                        Criar Evento
+                    </h1>
+                    <form action="criar-evento" method="POST" enctype="multipart/form-data">
+                        <input type="text" name="titulo" placeholder="Titulo" required>
+                        <textarea placeholder="Descrição"  name="descricao" id="" cols="10" rows="10" required></textarea>
+                        <input class="btn-foto" type="file" name="imagemEvento" required>
+                        <button class="ui-btn" type="submit">
+                            <span>
+                            Criar
+                            </span>
+                        </button>
+                    </form>
+                                
+                </div>              
+            </section>
+        </div>
+    </div>
 
     <footer>
-        <ul>
-            <li><a class="links-foot" th:href="@{/perfil}">Perfil</a></li>
-            <li><a class="links-foot" th:href="@{/home}">Feed</a></li>
-            <li><a class="links-foot" th:href="@{/usuarios}" style=" border-bottom: 4px solid rgb(255, 65, 65);">Usuarios</a></li>
-            <li><a class="links-foot" th:href="@{/evento}">Evento</a></li>
+        <ul class="ul-footer">
+            <li><h4>GoParty © 2023</h4></li>
+            <li><h4>Sobre</h4></li>
+            <li><h4>Desenvolvedores</h4></li>
+
         </ul>
     </footer>
-    <script src="/css/js/barraLateral.js"></script>
 
+    <script src="/css/js/script.js"></script>
+    <script src="/css/js/barraLateral.js"></script>
 </body>
 </html>
