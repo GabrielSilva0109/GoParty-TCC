@@ -20,26 +20,38 @@
 
         <ul>
             <li class="item-menu">
-                <a href="#">
-                    <span class="icon"><i class="bi bi-person-circle"></i></span>
-                    <span class="txt-link">Seu perfil</span>
+                <a th:href="@{/perfil}">
+                    <img src="/css/img/profileIcon.png" alt="Perfil" class="icon" >
+                    <span class="txt-link">Perfil</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="#">
-                    <span class="icon"><i class="bi bi-shield-fill-check"></i></span>
-                    <span class="txt-link">Privacidade</span>
+                <a th:href="@{/usuarios}">
+                    <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
+                    <span class="txt-link">Usuarios</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="#">
-                    <span class="icon"><i class="bi bi-calendar3"></i></span>
-                    <span class="txt-link">Agenda</span>
+                <a th:href="@{/home}" >
+                    <img src="/css/img/homeIcon.png" alt="Home" class="icon">
+                    <span class="txt-link">Home</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="#">
-                    <span class="icon"><i class="bi bi-gear"></i></span>
+                <a  th:href="@{/evento}" >
+                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon" id="iconeBotao">
+                    <span class="txt-link">Evento</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a class="links" th:href="@{/notificacoes}">
+                    <img src="/css/img/notification-bell.png" alt="Eventos" class="icon" >
+                    <span class="txt-link">Notificações</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a th:href="@{/logout}">
+                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
                     <span class="txt-link">Configurações</span>
                 </a>
             </li>
@@ -117,9 +129,7 @@
     </header>
 
     <div class="container">
-        <style>
-           
-        </style>
+        
 
     <div class="center-content" id="center-usuarios">
         <div class="input-pesquisa"> 

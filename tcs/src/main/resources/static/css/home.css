@@ -16,7 +16,7 @@ body{
   align-items: center;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 20;
   right: 0;
 }
   
@@ -2139,7 +2139,6 @@ nav.menu-lateral{
   width: 70px;
   height: 100%;
   background-color: #202020;
-  padding: 40px 0 40px 1%;
   box-shadow: 3px 0 0 #25142d;
   position: fixed;
   top: 0;
@@ -2164,13 +2163,13 @@ nav.menu-lateral.expandir{
 }
 
 ul{
-  height: 100%;
-  list-style-type: none;
   padding: 0;
 }
 
 ul li.item-menu{
   transition: .2s;
+  align-items: center;
+  display: flex;
 }
 
 ul li.ativo{
@@ -2187,10 +2186,8 @@ ul li.item-menu a{
   color: #fff;
   text-decoration: none;
   font-size: 20px;
-  padding: 20px 4%;
   display: flex;
-  margin-bottom: 20px;
-  line-height: 40px;
+  align-items: center;
 }
 
 ul li.item-menu a .txt-link{
