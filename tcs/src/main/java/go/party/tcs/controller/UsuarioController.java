@@ -170,22 +170,34 @@ public class UsuarioController {
 
     //Método para atribuir uma sessão ao usuario que fizer login
     @GetMapping("/home")
-public String paginaHome(Model model, HttpSession session, HttpServletRequest request) {
+    public String paginaHome(Model model, HttpSession session, HttpServletRequest request) {
     Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+    model.addAttribute("sessionUsuario", sessionUsuario);
 
     if (sessionUsuario == null) {
         return "redirect:/loginValida";
     }
 
     // Parte comum entre os dois métodos
-    List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
-    model.addAttribute("notifications", notifications);
+     List<Notification> notifications = notificationRepository.findNotificationsByUserIdOrderByDateDesc(sessionUsuario.getId());
+    List<String> temposDecorridos = new ArrayList<>();
 
     // CONTADOR DE NOTIFICAÇÕES NÃO VISUALIZADAS
     int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
     model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
 
+     for (Notification notification : notifications) {
+            notification.setVisualizado(true);
+            String tempoDecorrido = notificationService.calcularTempoDecorrido(notification.getDate());
+            temposDecorridos.add(tempoDecorrido);
+        }
+         notificationRepository.saveAll(notifications);
+
+    
+    model.addAttribute("notifications", notifications);
+    model.addAttribute("temposDecorridos", temposDecorridos);
     model.addAttribute("sessionUsuario", sessionUsuario);
+
 
     // LISTA DE EVENTOS
     List<Evento> eventos = eventoService.getAllEventos();
@@ -207,7 +219,7 @@ public String paginaHome(Model model, HttpSession session, HttpServletRequest re
     model.addAttribute("eventos", eventos);
     model.addAttribute("quantidadeCurtidasPorEvento", quantidadeCurtidasPorEvento);
     model.addAttribute("usuarioJaCurtiuEventoMap", usuarioJaCurtiuEventoMap);
-
+    
     return "home";
 }
 
@@ -465,8 +477,6 @@ public String paginaHome(Model model, HttpSession session, HttpServletRequest re
             model.addAttribute("notifications", notifications);
             model.addAttribute("temposDecorridos", temposDecorridos);
             model.addAttribute("sessionUsuario", sessionUsuario);
-
-            //model.addAttribute("calcularTempoDecorrido", notificationService.calcularTempoDecorrido(ontemInicioDoDia));
     
             List<Evento> eventos = eventoService.getAllEventos();
             model.addAttribute("eventos", eventos);
