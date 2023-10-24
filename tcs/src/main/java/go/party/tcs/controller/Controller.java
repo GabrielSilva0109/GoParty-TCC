@@ -150,8 +150,6 @@ public class Controller {
 
             // Passe o Map para o modelo
             model.addAttribute("seguirStatusMap", seguirStatusMap);
-            
-            
             return "usuarios";
         } else {
             return "usuarios";

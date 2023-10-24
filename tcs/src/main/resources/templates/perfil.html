@@ -11,12 +11,10 @@
 </head>
 <body>
    <!--menu-lateral-->
-   <nav class="menu-lateral" id="menu-lateral">
+    <nav class="menu-lateral" id="menu-lateral">
     <div class="btn-expandir">
         <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
         <span class="txt-link"> <img src="/css/img/LogoGoParty.png" alt="GoParty" id="palavraGoParty"> </span>
-       
-        
     </div><!--btn-expandir-->
 
     <ul>
@@ -45,7 +43,7 @@
             </a>
         </li>
         <li class="item-menu">
-            <a class="links" th:href="@{/notificacoes}">
+            <a class="links" onclick="openModalNotificacao()">
                 <div class="contador-notificacao">
                     <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
                         <span th:text="${notificacoesNaoVisualizadas}"></span>
@@ -56,7 +54,7 @@
             </a>
         </li>
         <li class="item-menu">
-            <a href="#" id="expandir-configs">
+            <a id="expandir-configs" >
                 <img src="/css/img/configs.png" alt="config" class="icon">
                 <span class="txt-link">Configurações</span>
             </a>
@@ -74,7 +72,6 @@
     
     <!-- Section principal da tela -->
     <section class="container">
-
         <!-- Parte Esquerda Informações do Usuario -->
         <div class="left-sidebar-perfil">
         
@@ -260,6 +257,34 @@
         </ul>
     </footer>
 
+    <!-- Modal Notificações -->
+    <div id="modalNotificacao" class="modal-notificacao" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalNotificacao()">&times;</span>
+            <p>Notificações</p>
+            <div class="bloco-notificacoes"> 
+                <!--Lista de notificações-->
+                <ul>
+                    <li th:if="${#lists.isEmpty(notifications)}">
+                        <span>Não há notificações.</span>
+                    </li>
+                    <li class="lista-notificacoes" th:each="notification, index : ${notifications}">
+                        
+                        <!--Bloco especifico-->
+                     <div class="notification-container">
+                         <!--Tempo da notificacao-->
+                         
+                        <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
+    
+                        <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"> </span>
+                     </div>
+                    </li>                                   
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
     <script src="/css/js/buttons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
@@ -436,6 +461,7 @@
         });
     </script>
 
+    <script src="/css/js/buttons.js"></script>
     <script src="/css/js/script.js"></script>
     <script src="/css/js/barraLateral.js"></script>
 

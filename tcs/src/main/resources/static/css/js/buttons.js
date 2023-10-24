@@ -13,3 +13,21 @@ function toggleComentarios(button) {
         comentariosDiv.classList.add('hidden');
     }
 }
+
+// Função para abrir modal das Notificações
+function openModalNotificacao() {
+    var modal = document.getElementById("modalNotificacao");
+    modal.style.display = "flex";
+}
+
+function fecharModalNotificacao() {
+    var modal = document.getElementById("modalNotificacao");
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    var modal = document.getElementById("modalNotificacao");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

@@ -48,7 +48,7 @@
             </a>
         </li>
         <li class="item-menu">
-            <a class="links" th:href="@{/notificacoes}">
+            <a class="links" onclick="openModalNotificacao()">
                 <div class="contador-notificacao">
                     <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
                         <span th:text="${notificacoesNaoVisualizadas}"></span>
@@ -160,6 +160,34 @@
     </div>
 
 
+    <!-- Modal Notificações -->
+    <div id="modalNotificacao" class="modal-notificacao" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalNotificacao()">&times;</span>
+            <p>Notificações</p>
+            <div class="bloco-notificacoes"> 
+                <!--Lista de notificações-->
+                <ul>
+                    <li th:if="${#lists.isEmpty(notifications)}">
+                        <span>Não há notificações.</span>
+                    </li>
+                    <li class="lista-notificacoes" th:each="notification, index : ${notifications}">
+                        
+                        <!--Bloco especifico-->
+                     <div class="notification-container">
+                         <!--Tempo da notificacao-->
+                         
+                        <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
+    
+                        <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"> </span>
+                     </div>
+                    </li>                                   
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    
     <footer>
         <ul class="ul-footer">
             <li><h4>GoParty © 2023</h4></li>
@@ -168,6 +196,7 @@
         </ul>
     </footer>
 
+    <script src="/css/js/buttons.js"></script>
     <script src="/css/js/barraLateral.js"></script>
 
 </body>
