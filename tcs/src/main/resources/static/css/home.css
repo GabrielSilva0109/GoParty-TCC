@@ -2121,7 +2121,7 @@ nav.menu-lateral.expandir{
 
 nav.menu-lateral.expandir #palavraGoParty{
   display: inline-block;
-  width: 125px;
+  width: 180px;
   margin-left: -10px;
   padding: 0;
   
@@ -2155,7 +2155,6 @@ ul li.item-menu{
   align-items: center;
   padding: 2px;
   display: flex;
-  margin-bottom: 22px;
 }
 
 ul li.ativo{
