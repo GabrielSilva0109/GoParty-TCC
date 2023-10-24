@@ -149,7 +149,6 @@
     
         <!-- Feed com seus Post -->
         <div class="center-content" id="center-perfil">
-            
             <div th:each="evento : ${eventos}" class="evento-bloco">
 
                 <!-- Parte da Esquerda do Post -->
@@ -194,6 +193,7 @@
                                         </span>
                                     </button>
                                 </form>
+                                
                                 <button class="fechar close-modal" id="close-modal">
                                     x
                                 </button>
@@ -223,7 +223,6 @@
                         </svg>
                         <span class="tooltip">Comentários&nbsp;<span th:text="${evento.comentarios.size()}"></span> </span>
                     </button>
-                
                 </div>
             </div>   
             
@@ -243,7 +242,6 @@
                 </div>
             </div>
             
-
         </div>
     </section>
 
@@ -261,7 +259,6 @@
             <li><h4>GoParty © 2023</h4></li>
             <li><h4>Sobre</h4></li>
             <li><h4>Desenvolvedores</h4></li>
-
         </ul>
     </footer>
 
