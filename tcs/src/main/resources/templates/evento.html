@@ -13,77 +13,12 @@
 </head>
 <body>
 
-    <!--menu-lateral-->
-    <nav class="menu-lateral" id="menu-lateral">
-
-        <div class="btn-expandir">
-            <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
-            <span class="txt-link"> <img src="/css/img/LogoGoParty.png" alt="GoParty" id="palavraGoParty"> </span>
-           
-            
-        </div><!--btn-expandir-->
-
-        <ul>
-            <li class="item-menu">
-                <a th:href="@{/perfil}">
-                    <img src="/css/img/profileIcon.png" alt="Perfil" class="icon" >
-                    <span class="txt-link">Perfil</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a th:href="@{/usuarios}">
-                    <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
-                    <span class="txt-link">Explorar</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a th:href="@{/home}" >
-                    <img src="/css/img/homeIcon.png" alt="Home" class="icon">
-                    <span class="txt-link">Home</span>
-                </a>
-            </li>
-            <li class="item-menu ativo">
-                <a  th:href="@{/evento}" >
-                    <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
-                    <span class="txt-link">Postar</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a class="links" onclick="openModalNotificacao()">
-                    <div class="contador-notificacao">
-                        <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
-                            <span th:text="${notificacoesNaoVisualizadas}"></span>
-                        </div>
-                    </div>
-                    <img src="/css/img/notification-bell.png" alt="notificacao" class="icon" >
-                    <span class="txt-link">Notificações</span>
-                </a>
-            </li>
-            <li class="item-menu">
-                <a href="#" id="expandir-configs">
-                    <img src="/css/img/configs.png" alt="config" class="icon">
-                    <span class="txt-link">Configurações</span>
-                </a>
-            </li>
-    
-            <li class="item-menu">
-                <a th:href="@{/logout}">
-                    <img src="/css/img/log-out.png" alt="logout" class="icon">
-                    <span class="txt-link">Sair</span>
-                </a>
-            </li>
-        </ul>
-
-    </nav>
-
-
     <div class="container">
-
 
         <div class="center-content" id="center-notificacoes">   
             <!--Container de criar evento-->
             
-            <section id="criar-evento-section">
+            <section id="criar-evento-section" class="section">
                 <div class="container-ev">
                     <h1>
                         Postar Evento
@@ -102,43 +37,6 @@
                 </div>              
             </section>
         </div>
-    </div>
-
-    <footer>
-        <ul class="ul-footer">
-            <li><h4>GoParty © 2023</h4></li>
-            <li><h4>Sobre</h4></li>
-            <li><h4>Desenvolvedores</h4></li>
-
-        </ul>
-    </footer>
-
-    <!-- Modal Notificações -->
-    <div id="modalNotificacao" class="modal-notificacao" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModalNotificacao()">&times;</span>
-            <p>Notificações</p>
-            <div class="bloco-notificacoes"> 
-                <!--Lista de notificações-->
-                <ul>
-                    <li th:if="${#lists.isEmpty(notifications)}">
-                        <span>Não há notificações.</span>
-                    </li>
-                    <li class="lista-notificacoes" th:each="notification, index : ${notifications}">
-                        
-                        <!--Bloco especifico-->
-                     <div class="notification-container">
-                         <!--Tempo da notificacao-->
-                         
-                        <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
-    
-                        <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"> </span>
-                     </div>
-                    </li>                                   
-                </ul>
-            </div>
-        </div>
-
     </div>
     
     <script src="/css/js/buttons.js"></script>
