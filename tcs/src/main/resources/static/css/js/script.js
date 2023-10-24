@@ -24,16 +24,17 @@ fotoInput.addEventListener("change", function () {
 
    
 
-const buttons = document.querySelectorAll('.chatBtn');
+    const buttons = document.querySelectorAll('.chatBtn');
 
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        const parent = button.closest('.evento-bloco');
-        const comentariosDiv = parent.querySelector('.comentarios');
-        if (comentariosDiv.classList.contains('hidden')) {
-            comentariosDiv.classList.remove('hidden');
-        } else {
-            comentariosDiv.classList.add('hidden');
-        }
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const parent = button.closest('.evento-bloco');
+            const comentariosDiv = parent.querySelector('.comentarios');
+            if (comentariosDiv.classList.contains('hidden')) {
+                comentariosDiv.classList.remove('hidden');
+            } else {
+                comentariosDiv.classList.add('hidden');
+            }
+        });
     });
-});
+
