@@ -2024,7 +2024,7 @@ nav.menu-lateral{
   top: 0;
   left: 0;
   overflow: hidden;
-  transition: .5s;
+  transition: .4s;
 }
 
 #palavraGoParty{
@@ -2067,7 +2067,7 @@ ul{
 }
 
 ul li.item-menu{
-  transition: .2s;
+  transition: .1s;
   align-items: center;
   padding: 2px;
   display: flex;
