@@ -18,6 +18,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     Usuario findById(Long id);
 
-    List<Usuario> findByNomeContaining(String nome);
+    List<Usuario> findByNomeContaining(String query);
 
 }
