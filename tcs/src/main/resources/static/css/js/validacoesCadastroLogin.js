@@ -17,4 +17,33 @@ document.addEventListener("DOMContentLoaded", function() {
             submitButton.disabled = true;
         }
     });
+    
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-invalido');
+    
+    emailInput.addEventListener('input', function() {
+        const email = emailInput.value.toLowerCase();
+        if (!isValidEmail(email)) {
+            emailError.style.display = "block";
+            submitButton.disabled = true;
+        } else {
+            emailError.style.display = "none";
+            submitButton.disabled = false;
+        }
+    });
+
+    function isValidEmail(email) {
+        const validDomains = ['gmail.com', 'hotmail.com', 'outlook.com']; // Adicione os domínios desejados aqui
+        const emailParts = email.split('@');
+        if (emailParts.length === 2) {
+            const domain = emailParts[1].toLowerCase();
+            return validDomains.includes(domain);
+        }
+        return false;
+    }
+
+   
+
+
+
 });

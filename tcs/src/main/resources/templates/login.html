@@ -31,7 +31,14 @@
             </span></p>
            </div>
 
-          <input type="email" name="email" class="form-control" placeholder="Email" required/>
+          <input type="email" name="email" id="email" class="form-control" placeholder="Email" required/>
+
+          <!--Email digitado inválido-->
+          <div class="dadoInvalido" id="email-invalido">
+            <p>Digite um e-mail válido (por exemplo, gmail.com ou hotmail.com). <span>  <i class="bi bi-exclamation-diamond"></i>
+            </span></p>
+           </div>
+
           <input type="text" id="cpf" name="cpf" class="form-control" placeholder="CPF" required/>
           <div th:if="${mensagem}" class="error-message">
             <p th:text="${mensagem}"></p>
