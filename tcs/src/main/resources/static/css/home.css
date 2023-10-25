@@ -2196,3 +2196,11 @@ ul li.item-menu a .icon > i{
   background: #f1f1f1; /* Cor de fundo da pista */
   border-radius: 20px;
 }
+
+.item-menu #modal-notificacoes{
+  cursor: pointer;
+}
+
+.item-menu #modal-configs{
+  cursor: pointer;
+}

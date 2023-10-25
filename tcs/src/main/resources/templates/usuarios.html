@@ -48,7 +48,7 @@
             </a>
         </li>
         <li class="item-menu">
-            <a class="links" onclick="openModalNotificacao()">
+            <a class="links" onclick="openModalNotificacao()" id="modal-notificacoes">
                 <div class="contador-notificacao">
                     <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
                         <span th:text="${notificacoesNaoVisualizadas}"></span>
@@ -58,8 +58,9 @@
                 <span class="txt-link">Notificações</span>
             </a>
         </li>
+        
         <li class="item-menu">
-            <a href="#" id="expandir-configs">
+            <a onclick="openModalNotificacao()" class="links" id="modal-configs">
                 <img src="/css/img/configs.png" alt="config" class="icon">
                 <span class="txt-link">Configurações</span>
             </a>

@@ -532,5 +532,13 @@ footer{
   right: -7px; 
 }
 
+.item-menu #modal-notificacoes{
+  cursor: pointer;
+}
+
+.item-menu #modal-configs{
+  cursor: pointer;
+}
+
 
 
