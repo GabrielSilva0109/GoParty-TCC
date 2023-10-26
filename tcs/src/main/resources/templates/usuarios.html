@@ -79,7 +79,7 @@
                     
                      <!--Botões de seguir o usuário mostrado (TESTE)-->
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                        <form method="post" action="/follow"  th:if="${seguirStatusMap[usuario.id] == false}">
+                        <form method="post" th:action="@{'/follow/' + ${usuario.id}}" th:if="${seguirStatusMap[usuario.id] == false}">
                             <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" type="submit">
                                 <strong>SEGUIR</strong>
                                 <div id="container-stars">
@@ -106,7 +106,7 @@
                         -->
 
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                        <form method="post" action="/unfollow" th:if="${seguirStatusMap[usuario.id] == true}">
+                        <form method="post" th:action="@{'/unfollow/' + ${usuario.id}}" th:if="${seguirStatusMap[usuario.id] == true}">
                             <button class="btn-perfil-follow-usuarios" id="btn-unfollow-usuarios" type="submit">
                                 <strong>Seguindo</strong>
                                 <div id="container-stars">

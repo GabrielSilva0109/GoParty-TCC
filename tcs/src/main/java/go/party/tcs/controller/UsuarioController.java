@@ -442,6 +442,40 @@ public class UsuarioController {
         return "redirect:/home";
     }
 
+    @PostMapping("/follow/{id}")
+        public String followUser(@PathVariable Integer id, HttpSession session) {
+
+             Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+             Usuario follower = usuarioService.getUserById(sessionUsuario.getId());
+             Usuario following = usuarioService.getUserById(id);
+
+             usuarioService.follow(follower, following);
+
+             // NOTIFICAR O USUÀRIO
+            // Crie uma notificação
+            byte[] fotoPerfil = sessionUsuario.getFotoPerfil();
+            String message = follower.getUsername()+" seguiu você";
+            Integer userIdToNotify =  id;
+
+            notificationService.createNotification(message, userIdToNotify, fotoPerfil);
+
+            return "redirect:/usuarios";  
+        }
+
+        @PostMapping("/unfollow/{id}")
+        public String unfollowUser(@PathVariable Integer id, HttpSession session) {
+
+            Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+
+             Usuario follower = usuarioService.getUserById(sessionUsuario.getId());
+             Usuario following = usuarioService.getUserById(id);
+
+            usuarioService.unfollow(follower, following);
+
+             return "redirect:/usuarios";
+        }
+
     @GetMapping("/notificacoes")
     public String notificacoes(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
