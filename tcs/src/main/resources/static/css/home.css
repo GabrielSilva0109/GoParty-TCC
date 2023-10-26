@@ -2286,3 +2286,24 @@ ul li.item-menu a .icon > i{
 .btn-salvar:hover{
   background-color: #004ea8;
 }
+
+/* Botoes de seguir correções  */
+
+.btn-perfil-follow-usuarios {
+  color: #fff; 
+  border: none; 
+  padding: 10px 20px; 
+  margin-top: 25%;
+}
+
+
+.btn-perfil-follow-usuarios:hover {
+  background-color: #480050; 
+}
+
+#btn-unfollow-usuarios{
+  color: #fff; 
+  border: none; 
+  padding: 10px 20px; 
+  margin-top: 25%;
+}
