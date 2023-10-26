@@ -31,3 +31,21 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
+
+// Função para abrir modal das Notificações
+function openModalConfiguracao() {
+    var modal = document.getElementById("modalConfiguracao");
+    modal.style.display = "flex";
+}
+
+function fecharModalConfiguracao() {
+    var modal = document.getElementById("modalConfiguracao");
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    var modal = document.getElementById("modalConfiguracao");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
