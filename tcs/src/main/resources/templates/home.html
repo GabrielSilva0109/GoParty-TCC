@@ -104,9 +104,15 @@
 
             <div class="left-sidebar-perfil" style="height: 250px; width: 250px;">
                 <!-- Informações do Usuario -->
-                <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
+                <h2 style="font-size: 17px;">Eventos em Alta <span><i class="bi bi-bar-chart-fill"></i></span></h2>
                 <div class="info">
-                    <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>                 
+                    <ol class="lista-eventos-alta">
+                        <li>Evento 1</li>
+                        <li>Evento 2</li>
+                        <li>Evento 3</li>
+                        <li>Evento 4</li>    
+                        <li>Evento 5</li>    
+                    </ol>
                 </div>
             </div>
         </div>
