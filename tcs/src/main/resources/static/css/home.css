@@ -8,7 +8,7 @@ body{
   font-family: 'Poppins';
 
   /* background-image: url('/css/img/fundo.webp'); */
-  background: #000e1f;
+  background: linear-gradient(to right, #36263e, #d42636);
 }
 /* Icones */
 .icon {
@@ -43,8 +43,7 @@ body{
   width: 25%;
   background-color: #f0f0f064; /* Cor de fundo do lado esquerdo */
   padding: 20px;
-  margin-left: 80px;
-  
+  margin-left: 49px;
 }
 
 .arroba{
