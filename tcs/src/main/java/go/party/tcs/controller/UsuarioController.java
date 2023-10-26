@@ -167,46 +167,46 @@ public class UsuarioController {
 
     //Método para atribuir uma sessão ao usuario que fizer login
     @GetMapping("/home")
-public String paginaHome(Model model, HttpSession session, HttpServletRequest request) {
-    Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+    public String paginaHome(Model model, HttpSession session, HttpServletRequest request) {
+        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
-    if (sessionUsuario == null) {
-        return "redirect:/loginValida";
+        if (sessionUsuario == null) {
+            return "redirect:/loginValida";
+        }
+
+        // Parte comum entre os dois métodos
+        List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
+        model.addAttribute("notifications", notifications);
+
+        // CONTADOR DE NOTIFICAÇÕES NÃO VISUALIZADAS
+        int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
+        model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
+
+        model.addAttribute("sessionUsuario", sessionUsuario);
+
+        // LISTA DE EVENTOS
+        List<Evento> eventos = eventoService.getAllEventos();
+
+        // Crie um mapa para armazenar a quantidade de curtidas por evento
+        Map<Integer, Integer> quantidadeCurtidasPorEvento = new HashMap<>();
+
+        // Crie um mapa para armazenar se o usuário já curtiu cada evento
+        Map<Integer, Boolean> usuarioJaCurtiuEventoMap = new HashMap<>();
+
+        for (Evento evento : eventos) {
+            int numeroCurtidas = curtidaRepository.quantidadeCurtidasPorEvento(evento.getId());
+            boolean usuarioJaCurtiuEvento = curtidaService.usuarioJaCurtiuEvento(evento.getId(), sessionUsuario);
+
+            quantidadeCurtidasPorEvento.put(evento.getId(), numeroCurtidas);
+            usuarioJaCurtiuEventoMap.put(evento.getId(), usuarioJaCurtiuEvento);
+        }
+
+        model.addAttribute("eventos", eventos);
+        model.addAttribute("quantidadeCurtidasPorEvento", quantidadeCurtidasPorEvento);
+        model.addAttribute("usuarioJaCurtiuEventoMap", usuarioJaCurtiuEventoMap);
+
+        return "home";
     }
-
-    // Parte comum entre os dois métodos
-    List<Notification> notifications = notificationRepository.findByUserId(sessionUsuario.getId());
-    model.addAttribute("notifications", notifications);
-
-    // CONTADOR DE NOTIFICAÇÕES NÃO VISUALIZADAS
-    int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
-    model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
-
-    model.addAttribute("sessionUsuario", sessionUsuario);
-
-    // LISTA DE EVENTOS
-    List<Evento> eventos = eventoService.getAllEventos();
-
-    // Crie um mapa para armazenar a quantidade de curtidas por evento
-    Map<Integer, Integer> quantidadeCurtidasPorEvento = new HashMap<>();
-
-    // Crie um mapa para armazenar se o usuário já curtiu cada evento
-    Map<Integer, Boolean> usuarioJaCurtiuEventoMap = new HashMap<>();
-
-    for (Evento evento : eventos) {
-        int numeroCurtidas = curtidaRepository.quantidadeCurtidasPorEvento(evento.getId());
-        boolean usuarioJaCurtiuEvento = curtidaService.usuarioJaCurtiuEvento(evento.getId(), sessionUsuario);
-
-        quantidadeCurtidasPorEvento.put(evento.getId(), numeroCurtidas);
-        usuarioJaCurtiuEventoMap.put(evento.getId(), usuarioJaCurtiuEvento);
-    }
-
-    model.addAttribute("eventos", eventos);
-    model.addAttribute("quantidadeCurtidasPorEvento", quantidadeCurtidasPorEvento);
-    model.addAttribute("usuarioJaCurtiuEventoMap", usuarioJaCurtiuEventoMap);
-
-    return "home";
-}
 
 
     //Metodo para Editar a Conta do Usuario
@@ -427,7 +427,7 @@ public String paginaHome(Model model, HttpSession session, HttpServletRequest re
         Integer userIdToNotify =  usuarioPerfilVisitado.getId();
 
         notificationService.createNotification(message, userIdToNotify, fotoPerfil);
-        return "redirect:/home";
+        return "redirect:/usuarios";
     }
 
     @PostMapping("/unfollow")

@@ -32,7 +32,7 @@ window.onclick = function (event) {
     }
 }
 
-// Função para abrir modal das Notificações
+// Função para abrir modal das Configuração
 function openModalConfiguracao() {
     var modal = document.getElementById("modalConfiguracao");
     modal.style.display = "flex";
@@ -49,3 +49,14 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
+
+// Função para abrir edições
+function abrirEdicao() {
+    var blocoEdicao = document.getElementById('blocoEdicao');
+            if (blocoEdicao.style.display === 'none' || blocoEdicao.style.display === '') {
+                blocoEdicao.style.display = 'flex';
+            } else {
+                blocoEdicao.style.display = 'none';
+            }
+}
+

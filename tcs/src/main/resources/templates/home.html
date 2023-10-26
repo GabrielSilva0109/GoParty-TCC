@@ -244,11 +244,30 @@
             <span class="close" onclick="fecharModalConfiguracao()">&times;</span>
             <h1 class="tittle-modal">Configurações</h1>
             <div class="bloco-config">
-                <button class="btn-config">Editar Perfil</button>
+                <button class="btn-config" onclick="abrirEdicao()">Editar Perfil</button>
                 <button class="btn-config">Mudar Tema</button>
                 <button class="btn-config">Privacidade</button>
                 <button class="btn-config">Excluir Conta</button>
-
+            </div>
+            <div id="blocoEdicao" class="bloco-edicao" style="display: none; justify-content: center;">
+                <!-- Form para mudar informações de Conta -->
+                <form method="POST" action="/editar" class="edit-form" enctype="multipart/form-data">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="text" name="username" id="edit-nome" placeholder="Novo Usuario">
+                    <input type="text" name="email" id="edit-email" placeholder="Novo Email">
+                    <input type="text" name="descricao" id="edit-descricao" placeholder="Nova Descrição">
+                    <input type="password" name="senha" id="edit-senha" placeholder="Nova Senha">
+                    <button class="btn-salvar" id="btn-salvar">Salvar</button>                
+                </form>
+                <!-- Form para mudar foto do Perfil -->
+                <form class="edit-form" action="/upload" method="POST" enctype="multipart/form-data" >
+                    <!-- Use uma label personalizada para o input de arquivo -->
+                    <label class="upload-foto" for="fotoPerfil" id="upload-label">Escolha uma foto</label>
+                    <input type="file" name="fotoPerfil" id="fotoPerfil">
+                    <div id="file-name"></div>
+                    <!-- Botão de envio personalizado -->
+                    <input class="btn-salvar" type="submit" value="Enviar" id="enviar">
+                </form>
             </div>
         </div>
     </div>

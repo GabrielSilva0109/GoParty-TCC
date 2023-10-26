@@ -6,7 +6,9 @@ body{
   margin: 0;
   padding: 0;
   font-family: 'Poppins';
-  background-image: url('/css/img/fundo.webp');
+
+  /* background-image: url('/css/img/fundo.webp'); */
+  background: #000e1f;
 }
 /* Icones */
 .icon {
@@ -444,8 +446,8 @@ footer{
 .edit-form {
   padding: 20px;
   max-width: 300px;
-  margin: 0 auto;
   text-align: center;
+  margin-top: 50px;
 }
 
 .upload-foto:hover{
@@ -476,7 +478,7 @@ footer{
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  margin: 10px;
+  margin: 25px;
 }
 .edit-form button:hover {
   background-color: #004b9b;
@@ -2165,8 +2167,8 @@ ul li.item-menu a .icon > i{
   right: 10px;
   cursor: pointer;
   background: rgb(255, 22, 22);
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   align-items: center;
   display: flex;
@@ -2272,4 +2274,17 @@ ul li.item-menu a .icon > i{
   color: #d6d6d6;
   -webkit-transition: 100ms;
   transition: 100ms;
+}
+
+.btn-salvar{
+  background-color: #001226;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-salvar:hover{
+  background-color: #004ea8;
 }
