@@ -1690,7 +1690,7 @@ strong {
 }
 
 .notification-container{
-  border: 1px solid #ccc;
+  background: #00000014;
   border-radius: 14px;
   width: 100%;
   display: flex;
