@@ -34,8 +34,8 @@ body{
   width: 25%;
   background-color: #f0f0f064; /* Cor de fundo do lado esquerdo */
   padding: 20px;
-  margin-left: 80px;
-  backdrop-filter: blur(5px);
+  margin-left: 49px;
+ 
 }
 
 .left-sidebar-perfil {
