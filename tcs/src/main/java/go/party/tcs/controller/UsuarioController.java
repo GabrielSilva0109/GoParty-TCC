@@ -111,22 +111,14 @@ public class UsuarioController {
                 "Atenciosamente,\r\n" + //
                 "\r\n" + //
                 "A Equipe GoParty";
-
-         //Validação por CPF
-        boolean existeUsuario = usuarioRepository.existsByCpf(usuario.getCpf());
-        
-        if (existeUsuario) {
-           model.addAttribute("mensagem", "Já existe um usuário cadastrado com o CPF informado!.");
-            return "login"; // Redirecionar para a página de login após o cadastro
-
-        }else{
+     
             //SERVICE DE SALVAR USUÁRIO
             usuarioService.cadastrarUsuario(usuario, model);
             emailService.sendEmailToClient(usuario.getEmail(), assunto, mensagem);
 
              return "redirect:/login"; // Redirecionar para a página de login após o cadastro
-        }
-}
+       
+   }
 
     //Caso de erro no login, ele retorna para pagina de login
     @GetMapping("/loginValida")

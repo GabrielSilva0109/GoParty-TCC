@@ -48,12 +48,6 @@ public class UsuarioService {
         return usuarioRepository.getById(userId);
     }
 
-    // VERIFICAR A EXISTENCIA DE CPF NO BANCO 
-
-    public boolean existeUsuarioComCpf(String cpf) {
-        return usuarioRepository.existsByCpf(cpf);
-    }
-
     public String getUsernameById(Integer id) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
         if (usuarioOptional.isPresent()) {

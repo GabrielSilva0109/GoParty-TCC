@@ -39,17 +39,19 @@
             </span></p>
            </div>
 
-          <input type="text" id="cpf" name="cpf" class="form-control" placeholder="CPF" required/>
-          <div th:if="${mensagem}" class="error-message">
-            <p th:text="${mensagem}"></p>
-          </div>
           <input type="date" id="idade" name="idade" class="form-control" placeholder="Data de nascimento" required/>
           <div class="dadoInvalido" id="idade-nao-permitida">
             <p>Idade não permitida para utilizar o GoParty!  <span>  <i class="bi bi-exclamation-diamond"></i>
             </span></p>
           </div>
 
-          <input type="password" name="senha" class="form-control" minlength="8" maxlength="8" id="senhaTrocaCadastro" placeholder="Informe a senha" required />
+          <input type="password" name="senha" class="form-control" minlength="8" id="senhaTrocaCadastro" placeholder="Informe a senha" required />
+          <div class="dadoInvalido" id="senhaConfirmacaoMsg">
+            <p>Senhas não coincidem! <span>  <i class="bi bi-exclamation-diamond"></i>
+            </span></p>
+           </div>
+          <input type="password" name="senhaConfirm" class="form-control" minlength="8" id="senhaConfimCadastro" placeholder="Confirme a senha" required />
+          
         </div>
 
         <label class="check-pass">

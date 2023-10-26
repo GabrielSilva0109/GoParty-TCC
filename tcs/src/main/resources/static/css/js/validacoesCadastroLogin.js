@@ -42,8 +42,21 @@ document.addEventListener("DOMContentLoaded", function() {
         return false;
     }
 
-   
+    const senhaInput = document.getElementById('senhaTrocaCadastro');
+    const senhaConfirmInput = document.getElementById('senhaConfimCadastro');
+    const senhaConfirmMsg = document.getElementById('senhaConfirmacaoMsg');
 
+    senhaConfirmInput.addEventListener('input', function() {
+        const senha = senhaInput.value;
+        const senhaConfirm = senhaConfirmInput.value;
 
+        if (senha === senhaConfirm) {
+            submitButton.disabled = false;
+            senhaConfirmMsg.style.display = "none"
+        } else {
+            submitButton.disabled = true;
+            senhaConfirmMsg.style.display = "block"
+        }
+    });
 
 });

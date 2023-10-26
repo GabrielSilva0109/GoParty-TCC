@@ -38,8 +38,8 @@ public class Usuario {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "cpf")
-    private String cpf;
+    //@Column(name = "cpf", nullable = true)
+    //private String cpf;
 
     @Column(name = "idade")
     private LocalDate idade;
@@ -113,14 +113,6 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public LocalDate getIdade() {
