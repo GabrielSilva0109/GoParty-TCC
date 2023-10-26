@@ -50,19 +50,14 @@
             </a>
         </li>
         <li class="item-menu">
-            <a class="links" onclick="openModalNotificacao()" id="modal-notificacoes">
-                <div class="contador-notificacao">
-                    <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
-                        <span th:text="${notificacoesNaoVisualizadas}"></span>
-                    </div>
-                </div>
+            <a th:href="@{/notificacoes}">
                 <img src="/css/img/notification-bell.png" alt="notificacao" class="icon" >
                 <span class="txt-link">Notificações</span>
             </a>
         </li>
         
         <li class="item-menu">
-            <a onclick="openModalNotificacao()" class="links" id="modal-configs">
+            <a onclick="openModalConfiguracao()" class="links" id="modal-configs">
                 <img src="/css/img/configs.png" alt="config" class="icon">
                 <span class="txt-link">Configurações</span>
             </a>

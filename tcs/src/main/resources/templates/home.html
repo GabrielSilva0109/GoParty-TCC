@@ -49,12 +49,7 @@
                 </a>
             </li>
             <li class="item-menu">
-                <a class="links" onclick="openModalNotificacao()" id="modal-notificacoes">
-                    <div class="contador-notificacao">
-                        <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
-                            <span th:text="${notificacoesNaoVisualizadas}"></span>
-                        </div>
-                    </div>
+                <a th:href="@{/notificacoes}">
                     <img src="/css/img/notification-bell.png" alt="notificacao" class="icon" >
                     <span class="txt-link">Notificações</span>
                 </a>
@@ -238,7 +233,7 @@
         </div>
     </div>
 
-
+    <!--Modal Config-->
     <div id="modalConfiguracao" class="modal-configuracao" style="display: none;">
         <div class="modal-config">
             <span class="close" onclick="fecharModalConfiguracao()">&times;</span>
@@ -252,6 +247,7 @@
             <div id="blocoEdicao" class="bloco-edicao" style="display: none; justify-content: center;">
                 <!-- Form para mudar informações de Conta -->
                 <form method="POST" action="/editar" class="edit-form" enctype="multipart/form-data">
+                    
                     <input type="hidden" name="_method" value="PUT">
                     <input type="text" name="username" id="edit-nome" placeholder="Novo Usuario">
                     <input type="text" name="email" id="edit-email" placeholder="Novo Email">
