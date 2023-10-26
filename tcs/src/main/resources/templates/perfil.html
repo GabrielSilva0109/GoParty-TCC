@@ -158,6 +158,7 @@
                     <!-- Parte de cima do Post aonde tem os Botões -->
                     <div class="evento-up">
                         <h2 th:text="${evento.titulo}"></h2>
+                        
                         <!-- Botão para Excluir o Post -->
                         <form th:action="@{'/excluir-evento/' + ${evento.id}}" method="post" onsubmit="return confirm('Tem certeza de que deseja excluir este post?')">
                             <input type="hidden" name="_method" value="DELETE">
@@ -196,7 +197,7 @@
                             </div>
                         </div>
                     </div>                
-            
+                    <p th:text="${evento.descricao}"></p>
                     <!-- Bloco onde ficam os comentários -->
                     <div class="comentarios hidden" >
                         <ul class="ul-comentarios">
