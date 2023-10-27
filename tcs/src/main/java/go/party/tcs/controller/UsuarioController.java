@@ -275,12 +275,6 @@ public class UsuarioController {
             // Excluir todos os eventos associados ao usuário
             eventoRepository.deleteByAutor(sessionUsuario);
 
-            // Excluir todos as Curtidas associados ao usuário
-            curtidaRepository.deleteByAutor(sessionUsuario);
-
-            // Excluir todos os Comentarios associados ao usuário
-            comentarioRepository.deleteByAutor(sessionUsuario);
-
             // Em seguida, excluir o usuário
             usuarioRepository.delete(sessionUsuario);
             emailService.sendEmailToClient(sessionUsuario.getEmail(), assunto, mensagem);       

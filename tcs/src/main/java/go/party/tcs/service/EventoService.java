@@ -25,6 +25,8 @@ public class EventoService {
     @Autowired
     private CurtidaRepository curtidaRepository;
 
+    @Autowired CurtidaService curtidaService;
+
     public List<Evento> getAllEventos() {
         return eventoRepository.findAll();
     }
@@ -51,8 +53,14 @@ public class EventoService {
         return eventoRepository.getById(eventoId);
     }
 
+    public EventoService(EventoRepository eventoRepository, CurtidaService curtidaService) {
+        this.eventoRepository = eventoRepository;
+        this.curtidaService = curtidaService;
+    }
+
     public void excluirEvento(Integer id) {
-        // Lógica para excluir o evento com base no ID
+        
+        // Excluir o evento
         eventoRepository.deleteById(id);
     }
 

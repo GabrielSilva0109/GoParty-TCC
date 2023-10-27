@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import go.party.tcs.model.Curtida;
 import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.EventoRepository;
@@ -134,13 +135,22 @@ public class EventoController {
     //Metodo para Excluir o Post Evento
     @DeleteMapping("/excluir-evento/{id}")
     public String excluirEvento(@PathVariable Integer id, HttpSession session) {
+        Evento evento = eventoService.encontrarPorId(id);
         // Lógica para excluir o evento com base no ID
-        eventoService.excluirEvento(id);
+        if (evento != null) {
+            // Exclua as curtidas associadas ao evento
+            List<Curtida> curtidas = evento.getCurtidas();
+            for (Curtida curtida : curtidas) {
+                curtidaService.excluirCurtida(curtida);
+            }
+            
+            // Exclua o evento
+            eventoService.excluirEvento(id);
+        }
         // Obtém o usuário da sessão atual
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
         // Reinsira o usuário na sessão (isso pode ser ajustado com base na lógica da sua aplicação)
         session.setAttribute("usuario", sessionUsuario);
-
         // Redirecione para a página perfil
         return "redirect:/perfil";
     }

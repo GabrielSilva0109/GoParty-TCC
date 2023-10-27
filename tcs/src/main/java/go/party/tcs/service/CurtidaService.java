@@ -1,5 +1,6 @@
 package go.party.tcs.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class CurtidaService {
 
         if (evento != null && !this.usuarioJaCurtiuEvento(evento.getId(), usuario)) {
                 Curtida curtida = new Curtida();
-                curtida.setAutor(usuario);
+                curtida.setUsuario(usuario);
                 curtida.setEvento(evento);
 
                 curtidaRepository.save(curtida);
@@ -50,4 +51,16 @@ public class CurtidaService {
         Evento evento = eventoService.encontrarPorId(eventoId);
         return curtidaRepository.findByEventoAndUsuario(evento, usuario) != null;
     }
+
+
+    public CurtidaService(CurtidaRepository curtidaRepository) {
+        this.curtidaRepository = curtidaRepository;
+    }
+
+
+    public void excluirCurtida(Curtida curtida) {
+        curtidaRepository.delete(curtida);
+    }
+
+   
 }

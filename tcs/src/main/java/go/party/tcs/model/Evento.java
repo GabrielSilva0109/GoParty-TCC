@@ -120,4 +120,13 @@ public class Evento {
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
+
+    public List<Curtida> getCurtidas() {
+        return curtidas;
+    }
+    
+    public void setCurtidas(List<Curtida> curtidas) {
+        this.curtidas = curtidas;
+    }
+    
 }
