@@ -50,4 +50,9 @@ public class CurtidaService {
         Evento evento = eventoService.encontrarPorId(eventoId);
         return curtidaRepository.findByEventoAndUsuario(evento, usuario) != null;
     }
+
+
+    public void excluirCurtida(Curtida curtida) {
+        curtidaRepository.delete(curtida);
+    }
 }

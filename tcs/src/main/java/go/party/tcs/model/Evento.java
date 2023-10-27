@@ -36,7 +36,7 @@ public class Evento {
     private Usuario autor;
 
     @Lob
-    @Column(name = "foto_evento", columnDefinition = "BLOB")
+    @Column(name = "foto_evento", columnDefinition = "LONGBLOB")
     private byte[] fotoEvento;
 
     @ManyToOne
@@ -120,4 +120,13 @@ public class Evento {
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
+
+    public List<Curtida> getCurtidas() {
+        return curtidas;
+    }
+    
+    public void setCurtidas(List<Curtida> curtidas) {
+        this.curtidas = curtidas;
+    }
+    
 }
