@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import go.party.tcs.model.Curtida;
 import go.party.tcs.model.Evento;
 import go.party.tcs.model.Usuario;
+import jakarta.transaction.Transactional;
 
 public interface CurtidaRepository extends JpaRepository<Curtida, Long> {
     // Método para buscar uma curtida por evento e usuário
@@ -21,6 +22,9 @@ public interface CurtidaRepository extends JpaRepository<Curtida, Long> {
 
     @Query("SELECT COUNT(c) FROM Curtida c WHERE c.evento.id = :eventoId")
     int quantidadeCurtidasPorEvento(@Param("eventoId") Integer eventoId);
+
+    @Transactional
+    void deleteByAutor(Usuario sessionUsuario);
 
     
 }

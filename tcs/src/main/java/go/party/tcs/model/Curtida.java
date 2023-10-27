@@ -15,10 +15,13 @@ public class Curtida {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    // Quem está seguindo
     @ManyToOne
-    private Usuario usuario;   // Quem está seguindo
+    private Usuario autor;
+    
+    // A quem está sendo seguido
     @ManyToOne
-    private Evento evento;  // A quem está sendo seguido
+    private Evento evento;  
     
     public Long getId() {
         return id;
@@ -36,12 +39,12 @@ public class Curtida {
         this.evento = evento;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getAutor() {
+        return autor;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
     }
     
 }

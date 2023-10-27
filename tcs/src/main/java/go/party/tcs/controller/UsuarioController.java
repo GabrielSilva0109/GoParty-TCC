@@ -28,10 +28,12 @@ import go.party.tcs.model.Evento;
 import go.party.tcs.model.Follower;
 import go.party.tcs.model.Notification;
 import go.party.tcs.model.Usuario;
+import go.party.tcs.repository.ComentarioRepository;
 import go.party.tcs.repository.CurtidaRepository;
 import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.repository.NotificationRepository;
 import go.party.tcs.repository.UsuarioRepository;
+import go.party.tcs.service.ComentarioService;
 import go.party.tcs.service.CurtidaService;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.EventoService;
@@ -52,6 +54,13 @@ public class UsuarioController {
 
     @Autowired
     private NotificationRepository notificationRepository;
+
+    @Autowired
+    private ComentarioRepository comentarioRepository;
+
+    @Autowired
+    private ComentarioService comentarioService;
+
 
     @Autowired
     private UsuarioService usuarioService;
@@ -260,25 +269,28 @@ public class UsuarioController {
         String assunto = "Exclusão de conta | GoParty";
         String mensagem = "Você deletou sua conta no GoParty!"
                         + "Esperamos que você volte em breve. ";
-        
+             
         if (sessionUsuario != null) {
             try {
-        
             // Excluir todos os eventos associados ao usuário
             eventoRepository.deleteByAutor(sessionUsuario);
+
+            // Excluir todos as Curtidas associados ao usuário
+            curtidaRepository.deleteByAutor(sessionUsuario);
+
+            // Excluir todos os Comentarios associados ao usuário
+            comentarioRepository.deleteByAutor(sessionUsuario);
 
             // Em seguida, excluir o usuário
             usuarioRepository.delete(sessionUsuario);
             emailService.sendEmailToClient(sessionUsuario.getEmail(), assunto, mensagem);       
                 
-                // Remova o usuário da sessão
-                session.removeAttribute("usuario");
+            // Remova o usuário da sessão
+            session.removeAttribute("usuario");
             } catch (Exception e) {
-                
                 e.printStackTrace();
             }
         }
-
         return "redirect:/login";
     }
 

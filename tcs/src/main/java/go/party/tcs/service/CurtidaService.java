@@ -25,7 +25,7 @@ public class CurtidaService {
 
         if (evento != null && !this.usuarioJaCurtiuEvento(evento.getId(), usuario)) {
                 Curtida curtida = new Curtida();
-                curtida.setUsuario(usuario);
+                curtida.setAutor(usuario);
                 curtida.setEvento(evento);
 
                 curtidaRepository.save(curtida);
