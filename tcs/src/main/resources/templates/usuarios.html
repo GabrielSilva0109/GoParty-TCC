@@ -81,13 +81,10 @@
                  <div th:each="usuario : ${usuarios}" class="cards">
 
                     <!--Caso não encontrar nenhum usuário ou evento-->
-                    
                     <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
-
                         <img th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser" th:if="${usuario.temImagemPerfil()}" />
                         <img src="/css/img/fotoPerfil.jpg" alt="Imagem Padrão" th:unless="${usuario.temImagemPerfil()}" />
                         <h4><span class="arroba">@</span><span th:text="${usuario.username}"></span></h4>
-                        
                     </a>
                     
                      <!--Botões de seguir o usuário mostrado (TESTE)-->

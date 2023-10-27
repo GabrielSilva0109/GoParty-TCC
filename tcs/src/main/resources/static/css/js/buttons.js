@@ -60,3 +60,12 @@ function abrirEdicao() {
             }
 }
 
+// Função para abrir edições
+function abrirExcluir() {
+    var blocoExcluir = document.getElementById('blocoExcluir');
+            if (blocoExcluir.style.display === 'none' || blocoExcluir.style.display === '') {
+                blocoExcluir.style.display = 'flex';
+            } else {
+                blocoExcluir.style.display = 'none';
+            }
+}

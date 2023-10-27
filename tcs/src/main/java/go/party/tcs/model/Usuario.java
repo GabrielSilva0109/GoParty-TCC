@@ -51,7 +51,7 @@ public class Usuario {
     private String senha;
 
     @Lob
-    @Column(name = "foto_perfil", columnDefinition = "BLOB")
+    @Column(name = "foto_perfil", columnDefinition = "LONGBLOB")
     private byte[] fotoPerfil;
 
     //SEGUIDORES E SEGUINDO
