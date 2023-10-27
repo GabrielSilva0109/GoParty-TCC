@@ -87,7 +87,7 @@
                         <img th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser" th:if="${usuario.temImagemPerfil()}" />
                         <img src="/css/img/fotoPerfil.jpg" alt="Imagem Padrão" th:unless="${usuario.temImagemPerfil()}" />
                         <h4><span class="arroba">@</span><span th:text="${usuario.username}"></span></h4>
-                        <p class="descricaoUser"><span th:text="${usuario.descricao}"></span></p>
+                        
                     </a>
                     
                      <!--Botões de seguir o usuário mostrado (TESTE)-->
