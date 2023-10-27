@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -16,14 +17,17 @@ import go.party.tcs.repository.UsuarioRepository;
 
 @Service
 public class EventoService {
-   @Autowired
+
+    @Autowired
+    public EventoService(@Lazy CurtidaService curtidaService) {
+        this.curtidaService = curtidaService;
+    }
+
+    @Autowired
     private EventoRepository eventoRepository;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private CurtidaRepository curtidaRepository;
 
     @Autowired CurtidaService curtidaService;
 

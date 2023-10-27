@@ -197,10 +197,6 @@ public class UsuarioController {
         for (Evento evento : eventos) {
             int numeroCurtidas = curtidaRepository.quantidadeCurtidasPorEvento(evento.getId());
             boolean usuarioJaCurtiuEvento = curtidaService.usuarioJaCurtiuEvento(evento.getId(), sessionUsuario);
-<<<<<<< HEAD
-
-=======
->>>>>>> 12ec2eaf35c453e168957a09fddaefa749630783
             quantidadeCurtidasPorEvento.put(evento.getId(), numeroCurtidas);
             usuarioJaCurtiuEventoMap.put(evento.getId(), usuarioJaCurtiuEvento);
         }
