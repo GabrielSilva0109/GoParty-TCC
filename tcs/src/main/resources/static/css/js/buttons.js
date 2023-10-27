@@ -69,3 +69,5 @@ function abrirExcluir() {
                 blocoExcluir.style.display = 'none';
             }
 }
+
+

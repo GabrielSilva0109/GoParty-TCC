@@ -84,14 +84,13 @@
         <div class="center-content" id="center-notificacoes">
  
             <div class="bloco-notificacoes"> 
-                
-
+            
                 <!--Lista de notificações-->
                 <ul>
                     <li th:if="${#lists.isEmpty(notifications)}">
                         <span>Não há notificações.</span>
                     </li>
-                    <li class="lista-notificacoes" th:each="notification, index : ${notifications}">
+                    <li class="lista-notificacoes" th:each="notification, index : ${notifications}" th:attr="data-id=${notification.id}">
                         
                         <!--Bloco especifico-->
                      <div class="notification-container">
@@ -105,15 +104,12 @@
                         <span class="tempo-decorrido" th:text="${temposDecorridos[__${index.index}__]}"></span>
 
                         <div class="excluir-not">
-                            <button><span class="icon-trash">  <i class="bi bi-trash custom-icon"></i></span></button>
+                            
+                            <button type="submit" class="apagar-button">
+                                <span class="icon-trash"><i class="bi bi-trash custom-icon"></i></span>
+                            </button>
                          </div>
-                        
-                   <style>
-
-                     
-
-                   </style>
-
+                    
                      </div>
                     </li>                                   
                 </ul>
