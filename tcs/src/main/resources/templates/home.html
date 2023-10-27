@@ -9,17 +9,19 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body>
     <!--menu-lateral-->
     <nav class="menu-lateral" id="menu-lateral">
-        <!--btn-expandir-->
+
         <div class="btn-expandir">
-            <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp-home" />
+            <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
             <span class="txt-link"> <img src="/css/img/LogoGoParty.png" alt="GoParty" id="palavraGoParty"> </span>
-        </div>
+           
+            
+        </div><!--btn-expandir-->
 
         <ul>
             <li class="item-menu">
@@ -29,19 +31,19 @@
                 </a>
             </li>
             <li class="item-menu">
-                <a  th:href="@{/usuarios}">
+                <a th:href="@{/usuarios}">
                     <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
                     <span class="txt-link">Explorar</span>
                 </a>
             </li>
             <li class="item-menu ativo">
-                <a th:href="@{/home}">
+                <a th:href="@{/home}" >
                     <img src="/css/img/homeIcon.png" alt="Home" class="icon">
                     <span class="txt-link">Home</span>
                 </a>
             </li>
             <li class="item-menu">
-                    <a  th:href="@{/evento}">
+                <a  th:href="@{/evento}" >
                     <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
                     <span class="txt-link">Postar</span>
                 </a>
@@ -74,7 +76,7 @@
         </ul>
 
     </nav>    
-    <div></div>
+
     <div class="container">
         <div class="left-conta" id="info-usuario">
             <!-- Parte Esquerda Informações do Usuario -->
@@ -115,13 +117,10 @@
             </div>
         </div>
 
-        
         <!-- Feed -->
         <div class="center-content" id="center-feed">
 
-              <!--Sessao de FEED-->
-            <section id="feed-section" class="section">
- 
+            <section id="feed-section">
             <div th:each="evento : ${eventos}" class="evento-bloco">
 
                 <!-- Bloco Esquerdo Evento -->
@@ -191,94 +190,12 @@
                 </div>
             </div>
         </section>
-
-        <!--SESSAO DE USUARIOS PARA TROCA-->
-        <section id="usuarios-section"  class="section" style="display: none;">
-
-            <div class="input-pesquisa"> 
-                 <!--Search bar -->
-             
-                 <div class="search">
-                     <form action="/explorar" method="post">
-                     <input type="text" class="search__input" placeholder="Pesquise aqui" name="nomeDigitado" id="input-pesquisar">
-                     <button class="search__button" type="submit">
-                         <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
-                             <g>
-                                 <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
-                             </g>
-                         </svg>
-                     </button>
-                 </form>
-             </div>
+            
+        
     
-             </div>
-         
-             <div class="main-container">
-    
-                     <div th:each="usuario : ${usuarios}" class="cards">
-    
-                        <!--Caso não encontrar nenhum usuário ou evento-->
-                        
-                        
-                        <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
-    
-                            <img th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser" th:if="${usuario.temImagemPerfil()}" />
-                            <img src="/css/img/fotoPerfil.jpg" alt="Imagem Padrão" th:unless="${usuario.temImagemPerfil()}" />
-                            <h4><span class="arroba">@</span><span th:text="${usuario.username}"></span></h4>
-                            <p class="descricaoUser"><span th:text="${usuario.descricao}"></span></p>
-                        </a>
-                        
-                         <!--Botões de seguir o usuário mostrado (TESTE)-->
-                            <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                            <form method="post" action="/follow"  th:if="${seguirStatusMap[usuario.id] == false}">
-                                <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" type="submit">
-                                    <strong>SEGUIR</strong>
-                                    <div id="container-stars">
-                                      <div id="stars"></div>
-                                    </div>
-                                  
-                                    <div id="glow">
-                                      <div class="circle"></div>
-                                      <div class="circle"></div>
-                                    </div>
-                                  </button>
-                            </form>
-    
-    
-                            <!--<span class="seguido-por">Seguido por <span class="arroba">@</span>joao12 e 20+</span> 
-                            <style>
-                                .seguido-por{
-                                    font-size: 13px;
-                                    padding: 2px;
-                                    margin-top: 4px;
-                                    margin-bottom: 4px;
-                                }
-                            </style>
-                            -->
-    
-                            <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                            <form method="post" action="/unfollow" th:if="${seguirStatusMap[usuario.id] == true}">
-                                <button class="btn-perfil-follow-usuarios" id="btn-unfollow-usuarios" type="submit">
-                                    <strong>Seguindo</strong>
-                                    <div id="container-stars">
-                                      <div id="stars"></div>
-                                    </div>
-                                  
-                                    <div id="glow">
-                                      <div class="circle"></div>
-                                      <div class="circle"></div>
-                                    </div>
-                                  </button>
-                            </form>
-    
-                         </div>
-                      </div>
-    
-                    </section>
-    
-        <!--SESSAO DE CRIAR O EVENTO-->
+        <!--Container de criar evento-->
         <!--Fazer o Post-->
-        <section id="criar-evento-section" class="section" style="display: none;">
+        <section id="criar-evento-section" style="display: none;">
             <div class="container-ev">
                 <h1>
                     Criar Evento
@@ -295,10 +212,11 @@
                 </form>
                              
             </div>              
-       </section>
+    </section>
 
     
 </div>
+
     <!-- Modal Notificações -->
     <div id="modalNotificacao" class="modal-notificacao" style="display: none;">
         <div class="modal-content">
@@ -306,18 +224,6 @@
             <h1 class="tittle-modal">Notificações</h1>
             <div class="bloco-notificacoes"> 
                 <!--Lista de notificações-->
-
-                <div class="noti-topo">
-                    <!--Botão para limpar notis-->
-                    <form action="/limparNotificacoes" id="btn-limpar-id" method="post">
-                        <button class="Btn-limpar" id="btn-limpar-id">
-                            <div class="limpar-notis"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAADgElEQVR4nO2Wz0/bZhzG8x9YyrU9JeqPCMLWRFRkaGwICExDQuqUVogt66CJikg1bYvjwrIYqWo3teVQeinssPSwjWyFBJYWllLqAc0cabm0Ny6dOOyf6OEzfXFYIwZOoEy79JGs+H3f5/M8tuJXtsPxWv+njgzTdDRG5kiMyIEzYkQk4+gI3roA9wg+10U23cOE3cOU3BcZ22+pMFvsMOGtrBF8tkDjEE2eCJueKG2f/o7HFUXxRCh5ovWXi1cYYSVDsiTzRNTmzk8NkXnzE8ICfF7kxRdFUv4oyqlBSr7B2uXiEa8wwkqGZEmmb5CZPcG3PiYSOG+Bo+skRtfh8jq6jGW+5fze5bK2zV5eQxN2dN268Ap7wfaq2wdQ3/2QcjCEU18lMb4G46vonSGU9gHM9gG+smPG19CE0VdJ2TG7qrsftaffCrpqkLj2G1wzrPLufszu/pdB1d6vDTTxXjWs0p3eutQXYqzvLKVQCOWmQWLCgJsGuoxlfmu9yjNhoIlnwiBV7XEcROfOoJ77gHIohPP2CtrtFZhcscrPnsGssba/O92pcB9jH/VRioZQ7iyjTT2CO8voMt5tTrzCOA5DkV7i0fcpDwVxflcglX4I8lt9Hu1EifZiRntJOg5Tl3qIX3qP8mdBnN8X0H4oQOXQpTTWgxnrPuRSkdqFGu+yimeX0GaXQI57S+haJ4oaxIx3veL/ulPJDtRkB2U9iDP/AO2XRVh4gF59LuVfdmAmOw6p/EobY1feofRNJ0ohj1a4D4U8uox3mxOvMK9UeuNt1ButlCdacBp5NCMPRqXgeium3dr11gPe+WQL6q2AFfxkHq24AMUF9Ck/ymQAczJA8laAeA3P/sqnT6NON1P+tgVneR6tPA9/5KzA6WbM6eaXT+/UaeJ23qnmOsvv+lDTfivoaRbtWRaezpGSoLQfM+3/95ZJ+4hvM8+yJCqMvs3c9dcoz7xBZKaJ0k9+lI1ZtI052JgjJWOZz3j3fmhk7R82S6LC6tvsjNfmtZhrIJNrIPx8Ds/zn3nx5z2rNNdIKdtQ+0kVj3iFEVYyJEsyc402HwL3T+BdPMnmrx7a/voRz0MXyuJJSoue+reHeIURVjIkSzIl2xZcduNbOc7mo2OEHx+ntHJs/3tSGGElQ7Iksy6w6ML7xMVM0V3jc8Uuw82FrQxXnZ+3r+X4j/Q3CYE5BD0RH5QAAAAASUVORK5CYII="></div>
-                            
-                            <div class="text">Limpar</div>
-                        </button>
-                    </form>
-                </div>
-
                 <ul>
                     <li th:if="${#lists.isEmpty(notifications)}">
                         <span>Não há notificações.</span>
@@ -331,8 +237,6 @@
                         <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
     
                         <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"> </span>
-
-                        <span class="tempo-decorrido" th:text="${temposDecorridos[__${index.index}__]}"></span>
                      </div>
                     </li>                                   
                 </ul>
@@ -349,7 +253,7 @@
                 <button class="btn-config" onclick="abrirEdicao()">Editar Perfil</button>
                 <button class="btn-config">Mudar Tema</button>
                 <button class="btn-config">Privacidade</button>
-                <button class="btn-config" onclick="abrirExcluir()">Excluir Conta</button>
+                <button class="btn-config">Excluir Conta</button>
             </div>
             <div id="blocoEdicao" class="bloco-edicao" style="display: none; justify-content: center;">
                 <!-- Form para mudar informações de Conta -->
@@ -372,23 +276,10 @@
                     <input class="btn-salvar" type="submit" value="Enviar" id="enviar">
                 </form>
             </div>
-            
-            <div id="blocoExcluir" class="bloco-excluir" style="display: none; justify-content: center;">
-                <!-- Botão para Excluir a Conta -->
-                <form action="/deletar" method="post" id="form-excluir">
-                    <input type="hidden" name="_method" value="DELETE">
-                        <h1>Tem certeza que gostaria de excluir ?</h1>
-                        <button class="btn-excluir" id="btn-excluir">
-                            <svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
-                        </button>
-                </form>
-            </div>
         </div>
     </div>
 
     </div>
-
-    <!--Footer com Direitos Autorais do GoParty-->
     <footer>
         <ul class="ul-footer">
             <li><h4>GoParty © 2023</h4></li>
@@ -398,6 +289,6 @@
     </footer>
 
     <script src="/css/js/buttons.js"></script>
-    <script src="/css/js/barraLateral.js"></script>  
+    <script src="/css/js/barraLateral.js"></script>
 </body>
 </html>
