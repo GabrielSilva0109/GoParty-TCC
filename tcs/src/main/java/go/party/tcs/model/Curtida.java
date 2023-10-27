@@ -16,9 +16,9 @@ public class Curtida {
     private Long id;
     
     @ManyToOne
-    private Usuario usuario;   // Quem está seguindo
+    private Usuario usuario;   // Quem esta curtindo
     @ManyToOne
-    private Evento evento;  // A quem está sendo seguido
+    private Evento evento;  // Evento curtido
     
     public Long getId() {
         return id;

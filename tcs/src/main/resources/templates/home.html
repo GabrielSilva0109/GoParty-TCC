@@ -106,13 +106,14 @@
                 <!-- Informações do Usuario -->
                 <h2 style="font-size: 17px;">Eventos em Alta <span><i class="bi bi-bar-chart-fill"></i></span></h2>
                 <div class="info">
-                    <ol class="lista-eventos-alta">
-                        <li>Evento 1</li>
-                        <li>Evento 2</li>
-                        <li>Evento 3</li>
-                        <li>Evento 4</li>    
-                        <li>Evento 5</li>    
-                    </ol>
+                    <!--Listas eventos em alta-->
+                    <ul th:if="${not #lists.isEmpty(eventosMaisCurtidos)}">
+                        <li th:each="evento : ${eventosMaisCurtidos}">
+                            <span th:text="${evento.titulo}"></span>
+                        </li>
+                    </ul>
+                    <p th:unless="${not #lists.isEmpty(eventosMaisCurtidos)}">Sem eventos em alta.</p>
+
                 </div>
             </div>
         </div>

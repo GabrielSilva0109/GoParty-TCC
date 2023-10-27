@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import go.party.tcs.model.Curtida;
 import go.party.tcs.model.Evento;
 import go.party.tcs.model.Follower;
 import go.party.tcs.model.Notification;
@@ -201,13 +202,32 @@ public class UsuarioController {
             usuarioJaCurtiuEventoMap.put(evento.getId(), usuarioJaCurtiuEvento);
         }
 
+        //EVENTOS EM ALTA(MAIS CURTIDOS)
+       List<Curtida> curtidas = curtidaService.getAllCurtidas(); // Lista para buscar todos as curtidas do sistema
+       List<Evento> eventosEmAlta = eventoService.getAllEventos(); // onde será armazenado os eventos em alta
+
+       Map<Integer, Integer> curtidasPorEvento = new HashMap<>();
+
+       for (Curtida curtida : curtidas) {
+        Integer eventoId = curtida.getEvento().getId();
+        curtidasPorEvento.put(eventoId, curtidasPorEvento.getOrDefault(eventoId, 0) + 1);
+     }
+
+        eventos.sort((evento1, evento2) -> Integer.compare(
+            curtidasPorEvento.getOrDefault(evento2.getId(), 0),
+            curtidasPorEvento.getOrDefault(evento1.getId(), 0)
+        ));
+
+        eventosEmAlta = eventos.subList(0, Math.min(eventos.size(), 5));
+
+        
         model.addAttribute("eventos", eventos);
         model.addAttribute("quantidadeCurtidasPorEvento", quantidadeCurtidasPorEvento);
         model.addAttribute("usuarioJaCurtiuEventoMap", usuarioJaCurtiuEventoMap);
+        model.addAttribute("eventosMaisCurtidos", eventosEmAlta);
 
         return "home";
     }
-
 
     //Metodo para Editar a Conta do Usuario
     @PutMapping("/editar")
