@@ -406,39 +406,6 @@ public class UsuarioController {
         return new ResponseEntity<>(imagemPerfil, HttpStatus.OK);
     }
 
-    // TESTE DE SEGUIDORES NO SISTEMA
-    @PostMapping("/follow")
-    public String followUser(HttpSession session) {
-
-        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-
-        Usuario follower = usuarioService.getUserById(sessionUsuario.getId());
-        Usuario following = usuarioService.getUserById(usuarioPerfilVisitado.getId());
-
-        usuarioService.follow(follower, following);
-    
-        // NOTIFICAR O USUÀRIO
-        // Crie uma notificação
-        byte[] fotoPerfil = sessionUsuario.getFotoPerfil();
-        String message = follower.getUsername()+" seguiu você";
-        Integer userIdToNotify =  usuarioPerfilVisitado.getId();
-
-        notificationService.createNotification(message, userIdToNotify, fotoPerfil);
-        return "redirect:/usuarios";
-    }
-
-    @PostMapping("/unfollow")
-    public String unfollowUser(HttpSession session) {
-
-        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-
-        Usuario follower = usuarioService.getUserById(sessionUsuario.getId());
-        Usuario following = usuarioService.getUserById(usuarioPerfilVisitado.getId());
-
-        usuarioService.unfollow(follower, following);
-        return "redirect:/home";
-    }
-
     @PostMapping("/follow/{id}")
         public String followUser(@PathVariable Integer id, HttpSession session) {
 
