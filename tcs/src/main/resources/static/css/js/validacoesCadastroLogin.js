@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return false;
     }
 
+<<<<<<< HEAD
     const senhaInput = document.getElementById('senhaTrocaCadastro');
     const senhaConfirmInput = document.getElementById('senhaConfimCadastro');
     const senhaConfirmMsg = document.getElementById('senhaConfirmacaoMsg');
@@ -60,3 +61,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+=======
+   
+
+
+
+});
+>>>>>>> 12ec2eaf35c453e168957a09fddaefa749630783
