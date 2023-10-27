@@ -59,7 +59,6 @@ public class EventoService {
     }
 
     public void excluirEvento(Integer id) {
-        
         // Excluir o evento
         eventoRepository.deleteById(id);
     }
