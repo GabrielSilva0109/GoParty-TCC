@@ -36,7 +36,7 @@ public class Evento {
     private Usuario autor;
 
     @Lob
-    @Column(name = "foto_evento", columnDefinition = "BLOB")
+    @Column(name = "foto_evento", columnDefinition = "LONGBLOB")
     private byte[] fotoEvento;
 
     @ManyToOne
