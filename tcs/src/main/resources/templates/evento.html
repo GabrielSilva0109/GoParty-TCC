@@ -13,8 +13,68 @@
 </head>
 <body>
 
-    <!--menu-lateral-->
-    <div th:replace="home :: #menu-lateral"></div>
+   <!--menu-lateral-->
+   <nav class="menu-lateral" id="menu-lateral">
+    <!--btn-expandir-->
+    <div class="btn-expandir">
+        <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
+        <span class="txt-link"> <img src="/css/img/LogoGoParty.png" alt="GoParty" id="palavraGoParty"> </span>
+    </div>
+
+    <ul>
+        <li class="item-menu">
+            <a th:href="@{/perfil}">
+                <img src="/css/img/profileIcon.png" alt="Perfil" class="icon" >
+                <span class="txt-link">Perfil</span>
+            </a>
+        </li>
+        <li class="item-menu">
+            <a  th:href="@{/usuarios}">
+                <img src="/css/img/UsersIcon.png" alt="Usuários" class="icon">
+                <span class="txt-link">Explorar</span>
+            </a>
+        </li>
+        <li class="item-menu">
+            <a th:href="@{/home}">
+                <img src="/css/img/homeIcon.png" alt="Home" class="icon">
+                <span class="txt-link">Home</span>
+            </a>
+        </li>
+        <li class="item-menu ativo">
+                <a  th:href="@{/evento}">
+                <img src="/css/img/PostIcon.png" alt="Eventos" class="icon">
+                <span class="txt-link">Postar</span>
+            </a>
+        </li>
+        <li class="item-menu">
+            <a th:href="@{/notificacoes}">
+                <div class="contador-notificacao">
+                    <div th:if="${notificacoesNaoVisualizadas > 0}" class="circulo">
+                        <span th:text="${notificacoesNaoVisualizadas}"></span>
+                    </div>
+                </div>
+                <img src="/css/img/notification-bell.png" alt="notificacao" class="icon" >
+                <span class="txt-link">Notificações</span>
+            </a>
+        </li>
+        
+        <li class="item-menu">
+            <a onclick="openModalConfiguracao()" class="links" id="modal-configs">
+                <img src="/css/img/configs.png" alt="config" class="icon">
+                <span class="txt-link">Configurações</span>
+            </a>
+        </li>
+
+        <li class="item-menu">
+            <a th:href="@{/logout}">
+                <img src="/css/img/log-out.png" alt="logout" class="icon">
+                <span class="txt-link">Sair</span>
+            </a>
+        </li>
+    </ul>
+
+</nav>    
+
     <div class="container">
         <div class="center-content" id="center-notificacoes">   
             <!--Container de criar evento-->
