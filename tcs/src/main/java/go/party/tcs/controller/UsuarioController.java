@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import go.party.tcs.model.Curtida;
 import go.party.tcs.model.Evento;
@@ -518,5 +520,14 @@ public class UsuarioController {
       return "notificacoes";
     }
 
+    @GetMapping("/acharUsuario/{usuarioId}")
+    public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Integer usuarioId) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioId);
+        if (usuarioOptional.isPresent()) {
+            return ResponseEntity.ok(usuarioOptional.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

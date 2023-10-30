@@ -144,6 +144,19 @@
                         <img src="/css/img/fotoPerfil.jpg" alt="Imagem Padrão" th:unless="${usuario.temImagemPerfil()}" />
                         <h4><span class="arroba">@</span><span th:text="${usuario.username}"></span></h4>
                     </a>
+
+                    <button th:attr="data-usuario-id=${usuario.id}" onclick="mostrarModal(this)">Ver</button>
+
+                    <div id="modal-perfil-usuario" class="modal" style="width: 1400px; margin-left: -20%; height: 70%;">
+                        <div class="modal-content">
+                            <!-- Aqui você mostrará as informações do usuário -->
+                            <h2>Detalhes do Usuário</h2>
+                            <p id="modal-usuario-nome">Nome: </p>
+                            <p id="modal-usuario-email">Email: </p>
+                            <!-- Outras informações do usuário -->
+                            <button onclick="fecharModal()">Fechar</button>
+                        </div>
+                    </div>
                     
                      <!--Botões de seguir o usuário mostrado (TESTE)-->
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->

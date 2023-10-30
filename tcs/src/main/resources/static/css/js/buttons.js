@@ -138,6 +138,51 @@ function descurtirEvento(eventoId) {
         });
 }
 
+//MODAL DE PERFIL DO USUARIO
+
+function encontrarUsuarioPorId(usuarioId) {
+    // URL da sua API para buscar um usuário por ID
+    const apiUrl = `/acharUsuario/${usuarioId}`; // Substitua pela URL correta
+
+    return fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(usuario => {
+
+            
+            document.getElementById("modal-usuario-nome").textContent = "Nome: " + usuario.nome;
+            document.getElementById("modal-usuario-email").textContent = "Email: " + usuario.email;
+
+            return usuario;
+        })
+        .catch(error => {
+            console.error("Erro na requisição:", error);
+            return null;
+        });
+}
+
+    function mostrarModal(botao) {
+        // Obter o ID do usuário a partir do atributo data-usuario-id
+        const usuarioId = botao.getAttribute("data-usuario-id");
+        const usuario = encontrarUsuarioPorId(usuarioId);
+
+        // Mostrar o modal
+        document.getElementById("modal-perfil-usuario").style.display = "block";
+    }
+
+    function fecharModal() {
+        // Fechar o modal
+        document.getElementById("modal-perfil-usuario").style.display = "none";
+    }
+
+   
+    
+
+
 
 
 
