@@ -276,7 +276,7 @@ public class UsuarioController {
         // Passo 7: Atualize a sessão com o usuário atualizado (opcional).
         session.setAttribute("usuario", usuarioNoBanco);
 
-        return "redirect:/perfil";
+        return "redirect:/home";
     }
 
     //Metodo para Excluir a Conta do Usuario
