@@ -23,8 +23,8 @@ public class OAuth2Configuration {
 
     private ClientRegistration googleClientRegistration() {
         return ClientRegistration.withRegistrationId("google")
-            .clientId("257994705300-igarq2mj2q8t91r4es727424bu8h889s.apps.googleusercontent.com")
-            .clientSecret("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")
+            .clientId("918585002313-kc7qt67r6s4ggr37qign0pnaa3gc6tfb.apps.googleusercontent.com")
+            .clientSecret("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")
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
             .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
             .redirectUri("http://localhost:8081/login") // Substitua pelo seu URL de redirecionamento
