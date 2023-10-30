@@ -153,9 +153,18 @@ function encontrarUsuarioPorId(usuarioId) {
         })
         .then(usuario => {
 
-            
             document.getElementById("modal-usuario-nome").textContent = "Nome: " + usuario.nome;
-            document.getElementById("modal-usuario-email").textContent = "Email: " + usuario.email;
+           
+            if (usuario.descricao) {
+                document.getElementById("modal-usuario-email").textContent = "Biografia: " + usuario.descricao;
+            } 
+             // Verifique se a URL da foto do usuário existe
+             if (usuario.urlFoto) {
+                document.getElementById("fotoUsuario").src = usuario.fotoPerfil;
+            } else {
+                // Caso não exista uma foto, defina uma foto padrão
+                document.getElementById("fotoUsuario").src = "/css/img/fotoPerfil.jpg"; 
+            }
 
             return usuario;
         })
