@@ -121,7 +121,7 @@ footer{
   }
 
   15% {
-    transform: rotateZ(10deg);
+    transform: rotateZ(10deg);  
   }
 
   30% {
@@ -2329,4 +2329,11 @@ ul li.item-menu a .icon > i{
 .custom-icon:hover{
   transition: 0.3s;
   color: red;
+}
+
+.info ul {
+  list-style: none;
+  font-weight: bold;
+  color: #25142d;
+  font-size: 1.3rem;
 }

@@ -80,7 +80,7 @@
     <div class="container">
         <div class="left-conta" id="info-usuario">
             <!-- Parte Esquerda Informações do Usuario -->
-            <div class="left-sidebar-perfil" style="height: 250px; width: 250px;">
+            <div class="left-sidebar-perfil" style=" width: 250px;">
             
                 <!-- Imagem de Perfil Usuario -->
                 <img class="imgPerfil" 
@@ -254,12 +254,11 @@
                 <button class="btn-config" onclick="abrirEdicao()">Editar Perfil</button>
                 <button class="btn-config">Mudar Tema</button>
                 <button class="btn-config">Privacidade</button>
-                <button class="btn-config">Excluir Conta</button>
+                <button class="btn-config" onclick="abrirExcluir()">Excluir Conta</button>
             </div>
             <div id="blocoEdicao" class="bloco-edicao" style="display: none; justify-content: center;">
                 <!-- Form para mudar informações de Conta -->
                 <form method="POST" action="/editar" class="edit-form" enctype="multipart/form-data">
-                    
                     <input type="hidden" name="_method" value="PUT">
                     <input type="text" name="username" id="edit-nome" placeholder="Novo Usuario">
                     <input type="text" name="email" id="edit-email" placeholder="Novo Email">
@@ -275,6 +274,13 @@
                     <div id="file-name"></div>
                     <!-- Botão de envio personalizado -->
                     <input class="btn-salvar" type="submit" value="Enviar" id="enviar">
+                </form>
+            </div>
+
+            <div id="blocoExcluir" class="bloco-excluir" style="display:none; justify-content: center;">
+                <h1>Deseja excluir sua conta?</h1>
+                <form action="/deletar" method="DEL">
+                    <button type="submit">Excluir</button>
                 </form>
             </div>
         </div>
