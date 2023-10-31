@@ -134,7 +134,19 @@
         <div class="center-content" id="center-feed">
 
             <section id="feed-section">
-                <div class="filtros-evento">
+  
+                <button onclick="mostrarFiltros()" class="btn-mostrar-filtro" id="filtro" title="Filtros"><span><i class="bi bi-filter"></i></span></button>
+
+                <style>
+                    #filtro{
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        margin-left: 83%;
+                    }
+                </style>
+
+                <div class="filtros-evento" style="display: none;">
                     <div class="filtro-estado">
                         <form action="/filtro-estado" method="post" id="searchForm">
                             <input type="text" class="search__input" placeholder="Estado" name="nomeDigitado" id="input-pesquisar">

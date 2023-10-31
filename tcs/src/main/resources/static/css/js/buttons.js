@@ -174,6 +174,16 @@ function encontrarUsuarioPorId(usuarioId) {
         });
 }
 
+function mostrarFiltros() {
+    var filtrosDiv = document.querySelector('.filtros-evento');
+
+    if (filtrosDiv.style.display === 'none' || filtrosDiv.style.display === '') {
+        filtrosDiv.style.display = 'flex';
+    } else {
+        filtrosDiv.style.display = 'none';
+    }
+}
+
     function mostrarModal(botao) {
         // Obter o ID do usuário a partir do atributo data-usuario-id
         const usuarioId = botao.getAttribute("data-usuario-id");
