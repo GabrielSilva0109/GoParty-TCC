@@ -31,6 +31,15 @@ public class Evento {
     @Column(name = "descricao")
     private String descricao;
 
+    @Column(name = "estado")
+    private String estado;
+
+    @Column(name = "cidade")
+    private String cidade;
+
+    @Column(name = "bairro")
+    private String bairro;
+
     @ManyToOne
     @JoinColumn(name = "autor_id")
     private Usuario autor;
@@ -128,5 +137,28 @@ public class Evento {
     public void setCurtidas(List<Curtida> curtidas) {
         this.curtidas = curtidas;
     }
-    
+
+    public String getEstado(){
+        return estado;
+    }
+
+    public void setEstado(String estado){
+        this.estado = estado;
+    }
+
+    public String getCidade(){
+        return cidade;
+    }
+
+    public void setCidade(String cidade){
+        this.cidade = cidade;
+    }
+
+    public String getBairro(){
+        return bairro;
+    }
+
+    public void setBairro(String bairro){
+        this.bairro = bairro;
+    }
 }
