@@ -188,7 +188,47 @@ function encontrarUsuarioPorId(usuarioId) {
         document.getElementById("modal-perfil-usuario").style.display = "none";
     }
 
-   
+    // API DE CEP  
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const cepInput = document.getElementById("cep");
+        const cidadeInput = document.getElementById("cidade");
+        const bairroInput = document.getElementById("bairro");
+    
+        cepInput.addEventListener("input", function (e) {
+          // Remove caracteres não numéricos
+          const cleanedValue = e.target.value.replace(/\D/g, "");
+    
+          // Formata o CEP como "XXXXX-XXX"
+          if (cleanedValue.length > 5) {
+            e.target.value = cleanedValue.slice(0, 5) + "-" + cleanedValue.slice(5, 8);
+          } else {
+            e.target.value = cleanedValue;
+          }
+        });
+
+        cepInput.addEventListener("blur", function () {
+            const cep = cepInput.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+        
+            if (cep.length === 8) {
+              // Faz uma solicitação para a API do ViaCEP
+              fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then((response) => response.json())
+                .then((data) => {
+                  if (!data.erro) {
+                    // Preenche os campos de cidade e bairro com os dados da API
+                    cidadeInput.value = data.localidade;
+                    bairroInput.value = data.bairro;
+                  }
+                })
+                .catch((error) => {
+                  console.error("Erro na solicitação ViaCEP: " + error);
+                });
+            }
+          });
+      });
+
+
     
 
 

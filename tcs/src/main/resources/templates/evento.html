@@ -9,6 +9,8 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="/css/js/vanilla-masker.min.js"></script>
+
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body>
@@ -87,9 +89,11 @@
                     <form action="criar-evento" method="POST" enctype="multipart/form-data">
                         <input type="text" name="titulo" placeholder="Titulo" required>
                         <textarea placeholder="Descrição"  name="descricao" id="" cols="10" rows="10" required></textarea>
-                        <input type="text" name="cidade" placeholder="Cidade" required>
-                        <input type="text" name="bairro" placeholder="Bairro" required>
+                        <input type="text" id="cep" placeholder="CEP(opcional)">
+                        <input type="text" name="cidade" id="cidade" placeholder="Cidade" required>
+                        <input type="text" name="bairro" id="bairro" placeholder="Bairro" required>
                         <input class="btn-foto" type="file" name="imagemEvento" required>
+
                         <select name="estado" required>
                             <option value="sc">SC</option>
                             <option value="sp">SP</option>
@@ -101,6 +105,7 @@
                             <option value="mt">MT</option>
                             <option value="mg">MG</option>
                         </select>
+
                         <button class="ui-btn" type="submit">
                             <span>
                             Criar
