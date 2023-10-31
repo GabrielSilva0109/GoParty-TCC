@@ -134,114 +134,136 @@
         <div class="center-content" id="center-feed">
 
             <section id="feed-section">
-                <!-- Filtros na parte superior da página -->
-                <div class="filtro-eventos">
-                    <label for="filtroEstado">Filtrar por Estado:</label>
-                    <select id="filtroEstado">
-                        <option value="">Todos</option>
-                        <option value="sc">SC</option>
-                        <option value="sp">SP</option>
-                        <option value="rj">RJ</option>
-                        <!-- Adicione mais opções de estado, se necessário -->
-                    </select>
-                    <label for="filtroCidade">Filtrar por Cidade:</label>
-                    <input type="text" id="filtroCidade">
-                    <label for="filtroBairro">Filtrar por Bairro:</label>
-                    <input type="text" id="filtroBairro">
-                    <button onclick="filtrarEventos()">Filtrar</button>
+                <div class="filtros-evento">
+                    <div class="filtro-estado">
+                        <form action="/filtro-estado" method="post" id="searchForm">
+                            <input type="text" class="search__input" placeholder="Estado" name="nomeDigitado" id="input-pesquisar">
+                            <button class="search__button" type="submit" id="btn-explorar">
+                                <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
+                                    <g>
+                                        <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="filtro-cidade">
+                        <form action="/filtro-cidade" method="post" id="searchForm">
+                            <input type="text" class="search__input" placeholder="Cidade" name="nomeDigitado" id="input-pesquisar">
+                            <button class="search__button" type="submit" id="btn-explorar">
+                                <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
+                                    <g>
+                                        <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="filtro-bairro">
+                        <form action="/filtro-bairro" method="post" id="searchForm">
+                            <input type="text" class="search__input" placeholder="Bairro" name="nomeDigitado" id="input-pesquisar">
+                            <button class="search__button" type="submit" id="btn-explorar">
+                                <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
+                                    <g>
+                                        <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            <div th:each="evento : ${eventos}" class="evento-bloco">
+                <div th:each="evento : ${eventos}" class="evento-bloco">
 
-                <!-- Bloco Esquerdo Evento -->
-                <div class="bloco-evento-left">
-                    <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
-                    <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
+                    <!-- Bloco Esquerdo Evento -->
+                    <div class="bloco-evento-left">
+                        <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
+                        <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
+                        
+                        <div class="evento-curtidas">
+
+                            <div class="heart-container" title="Curtir" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == false">
+                                <input type="checkbox" class="checkbox" id="evento-${evento.id}" th:attr="data-evento-id=${evento.id}" onchange="checkboxChanged(this)">
+                                <div class="svg-container">
+                                    <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                        </path>
+                                    </svg>
+                                    <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                        </path>
+                                    </svg>
+                                    <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                        <polygon points="10,10 20,20"></polygon>
+                                        <polygon points="10,50 20,50"></polygon>
+                                        <polygon points="20,80 30,70"></polygon>
+                                        <polygon points="90,10 80,20"></polygon>
+                                        <polygon points="90,50 80,50"></polygon>
+                                        <polygon points="80,80 70,70"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="heart-container" title="Curtido" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == true">
+                                <input type="checkbox" class="checkbox" id="descurtir-${evento.id}" th:attr="data-evento-id=${evento.id}" th:checked="${usuarioJaCurtiuEventoMap[evento.id] == true}" onchange="checkboxChanged(this)">
+                                <div class="svg-container">
+                                    <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
+                                        </path>
+                                    </svg>
+                                    <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
+                                        </path>
+                                    </svg>
+                                    <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                        <polygon points="10,10 20,20"></polygon>
+                                        <polygon points="10,50 20,50"></polygon>
+                                        <polygon points="20,80 30,70"></polygon>
+                                        <polygon points="90,10 80,20"></polygon>
+                                        <polygon points="90,50 80,50"></polygon>
+                                        <polygon points="80,80 70,70"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                     
-                    <div class="evento-curtidas">
+                    <!-- Bloco da Direita Evento -->
+                    <div class="bloco-evento-right">
+                        <h2 th:text="${evento.titulo}"></h2>
+                        <p th:text="${evento.descricao}"></p>
 
-                        <div class="heart-container" title="Curtir" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == false">
-                            <input type="checkbox" class="checkbox" id="evento-${evento.id}" th:attr="data-evento-id=${evento.id}" onchange="checkboxChanged(this)">
-                            <div class="svg-container">
-                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                    </path>
-                                </svg>
-                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                    </path>
-                                </svg>
-                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                    <polygon points="10,10 20,20"></polygon>
-                                    <polygon points="10,50 20,50"></polygon>
-                                    <polygon points="20,80 30,70"></polygon>
-                                    <polygon points="90,10 80,20"></polygon>
-                                    <polygon points="90,50 80,50"></polygon>
-                                    <polygon points="80,80 70,70"></polygon>
-                                </svg>
-                            </div>
+                        <!-- Bloco onde ficam os comentários -->
+                        <div class="comentarios hidden">
+                            <ul class="ul-comentarios">
+                                <li th:each="comentario : ${evento.comentarios}">
+                                    <div class="bloco-usuario">
+                                        <span class="arroba">@</span>
+                                        <p th:text="${comentario.autor.username}"></p>
+                                    </div>
+                                    <div class="bloco-comentario">
+                                        <p th:text="${comentario.texto}"></p>
+                                    </div>
+                                </li>
+                            </ul>
+                                <!-- Bloco com input para fazer um comentário -->
+                                <div class="bloco-evento-comenta">
+                                    <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
+                                        <input name="texto" placeholder="Digite seu comentário" required>
+                                        <button type="submit">Comentar</button>
+                                    </form>
+                                </div>
                         </div>
 
-                        <div class="heart-container" title="Curtido" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == true">
-                            <input type="checkbox" class="checkbox" id="descurtir-${evento.id}" th:attr="data-evento-id=${evento.id}" th:checked="${usuarioJaCurtiuEventoMap[evento.id] == true}" onchange="checkboxChanged(this)">
-                            <div class="svg-container">
-                                <svg viewBox="0 0 24 24" class="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                                    </path>
-                                </svg>
-                                <svg viewBox="0 0 24 24" class="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                                    </path>
-                                </svg>
-                                <svg class="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                                    <polygon points="10,10 20,20"></polygon>
-                                    <polygon points="10,50 20,50"></polygon>
-                                    <polygon points="20,80 30,70"></polygon>
-                                    <polygon points="90,10 80,20"></polygon>
-                                    <polygon points="90,50 80,50"></polygon>
-                                    <polygon points="80,80 70,70"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-
+                        <!-- Botão abrir comentários -->
+                        <button class="chatBtn" onclick="toggleComentarios(this)">
+                            <svg height="1.6em" fill="white" xml:space="preserve" viewBox="0 0 1000 1000" y="0px" x="0px" version="1.1">
+                                <path d="M881.1,720.5H434.7L173.3,941V720.5h-54.4C58.8,720.5,10,671.1,10,610.2v-441C10,108.4,58.8,59,118.9,59h762.2C941.2,59,990,108.4,990,169.3v441C990,671.1,941.2,720.5,881.1,720.5L881.1,720.5z M935.6,169.3c0-30.4-24.4-55.2-54.5-55.2H118.9c-30.1,0-54.5,24.7-54.5,55.2v441c0,30.4,24.4,55.1,54.5,55.1h54.4h54.4v110.3l163.3-110.2H500h381.1c30.1,0,54.5-24.7,54.5-55.1V169.3L935.6,169.3z M717.8,444.8c-30.1,0-54.4-24.7-54.4-55.1c0-30.4,24.3-55.2,54.4-55.2c30.1,0,54.5,24.7,54.5,55.2C772.2,420.2,747.8,444.8,717.8,444.8L717.8,444.8z M500,444.8c-30.1,0-54.4-24.7-54.4-55.1c0-30.4,24.3-55.2,54.4-55.2c30.1,0,54.4,24.7,54.4,55.2C554.4,420.2,530.1,444.8,500,444.8L500,444.8z M282.2,444.8c-30.1,0-54.5-24.7-54.5-55.1c0-30.4,24.4-55.2,54.5-55.2c30.1,0,54.4,24.7,54.4,55.2C336.7,420.2,312.3,444.8,282.2,444.8L282.2,444.8z"></path>
+                            </svg>
+                            <span class="tooltip">Comentários&nbsp;<span th:text="${evento.comentarios.size()}"></span> </span>
+                        </button>
                     </div>
                 </div>
-                
-                <!-- Bloco da Direita Evento -->
-                <div class="bloco-evento-right">
-                    <h2 th:text="${evento.titulo}"></h2>
-                    <p th:text="${evento.descricao}"></p>
-
-                    <!-- Bloco onde ficam os comentários -->
-                    <div class="comentarios hidden">
-                        <ul class="ul-comentarios">
-                            <li th:each="comentario : ${evento.comentarios}">
-                                <div class="bloco-usuario">
-                                    <span class="arroba">@</span>
-                                    <p th:text="${comentario.autor.username}"></p>
-                                </div>
-                                <div class="bloco-comentario">
-                                    <p th:text="${comentario.texto}"></p>
-                                </div>
-                            </li>
-                        </ul>
-                            <!-- Bloco com input para fazer um comentário -->
-                            <div class="bloco-evento-comenta">
-                                <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
-                                    <input name="texto" placeholder="Digite seu comentário" required>
-                                    <button type="submit">Comentar</button>
-                                </form>
-                            </div>
-                    </div>
-
-                    <!-- Botão abrir comentários -->
-                    <button class="chatBtn" onclick="toggleComentarios(this)">
-                        <svg height="1.6em" fill="white" xml:space="preserve" viewBox="0 0 1000 1000" y="0px" x="0px" version="1.1">
-                            <path d="M881.1,720.5H434.7L173.3,941V720.5h-54.4C58.8,720.5,10,671.1,10,610.2v-441C10,108.4,58.8,59,118.9,59h762.2C941.2,59,990,108.4,990,169.3v441C990,671.1,941.2,720.5,881.1,720.5L881.1,720.5z M935.6,169.3c0-30.4-24.4-55.2-54.5-55.2H118.9c-30.1,0-54.5,24.7-54.5,55.2v441c0,30.4,24.4,55.1,54.5,55.1h54.4h54.4v110.3l163.3-110.2H500h381.1c30.1,0,54.5-24.7,54.5-55.1V169.3L935.6,169.3z M717.8,444.8c-30.1,0-54.4-24.7-54.4-55.1c0-30.4,24.3-55.2,54.4-55.2c30.1,0,54.5,24.7,54.5,55.2C772.2,420.2,747.8,444.8,717.8,444.8L717.8,444.8z M500,444.8c-30.1,0-54.4-24.7-54.4-55.1c0-30.4,24.3-55.2,54.4-55.2c30.1,0,54.4,24.7,54.4,55.2C554.4,420.2,530.1,444.8,500,444.8L500,444.8z M282.2,444.8c-30.1,0-54.5-24.7-54.5-55.1c0-30.4,24.4-55.2,54.5-55.2c30.1,0,54.4,24.7,54.4,55.2C336.7,420.2,312.3,444.8,282.2,444.8L282.2,444.8z"></path>
-                        </svg>
-                        <span class="tooltip">Comentários&nbsp;<span th:text="${evento.comentarios.size()}"></span> </span>
-                    </button>
-                </div>
-            </div>
         </section>
     </div>
 
