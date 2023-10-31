@@ -134,6 +134,22 @@
         <div class="center-content" id="center-feed">
 
             <section id="feed-section">
+                <!-- Filtros na parte superior da página -->
+                <div class="filtro-eventos">
+                    <label for="filtroEstado">Filtrar por Estado:</label>
+                    <select id="filtroEstado">
+                        <option value="">Todos</option>
+                        <option value="sc">SC</option>
+                        <option value="sp">SP</option>
+                        <option value="rj">RJ</option>
+                        <!-- Adicione mais opções de estado, se necessário -->
+                    </select>
+                    <label for="filtroCidade">Filtrar por Cidade:</label>
+                    <input type="text" id="filtroCidade">
+                    <label for="filtroBairro">Filtrar por Bairro:</label>
+                    <input type="text" id="filtroBairro">
+                    <button onclick="filtrarEventos()">Filtrar</button>
+                </div>
             <div th:each="evento : ${eventos}" class="evento-bloco">
 
                 <!-- Bloco Esquerdo Evento -->
@@ -336,6 +352,33 @@
             <li><h4>Desenvolvedores</h4></li>
         </ul>
     </footer>
+
+    <script>
+        function filtrarEventos() {
+            // Obtenha os valores dos filtros
+            var filtroEstado = $("#filtroEstado").val();
+            var filtroCidade = $("#filtroCidade").val().toLowerCase();
+            var filtroBairro = $("#filtroBairro").val().toLowerCase();
+            
+            // Percorra os eventos e aplique os filtros
+            $(".evento-bloco").each(function () {
+                var evento = $(this);
+                var estado = evento.find(".estado").text().toLowerCase();
+                var cidade = evento.find(".cidade").text().toLowerCase();
+                var bairro = evento.find(".bairro").text().toLowerCase();
+    
+                if (
+                    (filtroEstado === "" || estado === filtroEstado) &&
+                    (filtroCidade === "" || cidade.includes(filtroCidade)) &&
+                    (filtroBairro === "" || bairro.includes(filtroBairro))
+                ) {
+                    evento.show(); // Mostra o evento se atende aos critérios do filtro
+                } else {
+                    evento.hide(); // Oculta o evento se não atende aos critérios do filtro
+                }
+            });
+        }
+    </script>
 
     <script src="/css/js/buttons.js"></script>
     <script src="/css/js/barraLateral.js"></script>

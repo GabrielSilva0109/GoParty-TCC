@@ -51,12 +51,15 @@ public class EventoController {
 
     private Usuario usuarioLogado = new Usuario();
     
-    //Método para Criar um Evento
+    // Método para Criar um Evento
     @PostMapping("/criar-evento")
     public String criarEvento(@RequestParam("titulo") String titulo,
-                              @RequestParam("descricao") String descricao,
-                              @RequestParam("imagemEvento") MultipartFile imagemEvento,
-                              HttpSession session) throws IOException {
+                            @RequestParam("descricao") String descricao,
+                            @RequestParam("imagemEvento") MultipartFile imagemEvento,
+                            @RequestParam("estado") String estado,
+                            @RequestParam("cidade") String cidade,
+                            @RequestParam("bairro") String bairro,
+                            HttpSession session) throws IOException {
 
         // Recupere o usuário da sessão
         // chave "usuario"
@@ -65,18 +68,25 @@ public class EventoController {
 
         // Crie um novo evento
         Evento evento = new Evento(titulo, descricao, usuario);
+        
+        // Define o estado, cidade e bairro
+        evento.setEstado(estado);
+        evento.setCidade(cidade);
+        evento.setBairro(bairro);
 
         // Salve a imagem do evento 
         if (!imagemEvento.isEmpty()) {
             byte[] imagemBytes = imagemEvento.getBytes();
             evento.setFotoEvento(imagemBytes); // Supondo que você tenha um método setImagem para o evento
         }
+        
         // Salve o evento no banco de dados (você deve implementar a lógica de persistência)
         eventoService.criarEvento(evento, null);
 
         return "redirect:/home"; // Redirecione para uma página de sucesso após criar o evento
     }
 
+    
     //Método para mostrar os eventos do Usuario no seu perfil
     @GetMapping("/perfil")
     public String mostrarPerfil(Model model, HttpSession session, HttpServletRequest request) {

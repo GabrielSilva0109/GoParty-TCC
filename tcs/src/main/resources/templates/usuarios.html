@@ -99,21 +99,8 @@
             .no-scroll {
                 overflow: hidden;
             }
-        </style>
 
-         <!--Teste de modal com sugestões-->
-         <div id="suggestionsModal" class="modal" style="display: none;  ">
-            <div class="modal-content" style="background-color: #f4f2f2;">
-                <ul id="suggestionsList">
-                    <!-- Aqui serão exibidas as sugestões -->
-                                  
-                </ul>
-                <div id="noResultsMessage" style="display: none;">Nenhum usuário encontrado.</div>
-            </div>
-            </div>
-
-            <style>
-                .modal{
+            .modal{
                     width: 27%;
                     margin-top: -59px;
                     margin-left: 4%;    
@@ -131,7 +118,18 @@
                     font-size: 13px;
                     padding: 0;
                 }
-            </style>
+        </style>
+
+         <!--Teste de modal com sugestões-->
+         <div id="suggestionsModal" class="modal" style="display: none;  ">
+            <div class="modal-content" style="background-color: #f4f2f2;">
+                <ul id="suggestionsList">
+                    <!-- Aqui serão exibidas as sugestões -->
+                                  
+                </ul>
+                <div id="noResultsMessage" style="display: none;">Nenhum usuário encontrado.</div>
+            </div>
+            </div>
 
          
          <div class="main-container">
@@ -175,18 +173,6 @@
                                 </div>
                               </button>
                         </form>
-
-
-                        <!--<span class="seguido-por">Seguido por <span class="arroba">@</span>joao12 e 20+</span> 
-                        <style>
-                            .seguido-por{
-                                font-size: 13px;
-                                padding: 2px;
-                                margin-top: 4px;
-                                margin-bottom: 4px;
-                            }
-                        </style>
-                        -->
 
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
                         <form method="post" th:action="@{'/unfollow/' + ${usuario.id}}" th:if="${seguirStatusMap[usuario.id] == true}">
