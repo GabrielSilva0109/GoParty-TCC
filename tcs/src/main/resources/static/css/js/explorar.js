@@ -5,8 +5,6 @@ const suggestionsList = document.getElementById('suggestionsList');
 const btnPesquisa = document.getElementById("btn-explorar");
 const noResultsMessage = document.getElementById('noResultsMessage');
 
-console.log("Pedinho");
-
 searchInput.addEventListener('input', function() {
     const query = searchInput.value;
     
