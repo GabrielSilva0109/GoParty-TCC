@@ -89,12 +89,15 @@
                     <form action="criar-evento" method="POST" enctype="multipart/form-data">
                         <input type="text" name="titulo" placeholder="Titulo" required>
                         <textarea placeholder="Descrição"  name="descricao" id="" cols="10" rows="10" required></textarea>
-                        <input type="text" id="cep" placeholder="CEP(opcional)">
-                        <input type="text" name="cidade" id="cidade" placeholder="Cidade" required>
-                        <input type="text" name="bairro" id="bairro" placeholder="Bairro" required>
                         <input class="btn-foto" type="file" name="imagemEvento" required>
+                        <input type="text" id="cep" placeholder="CEP(opcional)">
 
-                        <select name="estado" id="estado" required>
+                        <div class="end-cidade" style="display: flex;">
+
+                            <input type="text" name="cidade" id="cidade" placeholder="Cidade" required >
+                       
+
+                        <select name="estado" id="estado" required style="height: 40px;">
                             <option value="sc">SC</option>
                             <option value="sp">SP</option>
                             <option value="rj">RJ</option>
@@ -105,6 +108,16 @@
                             <option value="mt">MT</option>
                             <option value="mg">MG</option>
                         </select>
+
+                    </div>
+
+                      
+
+                        
+
+                        <input type="text" name="bairro" id="bairro" placeholder="Bairro" required>
+                       
+                        
 
                         <button class="ui-btn" type="submit">
                             <span>
