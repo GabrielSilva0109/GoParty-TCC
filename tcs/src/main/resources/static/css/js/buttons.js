@@ -219,6 +219,11 @@ function encontrarUsuarioPorId(usuarioId) {
                     // Preenche os campos de cidade e bairro com os dados da API
                     cidadeInput.value = data.localidade;
                     bairroInput.value = data.bairro;
+
+                    // Seleciona automaticamente a opção do estado com base no estado retornado
+                    const estadoSelect = document.getElementById("estado");
+                    const estadoSelecionado = data.uf.toLowerCase();
+                    estadoSelect.value = estadoSelecionado;
                   }
                 })
                 .catch((error) => {
