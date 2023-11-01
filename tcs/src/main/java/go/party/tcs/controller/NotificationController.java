@@ -11,12 +11,12 @@ import go.party.tcs.service.NotificationService;
 public class NotificationController {
     
     @Autowired
-    private NotificationService notificationService; // Suponha que você tenha um serviço NotificacaoService para gerenciar as notificações.
+    private NotificationService notificationService;
 
     @DeleteMapping("/excluir-notificacao")
     public String excluirNotificacao(@RequestParam("id") Long id) {
-        notificationService.excluirNotificacao(id); // Chame um método do serviço para excluir a notificação com o ID especificado.
-        return "redirect:/notificacoes"; // Redirecione para a página de notificações após a exclusão.
+        notificationService.excluirNotificacao(id); 
+        return "redirect:/notificacoes"; 
     }
     
 }
