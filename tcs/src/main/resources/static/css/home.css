@@ -9,6 +9,7 @@ body{
   /* background-image: url('/css/img/fundo.webp'); */
   background: #040b26;
 }
+
 /* Icones */
 .icon {
  width: 40px; 
@@ -84,7 +85,7 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(176, 176, 176);
+  color: rgb(78, 78, 78);
 }
 
 .ul-footer{

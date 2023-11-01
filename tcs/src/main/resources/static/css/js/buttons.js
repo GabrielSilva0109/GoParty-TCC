@@ -60,6 +60,7 @@ function abrirEdicao() {
             }
 }
 
+// Função para abrir Temas
 function abrirTemas() {
     var blocoTemas = document.getElementById('blocoTemas');
             if (blocoTemas.style.display === 'none' || blocoTemas.style.display === '') {
@@ -69,7 +70,30 @@ function abrirTemas() {
             }
 }
 
-// Função para abrir edições
+function darkMode() {
+    var body = document.body;
+    body.style.background = "#040b26";
+    localStorage.setItem('theme', 'dark');
+  }
+  
+  function lightMode() {
+    var body = document.body;
+    body.style.background = "#bdbdbd";
+    localStorage.setItem('theme', 'light');
+  }
+  
+  // Verificar a preferência de tema ao carregar a página
+  window.addEventListener('load', function () {
+    var theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      darkMode();
+    } else {
+      lightMode();
+    }
+  });
+  
+
+// Função para abrir Excluir Conta
 function abrirExcluir() {
     var blocoExcluir = document.getElementById('blocoExcluir');
             if (blocoExcluir.style.display === 'none' || blocoExcluir.style.display === '') {
@@ -79,9 +103,7 @@ function abrirExcluir() {
             }
 }
 
-//Requisição de curtida 
-
-// JavaScript
+//Requisição de curtida
 function checkboxChanged(checkbox) {
     const eventoId = checkbox.getAttribute('data-evento-id');
     if (checkbox.checked) {
@@ -148,7 +170,6 @@ function descurtirEvento(eventoId) {
 }
 
 //MODAL DE PERFIL DO USUARIO
-
 function encontrarUsuarioPorId(usuarioId) {
     // URL da sua API para buscar um usuário por ID
     const apiUrl = `/acharUsuario/${usuarioId}`; // Substitua pela URL correta
