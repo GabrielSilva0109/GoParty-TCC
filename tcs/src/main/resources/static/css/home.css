@@ -62,7 +62,17 @@ body{
 .center-content, .left-sidebar, .left-sidebar-perfil{
   border-radius: 20px;
   text-align: center;
-} 
+}
+#filtro{
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 83%;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color:rgb(255, 65, 65);
+}
 .filtros-evento{
   display: flex;
   justify-content: center;
