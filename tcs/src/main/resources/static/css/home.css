@@ -41,7 +41,7 @@ body{
 
 .left-sidebar-perfil {
   width: 25%;
-  background-color: #f0f0f064; /* Cor de fundo do lado esquerdo */
+  background-color: #ffffffab;/* Cor de fundo do lado esquerdo */
   padding: 20px;
   margin-left: 49px;
 }
@@ -57,7 +57,7 @@ body{
   width: 70%;
   border-radius: 20px;
   text-align: center;
-  background-color: #f0f0f064;
+  background-color: #ffffffab;
 }
 
 .center-content, .left-sidebar, .left-sidebar-perfil{
