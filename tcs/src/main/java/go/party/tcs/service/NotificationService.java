@@ -80,16 +80,7 @@ public class NotificationService {
         }
     }
 
-    public void apagarNotificacaoPorId(Integer id) {
-        // Verifique se a notificação com o ID especificado existe
-        Notification notificacao = notificationRepository.findById(id);
-       
-        if(notificacao.getId() != 0){
-            notificationRepository.delete(notificacao); 
-        }
-             
-    }
-
+    //LIMPAR AS NOTIFICACOES POR ID 
     public void excluirNotificacao(Long id) {
         notificationRepository.deleteById(id);
     }
