@@ -102,13 +102,19 @@
                         <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"> </span>
 
                         <span class="tempo-decorrido" th:text="${temposDecorridos[__${index.index}__]}"></span>
-
-                        <div class="excluir-not">
-                            
-                            <button type="submit" class="apagar-button">
-                                <span class="icon-trash"><i class="bi bi-trash custom-icon"></i></span>
-                            </button>
-                         </div>
+                        
+                        <!--Metodo para excluir notificação especifica-->
+                        <form action="/excluir-notificacao" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="id" th:value="${notification.id}">
+                            <div class="excluir-not">
+                                <button type="submit" class="apagar-button">
+                                    <span class="icon-trash"><i class="bi bi-trash custom-icon"></i></span>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        
                     
                      </div>
                     </li>                                   

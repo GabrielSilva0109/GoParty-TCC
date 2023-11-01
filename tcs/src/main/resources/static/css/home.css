@@ -2317,7 +2317,8 @@ ul li.item-menu a .icon > i{
 
 .tempo-decorrido{   
   margin-left: 4px; 
-  font-size: 12px;   
+  font-size: 12px;
+  color:white;
 }
 
 .excluir-not button{  
