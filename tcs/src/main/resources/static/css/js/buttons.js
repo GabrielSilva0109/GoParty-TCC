@@ -60,6 +60,15 @@ function abrirEdicao() {
             }
 }
 
+function abrirTemas() {
+    var blocoTemas = document.getElementById('blocoTemas');
+            if (blocoTemas.style.display === 'none' || blocoTemas.style.display === '') {
+                blocoTemas.style.display = 'block';
+            } else {
+                blocoTemas.style.display = 'none';
+            }
+}
+
 // Função para abrir edições
 function abrirExcluir() {
     var blocoExcluir = document.getElementById('blocoExcluir');

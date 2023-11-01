@@ -137,10 +137,6 @@
   
                 <button onclick="mostrarFiltros()" class="btn-mostrar-filtro" id="filtro" title="Filtros"><span><i class="bi bi-filter"></i></span></button>
 
-                <style>
-                   
-                </style>
-
                 <div class="filtros-evento" style="display: none;">
                     <div class="filtro-estado">
                         <form action="/filtro-estado" method="post" id="searchForm">
@@ -308,10 +304,11 @@
             <h1 class="tittle-modal">Configurações</h1>
             <div class="bloco-config">
                 <button class="btn-config" onclick="abrirEdicao()">Editar Perfil</button>
-                <button class="btn-config">Mudar Tema</button>
+                <button class="btn-config" onclick="abrirTemas()">Mudar Tema</button>
                 <button class="btn-config">Privacidade</button>
                 <button class="btn-config" onclick="abrirExcluir()">Excluir Conta</button>
             </div>
+            
             <div id="blocoEdicao" class="bloco-edicao" style="display: none; justify-content: center;">
                 <!-- Form para mudar informações de Conta -->
                 <form method="POST" action="/editar" class="edit-form" enctype="multipart/form-data">
@@ -333,6 +330,14 @@
                 </form>
             </div>
 
+            <div id="blocoTemas" class="bloco-temas" style="display: none; justify-content: center;">
+                <h1>Escolha o Tema do Sistemas</h1>
+                <div class="temas-opcoes">
+                    <Button>Dark</Button>
+                    <button>Light</button>
+                </div>
+            </div>
+
             <div id="blocoExcluir" class="bloco-excluir" style="display:none; justify-content: center;">
                 <h1>Deseja excluir sua conta?</h1>
                 <!-- Botão para Excluir a Conta -->
@@ -343,6 +348,8 @@
                             </button>
                     </form>
             </div>
+
+            
         </div>
     </div>
 
