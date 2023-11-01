@@ -509,17 +509,6 @@ public class UsuarioController {
         return "perfil";
     }
 
-    //APAGAR NOTIFICACAO ESPECIFICA
-    @PostMapping("/limparNotificacoes/{id}")
-    public String limparNotificacaoEspecifica(@PathVariable Integer id, HttpSession session) {
-      // Lógica para apagar as notificações
-       Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-
-       notificationService.apagarNotificacaoPorId(id);
-
-      return "notificacoes";
-    }
-
     @GetMapping("/acharUsuario/{usuarioId}")
     public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Integer usuarioId) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioId);
