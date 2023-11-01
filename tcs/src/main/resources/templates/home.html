@@ -206,6 +206,8 @@
                                 </div>
                             </div>
 
+                            
+
                             <div class="heart-container" title="Curtido" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == true">
                                 <input type="checkbox" class="checkbox" id="descurtir-${evento.id}" th:attr="data-evento-id=${evento.id}" th:checked="${usuarioJaCurtiuEventoMap[evento.id] == true}" onchange="checkboxChanged(this)">
                                 <div class="svg-container">
@@ -229,6 +231,16 @@
                             </div>
 
                         </div>
+
+                        <!--Span com a quantidade de curtidas passando o id do evento-->
+                        <span class="curtidas" th:text="${quantidadeCurtidasPorEvento[evento.id]}"></span><span class="curtidas"> curtidas</span>
+                    
+                        <style>
+                            .curtidas{
+                                font-size: 13px;
+                            }
+                        </style>
+                    
                     </div>
                     
                     <!-- Bloco da Direita Evento -->
