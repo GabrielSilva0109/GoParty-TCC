@@ -139,7 +139,6 @@ public class UsuarioService {
         List<Usuario> following = getFollowing(user);
         return following.size();
     }
-
    
 }
 

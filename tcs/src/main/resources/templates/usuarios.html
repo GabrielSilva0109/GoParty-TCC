@@ -134,30 +134,18 @@
          
          <div class="main-container">
 
-                 <div th:each="usuario : ${usuarios}" class="cards">
+                 <div th:each="usuario : ${usuarios}" class="cards" th:unless="${usuario.id == sessionUser.id}">
 
-                    <!--Caso não encontrar nenhum usuário ou evento-->
-                    <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
-                        <img th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser" th:if="${usuario.temImagemPerfil()}" />
-                        <img src="/css/img/fotoPerfil.jpg" alt="Imagem Padrão" th:unless="${usuario.temImagemPerfil()}" />
-                        <h4><span class="arroba">@</span><span th:text="${usuario.username}"></span></h4>
-                    </a>
-
-                   <!-- <button th:attr="data-usuario-id=${usuario.id}" onclick="mostrarModal(this)">Ver</button>-->
-
-                    <div id="modal-perfil-usuario" class="modal" style="width: 1400px; margin-left: -20%; height: 70%;">
-                        <div class="modal-content">
-                            <!-- Aqui você mostrará as informações do usuário -->
-                        
-                            <img src="" alt="fotoUsuario" id="fotoUsuario">
-                            <p id="modal-usuario-nome">Nome: </p>
-                            <p id="modal-usuario-email">Biografia: </p>
-                            <!-- Outras informações do usuário -->
-                            
-                            <button onclick="fecharModal()">Fechar</button>
-                        </div>
-                    </div>
                     
+                        <!-- Conteúdo para exibir somente para usuários diferentes do da sessão -->
+                        <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
+                            <img th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser" th:if="${usuario.temImagemPerfil()}" />
+                            <img src="/css/img/fotoPerfil.jpg" alt="Imagem Padrão" th:unless="${usuario.temImagemPerfil()}" />
+                            <h4><span class="arroba">@</span><span th:text="${usuario.username}"></span></h4>
+                        </a>
+            
+                    
+                    <th:block th:unless="${usuario.id == sessionUser.id}">
                      <!--Botões de seguir o usuário mostrado (TESTE)-->
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
                         <form method="post" th:action="@{'/follow/' + ${usuario.id}}" th:if="${seguirStatusMap[usuario.id] == false}">
@@ -189,7 +177,7 @@
                               </button>
                         </form>
 
-                     </div>
+                </div>
                   </div>
                 </div>
          </div> 

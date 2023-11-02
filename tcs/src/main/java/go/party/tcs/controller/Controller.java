@@ -138,16 +138,23 @@ public class Controller {
     // Pagina Usuarios
     @GetMapping("/usuarios")
     public String listarUsuarios(Model model, HttpSession session, HttpServletRequest request) {
-        Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
+            Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
 
             //CONTADOR DE NOTIFICACOES NAO VISUALIZADAS
             int notificacoesNaoVisualizadas = notificationService.contarNotificacoesNaoVisualizadas(sessionUsuario.getId());
             model.addAttribute("notificacoesNaoVisualizadas", notificacoesNaoVisualizadas);
             
             userLogado = sessionUsuario;
-            List<Usuario> usuarios = usuarioService.findAll();
-            model.addAttribute("usuarios", usuarios);  
-         
+
+            List<Usuario> usuariosSistma = usuarioService.findAll();
+
+            for (Usuario usuario : usuariosSistma){
+                if(usuario.getId() == sessionUsuario.getId()){
+                  usuariosSistma.remove(sessionUsuario);
+                }
+            }
+
+            List<Usuario> usuarios = usuariosSistma;
 
             if (sessionUsuario != null) {
             // Crie um Map para armazenar o status de seguir para cada usuário
@@ -160,7 +167,10 @@ public class Controller {
             }
 
             // Passe o Map para o modelo
-            model.addAttribute("seguirStatusMap", seguirStatusMap);
+             model.addAttribute("usuarios", usuarios);  
+             model.addAttribute("seguirStatusMap", seguirStatusMap);
+             model.addAttribute("sessionUser", sessionUsuario);
+
             return "usuarios";
         } else {
             return "usuarios";
