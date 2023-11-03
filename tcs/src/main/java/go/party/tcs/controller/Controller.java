@@ -121,6 +121,7 @@ public class Controller {
 
         model.addAttribute("seguirStatusMap", seguirStatusMap);
         model.addAttribute("usuarios", usuarios);
+        model.addAttribute("sessionUser", sessionUsuario);
         
         return "usuarios";
     }
