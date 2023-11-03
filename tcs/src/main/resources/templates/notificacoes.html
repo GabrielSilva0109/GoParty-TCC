@@ -97,7 +97,8 @@
                          <!--Tempo da notificacao-->
                          
                          
-                        <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
+                         <img class="imgNoti" th:if="${notification.fotoPerfil != null}" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
+                         <img class="imgNoti" th:if="${notification.fotoPerfil == null}" src="/css/img/fotoPerfil.jpg" alt="Foto de Perfil" />
 
                         <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"> </span>
                         <span class="tempo-decorrido" th:text="${temposDecorridos[__${index.index}__]}"></span>
