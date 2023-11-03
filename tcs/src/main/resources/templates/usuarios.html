@@ -134,9 +134,14 @@
          
          <div class="main-container">
 
+            <div th:if="${not #lists.isEmpty(usuarios)}">
+
                  <div th:each="usuario : ${usuarios}" class="cards" th:unless="${usuario.id == sessionUser.id}">
 
-                    
+                    <div th:if="${#lists.isEmpty(usuarios)}">
+                        <span>Nenhum perfil encontrado.</span>
+                    </div>
+
                         <!-- Conteúdo para exibir somente para usuários diferentes do da sessão -->
                         <a th:href="@{/perfilUsuario/{id}(id=${usuario.id})}">
                             <img th:src="@{'/perfil-imagem/' + ${usuario.id}}" alt="fotoUser" th:if="${usuario.temImagemPerfil()}" />
@@ -178,6 +183,11 @@
                         </form>
 
                 </div>
+            </div>
+
+            <div th:unless="${not #lists.isEmpty(usuarios)}">
+                <p>Nenhum perfil encontrado.</p>
+            </div>
                   </div>
                 </div>
          </div> 
