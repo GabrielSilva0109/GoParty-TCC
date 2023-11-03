@@ -58,14 +58,14 @@ public class ComentarioController {
         String message = usuario.getUsername()+" fez um comentário no seu post: " +comentario.getTexto();
         Integer userIdToNotify =  evento.getAutor().getId();
 
-        notificationService.createNotification(message, userIdToNotify, fotoPerfil);
+        if(userIdToNotify != usuario.getId()){
+           notificationService.createNotification(message, userIdToNotify, fotoPerfil);
+        }
 
         model.addAttribute("sessionUsuario", usuario);
         // Redirecione de volta para a página do evento
         return "redirect:/home";
 
     }
-
-
 
 }

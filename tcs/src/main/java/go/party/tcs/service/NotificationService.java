@@ -26,6 +26,7 @@ public class NotificationService {
         notification.setVisualizado(false);
         notification.setFotoPerfil(fotoPerfil);
         notificationRepository.save(notification);
+
     }
 
     public void marcarNotificacoesComoVisualizadas(Integer userId) {

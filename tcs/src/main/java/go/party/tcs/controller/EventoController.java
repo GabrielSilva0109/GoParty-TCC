@@ -212,7 +212,11 @@ public class EventoController {
         byte[] fotoPerfil = sessionUsuario.getFotoPerfil();
         String message = sessionUsuario.getUsername()+" curtiu a sua publicação: "+ evento.getTitulo();
         Integer userIdToNotify =  evento.getAutor().getId();
-        notificationService.createNotification(message, userIdToNotify, fotoPerfil);
+
+        if(userIdToNotify != sessionUsuario.getId()){
+            notificationService.createNotification(message, userIdToNotify, fotoPerfil);
+         }
+
         return "redirect:/home";
     }
 
