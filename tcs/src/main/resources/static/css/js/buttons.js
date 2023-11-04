@@ -273,6 +273,15 @@ function mostrarFiltros() {
           });
       });
 
+      //FUNCAO DE MOSTRAR POPUP
+      const divPop = document.querySelector(".notification");
+
+      function mostrarPopup(){
+
+        divPop.style.display = "flex";
+
+      }
+
 
     
 
