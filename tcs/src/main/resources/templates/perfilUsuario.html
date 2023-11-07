@@ -110,8 +110,8 @@
 
                   <span th:if="${isNotFollower}">
                     <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                    <form method="post"  th:action="@{'/follow/' + ${usuario.id}}">
-                        <button class="btn-perfil-follow" id="btn-follow" type="submit" onclick="mostrarPopup()">
+                   
+                    <button class="btn-perfil-follow" id="btn-follow" type="submit" onclick="followUser(this)"  th:attr="data-usuario-id=${usuario.id}">
                             <strong>SEGUIR</strong>
                             <div id="container-stars">
                               <div id="stars"></div>
@@ -122,7 +122,7 @@
                               <div class="circle"></div>
                             </div>
                           </button>
-                    </form>
+                   
                 </span>
 
                 <span th:unless="${isNotFollower}">
@@ -186,7 +186,7 @@
             </div>
         </div>
 
-     <figure class="notification" style="display: none;">
+     <figure class="notification" id="popUp-seguiu" style="display: none;">
         <div class="notification__body">
             <img 
             src="/css/img/add-friend.jpg"

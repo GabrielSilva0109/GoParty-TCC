@@ -273,14 +273,31 @@ function mostrarFiltros() {
           });
       });
 
-      //FUNCAO DE MOSTRAR POPUP
-      const divPop = document.querySelector(".notification");
+      // SEGUIR O USUARIO
 
-      function mostrarPopup(){
+      function followUser(button) {
 
-        divPop.style.display = "flex";
-
-      }
+        const usuarioId = button.getAttribute('data-usuario-id');
+        const popUp = document.getElementById("popUp-seguiu");
+    
+        fetch(`/follow/${usuarioId}`, {
+            method: "POST",
+        })
+        .then(response => {
+            if (response.ok) {
+                // A requisição foi bem-sucedida, você pode adicionar lógica aqui, se necessário.
+                console.log("Usuário seguido com sucesso.");
+                popUp.style.display = "flex";
+            } else {
+                // A requisição falhou, você pode tratar os erros aqui.
+                console.error("Falha ao seguir o usuário.");
+            }
+        })
+        .catch(error => {
+            // Lidar com erros de rede ou outros erros inesperados.
+            console.error("Erro inesperado: " + error);
+        });
+    }
 
 
     
