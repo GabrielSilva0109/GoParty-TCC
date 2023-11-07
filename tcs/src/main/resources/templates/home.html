@@ -19,8 +19,6 @@
         <div class="btn-expandir">
             <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
             <span class="txt-link"> <img src="/css/img/LogoGoParty.png" alt="GoParty" id="palavraGoParty"> </span>
-           
-            
         </div><!--btn-expandir-->
 
         <ul>
@@ -163,20 +161,19 @@
                                     </g>
                                 </svg>
                             </button>
-                        </form>
-                   
-                        <select name="estado" id="estado" required style="height: 40px; margin-right: -20px;">
-                            <option value="sc">SC</option>
-                            <option value="sp">SP</option>
-                            <option value="rj">RJ</option>
-                            <option value="ro">RO</option>
-                            <option value="pr">PR</option>
-                            <option value="ac">AC</option>
-                            <option value="rs">RS</option>
-                            <option value="mt">MT</option>
-                            <option value="mg">MG</option>
-                        </select>   
+                        </form>                         
                     </div>
+                    <select name="estado" id="estado" required style="height: 40px; margin-right: -20px; border-radius: 10px;">
+                        <option value="sc">SC</option>
+                        <option value="sp">SP</option>
+                        <option value="rj">RJ</option>
+                        <option value="ro">RO</option>
+                        <option value="pr">PR</option>
+                        <option value="ac">AC</option>
+                        <option value="rs">RS</option>
+                        <option value="mt">MT</option>
+                        <option value="mg">MG</option>
+                    </select>  
                 </div>
                 <div th:each="evento : ${eventos}" class="evento-bloco">
 
@@ -238,11 +235,6 @@
                         <!--Span com a quantidade de curtidas passando o id do evento-->
                         <span class="curtidas" th:text="${quantidadeCurtidasPorEvento[evento.id]}"></span><span class="curtidas"> curtidas</span>
                     
-                        <style>
-                            .curtidas{
-                                font-size: 13px;
-                            }
-                        </style>
                     
                     </div>
                     
@@ -318,10 +310,10 @@
             <span class="close" onclick="fecharModalConfiguracao()">&times;</span>
             <h1 class="tittle-modal">Configurações</h1>
             <div class="bloco-config">
-                <button class="btn-config" onclick="abrirEdicao()">Editar Perfil</button>
-                <button class="btn-config" onclick="abrirTemas()">Mudar Tema</button>
-                <button class="btn-config">Privacidade</button>
-                <button class="btn-config" onclick="abrirExcluir()">Excluir Conta</button>
+                <button id="btnConfig" class="btn-config" onclick="abrirEdicao()">Editar Perfil</button>
+                <button id="btnTemas" class="btn-config" onclick="abrirTemas()">Mudar Tema</button>
+                <button id="btnPrivacidade" class="btn-config">Privacidade</button>
+                <button id="btnExcluir" class="btn-config" onclick="abrirExcluir()">Excluir Conta</button>
             </div>
             
             <div id="blocoEdicao" class="bloco-edicao" style="display: none; justify-content: center;">
@@ -348,8 +340,8 @@
             <div id="blocoTemas" class="bloco-temas" style="display: none; justify-content: center;">
                 <h1>Escolha o Tema do Sistemas</h1>
                 <div class="temas-opcoes">
-                    <Button onclick="darkMode()">Dark</Button>
-                    <button onclick="lightMode()">Light</button>
+                    <Button class="btnDark" onclick="darkMode()">Dark</Button>
+                    <button class="btnLight" onclick="lightMode()">Light</button>
                 </div>
             </div>
 

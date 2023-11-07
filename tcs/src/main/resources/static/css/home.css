@@ -2244,6 +2244,55 @@ ul li.item-menu a .icon > i{
   justify-content: center;
 }
 
+#btnConfig:active,
+#btnTemas:active,
+#btnPrivacidade:active,
+#btnExcluir:active {
+  background: #001226;
+}
+
+#btnConfig:focus,
+#btnTemas:focus,
+#btnPrivacidade:focus,
+#btnExcluir:focus {
+  background: #001226;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.8);
+}
+
+.btnDark{
+  height: 50px;
+  margin: 5px;
+  width: 120px;
+  background: #040b26;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  align-items: center;
+  border: solid #404C5D 1px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btnDark:hover{
+  background: #081447;
+}
+
+.btnLight:hover{
+  background: #ebebeb;
+}
+.btnLight{
+  height: 50px;
+  margin: 5px;
+  width: 120px;
+  background: #c9c9c9;
+  border-radius: 5px;
+  color: #0d2d58;
+  align-items: center;
+  border: solid #d8d8d8 1px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
 .btn-config {
   height: 50px;
   margin: 5px;
@@ -2402,6 +2451,9 @@ ul li.item-menu a .icon > i{
   stroke: var(--heart-color);
   fill: var(--heart-color);
   stroke-width: 2px;
+}
+.curtidas{
+  font-size: 13px;
 }
 
 .heart-container .checkbox:checked~.svg-container .svg-filled {
