@@ -126,8 +126,9 @@
                 </span>
 
                 <span th:unless="${isNotFollower}">
-                <form method="post" th:action="@{'/unfollow/' + ${usuario.id}}">
-                    <button class="btn-perfil-follow" id="btn-unfollow" type="submit">
+
+                    <button class="btn-perfil-follow" id="btn-unfollow" type="submit" onclick="unfollowUser(this)"  th:attr="data-usuario-id=${usuario.id}">
+
                         <strong>Seguindo</strong>
                         <div id="container-stars">
                           <div id="stars"></div>
@@ -138,7 +139,7 @@
                           <div class="circle"></div>
                         </div>
                       </button>
-                </form>
+               
             </span>
 
             </div>
@@ -192,7 +193,7 @@
             <i class="bi bi-person-check-fill"></i>
 
              Perfil seguido com sucesso!
-             
+
         </div>
         <div class="notification__progress"></div>
      </figure>
