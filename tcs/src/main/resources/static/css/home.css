@@ -2274,10 +2274,12 @@ ul li.item-menu a .icon > i{
 
 .btnDark:hover{
   background: #081447;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .btnLight:hover{
   background: #ebebeb;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .btnLight{
   height: 50px;
