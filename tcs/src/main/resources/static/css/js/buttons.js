@@ -278,8 +278,9 @@ function mostrarFiltros() {
 
     const usuarioId = button.getAttribute('data-usuario-id');
     const popUp = document.getElementById("popUp-seguiu");
+    var strongElement = button.querySelector('strong');
 
-    if (button.innerText === "Seguir") {
+    if (strongElement.innerText === "Seguir") {
       // Fazer a primeira requisição ao servidor
       // Substitua a URL e os parâmetros conforme necessário
       fetch(`/follow/${usuarioId}`, {
@@ -287,12 +288,12 @@ function mostrarFiltros() {
     })
     .then(response => {
         if (response.ok) {
-            // A requisição foi bem-sucedida, você pode adicionar lógica aqui, se necessário.
+            // A requisição foi bem-sucedida
             console.log("Usuário seguido com sucesso.");
             popUp.style.display = "flex";
-            button.innerText = "Seguindo";
+            strongElement.innerText = "Seguindo";
         } else {
-            // A requisição falhou, você pode tratar os erros aqui.
+            // A requisição falhou
             console.error("Falha ao seguir o usuário.");
         }
     })
@@ -300,19 +301,18 @@ function mostrarFiltros() {
         // Lidar com erros de rede ou outros erros inesperados.
         console.error("Erro inesperado: " + error);
     });
-    } else if (button.innerText === "Seguindo") {
-      // Fazer a segunda requisição ao servidor
-      // Substitua a URL e os parâmetros conforme necessário
+} else if (strongElement.innerText === "Seguindo") {
+     
       fetch(`/unfollow/${usuarioId}`, {
         method: "POST",
     })
     .then(response => {
         if (response.ok) {
-            // A requisição foi bem-sucedida, você pode adicionar lógica aqui, se necessário.
+            // A requisição foi bem-sucedida
             console.log("Usuário deixado de seguir com sucesso.");
-            button.innerText = "Seguir";
+            strongElement.innerText = "Seguir";
         } else {
-            // A requisição falhou, você pode tratar os erros aqui.
+            // A requisição falhou
             console.error("Falha ao deixar de seguir o usuário.");
         }
     })
