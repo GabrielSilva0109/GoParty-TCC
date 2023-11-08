@@ -273,54 +273,56 @@ function mostrarFiltros() {
           });
       });
 
-      // SEGUIR O USUARIO
+    //NOVO TESTE 
+    function followUser(button) {
 
-      function followUser(button) {
+    const usuarioId = button.getAttribute('data-usuario-id');
+    const popUp = document.getElementById("popUp-seguiu");
 
-        const usuarioId = button.getAttribute('data-usuario-id');
-        const popUp = document.getElementById("popUp-seguiu");
-    
-        fetch(`/follow/${usuarioId}`, {
-            method: "POST",
-        })
-        .then(response => {
-            if (response.ok) {
-                // A requisição foi bem-sucedida, você pode adicionar lógica aqui, se necessário.
-                console.log("Usuário seguido com sucesso.");
-                popUp.style.display = "flex";
-            } else {
-                // A requisição falhou, você pode tratar os erros aqui.
-                console.error("Falha ao seguir o usuário.");
-            }
-        })
-        .catch(error => {
-            // Lidar com erros de rede ou outros erros inesperados.
-            console.error("Erro inesperado: " + error);
-        });
+    if (button.innerText === "Seguir") {
+      // Fazer a primeira requisição ao servidor
+      // Substitua a URL e os parâmetros conforme necessário
+      fetch(`/follow/${usuarioId}`, {
+        method: "POST",
+    })
+    .then(response => {
+        if (response.ok) {
+            // A requisição foi bem-sucedida, você pode adicionar lógica aqui, se necessário.
+            console.log("Usuário seguido com sucesso.");
+            popUp.style.display = "flex";
+            button.innerText = "Seguindo";
+        } else {
+            // A requisição falhou, você pode tratar os erros aqui.
+            console.error("Falha ao seguir o usuário.");
+        }
+    })
+    .catch(error => {
+        // Lidar com erros de rede ou outros erros inesperados.
+        console.error("Erro inesperado: " + error);
+    });
+    } else if (button.innerText === "Seguindo") {
+      // Fazer a segunda requisição ao servidor
+      // Substitua a URL e os parâmetros conforme necessário
+      fetch(`/unfollow/${usuarioId}`, {
+        method: "POST",
+    })
+    .then(response => {
+        if (response.ok) {
+            // A requisição foi bem-sucedida, você pode adicionar lógica aqui, se necessário.
+            console.log("Usuário deixado de seguir com sucesso.");
+            button.innerText = "Seguir";
+        } else {
+            // A requisição falhou, você pode tratar os erros aqui.
+            console.error("Falha ao deixar de seguir o usuário.");
+        }
+    })
+    .catch(error => {
+        // Lidar com erros de rede ou outros erros inesperados.
+        console.error("Erro inesperado: " + error);
+    });
+
     }
-
-    function unfollowUser(button) {
-
-        const usuarioId = button.getAttribute('data-usuario-id');
-    
-        fetch(`/unfollow/${usuarioId}`, {
-            method: "POST",
-        })
-        .then(response => {
-            if (response.ok) {
-                // A requisição foi bem-sucedida, você pode adicionar lógica aqui, se necessário.
-                console.log("Usuário deixado de seguir com sucesso.");
-            } else {
-                // A requisição falhou, você pode tratar os erros aqui.
-                console.error("Falha ao deixar de seguir o usuário.");
-            }
-        })
-        .catch(error => {
-            // Lidar com erros de rede ou outros erros inesperados.
-            console.error("Erro inesperado: " + error);
-        });
-
-    }
+  }
 
     
 

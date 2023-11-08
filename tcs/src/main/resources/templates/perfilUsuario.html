@@ -112,7 +112,8 @@
                     <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
                    
                     <button class="btn-perfil-follow" id="btn-follow" type="submit" onclick="followUser(this)"  th:attr="data-usuario-id=${usuario.id}">
-                            <strong>SEGUIR</strong>
+                           Seguir 
+                           <!--<strong></strong>-->
                             <div id="container-stars">
                               <div id="stars"></div>
                             </div>
@@ -127,9 +128,10 @@
 
                 <span th:unless="${isNotFollower}">
 
-                    <button class="btn-perfil-follow" id="btn-unfollow" type="submit" onclick="unfollowUser(this)"  th:attr="data-usuario-id=${usuario.id}">
+                    <button class="btn-perfil-follow" id="btn-unfollow" type="submit" onclick="followUser(this)"  th:attr="data-usuario-id=${usuario.id}">
 
-                        <strong>Seguindo</strong>
+                        Seguindo
+                         <!--<strong></strong>-->
                         <div id="container-stars">
                           <div id="stars"></div>
                         </div>
