@@ -9,6 +9,7 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+   
     <script src="/css/js/vanilla-masker.min.js"></script>
 
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
@@ -110,7 +111,9 @@
                         </div>
 
                         <input type="text" name="bairro" id="bairro" placeholder="Bairro" required>
-                        <input type="text" name="valor" id="valor" placeholder="Valor Ingresso" required>
+
+                        <input type="text" id="valor" name="valor" placeholder="Valor do ingresso" oninput="formatarMoeda(this)" />
+
                         <button class="ui-btn" type="submit">
                             <span>
                             Criar
@@ -188,6 +191,21 @@
 
     <!--Modal Config-->
     <div th:replace="home :: #modalConfiguracao"></div>
+
+    <script>
+        function formatarMoeda(elemento) {
+          let valor = elemento.value;
+    
+          valor = valor.replace(/\D/g, '');
+    
+          valor = (valor / 100).toFixed(2);
+    
+          valor = valor.replace('.', ',');
+          
+          // Atualiza o valor no campo de entrada
+          elemento.value = "R$ "+ valor;
+        }
+      </script>
 
     <script src="/css/js/buttons.js"></script>
     <script src="/css/js/barraLateral.js"></script>
