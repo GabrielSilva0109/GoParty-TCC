@@ -530,7 +530,10 @@ footer{
   margin: 20px;
   border-radius: 20px;
 }
-
+.valores{
+  display: flex;
+  align-items: center;
+}
 .bloco-evento-left{
   display: flex;
   flex-direction: column;

@@ -241,7 +241,12 @@
                     <!-- Bloco da Direita Evento -->
                     <div class="bloco-evento-right">
                         <h2 th:text="${evento.titulo}"></h2>
+                        <div class="valores">
+                           <h4>R$</h4><p th:text="${evento.valor}"></p>
+                        </div>
                         <p th:text="${evento.descricao}"></p>
+                        
+                        
 
                         <!-- Bloco onde ficam os comentários -->
                         <div class="comentarios hidden">

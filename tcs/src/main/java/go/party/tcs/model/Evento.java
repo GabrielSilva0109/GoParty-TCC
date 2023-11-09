@@ -41,7 +41,7 @@ public class Evento {
     private String bairro;
 
     @Column(name = "valor")
-    private double valor;
+    private String valor;
 
     @ManyToOne
     @JoinColumn(name = "autor_id")
@@ -70,10 +70,11 @@ public class Evento {
     }
 
     // Construtor com parâmetros
-    public Evento(String titulo, String descricao, Usuario autor) {
+    public Evento(String titulo, String descricao, Usuario autor, String valor) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.autor = autor;
+        this.valor = valor;
     }
 
     
@@ -177,11 +178,11 @@ public class Evento {
         this.bairro = bairro;
     }
 
-    public Double getValor(){
+    public String getValor(){
         return valor;
     }
 
-    public void setValor(Double valor){
+    public void setValor(String valor){
         this.valor = valor;
     }
 }
