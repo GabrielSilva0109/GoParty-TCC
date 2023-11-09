@@ -40,6 +40,9 @@ public class Evento {
     @Column(name = "bairro")
     private String bairro;
 
+    @Column(name = "valor")
+    private double valor;
+
     @ManyToOne
     @JoinColumn(name = "autor_id")
     private Usuario autor;
@@ -57,6 +60,10 @@ public class Evento {
 
     @OneToMany(mappedBy = "evento")
     private List<Curtida> curtidas;
+
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ingresso> ingressos;
+
     
     // Construtor vazio
     public Evento() {
@@ -130,6 +137,14 @@ public class Evento {
         this.comentarios = comentarios;
     }
 
+    public List<Ingresso> getIngressos(){
+        return ingressos;
+    }
+
+    public void setIngressos(List<Ingresso> ingressos) {
+        this.ingressos = ingressos;
+    }
+
     public List<Curtida> getCurtidas() {
         return curtidas;
     }
@@ -160,5 +175,13 @@ public class Evento {
 
     public void setBairro(String bairro){
         this.bairro = bairro;
+    }
+
+    public Double getValor(){
+        return valor;
+    }
+
+    public void setValor(Double valor){
+        this.valor = valor;
     }
 }
