@@ -145,11 +145,11 @@
             
                     
                     <th:block th:unless="${usuario.id == sessionUser.id}">
-                     <!--Botões de seguir o usuário mostrado (TESTE)-->
+    
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                        <form method="post" th:action="@{'/follow/' + ${usuario.id}}" th:if="${seguirStatusMap[usuario.id] == false}">
-                            <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" type="submit">
-                                <strong>SEGUIR</strong>
+                        
+                            <button class="btn-perfil-follow-usuarios" id="btn-follow-usuarios" onclick="followUser(this)" th:attr="data-usuario-id=${usuario.id}" type="submit" th:if="${seguirStatusMap[usuario.id] == false}">
+                                <strong>Seguir</strong>
                                 <div id="container-stars">
                                   <div id="stars"></div>
                                 </div>
@@ -159,11 +159,11 @@
                                   <div class="circle"></div>
                                 </div>
                               </button>
-                        </form>
+                        
 
                         <!-- Se o usuário da sessão não estiver seguindo o usuário do perfil, exiba o botão "Seguir" -->
-                        <form method="post" th:action="@{'/unfollow/' + ${usuario.id}}" th:if="${seguirStatusMap[usuario.id] == true}">
-                            <button class="btn-perfil-follow-usuarios" id="btn-unfollow-usuarios" type="submit">
+                        
+                            <button class="btn-perfil-follow-usuarios" id="btn-unfollow-usuarios" onclick="followUser(this)" th:attr="data-usuario-id=${usuario.id}" type="submit" th:if="${seguirStatusMap[usuario.id] == true}">
                                 <strong>Seguindo</strong>
                                 <div id="container-stars">
                                   <div id="stars"></div>
@@ -174,16 +174,103 @@
                                   <div class="circle"></div>
                                 </div>
                               </button>
-                        </form>
+
+                              <style>
+                                #btn-unfollow-usuarios{
+                                    height: 2.6rem;
+                                    padding: 2px;
+                                }
+
+                                #btn-follow-usuarios{
+                                    height: 2.6rem;
+                                    padding: 2px;
+                                }
+                              </style>
+                        
                   </div>
 
                     <span th:unless="${not #lists.isEmpty(usuarios)}">Nenhum perfil encontrado.</span>
                         
                   </div>
+
+                  <figure class="notification" id="popUp-seguiu" style="display: none;">
+                    <div class="notification__body">
+                        
+                        <i class="bi bi-person-check-fill"></i>
+            
+                         Perfil seguido com sucesso!
+            
+                    </div>
+                    <div class="notification__progress"></div>
+                 </figure>
+
+                 <style>
+                    .notification{
+                        position: absolute;
+                        bottom: 4px;
+                        right: 4px;
+                        width: max-content;
+                        border-radius: 9px;
+                        background-color: #313e2c;
+                        color: #aaac8a;
+                        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+                        transform: translateY(30px);
+                        opacity: 0;
+                        visibility: hidden;
+                        animation: fade-in 3s linear;
+                    }
+            
+                    .notification__icon{
+                        height: 26px;
+                        width: 26px;
+                        margin-right: 4px;
+                    }
+            
+                    .notification__body{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding: 16px 8px;
+                    }
+            
+                    .notification__progress{
+                        position: absolute;
+                        left: 4px;
+                        bottom: 4px;
+                        width: calc(100% - 8px);
+                        height: 3px;
+                        transform: scaleX(0);
+                        transform-origin: left;
+                        background: linear-gradient(to right, #313e2c, #aaec8a);
+                        animation: progress 2.5s 0.3s linear;
+                    }
+            
+                    @keyframes fade-in{
+                        5% {
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(0);
+                        }
+            
+                        95%{
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(0);
+                        }
+                    }
+            
+                    @keyframes progress{
+                        to{
+                            transform: scaleX(1);
+                        }
+                    }
+                 </style>
+
                 </div>
+
          </div> 
     
-
+         
 
     <!-- Modal Notificações -->
     <div id="modalNotificacao" class="modal-notificacao" style="display: none;">
