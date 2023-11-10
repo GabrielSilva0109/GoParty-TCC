@@ -145,6 +145,7 @@ public class UsuarioController {
     }
 
     //Método para validar as informações do Usuario para o Login 
+    //Método para validar as informações do Usuario para o Login 
     @PostMapping("/loginValida")
     public String login(@RequestParam("usuarioNome") String usuarioNome, @RequestParam("senha") String senha, Model model, HttpSession session) {
         // Consulte o banco de dados para verificar se o usuário existe
@@ -169,7 +170,6 @@ public class UsuarioController {
                 return "redirect:/home";
             }
         }
-
         // Autenticação falhou
         model.addAttribute("error", "Usuário ou senha incorretos!");
         return "login";

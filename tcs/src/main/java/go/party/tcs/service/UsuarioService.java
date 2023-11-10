@@ -41,7 +41,14 @@ public class UsuarioService {
     }
 
     public Usuario findByUsername(String usuarioNome){
-        return usuarioRepository.findByUsername(usuarioNome);
+
+         Usuario usuario = usuarioRepository.findByUsername(usuarioNome);
+
+        if (usuario.getUsername().equals(usuarioNome)){
+            return usuario;
+        } else {
+            return null;
+        } 
     }
 
     public Usuario encontrarId(Integer userId){
