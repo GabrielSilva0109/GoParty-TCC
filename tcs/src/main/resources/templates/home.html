@@ -374,6 +374,38 @@
         </ul>
     </footer>
 
+    <!--Teste de Chat (Em construcao)-->
+
+    <script src="/webjars/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+
+<script>
+    var stompClient = null;
+
+    function connect() {
+        var socket = new SockJS('/ws');
+        stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/messages', function (response) {
+                showMessage(JSON.parse(response.body));
+            });
+        });
+    }
+
+    function sendMessage() {
+        /*var content =  obter conteúdo da mensagem */;
+       /* var sender =  obter remetente */;
+        stompClient.send("/app/chat", {}, JSON.stringify({ 'content': content, 'sender': sender }));
+    }
+
+    function showMessage(message) {
+        // lógica para exibir a mensagem na interface do usuário
+    }
+</script>
+
+
     <script src="/css/js/buttons.js"></script>
     <script src="/css/js/barraLateral.js"></script>
 </body>
