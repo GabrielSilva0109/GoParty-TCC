@@ -529,6 +529,7 @@ footer{
 
 /* Layout do Feed */
 .evento-bloco{
+  display: flex;
   background:  #ffffff6b;
   margin: 20px;
   border-radius: 20px;
@@ -538,13 +539,24 @@ footer{
   display: flex;
   align-items: center;
 }
-.bloco-evento{
+
+.evento-bloco{
+
+}
+.bloco-evento-left{
   display: flex;
   flex-direction: column;
   align-items: center;
   float: left;
   width: 50%;
+}
 
+.bloco-evento-right{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  float: right;
+  width: 50%;
 }
 
 

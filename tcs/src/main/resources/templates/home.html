@@ -178,10 +178,15 @@
                 <div th:each="evento : ${eventos}" class="evento-bloco">
 
                     <!-- Bloco Esquerdo Evento -->
-                    <div class="bloco-evento" >
+                    <div class="bloco-evento-left" >
                         <h3 style="margin-bottom: 0;"><img class="logoUser" src="/css/img/LogoSimples.png"><span th:text="${evento.autor.username}"></span></h3>
                         <h4 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h4>
                         <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
+                        
+                    
+                    </div>
+
+                    <div class="bloco-evento-right">
                         <p th:text="${evento.descricao}"></p>
                         <div class="valores">
                             <h4></h4><p th:text="${evento.valor}"></p>
@@ -268,7 +273,6 @@
                                     </svg>
                                     <span class="tooltip">Comentários&nbsp;<span th:text="${evento.comentarios.size()}"></span> </span>
                                 </button>
-                    
                     </div>
                     
 
