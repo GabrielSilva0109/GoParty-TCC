@@ -51,6 +51,10 @@ body{
   color: rgb(255, 65, 65);
 }
 
+.logoUser{
+  width: 25px;
+  margin-bottom: -8px;
+}
 /* Container Principal */
 .center-content {
   display: block;

@@ -179,7 +179,8 @@
 
                     <!-- Bloco Esquerdo Evento -->
                     <div class="bloco-evento-left">
-                        <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
+                        <h3 style="margin-bottom: 0;"><img class="logoUser" src="/css/img/LogoSimples.png"><span th:text="${evento.autor.username}"></span></h3>
+                        <h4 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h4>
                         <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
                         
                         <div class="evento-curtidas">
@@ -240,7 +241,7 @@
                     
                     <!-- Bloco da Direita Evento -->
                     <div class="bloco-evento-right">
-                        <h2 th:text="${evento.titulo}"></h2>
+                        
                         <div class="valores">
                            <h4></h4><p th:text="${evento.valor}"></p>
                         </div>
