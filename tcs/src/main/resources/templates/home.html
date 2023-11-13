@@ -178,7 +178,7 @@
                 <div th:each="evento : ${eventos}" class="evento-bloco">
 
                     <!-- Bloco Esquerdo Evento -->
-                    <div class="bloco-evento">
+                    <div class="bloco-evento" >
                         <h3 style="margin-bottom: 0;"><img class="logoUser" src="/css/img/LogoSimples.png"><span th:text="${evento.autor.username}"></span></h3>
                         <h4 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h4>
                         <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
