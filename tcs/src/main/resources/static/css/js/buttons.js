@@ -324,6 +324,24 @@ function mostrarFiltros() {
     }
   }
 
+  /// MOSTRAR CHAT INDIVIDUAL
+
+
+    function mostrarChat(){
+        var chatContainer = document.getElementById("chat-container");
+
+        console.log("Funcionou função!!!!!")
+
+        chatContainer.style.display == "flex"
+
+        if (chatContainer.style.display == "none"){
+            chatContainer.style.display == "flex"
+        }else{
+            chatContainer.style.display == "none"
+        }
+
+    }
+
     
 
 
