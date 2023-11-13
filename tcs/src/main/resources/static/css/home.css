@@ -529,30 +529,24 @@ footer{
 
 /* Layout do Feed */
 .evento-bloco{
-  display: flex;
   background:  #ffffff6b;
   margin: 20px;
   border-radius: 20px;
+  gap: 10px;
 }
 .valores{
   display: flex;
   align-items: center;
 }
-.bloco-evento-left{
+.bloco-evento{
   display: flex;
   flex-direction: column;
   align-items: center;
   float: left;
   width: 50%;
+
 }
-.bloco-evento-right{
-  float: right;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;  
-}
+
 
 
 .evento-up{
@@ -827,10 +821,6 @@ animation: chitchat linear both var(--btn-animation-duration);
     flex-direction: column;
   }
 
-  .bloco-evento-right {
-    width: 100%;
-  }
-
   .modal {
     top: 20%;
     left: 0%;
@@ -859,7 +849,7 @@ animation: chitchat linear both var(--btn-animation-duration);
   .usuario-bloco {
     width: 40% !important;
   }
-  .bloco-evento-left{
+  .bloco-evento{
     width: 100%;
   }
 }
