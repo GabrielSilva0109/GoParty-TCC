@@ -324,6 +324,55 @@ function mostrarFiltros() {
     }
   }
 
+  /// MOSTRAR CHAT INDIVIDUAL
+
+
+    function mostrarChat(){
+        var chatContainer = document.getElementById("chat-container");
+
+        console.log("Funcionou função!!!!!")
+
+        chatContainer.style.display == "flex"
+
+        if (chatContainer.style.display == "none"){
+            chatContainer.style.display == "flex"
+        }else{
+            chatContainer.style.display == "none"
+        }
+
+    }
+
+    function enviarMensagem(div) {
+        // Obtenha o conteúdo digitado no input
+        const mensagem = document.querySelector('.send-input').value;
+
+        const usuarioIdReceiver = div.getAttribute('data-usuario-id');
+    
+
+        // Verifique se há algo para enviar
+        if (mensagem.trim() === '') {
+            alert('Digite uma mensagem antes de enviar.'); //CASO NAO EXISTIR MENSAGEM
+            return;
+        }
+
+        // Realize a requisição ao servidor
+        fetch('/seu-endpoint', {
+            method: 'POST', // 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ mensagem: mensagem }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Lide com a resposta do servidor conforme necessário
+            console.log('Resposta do servidor:', data);
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+        });
+    }
+
     
 
 
