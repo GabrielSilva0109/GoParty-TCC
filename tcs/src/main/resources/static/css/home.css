@@ -535,10 +535,7 @@ footer{
   border-radius: 20px;
   gap: 10px;
 }
-.valores{
-  display: flex;
-  align-items: center;
-}
+
 
 .evento-bloco{
 
