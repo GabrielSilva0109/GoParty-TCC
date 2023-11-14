@@ -47,6 +47,7 @@ body{
 }
 
 .arroba{
+  font-size: 1.2rem;
   font-weight: bold;
   color: rgb(255, 65, 65);
 }
@@ -984,16 +985,14 @@ body.is-blurred {
 
 .buyBtn{
   cursor: pointer;
-  font-weight: bold;
+  font-weight: bold!important;
   font-family: Helvetica,"sans-serif";
   transition: all .2s;
-  padding: 5px 2=10px;
   border-radius: 100px;
   background: #cfef00;
   border: 1px solid transparent;
   display: flex;
   align-items: center;
-  font-size: 10px;
 }
 
 .buyBtn:hover {
@@ -1002,7 +1001,6 @@ body.is-blurred {
 
 .buyBtn > svg {
   width: 34px;
-  margin-left: 10px;
   transition: transform .3s ease-in-out;
 }
 

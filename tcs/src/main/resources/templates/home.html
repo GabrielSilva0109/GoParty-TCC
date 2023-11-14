@@ -186,14 +186,7 @@
                         
                         
                         <div class="evento-interacoes" style="display: flex; align-items: center;">
-                            <!-- Botão Comprar -->
-                            <button class="buyBtn">
-                                <span>Comprar</span>
-                                <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="37" cy="37" r="35.5" stroke="black" stroke-width="3"></circle>
-                                    <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="black"></path>
-                                </svg>
-                            </button>
+                           
                             
                             <div class="evento-curtidas">
                                 
@@ -245,7 +238,14 @@
     
                             </div>
                             
-                            
+                             <!-- Botão Comprar -->
+                             <button class="buyBtn">
+                                <span>Comprar</span>
+                                <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                
+                                    <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="black"></path>
+                                </svg>
+                            </button>
 
                             <!-- Botão abrir comentários -->
                             <button class="chatBtn" onclick="toggleComentarios(this)">
@@ -263,14 +263,14 @@
                     <div class="bloco-evento-right">
                         <div class="title-descricao">
                             <p class="arroba">Descrição</p>
-                            <p th:text="${evento.descricao}"></p>
+                            <p th:text="${evento.descricao}" style="text-align: start;"></p>
                         </div>
-                        <p class="arroba" style="margin-bottom: -30px;">Local</p>
+                        <p class="arroba">Local</p>
                         <div style="display: flex;">
                             <p th:text="${evento.estado}" style="text-transform: uppercase;"></p>&nbsp;&nbsp;&nbsp;
-                            <p class="arroba">|&nbsp;&nbsp;&nbsp;</p>
+                            <p class="arroba" style="margin-top: 13px;">|&nbsp;&nbsp;&nbsp;</p>
                             <p th:text="${evento.cidade}"></p>&nbsp;&nbsp;&nbsp;
-                            <p class="arroba">|&nbsp;&nbsp;&nbsp;</p>
+                            <p class="arroba" style="margin-top: 13px;">|&nbsp;&nbsp;&nbsp;</p>
                             <p th:text="${evento.bairro}"></p>
                         </div>
                         
