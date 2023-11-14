@@ -271,12 +271,18 @@
                             <p class="arroba">Descrição</p>
                             <p th:text="${evento.descricao}" style="text-align: start;"></p>
                         </div>
+
+                        <div style="display: flex; align-items: center; margin: 0;" >
+                            <img src="/css/img/iconHour.png" style="width: 20px; height: 20px;" alt="">
+                            <p>22:00</p>
+                        </div>
                         <p class="arroba">Local</p>
-                        <div style="display: flex;">
+                        <div style="display: flex; align-items: center;">
+                            <img src="/css/img/iconLocation.png" style="width: 20px; height: 20px;">
                             <p th:text="${evento.estado}" style="text-transform: uppercase;"></p>&nbsp;&nbsp;&nbsp;
-                            <p class="arroba" style="margin-top: 13px;">|&nbsp;&nbsp;&nbsp;</p>
+                            <p class="arroba" >|&nbsp;&nbsp;&nbsp;</p>
                             <p th:text="${evento.cidade}"></p>&nbsp;&nbsp;&nbsp;
-                            <p class="arroba" style="margin-top: 13px;">|&nbsp;&nbsp;&nbsp;</p>
+                            <p class="arroba">|&nbsp;&nbsp;&nbsp;</p>
                             <p th:text="${evento.bairro}"></p>
                         </div>
                         
