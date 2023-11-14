@@ -342,11 +342,14 @@ function mostrarFiltros() {
 
     }
 
+   
     function enviarMensagem(div) {
         // Obtenha o conteúdo digitado no input
         const mensagem = document.querySelector('.send-input').value;
 
         const usuarioIdReceiver = div.getAttribute('data-usuario-id');
+
+        console.log(usuarioIdReceiver);
     
         // Verifique se há algo para enviar
         if (mensagem.trim() === '') {
@@ -354,23 +357,28 @@ function mostrarFiltros() {
             return;
         }
 
-        // Realize a requisição ao servidor
-        fetch('/seu-endpoint', {
-            method: 'POST', // 
+        fetch(`/enviarMensagem/${usuarioIdReceiver}/${mensagem}`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ mensagem: mensagem }),
         })
-        .then(response => response.json())
-        .then(data => {
-            // Lide com a resposta do servidor conforme necessário
-            console.log('Resposta do servidor:', data);
-        })
-        .catch(error => {
-            console.error('Erro na requisição:', error);
-        });
-    }
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao enviar a mensagem');
+                }
+                return response.json();
+            })
+            .then(data => {
+              
+                // Faça algo com a resposta, se necessário
+            })
+            .catch(error => {
+               
+            });
+    };
+
 
     
 

@@ -3,6 +3,7 @@ package go.party.tcs.model;
 import java.time.LocalDateTime;
 
 import go.party.tcs.controller.UsuarioController;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,30 +18,32 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String content;
 
-    @OneToOne
-    private Usuario sender;
+    @Column
+    private Integer sender;
 
-    @OneToOne
-    private Usuario receiver;
+    @Column
+    private Integer receiver;
 
+    @Column
     private boolean vista;
 
+    @Column
     private LocalDateTime dataHoraMsg;
 
     public Message() {
     }
 
-    public Message(Long id, String content, Usuario sender, Usuario receiver, boolean vista) {
+    public Message(Long id, String content, Integer sender, Integer receiver, boolean vista, LocalDateTime dataHoraMsg) {
         this.id = id;
         this.content = content;
         this.sender = sender;
         this.receiver = receiver;
         this.vista = vista;
+        this.dataHoraMsg = dataHoraMsg;
     }
-
-
 
     public Long getId() {
         return id;
@@ -58,19 +61,19 @@ public class Message {
         this.content = content;
     }
 
-    public Usuario getSender() {
+    public Integer getSender() {
         return sender;
     }
 
-    public void setSender(Usuario sender) {
+    public void setSender(Integer sender) {
         this.sender = sender;
     }
 
-    public Usuario getReceiver() {
+    public Integer getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(Usuario receiver) {
+    public void setReceiver(Integer receiver) {
         this.receiver = receiver;
     }
 
@@ -80,6 +83,14 @@ public class Message {
 
     public void setVista(boolean vista) {
         this.vista = vista;
+    }
+
+    public LocalDateTime getDataHoraMsg() {
+        return dataHoraMsg;
+    }
+
+    public void setDataHoraMsg(LocalDateTime dataHoraMsg) {
+        this.dataHoraMsg = dataHoraMsg;
     }
 
 }

@@ -47,6 +47,7 @@ import go.party.tcs.service.CurtidaService;
 import go.party.tcs.service.EmailService;
 import go.party.tcs.service.EventoService;
 import go.party.tcs.service.FollowerService;
+import go.party.tcs.service.MensagemService;
 import go.party.tcs.service.NotificationService;
 import go.party.tcs.service.UsuarioService;
 import io.micrometer.core.instrument.util.IOUtils;
@@ -61,6 +62,10 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usuarioService){
         this.usuarioService = usuarioService;
     }
+
+     //CADASTRAR UMA MENSAGEM 
+     @Autowired
+    private MensagemService mensagemService;
 
     @Autowired
     private NotificationRepository notificationRepository;
@@ -529,6 +534,23 @@ public class UsuarioController {
             return ResponseEntity.ok(usuarioOptional.get());
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    
+    @PostMapping("/enviarMensagem/{usuarioIdReceiver}/{message}")
+    public ResponseEntity<String> enviarMensagem(@PathVariable Integer usuarioIdReceiver, @PathVariable String message, HttpSession session, HttpServletRequest request) {
+
+        Usuario idUsuarioSessao = (Usuario) session.getAttribute("usuario");
+
+        try {
+            // Supondo que você tem um serviço para salvar a mensagem
+            mensagemService.salvarMensagem(usuarioIdReceiver, message, idUsuarioSessao.getId());
+            notificationService.createNotification(message, usuarioIdReceiver, idUsuarioSessao.getFotoPerfil());
+            return ResponseEntity.ok("Mensagem enviada com sucesso!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Ocorreu um erro ao enviar a mensagem: " + e.getMessage());
         }
     }
 
