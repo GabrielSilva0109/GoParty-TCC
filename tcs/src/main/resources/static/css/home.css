@@ -964,8 +964,8 @@ body.is-blurred {
 
 .chatBtn {
   margin: 10px;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -980,6 +980,38 @@ body.is-blurred {
   background-size: 300%;
   background-position: left;
   transition-duration: 1s;
+}
+
+.buyBtn{
+  cursor: pointer;
+  font-weight: bold;
+  font-family: Helvetica,"sans-serif";
+  transition: all .2s;
+  padding: 5px 2=10px;
+  border-radius: 100px;
+  background: #cfef00;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+}
+
+.buyBtn:hover {
+  background: #c4e201;
+}
+
+.buyBtn > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform .3s ease-in-out;
+}
+
+.buyBtn:hover svg {
+  transform: translateX(5px);
+}
+
+.buyBtn:active {
+  transform: scale(0.95);
 }
 
 .tooltip {
