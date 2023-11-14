@@ -266,8 +266,11 @@
                         </div>
                         <p class="arroba">Local</p>
                         <div style="display: flex;">
-                            
-                            <p th:text="${evento.estado}">  </p> | <p th:text="${evento.cidade}">|</p>
+                            <p th:text="${evento.estado}" style="text-transform: uppercase;"></p>&nbsp;&nbsp;&nbsp;
+                            <p>|&nbsp;&nbsp;&nbsp;</p>
+                            <p th:text="${evento.cidade}"></p>&nbsp;&nbsp;&nbsp;
+                            <p>|&nbsp;&nbsp;&nbsp;</p>
+                            <p th:text="${evento.bairro}"></p>
                         </div>
                         <p th:text="${evento.valor}"></p>
 
