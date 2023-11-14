@@ -12,8 +12,8 @@ body{
 
 /* Icones */
 .icon {
- width: 40px; 
- height: 40px;
+ width: 33px; 
+ height: 33px;
  padding: 10px;
  margin-left: 5px;
 }
@@ -2077,6 +2077,7 @@ nav.menu-lateral{
   left: 0;
   overflow: hidden;
   transition: .4s;
+  background: #ffffff0f;
 }
 
 #palavraGoParty{
