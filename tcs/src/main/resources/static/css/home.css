@@ -536,10 +536,6 @@ footer{
   gap: 10px;
 }
 
-
-.evento-bloco{
-
-}
 .bloco-evento-left{
   display: flex;
   flex-direction: column;
@@ -554,6 +550,7 @@ footer{
   align-items: center;
   float: right;
   width: 50%;
+  justify-content: space-around;
 }
 
 
@@ -2462,6 +2459,9 @@ ul li.item-menu a .icon > i{
 }
 .curtidas{
   font-size: 13px;
+  color: white;
+  font-weight: 300;
+  
 }
 
 .heart-container .checkbox:checked~.svg-container .svg-filled {

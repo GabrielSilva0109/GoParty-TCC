@@ -182,7 +182,10 @@
                         <h3 style="margin-bottom: 0;"><img class="logoUser" src="/css/img/LogoSimples.png"><span th:text="${evento.autor.username}"></span></h3>
                         <h4 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h4>
                         <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
-                        <div class="evento-interacoes" style="display: flex;">
+                        <!-- <span class="curtidas" th:text="${quantidadeCurtidasPorEvento[evento.id]}"></span> -->
+                        
+                        
+                        <div class="evento-interacoes" style="display: flex; align-items: center;">
                             <!-- Botão abrir comentários -->
                             <button class="chatBtn" onclick="toggleComentarios(this)">
                                 <svg height="1.6em" fill="white" xml:space="preserve" viewBox="0 0 1000 1000" y="0px" x="0px" version="1.1">
@@ -190,8 +193,9 @@
                                 </svg>
                                 <span class="tooltip">Comentários&nbsp;<span th:text="${evento.comentarios.size()}"></span> </span>
                             </button>
+                            
                             <div class="evento-curtidas">
-
+                                
                                 <div class="heart-container" title="Curtir" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == false">
                                     <input type="checkbox" class="checkbox" id="evento-${evento.id}" th:attr="data-evento-id=${evento.id}" onchange="checkboxChanged(this)">
                                     <div class="svg-container">
@@ -212,10 +216,10 @@
                                             <polygon points="80,80 70,70"></polygon>
                                         </svg>
                                     </div>
+                                    
                                 </div>
-    
-                                
-    
+                                <!--Span com a quantidade de curtidas passando o id do evento-->
+
                                 <div class="heart-container" title="Curtido" th:if="${usuarioJaCurtiuEventoMap[evento.id]} == true">
                                     <input type="checkbox" class="checkbox" id="descurtir-${evento.id}" th:attr="data-evento-id=${evento.id}" th:checked="${usuarioJaCurtiuEventoMap[evento.id] == true}" onchange="checkboxChanged(this)">
                                     <div class="svg-container">
@@ -239,6 +243,8 @@
                                 </div>
     
                             </div>
+                            
+                            
 
                             <!-- Botão abrir comentários -->
                             <button class="chatBtn" onclick="toggleComentarios(this)">
@@ -249,6 +255,7 @@
                             </button>
                             
                         </div>
+                        
                     </div>
 
                     <!-- Bloco Direito Evento -->
@@ -257,15 +264,14 @@
                             <p class="arroba">Descrição</p>
                             <p th:text="${evento.descricao}"></p>
                         </div>
-                        
-                        
-                        <h4></h4><p th:text="${evento.valor}"></p>
-                        
-                        
+                        <p class="arroba">Local</p>
+                        <div style="display: flex;">
+                            
+                            <p th:text="${evento.estado}">  </p> | <p th:text="${evento.cidade}">|</p>
+                        </div>
+                        <p th:text="${evento.valor}"></p>
 
-
-                        <!--Span com a quantidade de curtidas passando o id do evento-->
-                        <span class="curtidas" th:text="${quantidadeCurtidasPorEvento[evento.id]}"></span><span class="curtidas"></span>
+                        
                         <!-- Bloco onde ficam os comentários -->
                         <div class="comentarios hidden">
                             <ul class="ul-comentarios">
@@ -279,10 +285,15 @@
                                     </div>
                                 </li>
                             </ul>
-                                
+                            <!-- Bloco com input para fazer um comentário -->
+                            <div class="bloco-evento-comenta">
+                                <form th:action="@{'/evento/' + ${evento.id} + '/comentar'}" method="post">
+                                    <input name="texto" placeholder="Digite seu comentário" required>
+                                    <button type="submit">Comentar</button>
+                                </form>
+                          </div>   
                         </div>
-
-                                
+      
                     </div>
                     
 
