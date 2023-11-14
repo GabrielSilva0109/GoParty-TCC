@@ -59,6 +59,30 @@ public class Usuario {
 
     private int seguindo;
 
+    @Lob
+    @Column(columnDefinition = "BLOB")
+    private byte[] chavePrivada;
+
+    @Lob
+    @Column(columnDefinition = "BLOB")
+    private byte[] chavePublica;
+
+    public byte[] getChavePrivada() {
+        return chavePrivada;
+    }
+
+    public void setChavePrivada(byte[] chavePrivada) {
+        this.chavePrivada = chavePrivada;
+    }
+
+    public byte[] getChavePublica() {
+        return chavePublica;
+    }
+
+    public void setChavePublica(byte[] chavePublica) {
+        this.chavePublica = chavePublica;
+    }
+
     public int getSeguidores() {
         return seguidores;
     }

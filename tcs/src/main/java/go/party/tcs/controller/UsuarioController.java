@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.NoSuchProviderException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -116,7 +117,7 @@ public class UsuarioController {
        String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
        usuario.setSenha(senhaCriptografada);
 
-       //ENVIO DE EMAIL QUANDO O USUÁRIO CRIA CONTA
+      /* ENVIO DE EMAIL QUANDO O USUÁRIO CRIA CONTA
         String assunto = "Bem-vindo ao GoParty - Sua Rede Social de Eventos!";
 
         String mensagem = "Olá " + usuario.getUsername() + ",\r\n" + //
@@ -128,11 +129,17 @@ public class UsuarioController {
                 "\r\n" + //
                 "Atenciosamente,\r\n" + //
                 "\r\n" + //
-                "A Equipe GoParty";
+                "A Equipe GoParty";*/
      
             //SERVICE DE SALVAR USUÁRIO
-            usuarioService.cadastrarUsuario(usuario, model);
-            emailService.sendEmailToClient(usuario.getEmail(), assunto, mensagem);
+            try {
+                usuarioService.cadastrarUsuario(usuario, model);
+                /* emailService.sendEmailToClient(usuario.getEmail(), assunto, mensagem); */
+            } catch (NoSuchProviderException e) {
+                //ERROS
+                e.printStackTrace();
+            }
+           
 
              return "redirect:/login"; // Redirecionar para a página de login após o cadastro
        
