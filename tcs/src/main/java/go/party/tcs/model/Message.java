@@ -1,5 +1,7 @@
 package go.party.tcs.model;
 
+import java.time.LocalDateTime;
+
 import go.party.tcs.controller.UsuarioController;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +26,8 @@ public class Message {
     private Usuario receiver;
 
     private boolean vista;
+
+    private LocalDateTime dataHoraMsg;
 
     public Message() {
     }

@@ -348,7 +348,6 @@ function mostrarFiltros() {
 
         const usuarioIdReceiver = div.getAttribute('data-usuario-id');
     
-
         // Verifique se há algo para enviar
         if (mensagem.trim() === '') {
             alert('Digite uma mensagem antes de enviar.'); //CASO NAO EXISTIR MENSAGEM
