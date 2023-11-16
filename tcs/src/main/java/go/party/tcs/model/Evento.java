@@ -43,6 +43,9 @@ public class Evento {
     @Column(name = "valor")
     private String valor;
 
+    @Column(name = "horario")
+    private String horario;
+
     @ManyToOne
     @JoinColumn(name = "autor_id")
     private Usuario autor;
@@ -185,4 +188,13 @@ public class Evento {
     public void setValor(String valor){
         this.valor = valor;
     }
+
+    public String getHorario(){
+        return horario;
+    }
+
+    public void setHorario(String horarior){
+        this.horario = horario;
+    }
+    
 }
