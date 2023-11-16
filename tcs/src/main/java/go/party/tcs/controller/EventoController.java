@@ -60,6 +60,7 @@ public class EventoController {
                             @RequestParam("cidade") String cidade,
                             @RequestParam("bairro") String bairro,
                             @RequestParam("valor") String valor,
+                            @RequestParam("horario") String horario,
                             HttpSession session) throws IOException {
 
         // Recupere o usuário da sessão
@@ -68,7 +69,7 @@ public class EventoController {
         usuarioLogado = usuario;
 
         // Crie um novo evento
-        Evento evento = new Evento(titulo, descricao, usuario, valor);
+        Evento evento = new Evento(titulo, descricao, usuario, valor, horario);
         
         // Define o estado, cidade e bairro
         evento.setEstado(estado);

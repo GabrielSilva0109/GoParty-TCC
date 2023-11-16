@@ -73,11 +73,12 @@ public class Evento {
     }
 
     // Construtor com parâmetros
-    public Evento(String titulo, String descricao, Usuario autor, String valor) {
+    public Evento(String titulo, String descricao, Usuario autor, String valor, String horario) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.autor = autor;
         this.valor = valor;
+        this.horario = horario;
     }
 
     
