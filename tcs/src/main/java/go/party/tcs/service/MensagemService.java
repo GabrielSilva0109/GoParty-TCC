@@ -42,17 +42,15 @@ public class MensagemService {
         SecretKey chaveSecreta = obterChaveSecreta(idUsuarioSessao);
         String mensagemCriptografada = criptografiaService.criptografarMensagem(message, chaveSecreta);
 
-        byte[] msgByteDscp = mensagemCriptografada.getBytes(StandardCharsets.UTF_8); // Especificando o charset para evitar problemas de codificação
 
         try {
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.DECRYPT_MODE, chaveSecreta);
-            byte[] mensagemDescriptografada = cipher.doFinal(msgByteDscp);
-            String mensagemDescriptografadal = new String(mensagemDescriptografada);
+           
+            // Utilize o método descriptografarMensagem
+             String mensagemDescriptografada = criptografiaService.descriptografarMensagem(mensagemCriptografada, chaveSecreta);
 
-            String msgNoti = "@"+sessao.getUsername()+" enviou uma mensagem: " + mensagemDescriptografadal;
+             String msgNoti = sessao.getUsername()+" enviou uma mensagem: " + mensagemDescriptografada;
 
-            notificationService.createNotification(msgNoti, receiver.getId(), sessao.getFotoPerfil());
+             notificationService.createNotification(msgNoti, receiver.getId(), sessao.getFotoPerfil());
 
         } catch (Exception e) {
             e.printStackTrace();

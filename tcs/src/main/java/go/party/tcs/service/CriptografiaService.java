@@ -25,4 +25,21 @@ public class CriptografiaService {
             return null;
         }
     }
+
+    public String descriptografarMensagem(String mensagemCriptografada, SecretKey secretKey) {
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+    
+            byte[] mensagemBytes = Base64.getDecoder().decode(mensagemCriptografada);
+            byte[] mensagemDescriptografada = cipher.doFinal(mensagemBytes);
+    
+            return new String(mensagemDescriptografada);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException |
+                 BadPaddingException | InvalidKeyException e) {
+            // Lidando com as exceções
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
