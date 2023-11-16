@@ -345,15 +345,25 @@ function mostrarFiltros() {
    
     function enviarMensagem(div) {
         // Obtenha o conteúdo digitado no input
+        const input = document.querySelector('.send-input');
         const mensagem = document.querySelector('.send-input').value;
-
+        const messageDiv = document.querySelector('.message.one');
         const usuarioIdReceiver = div.getAttribute('data-usuario-id');
 
-        console.log(usuarioIdReceiver);
+        //console.log(usuarioIdReceiver);
     
-        // Verifique se há algo para enviar
-        if (mensagem.trim() === '') {
-            alert('Digite uma mensagem antes de enviar.'); //CASO NAO EXISTIR MENSAGEM
+        if (mensagem.trim() !== '') {
+            
+            const newParagraph = document.createElement('p');
+            newParagraph.textContent = mensagem;
+
+            // Adicionando o texto à div desejada
+            messageDiv.appendChild(newParagraph);
+
+            // Limpando o input após adicionar o texto
+            input.value = '';
+            
+        } else{
             return;
         }
 
@@ -378,6 +388,20 @@ function mostrarFiltros() {
                
             });
     };
+
+    //BOTAO DE FECHAR CHAT
+
+    // Obtendo referências aos elementos
+    const closeChatButton = document.getElementById('close-chat');
+    const chatContainer = document.getElementById('chat-container');
+
+    // Adicionando um evento de clique ao botão de fechar chat
+    closeChatButton.addEventListener('click', function() {
+        // Tornando o contêiner de chat invisível ao clicar no botão
+        chatContainer.style.display = 'none';
+    });
+
+
 
 
     

@@ -2562,7 +2562,7 @@ ul li.item-menu a .icon > i{
   user-select: none;
 }
 
-.close {
+.close-modal-chat {
   width: 40px;
   height: 40px;
   display: flex;
