@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -546,7 +549,7 @@ public class UsuarioController {
         try {
             // Supondo que você tem um serviço para salvar a mensagem
             mensagemService.salvarMensagem(usuarioIdReceiver, message, idUsuarioSessao.getId());
-            notificationService.createNotification(message, usuarioIdReceiver, idUsuarioSessao.getFotoPerfil());
+            
             return ResponseEntity.ok("Mensagem enviada com sucesso!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
