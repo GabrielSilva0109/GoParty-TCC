@@ -107,7 +107,8 @@ function abrirExcluir() {
 function abrirCompra() {
     var blocoCompra = document.getElementById('blocoCompra');
             if (blocoCompra.style.display === 'none' || blocoCompra.style.display === '') {
-                blocoCompra.style.display = 'flex';
+                blocoCompra.style.display = 'block';
+                
             } else {
                 blocoCompra.style.display = 'none';
             }

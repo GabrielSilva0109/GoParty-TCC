@@ -558,10 +558,23 @@ footer{
 .bloco-evento-compra {
   display: none;
   width: 100%; /* Ocupa 100% da largura */
+  flex-direction: column;
 
 }
 
+.formCompra{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  float: left;
+}
 
+.blocoPagamento{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  float: right;
+}
 
 .evento-up{
   display: flex;
