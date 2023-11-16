@@ -103,6 +103,16 @@ function abrirExcluir() {
             }
 }
 
+// Função para abrir Excluir Conta
+function abrirCompra() {
+    var blocoCompra = document.getElementById('blocoCompra');
+            if (blocoCompra.style.display === 'none' || blocoCompra.style.display === '') {
+                blocoCompra.style.display = 'flex';
+            } else {
+                blocoCompra.style.display = 'none';
+            }
+}
+
 //Requisição de curtida
 function checkboxChanged(checkbox) {
     const eventoId = checkbox.getAttribute('data-evento-id');
