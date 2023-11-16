@@ -66,7 +66,7 @@ public class UsuarioService {
 
          Usuario usuario = usuarioRepository.findByUsername(usuarioNome);
 
-        if (usuario.getUsername().equals(usuarioNome)){
+        if (usuario != null && usuario.getUsername().equals(usuarioNome)){
             return usuario;
         } else {
             return null;

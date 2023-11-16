@@ -183,11 +183,15 @@ public class UsuarioController {
                 usuario.setSeguindo(following.size());
 
                 return "redirect:/home";
+            }else{
+                model.addAttribute("error", "Usuário ou senha incorretos!");
+                return "login";
             }
+             
         }
-        // Autenticação falhou
-        model.addAttribute("error", "Usuário ou senha incorretos!");
-        return "login";
+
+              model.addAttribute("error", "Usuário ou senha incorretos!");
+              return "login";
     }
 
     //Método para atribuir uma sessão ao usuario que fizer login
