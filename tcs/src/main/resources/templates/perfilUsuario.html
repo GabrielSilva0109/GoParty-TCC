@@ -101,10 +101,7 @@
                 
                
                 <h4><span th:text="${usuario.email}"></span></h4>
-                <button style="background: none; border: none; cursor: pointer;" onclick="toggleChatContainer()">
-                    <span><i class="bi bi-chat-dots"></i></span>
-                </button>
-
+               
                 <!--Seguidores e seguindo -->
                 
                 <div class="seguidores-seguindo-container"> 
@@ -137,6 +134,12 @@
                 </span>
 
                 <span th:unless="${isNotFollower}">
+
+                    <!--Caso seguir mostra o icone de chat-->
+                    <button style="background: none; border: none; cursor: pointer;" id="btn-iconchat" onclick="toggleChatContainer()">
+                        <span><i class="bi bi-chat-dots"></i></span>
+                    </button>
+    
 
                     <button class="btn-perfil-follow" id="btn-unfollow" type="submit" onclick="followUser(this)"  th:attr="data-usuario-id=${usuario.id}">
 

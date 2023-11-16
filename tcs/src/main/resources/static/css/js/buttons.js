@@ -279,6 +279,7 @@ function mostrarFiltros() {
     const usuarioId = button.getAttribute('data-usuario-id');
     const popUp = document.getElementById("popUp-seguiu");
     var strongElement = button.querySelector('strong');
+    const btnChat = document.getElementById("btn-iconchat");
 
     if (strongElement.innerText === "Seguir") {
       // Fazer a primeira requisição ao servidor
@@ -291,6 +292,7 @@ function mostrarFiltros() {
             // A requisição foi bem-sucedida
             console.log("Usuário seguido com sucesso.");
             popUp.style.display = "flex";
+            btnChat.style.display = "block";
             strongElement.innerText = "Seguindo";
         } else {
             // A requisição falhou
@@ -311,6 +313,8 @@ function mostrarFiltros() {
             // A requisição foi bem-sucedida
             console.log("Usuário deixado de seguir com sucesso.");
             strongElement.innerText = "Seguir";
+            btnChat.style.display = "none";
+            
         } else {
             // A requisição falhou
             console.error("Falha ao deixar de seguir o usuário.");
