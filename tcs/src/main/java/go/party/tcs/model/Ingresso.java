@@ -22,6 +22,9 @@ public class Ingresso {
     @Column(name = "codigo")
     private String codigo;
 
+    @Column(name = "cpfComprador")
+    private String cpfComprador;
+
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario idUsuario;
@@ -30,16 +33,19 @@ public class Ingresso {
     @JoinColumn(name = "id_evento")
     private Evento evento;
 
+   
+
     // Construtores, getters e setters...
 
     public Ingresso() {
     
     }
 
-    public Ingresso(String codigo, Usuario idUsuario, Evento evento) {
+    public Ingresso(String codigo, Usuario idUsuario, Evento evento, String cpfComprador) {
         this.codigo = codigo;
         this.idUsuario = idUsuario;
         this.evento = evento;
+        this.cpfComprador = cpfComprador;
     }
 
     public Integer getId() {
@@ -54,10 +60,18 @@ public class Ingresso {
         return codigo;
     }
 
+    public void setCpfComprador(String cpfComprador) {
+        this.cpfComprador = cpfComprador;
+    }
+
+    public String getCpfComprador() {
+        return cpfComprador;
+    }
+
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    
+
     public Usuario getIdUsuario() {
         return idUsuario;
     }

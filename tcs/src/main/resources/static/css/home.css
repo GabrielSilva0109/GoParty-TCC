@@ -567,6 +567,8 @@ footer{
   flex-direction: column;
   width: 50%;
   float: left;
+  align-items: center;
+  justify-content: center;
 }
 
 .blocoPagamento{
@@ -574,6 +576,12 @@ footer{
   flex-direction: column;
   width: 50%;
   float: right;
+  align-items: center;
+  justify-content: center;
+}
+
+.blocoPagamento img {
+  width: 150px;
 }
 
 .evento-up{
