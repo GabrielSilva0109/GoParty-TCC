@@ -47,7 +47,7 @@
                 </a>
             </li>
             <li class="item-menu">
-                <a  th:href="@{/ingressos}" >
+                <a  th:href="@{/ingressos}">
                     <img src="/css/img/tickets.png" alt="Ingressos" class="icon">
                     <span class="txt-link">Ingressos</span>
                 </a>
@@ -315,11 +315,11 @@
                         <h1 class="arroba">Comprar Ingresso</h1>
                         <div class="formCompra">
                             <form method="post" action="comprar-ingresso" style="display: block;">
+                                <input type="hidden" name="eventoId" th:value="${evento.id}">
                                 <input type="text" name="cpfComprador" id="cpfComprador" placeholder="CPF do Comprador">
-                                <button>Confimar</button>
+                                <button>Confirmar</button>
                             </form>
-                            
-                            
+
                         </div>
 
                         <div class="blocoPagamento">

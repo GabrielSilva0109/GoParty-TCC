@@ -1,5 +1,7 @@
 package go.party.tcs.model;
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -86,5 +87,11 @@ public class Ingresso {
 
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+
+    public static String gerarCodigoAleatorio() {
+        // Gerando um UUID aleatório e pegando os 10 primeiros caracteres
+        String uuid = UUID.randomUUID().toString().replaceAll("[^a-zA-Z0-9]", "").substring(0, 10);
+        return uuid;
     }
 }
