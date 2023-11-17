@@ -81,8 +81,13 @@
 
     <div class="container">
         
+       
         
     <div class="center-content" id="center-usuarios">
+
+        <div class="spinner" style="display: none;" id="loading">
+            <div class="spinner1"></div>
+        </div>
         <div class="input-pesquisa"> 
              
             <!--Search bar -->
@@ -99,6 +104,8 @@
                 </form>
             </div>
         </div>
+
+        
 
         <style>
             /* Estilo para desativar a rolagem no corpo */
@@ -126,8 +133,11 @@
                 }
         </style>
 
+           
+
          <!--Teste de modal com sugestões-->
          <div id="suggestionsModal" class="modal" style="display: none;  ">
+            
             <div class="modal-content" style="background-color: #f4f2f2;">
                 <ul id="suggestionsList">
                     <!-- Aqui serão exibidas as sugestões -->
@@ -137,6 +147,7 @@
             </div>
             </div>
 
+           
          
          <div class="main-container">
 
@@ -209,6 +220,8 @@
                     </div>
                     <div class="notification__progress"></div>
                  </figure>
+
+                 
 
                  <style>
                     .notification{
