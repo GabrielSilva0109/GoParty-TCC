@@ -242,7 +242,7 @@
                             </div>
                             
                              <!-- Botão Comprar -->
-                             <button class="buyBtn"onclick="abrirCompra(${evento.id})">
+                             <button class="buyBtn" onclick="abrirCompra()">
                                 <span>Comprar</span>
                                 <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 
@@ -311,7 +311,7 @@
                     </div>
 
                     <!-- Bloco para comprar ingresso do Evento -->
-                    <div class="bloco-evento-compra" th:id="'blocoCompra_' + ${evento.id}" >
+                    <div class="bloco-evento-compra"  id="blocoCompra">
                         <h1 class="arroba">Comprar Ingresso</h1>
                         <div class="formCompra">
                             <form method="post" action="comprar-ingresso" style="display: block;">
