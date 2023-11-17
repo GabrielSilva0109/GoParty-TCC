@@ -38,8 +38,18 @@ function openModalConfiguracao() {
     modal.style.display = "flex";
 }
 
+function openModalChat(){
+    var modal = document.getElementById("modalChat");
+    modal.style.display = "flex";
+}
+
 function fecharModalConfiguracao() {
     var modal = document.getElementById("modalConfiguracao");
+    modal.style.display = "none";
+}
+
+function fecharModalChats() {
+    var modal = document.getElementById("modalChat");
     modal.style.display = "none";
 }
 

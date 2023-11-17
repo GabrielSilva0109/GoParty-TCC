@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li class="item-menu">
-                <a th:href="@{/usuarios}">
+                <a onclick="openModalChat()">
                     <img src="/css/img/communication.png" alt="Usuários" class="icon">
                     <span class="txt-link">Conversas</span>
                 </a>
@@ -279,6 +279,7 @@
 
     <!--Modal Config-->
     <div th:replace="home :: #modalConfiguracao"></div>
+    <div th:replace="home :: #modalChat"></div>
     </div>
 
     <script src="/css/js/buttons.js"></script>

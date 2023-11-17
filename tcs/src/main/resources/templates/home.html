@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li class="item-menu">
-                <a th:href="@{/usuarios}">
+                <a onclick="openModalChat()">
                     <img src="/css/img/communication.png" alt="Usuários" class="icon">
                     <span class="txt-link">Conversas</span>
                 </a>
@@ -420,6 +420,32 @@
                     </form>
             </div>
 
+            
+        </div>
+    </div>
+
+     <!--Modal chats-->
+     <div id="modalChat" class="modal-configuracao" style="display: none;">
+        <div class="modal-config">
+            <span class="close" onclick="fecharModalChats()">&times;</span>
+            <h1 class="tittle-modal">Suas conversas</h1>
+            <div class="bloco-config">
+                
+            </div>
+            
+            <div id="blocoEdicao" class="bloco-edicao" style="display: none; justify-content: center;">
+               
+
+            </div>
+
+            <div id="blocoTemas" class="bloco-temas" style="display: none; justify-content: center;">
+                
+
+            </div>
+
+            <div id="blocoExcluir" class="bloco-excluir" style="display:none; justify-content: center;">
+                
+            </div>
             
         </div>
     </div>
