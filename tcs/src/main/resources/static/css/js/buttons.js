@@ -108,7 +108,6 @@ function abrirCompra() {
     var blocoCompra = document.getElementById('blocoCompra');
             if (blocoCompra.style.display === 'none' || blocoCompra.style.display === '') {
                 blocoCompra.style.display = 'block';
-                
             } else {
                 blocoCompra.style.display = 'none';
             }
@@ -291,15 +290,10 @@ function mostrarFiltros() {
     const popUp = document.getElementById("popUp-seguiu");
     var strongElement = button.querySelector('strong');
     const btnChat = document.getElementById("btn-iconchat");
-    const loading = document.getElementById("loading");
-
-    
-
 
     if (strongElement.innerText === "Seguir") {
       // Fazer a primeira requisição ao servidor
       // Substitua a URL e os parâmetros conforme necessário
-      loading.style.display = "flex";
       fetch(`/follow/${usuarioId}`, {
         method: "POST",
     })
@@ -310,7 +304,6 @@ function mostrarFiltros() {
             popUp.style.display = "flex";
             btnChat.style.display = "block";
             strongElement.innerText = "Seguindo";
-            loading.style.display = "none";
         } else {
             // A requisição falhou
             console.error("Falha ao seguir o usuário.");
@@ -363,6 +356,7 @@ function mostrarFiltros() {
 
     }
 
+   
     function enviarMensagem(div) {
         // Obtenha o conteúdo digitado no input
         const input = document.querySelector('.send-input');
