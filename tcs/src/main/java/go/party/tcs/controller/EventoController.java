@@ -68,24 +68,23 @@ public class EventoController {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         usuarioLogado = usuario;
 
-        // Crie um novo evento
-        Evento evento = new Evento(titulo, descricao, usuario, valor, horario);
         
-        // Define o estado, cidade e bairro
+        Evento evento = new Evento(titulo, descricao, usuario, valor, horario);
+    
         evento.setEstado(estado);
         evento.setCidade(cidade);
         evento.setBairro(bairro);
 
-        // Salve a imagem do evento 
+        
         if (!imagemEvento.isEmpty()) {
             byte[] imagemBytes = imagemEvento.getBytes();
             evento.setFotoEvento(imagemBytes); // Supondo que você tenha um método setImagem para o evento
         }
         
-        // Salve o evento no banco de dados (você deve implementar a lógica de persistência)
+        
         eventoService.criarEvento(evento, null);
 
-        return "redirect:/home"; // Redirecione para uma página de sucesso após criar o evento
+        return "redirect:/home";
     }
 
     

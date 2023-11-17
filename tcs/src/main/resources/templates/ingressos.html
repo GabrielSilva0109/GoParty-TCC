@@ -82,9 +82,17 @@
 
     <div class="container">
         <div th:replace="home :: #info-usuario"></div>
-
+    
         <div class="center-content">
-            <div class="bloco-ingressos"></div>
+            <div class="bloco-ingressos">
+                <ul>
+                    <li th:each="ingresso : ${ingressos}">
+                        <span th:text="${ingresso.id}"></span> 
+                        <p th:text="${ingresso.codigo}"></p>
+                        <p th:text="${ingresso.cpfComprador}"></p>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 

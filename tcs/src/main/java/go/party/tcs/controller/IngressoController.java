@@ -33,7 +33,7 @@ public class IngressoController {
 
         if (sessionUsuario != null) {
             List<Ingresso> ingressos = ingressoRepository.findByIdUsuario(sessionUsuario.getId());
-
+            model.addAttribute("ingressos", ingressos);
         }
         model.addAttribute("sessionUsuario", sessionUsuario);
         return "ingressos";
@@ -43,6 +43,7 @@ public class IngressoController {
     @PostMapping("/comprar-ingresso")
     private String comprarIngresso(@RequestParam("eventoId") Long eventoId,
                                 @RequestParam("cpfComprador") String cpfComprador,
+                                Model model,
                                 HttpSession session){
 
         Usuario usuario = (Usuario) session.getAttribute("usuario");
@@ -59,7 +60,8 @@ public class IngressoController {
             Ingresso ingresso = new Ingresso(codigoIngresso, usuario, evento, cpfComprador);
 
             ingressoRepository.save(ingresso);
-            return "ingresso";
+            model.addAttribute("sessionUsuario", usuario);
+            return "redirect:/ingressos";
         } else {
             // Lógica para lidar com o evento não encontrado
             return "eventoNaoEncontrado";
