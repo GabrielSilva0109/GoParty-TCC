@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 public class IngressoController {
     
 
-    @PostMapping("/comprarIngresso")
+    @PostMapping("/comprar-ingresso")
     private String comprarIngresso(HttpSession session){
 
         return "ingresso";
