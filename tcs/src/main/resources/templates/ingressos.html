@@ -35,6 +35,12 @@
                 </a>
             </li>
             <li class="item-menu">
+                <a th:href="@{/usuarios}">
+                    <img src="/css/img/communication.png" alt="Usuários" class="icon">
+                    <span class="txt-link">Conversas</span>
+                </a>
+            </li>
+            <li class="item-menu">
                 <a th:href="@{/home}">
                     <img src="/css/img/homeIcon.png" alt="Home" class="icon">
                     <span class="txt-link">Home</span>
@@ -85,7 +91,7 @@
     
         <div class="center-content">
             <div class="bloco-ingressos">
-                <ul>
+                <ul th:if="${not #lists.isEmpty(ingressos)}">
                     <li th:each="ingresso : ${ingressos}">
                         <div class="bloco-ingresso">
                             <p th:text="${ingresso.id}"></p>
@@ -100,6 +106,10 @@
                         </div>
                     </li>
                 </ul>
+
+                <div th:if="${#lists.isEmpty(ingressos)}">
+                    <p>Nenhum ingresso comprado por você.</p>
+                </div>
             </div>
         </div>
     </div>
