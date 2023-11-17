@@ -12,6 +12,7 @@ import go.party.tcs.model.Ingresso;
 import go.party.tcs.model.Usuario;
 import go.party.tcs.repository.EventoRepository;
 import go.party.tcs.repository.IngressoRepository;
+import go.party.tcs.service.NotificationService;
 import jakarta.mail.search.IntegerComparisonTerm;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -25,7 +26,10 @@ public class IngressoController {
     IngressoRepository ingressoRepository;
 
     @Autowired
-    EventoRepository eventoRepository; // Se houver um repositório para Evento
+    EventoRepository eventoRepository; 
+
+    @Autowired
+    private NotificationService notificationService;
 
     @GetMapping("/ingressos")
     public String ingressos(Model model, HttpSession session, HttpServletRequest request){
@@ -60,6 +64,11 @@ public class IngressoController {
             Ingresso ingresso = new Ingresso(codigoIngresso, usuario, evento, cpfComprador);
 
             ingressoRepository.save(ingresso);
+
+            String message = usuario.getUsername()+ " comprou um ingresso para o seu evento: "+evento.getTitulo();
+
+            //GERAR NOTI
+            notificationService.createNotification(message,  evento.getAutor().getId(), usuario.getFotoPerfil());
             model.addAttribute("sessionUsuario", usuario);
             return "redirect:/ingressos";
         } else {
