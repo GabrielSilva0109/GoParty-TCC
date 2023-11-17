@@ -104,13 +104,13 @@ function abrirExcluir() {
 }
 
 // Função para abrir Excluir Conta
-function abrirCompra() {
-    var blocoCompra = document.getElementById('blocoCompra');
-            if (blocoCompra.style.display === 'none' || blocoCompra.style.display === '') {
-                blocoCompra.style.display = 'block';
-            } else {
-                blocoCompra.style.display = 'none';
-            }
+function abrirCompra(eventoId) {
+    var blocoCompra = document.getElementById('blocoCompra_' + eventoId);
+    if (blocoCompra.style.display === 'none' || blocoCompra.style.display === '') {
+        blocoCompra.style.display = 'block';
+    } else {
+        blocoCompra.style.display = 'none';
+    }
 }
 
 //Requisição de curtida
