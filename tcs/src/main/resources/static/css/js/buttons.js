@@ -438,4 +438,24 @@ function mostrarFiltros() {
     });
 
 
+    
+    
+    function confirmarPresenca(event) {
+        // Obtendo o elemento pai do botão clicado
+        var elementoPai = event.target.closest('.bloco-ingresso-confirmados');
+
+        // Mudando a cor de fundo do elemento pai
+        elementoPai.style.backgroundColor = 'lightgreen'; // Altere para a cor desejada
+        
+        // Salvar a informação de confirmação em algum lugar (pode ser um banco de dados, localStorage, etc.)
+        // Aqui, vamos apenas adicionar uma classe para indicar que foi confirmado
+        elementoPai.classList.add('confirmado');
+    }
+
+    
+
+
+
+
+
 
