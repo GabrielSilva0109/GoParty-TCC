@@ -244,8 +244,7 @@
                     <ul style="list-style: none;">
                         <li class="lista-confirmados" th:each="ingresso : ${evento.ingressos}">
                            <div class="bloco-ingresso-confirmados">
-                                <p th:text="${ingresso.id}"></p>
-                                <span>Codigo ingresso:</span>
+                                <span>Ingresso:</span>
                                 <p th:text="${ingresso.codigo}"></p>
                                 <span>Nome:</span>
                                 <p th:text="${ingresso.idUsuario.nome}"></p>
@@ -253,6 +252,7 @@
                                 <p th:text="${ingresso.cpfComprador}"></p>
                                 <span>Evento:</span>
                                 <p th:text="${ingresso.evento.titulo}"></p>
+                                <button class="btnConfirma">OK</button>
                             </div>
                         </li>
                     </ul>

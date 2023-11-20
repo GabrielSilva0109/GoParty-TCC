@@ -2738,6 +2738,7 @@ ul li.item-menu a .icon > i{
   align-items: center;
   padding: 10px;
   margin: 10px;
+
 }
 
 .bloco-ingressos span, .bloco-ingresso-confirmados span{
@@ -2747,11 +2748,36 @@ ul li.item-menu a .icon > i{
 
 .bloco-ingresso-confirmados{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   font-size: 0.9rem;
   gap: 10px;
+ 
 }
 
+.bloco-evento-confirmados ul li{
+  background-color: rgba(255, 255, 255, 0.395);
+  margin: 5px;
+  border-radius: 10px;
+}
 
+.bloco-evento-confirmados{
+  width: 95%;
+  max-height: 300px;
+  overflow: auto;
+  
+}
 
+.btnConfirma{
+  background: #001226;
+  color: white;
+  border-radius: 5px;
+  margin: 5px;
+  border: 1px solid rgb(0, 0, 100);
+  font-weight: bold;
+  cursor: pointer;
+}
+.btnConfirma:hover{
+  background: #004798;
+  
+}
