@@ -536,6 +536,7 @@ footer{
   border-radius: 20px;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .bloco-evento-left{
@@ -2205,7 +2206,7 @@ ul li.item-menu a .icon > i{
   margin-left: 5px;
  }
 
- .modal-notificacao, .modal-configuracao {
+ .modal-confirmados, .modal-configuracao{
   display: none;
   justify-content: center;
   align-items: center;
@@ -2739,7 +2740,18 @@ ul li.item-menu a .icon > i{
   margin: 10px;
 }
 
-.bloco-ingressos span{
+.bloco-ingressos span, .bloco-ingresso-confirmados span{
   font-weight: bold;
     color: rgb(255, 65, 65);
 }
+
+.bloco-ingresso-confirmados{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  gap: 10px;
+}
+
+
+

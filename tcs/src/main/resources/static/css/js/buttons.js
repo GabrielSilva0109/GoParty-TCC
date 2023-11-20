@@ -14,16 +14,7 @@ function toggleComentarios(button) {
     }
 }
 
-// Função para abrir modal das Notificações
-function openModalNotificacao() {
-    var modal = document.getElementById("modalNotificacao");
-    modal.style.display = "flex";
-}
 
-function fecharModalNotificacao() {
-    var modal = document.getElementById("modalNotificacao");
-    modal.style.display = "none";
-}
 
 window.onclick = function (event) {
     var modal = document.getElementById("modalNotificacao");
@@ -118,12 +109,21 @@ function abrirCompra() {
     var blocoCompra = document.getElementById('blocoCompra');
             if (blocoCompra.style.display === 'none' || blocoCompra.style.display === '') {
                 blocoCompra.style.display = 'block';
-                
+        
             } else {
                 blocoCompra.style.display = 'none';
             }
 }
 
+function abrirConfirmados() {
+    var blocoConfirmados = document.getElementById('blocoConfirmados');
+            if (blocoConfirmados.style.display === 'none' || blocoConfirmados.style.display === '') {
+                blocoConfirmados.style.display = 'block';
+                
+            } else {
+                blocoConfirmados.style.display = 'none';
+            }
+}
 //Requisição de curtida
 function checkboxChanged(checkbox) {
     const eventoId = checkbox.getAttribute('data-evento-id');

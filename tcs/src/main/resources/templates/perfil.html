@@ -145,7 +145,9 @@
                     <h4 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h4>
                     <img class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
 
-                    <button onclick="abrirModalConfirmados()">Confirmados</button>
+                    <button onclick="abrirConfirmados()">Confirmados</button>
+
+                    
                 </div>
 
                 <!-- Parte da Direita do Post -->
@@ -192,10 +194,9 @@
                                 </button>
                             </div>
                         </div>
-                    </div>                
-                    <p th:text="${evento.descricao}"></p>
-                    
 
+                    </div>
+                       
                     <div style="display: flex; align-items: center; margin: 0;" >
                         <img src="/css/img/iconHour.png" style="width: 20px; height: 20px;" alt="">
                         <p th:text="${evento.horario}" style="text-align: start;"></p>
@@ -234,6 +235,27 @@
                         </svg>
                         <span class="tooltip">Comentários&nbsp;<span th:text="${evento.comentarios.size()}"></span> </span>
                     </button>
+
+
+                    
+                </div>
+                <div class="bloco-evento-confirmados" id="blocoConfirmados" style="display: none;">
+                    <H1>Confirmados</H1>
+                    <ul style="list-style: none;">
+                        <li class="lista-confirmados" th:each="ingresso : ${evento.ingressos}">
+                           <div class="bloco-ingresso-confirmados">
+                                <p th:text="${ingresso.id}"></p>
+                                <span>Codigo ingresso:</span>
+                                <p th:text="${ingresso.codigo}"></p>
+                                <span>Nome:</span>
+                                <p th:text="${ingresso.idUsuario.nome}"></p>
+                                <span>CPF:</span>
+                                <p th:text="${ingresso.cpfComprador}"></p>
+                                <span>Evento:</span>
+                                <p th:text="${ingresso.evento.titulo}"></p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>   
             
@@ -272,33 +294,6 @@
             <li><h4>Desenvolvedores</h4></li>
         </ul>
     </footer>
-
-    <!-- Modal Notificações -->
-    <div id="modalNotificacao" class="modal-notificacao" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModalNotificacao()">&times;</span>
-            <h1 class="tittle-modal">Notificações</h1>
-            <div class="bloco-notificacoes"> 
-                <!--Lista de notificações-->
-                <ul>
-                    <li th:if="${#lists.isEmpty(notifications)}">
-                        <span>Não há notificações.</span>
-                    </li>
-                    <li class="lista-notificacoes" th:each="notification, index : ${notifications}">
-                        
-                        <!--Bloco especifico-->
-                     <div class="notification-container">
-                         <!--Tempo da notificacao-->
-                         
-                        <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
-    
-                        <span class="arroba" id="arroba-id">@</span><span class="notifications" th:text="${notification.message}"> </span>
-                     </div>
-                    </li>                                   
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <!--Modal Config-->
     <div th:replace="home :: #modalConfiguracao"></div>

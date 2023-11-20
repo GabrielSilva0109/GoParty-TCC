@@ -14,5 +14,6 @@ public interface IngressoRepository  extends JpaRepository<Ingresso, Integer>{
     @Query("SELECT i FROM Ingresso i WHERE i.idUsuario.id = :idUsuario")
     List<Ingresso> findByIdUsuario(@Param("idUsuario") Integer idUsuario);
 
+    List<Ingresso> findByEventoId(Integer eventoId);
     
 }
