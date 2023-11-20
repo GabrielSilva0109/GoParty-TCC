@@ -103,6 +103,7 @@
         <!-- Informações do Usuario -->
         <h2><span class="arroba">@</span><span th:text="${sessionUsuario.username}"></span></h2>
         <div class="info">
+            <h3 th:text="${sessionUsuario.nome}"></h3>
             <h3 class="descricaoUser"><span th:text="${sessionUsuario.descricao}"></span></h3>
             <h4><span th:text="${sessionUsuario.email}"></span></h4>
              <!--Seguidores e seguindo-->
@@ -140,15 +141,19 @@
 
                 <!-- Parte da Esquerda do Post -->
                 <div class="bloco-evento-left">
-                    <h3><span class="arroba">@</span><span th:text="${evento.autor.username}"></span></h3>
+                    <h3 style="margin-bottom: 0;"><img class="logoUser" src="/css/img/LogoSimples.png"><span th:text="${evento.autor.username}"></span></h3>
+                    <h4 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h4>
                     <img class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
+
+                    <button onclick="abrirModalConfirmados()">Confirmados</button>
                 </div>
 
                 <!-- Parte da Direita do Post -->
                 <div class="bloco-evento-right">
                     <!-- Parte de cima do Post aonde tem os Botões -->
+                    
                     <div class="evento-up">
-                        <h2 th:text="${evento.titulo}"></h2>
+                        <p class="arroba">Descrição</p>
                         
                         <!-- Botão para Excluir o Post -->
                         <form th:action="@{'/excluir-evento/' + ${evento.id}}" method="post" onsubmit="return confirm('Tem certeza de que deseja excluir este post?')">
@@ -189,10 +194,29 @@
                         </div>
                     </div>                
                     <p th:text="${evento.descricao}"></p>
+                    
+
+                    <div style="display: flex; align-items: center; margin: 0;" >
+                        <img src="/css/img/iconHour.png" style="width: 20px; height: 20px;" alt="">
+                        <p th:text="${evento.horario}" style="text-align: start;"></p>
+                    </div>
+                    <p class="arroba">Local</p>
+                    <div style="display: flex; align-items: center;">
+                        <img src="/css/img/iconLocation.png" style="width: 20px; height: 20px;">
+                        <p th:text="${evento.estado}" style="text-transform: uppercase;"></p>&nbsp;&nbsp;&nbsp;
+                        <p class="arroba" >|&nbsp;&nbsp;&nbsp;</p>
+                        <p th:text="${evento.cidade}"></p>&nbsp;&nbsp;&nbsp;
+                        <p class="arroba">|&nbsp;&nbsp;&nbsp;</p>
+                        <p th:text="${evento.bairro}"></p>
+                    </div>
+                    
+                    <p th:text="${evento.valor}" style="font-weight: bold;"></p>
                     <!-- Bloco onde ficam os comentários -->
                     <div class="comentarios hidden" >
                         <ul class="ul-comentarios">
-                            <li th:each="comentario : ${evento.comentarios}">
+                            <li th:each="comentario : ${evento.comentarios}" style="padding: 5px;
+                            background: #fdfdfd;
+                            border-radius: 10px; margin: 5px;">
                                 <div class="bloco-usuario">
                                     <span class="arroba">@</span>
                                     <p th:text="${comentario.autor.username}"></p>
@@ -203,7 +227,6 @@
                             </li>
                         </ul>
                     </div>
-
                     <!-- Botão abrir comentários -->
                     <button class="chatBtn" onclick="toggleComentarios(this)">
                         <svg height="1.6em" fill="white" xml:space="preserve" viewBox="0 0 1000 1000" y="0px" x="0px" version="1.1">

@@ -34,7 +34,7 @@
                     <span class="txt-link">Explorar</span>
                 </a>
             </li>
-            <li class="item-menu">
+            <li class="item-menu" style="cursor: pointer;">
                 <a onclick="openModalChat()">
                     <img src="/css/img/communication.png" alt="Usuários" class="icon">
                     <span class="txt-link">Conversas</span>
@@ -295,7 +295,9 @@
                         <!-- Bloco onde ficam os comentários -->
                         <div class="comentarios hidden">
                             <ul class="ul-comentarios">
-                                <li th:each="comentario : ${evento.comentarios}">
+                                <li th:each="comentario : ${evento.comentarios}" style="padding: 5px;
+                                background: #fdfdfd;
+                                border-radius: 10px; margin: 5px;">
                                     <div class="bloco-usuario">
                                         <span class="arroba">@</span>
                                         <p th:text="${comentario.autor.username}"></p>
