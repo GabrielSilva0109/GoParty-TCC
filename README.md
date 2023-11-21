@@ -21,12 +21,9 @@ A GoParty é a próxima evolução em plataformas de eventos, permitindo aos usu
 - BootStrap
 
 ## FrameWorks | Ideas
-Antes de começar a usar o projeto, você precisa ter as seguintes ferramentas instaladas em sua máquina:
 - MySQL Workband
-- Eclipse
 - Visual Studeo Code
 - SpringBoot
-- Figma 
 - LucidChard
 
 
