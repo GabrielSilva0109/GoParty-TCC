@@ -383,8 +383,6 @@ function mostrarFiltros() {
   }
 
   /// MOSTRAR CHAT INDIVIDUAL
-
-
     function mostrarChat(){
         var chatContainer = document.getElementById("chat-container");
 
@@ -460,24 +458,46 @@ function mostrarFiltros() {
     });
 
 
-    
-    
-    function confirmarPresenca(event) {
-        // Obtendo o elemento pai do botão clicado
-        var elementoPai = event.target.closest('.bloco-ingresso-confirmados');
 
-        // Mudando a cor de fundo do elemento pai
-        elementoPai.style.backgroundColor = 'lightgreen'; // Altere para a cor desejada
-        
-        // Salvar a informação de confirmação em algum lugar (pode ser um banco de dados, localStorage, etc.)
-        // Aqui, vamos apenas adicionar uma classe para indicar que foi confirmado
-        elementoPai.classList.add('confirmado');
+    function confirmarPresenca(button) {
+        const liElement = button.parentElement;
+        if (liElement) {
+            liElement.classList.add('confirmado');
+            const ingressoId = liElement.getAttribute('data-ingresso-id');
+            const ingressosConfirmados = JSON.parse(localStorage.getItem('ingressosConfirmados')) || [];
+            
+            if (!ingressosConfirmados.includes(ingressoId)) {
+                ingressosConfirmados.push(ingressoId);
+                localStorage.setItem('ingressosConfirmados', JSON.stringify(ingressosConfirmados));
+            }
+        }
     }
-
     
-
-
-
-
-
-
+    $(document).ready(function() {
+        $('.atualizar-status').click(function() {
+            var ingressoId = $(this).data('ingresso-id');
+            
+            // Realizar a requisição AJAX
+            $.ajax({
+                url: '/atualizarStatus', // Seu endpoint para atualizar o status
+                method: 'POST',
+                data: { 
+                    ingressoId: ingressoId,
+                    novoStatus: 'Usado' // Definindo o novo status como 'Usado'
+                },
+                success: function(response) {
+                    // Manipular a resposta se necessário
+                    // Por exemplo, atualizar a interface com o novo status retornado do servidor
+                    var novoStatus = response.novoStatus;
+                    $('[data-ingresso-id="' + ingressoId + '"] .status').text(novoStatus);
+                },
+                error: function(xhr, status, error) {
+                    // Lidar com erros
+                    console.error(error);
+                }
+            });
+        });
+    });
+    
+   
+    

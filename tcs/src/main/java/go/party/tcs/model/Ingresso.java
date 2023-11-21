@@ -26,6 +26,9 @@ public class Ingresso {
     @Column(name = "cpfComprador")
     private String cpfComprador;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario idUsuario;
@@ -42,11 +45,12 @@ public class Ingresso {
     
     }
 
-    public Ingresso(String codigo, Usuario idUsuario, Evento evento, String cpfComprador) {
+    public Ingresso(String codigo, Usuario idUsuario, Evento evento, String cpfComprador, String status) {
         this.codigo = codigo;
         this.idUsuario = idUsuario;
         this.evento = evento;
         this.cpfComprador = cpfComprador;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -67,6 +71,14 @@ public class Ingresso {
 
     public String getCpfComprador() {
         return cpfComprador;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public void setCodigo(String codigo) {

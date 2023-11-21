@@ -67,9 +67,9 @@ public class IngressoController {
         if (evento != null) {
             // Gerar o código aleatório para o ingresso
             String codigoIngresso = Ingresso.gerarCodigoAleatorio();
-
+            String status = "Ativo";
             // Criar o objeto Ingresso com os IDs já obtidos
-            Ingresso ingresso = new Ingresso(codigoIngresso, usuario, evento, cpfComprador);
+            Ingresso ingresso = new Ingresso(codigoIngresso, usuario, evento, cpfComprador, status);
 
             ingressoRepository.save(ingresso);
 

@@ -107,8 +107,6 @@
                         <!--Bloco especifico-->
                      <div class="notification-container">
                          <!--Tempo da notificacao-->
-                         
-                         
                          <img class="imgNoti" th:if="${notification.fotoPerfil != null}" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
                          <img class="imgNoti" th:if="${notification.fotoPerfil == null}" src="/css/img/fotoPerfil.jpg" alt="Foto de Perfil" />
 

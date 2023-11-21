@@ -244,17 +244,26 @@
                 <div class="bloco-evento-confirmados" id="blocoConfirmados" style="display: none;">
                     <H1>Confirmados</H1>
                     <ul style="list-style: none;">
-                        <li class="lista-confirmados" th:each="ingresso : ${evento.ingressos}">
+                        <li class="lista-confirmados" th:each="ingresso : ${evento.ingressos}"  data-ingresso-id="${ingresso.id}">
                            <div class="bloco-ingresso-confirmados">
-                                <span>Ingresso:</span>
+                                <span>Ingresso</span>
                                 <p th:text="${ingresso.codigo}"></p>
-                                <span>Nome:</span>
+                                <span>Nome</span>
                                 <p th:text="${ingresso.idUsuario.nome}"></p>
-                                <span>CPF:</span>
+                                <span>CPF</span>
                                 <p th:text="${ingresso.cpfComprador}"></p>
-                                <span>Evento:</span>
+                                <span>Evento</span>
                                 <p th:text="${ingresso.evento.titulo}"></p>
-                                <button onclick="confirmarPresenca(event)" class="btnConfirma">OK</button>
+                                <span>Status</span>
+                                <p th:text="${ingresso.status}"></p>
+                                
+            
+                                <!-- Formulário para atualização do status -->
+                                <form action="/atualizarStatus" method="POST">
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <input type="hidden" name="ingressoId" th:value="${ingresso.id}" />
+                                    <button class="btnConfirma" type="submit">OK</button>
+                                </form>
                             </div>
                         </li>
                     </ul>

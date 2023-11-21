@@ -2811,3 +2811,8 @@ ul li.item-menu a .icon > i{
    0 8px 0 -4px #39a2db,
    0 12px 10px -3px #39a2db;
  }
+
+ .confirmado {
+  background-color: lightgreen;
+  border-radius: 5px;
+}
