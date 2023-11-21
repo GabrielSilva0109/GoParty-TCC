@@ -592,7 +592,7 @@ footer{
   gap: 20px;
 }
 .imgEvento {
-  max-width: 80%;
+  max-width: 100%;
   max-height: 300px;
   border-radius: 10px;
   margin: 10px;

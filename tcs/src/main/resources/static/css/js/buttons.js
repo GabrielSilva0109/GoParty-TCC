@@ -104,26 +104,48 @@ function abrirExcluir() {
             }
 }
 
-// Função para abrir Excluir Conta
-function abrirCompra() {
-    var blocoCompra = document.getElementById('blocoCompra');
-            if (blocoCompra.style.display === 'none' || blocoCompra.style.display === '') {
-                blocoCompra.style.display = 'block';
-        
-            } else {
-                blocoCompra.style.display = 'none';
-            }
+//Função Abrir Bloco de Comprar Ingresso
+function abrirCompra(btn) {
+    // Encontrar o bloco de compra associado a este botão
+    const eventoBloco = btn.closest('.evento-bloco');
+    const blocoCompra = eventoBloco.querySelector('.bloco-evento-compra');
+
+    // Verificar se o bloco de compra está visível ou não
+    const estaVisivel = getComputedStyle(blocoCompra).display !== 'none';
+
+    // Alternar a exibição do bloco de compra
+    if (estaVisivel) {
+        blocoCompra.style.display = 'none';
+    } else {
+        // Ocultar todos os blocos de compra
+        const blocosCompra = document.querySelectorAll('.bloco-evento-compra');
+        blocosCompra.forEach((bloco) => {
+            bloco.style.display = 'none';
+        });
+
+        // Exibir apenas o bloco de compra associado a este botão
+        blocoCompra.style.display = 'block';
+    }
 }
 
-function abrirConfirmados() {
-    var blocoConfirmados = document.getElementById('blocoConfirmados');
-            if (blocoConfirmados.style.display === 'none' || blocoConfirmados.style.display === '') {
-                blocoConfirmados.style.display = 'block';
-                
-            } else {
-                blocoConfirmados.style.display = 'none';
-            }
+function abrirConfirmados(btn) {
+    const eventoBloco = btn.closest('.evento-bloco');
+    const blocoConfirmados = eventoBloco.querySelector('.bloco-evento-confirmados');
+    const estaVisivel = getComputedStyle(blocoConfirmados).display !== 'none';
+
+    
+    if (estaVisivel) {
+        blocoConfirmados.style.display = 'none';
+    } else {
+        const blocosConfirmados = document.querySelectorAll('.bloco-evento-confirmados');
+        blocosConfirmados.forEach((bloco) => {
+            bloco.style.display = 'none';
+        });
+
+        blocoConfirmados.style.display = 'block';
+    }
 }
+
 //Requisição de curtida
 function checkboxChanged(checkbox) {
     const eventoId = checkbox.getAttribute('data-evento-id');
