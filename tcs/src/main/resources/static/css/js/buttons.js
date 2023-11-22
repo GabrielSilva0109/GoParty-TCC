@@ -473,31 +473,6 @@ function mostrarFiltros() {
         }
     }
     
-    $(document).ready(function() {
-        $('.atualizar-status').click(function() {
-            var ingressoId = $(this).data('ingresso-id');
-            
-            // Realizar a requisição AJAX
-            $.ajax({
-                url: '/atualizarStatus', // Seu endpoint para atualizar o status
-                method: 'POST',
-                data: { 
-                    ingressoId: ingressoId,
-                    novoStatus: 'Usado' // Definindo o novo status como 'Usado'
-                },
-                success: function(response) {
-                    // Manipular a resposta se necessário
-                    // Por exemplo, atualizar a interface com o novo status retornado do servidor
-                    var novoStatus = response.novoStatus;
-                    $('[data-ingresso-id="' + ingressoId + '"] .status').text(novoStatus);
-                },
-                error: function(xhr, status, error) {
-                    // Lidar com erros
-                    console.error(error);
-                }
-            });
-        });
-    });
-    
+  
    
     
