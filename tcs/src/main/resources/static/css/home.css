@@ -2731,7 +2731,7 @@ ul li.item-menu a .icon > i{
 }
 
 .bloco-ingresso{
-  gap: 20px;
+  justify-content: space-around;
   background: #00000014;
   border-radius: 14px;
   display: flex;
@@ -2740,7 +2740,9 @@ ul li.item-menu a .icon > i{
   margin: 10px;
 
 }
-
+.bloco-ingresso p{
+  font-weight: 600;
+}
 .bloco-ingressos span, .bloco-ingresso-confirmados span{
   font-weight: bold;
     color: rgb(255, 65, 65);
