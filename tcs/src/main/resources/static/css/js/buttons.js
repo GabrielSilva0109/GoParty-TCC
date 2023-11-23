@@ -449,7 +449,7 @@ function mostrarFiltros() {
             })
             .then(data => {
               
-                // Faça algo com a resposta, se necessário
+                
             })
             .catch(error => {
                
