@@ -257,12 +257,11 @@
                                 <span>Status</span>
                                 <p th:text="${ingresso.status}"></p>
                                 
-            
                                 <!-- Formulário para atualização do status -->
-                                <form action="/atualizarStatus" method="POST">
+                                <form method="POST" action="/atualizarStatus">
                                     <input type="hidden" name="_method" value="PUT">
-                                    <input type="hidden" name="ingressoId" th:value="${ingresso.id}" />
-                                    <button class="btnConfirma" type="submit">OK</button>
+                                    <input type="hidden" name="ingressoId" th:value="${ingresso.id}"/>
+                                    <button class="btnConfirma"  type="submit">OK</button>
                                 </form>
                             </div>
                         </li>

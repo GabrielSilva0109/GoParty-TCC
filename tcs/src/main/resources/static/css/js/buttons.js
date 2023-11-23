@@ -469,17 +469,6 @@ function mostrarFiltros() {
     });
 
 
-function confirmarPresenca(button) {
-    const liElement = button.parentElement;
-        if (liElement) {
-            liElement.classList.add('confirmado');
-            const ingressoId = liElement.getAttribute('data-ingresso-id');
-            const ingressosConfirmados = JSON.parse(localStorage.getItem('ingressosConfirmados')) || [];
-                
-            if (!ingressosConfirmados.includes(ingressoId)) {
-                ingressosConfirmados.push(ingressoId);
-                localStorage.setItem('ingressosConfirmados', JSON.stringify(ingressosConfirmados));
-        }
-    }
-}
-    
+
+
+
