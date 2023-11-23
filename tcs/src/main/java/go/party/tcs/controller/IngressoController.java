@@ -101,27 +101,21 @@ public class IngressoController {
     
     @PutMapping("/atualizarStatus") 
 public String atualizarStatus(@RequestParam(name ="ingressoId") Integer id, Model model, HttpSession session) {
-    // Recuperar o ingresso
     Ingresso ingresso = ingressoService.encontra(id);
     
-    // Verificar se o ingresso não é nulo e definir o status como "Inativo"
+
     if (ingresso != null) {
         ingresso.setStatus("Inativo");
         ingressoService.save(ingresso);
         
-        // Verificar se o usuário está na sessão
         Usuario sessionUsuario = (Usuario) session.getAttribute("sessionUsuario");
         if (sessionUsuario != null) {
-            // Faça as atualizações necessárias no objeto Usuario
-            // Isso pode incluir a atualização de informações do usuário relacionadas ao ingresso
-            
-            // Atualize a sessão com o objeto Usuario atualizado
             session.setAttribute("sessionUsuario", sessionUsuario);
         }
     }
     
-    // Retornar a página de perfil (ou o nome da view correspondente)
-    return "redirect:/perfil"; // Supondo que "perfil" seja o endpoint da página de perfil
+    
+    return "redirect:/perfil"; 
 }
 
 

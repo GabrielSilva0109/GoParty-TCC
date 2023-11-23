@@ -241,11 +241,13 @@
 
                     
                 </div>
-                <div class="bloco-evento-confirmados" id="blocoConfirmados" style="display: none;">
-                    <H1>Confirmados</H1>
+                <div class="bloco-evento-confirmados" id="blocoConfirmados" style="display: block;">
+                    <h1>Confirmados</h1>
                     <ul style="list-style: none;">
-                        <li class="lista-confirmados" th:each="ingresso : ${evento.ingressos}"  data-ingresso-id="${ingresso.id}">
-                           <div class="bloco-ingresso-confirmados">
+                        <li class="lista-confirmados" th:each="ingresso : ${evento.ingressos}" 
+                            data-ingresso-id="${ingresso.id}"
+                            th:classappend="${ingresso.status == 'Inativo'} ? 'status-inativo' : ''">
+                            <div class="bloco-ingresso-confirmados">
                                 <span>Ingresso</span>
                                 <p th:text="${ingresso.codigo}"></p>
                                 <span>Nome</span>
@@ -256,7 +258,7 @@
                                 <p th:text="${ingresso.evento.titulo}"></p>
                                 <span>Status</span>
                                 <p th:text="${ingresso.status}"></p>
-                                
+            
                                 <!-- Formulário para atualização do status -->
                                 <form method="POST" action="/atualizarStatus">
                                     <input type="hidden" name="_method" value="PUT">
