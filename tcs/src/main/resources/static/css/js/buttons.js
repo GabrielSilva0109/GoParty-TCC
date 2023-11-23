@@ -29,6 +29,12 @@ function openModalConfiguracao() {
     modal.style.display = "flex";
 }
 
+// Função para abrir modal das Configuração
+function openModalDevs() {
+    var modal = document.getElementById("modalDevs");
+    modal.style.display = "flex";
+}
+
 function openModalChat(){
     var modal = document.getElementById("modalChat");
     modal.style.display = "flex";
@@ -41,6 +47,11 @@ function fecharModalConfiguracao() {
 
 function fecharModalChats() {
     var modal = document.getElementById("modalChat");
+    modal.style.display = "none";
+}
+
+function fecharModalDevs() {
+    var modal = document.getElementById("modalDevs");
     modal.style.display = "none";
 }
 

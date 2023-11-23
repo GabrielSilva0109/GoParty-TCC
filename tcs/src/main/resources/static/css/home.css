@@ -2206,7 +2206,7 @@ ul li.item-menu a .icon > i{
   margin-left: 5px;
  }
 
- .modal-confirmados, .modal-configuracao{
+ .modal-confirmados, .modal-configuracao, .modal-devs{
   display: none;
   justify-content: center;
   align-items: center;
@@ -2220,7 +2220,6 @@ ul li.item-menu a .icon > i{
   align-items: center;
   display: flex;
   z-index: 1;
-  
 }
 
 .modal-content{
