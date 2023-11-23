@@ -7,7 +7,7 @@
             }
         });
 
-        function curtirEvento(eventoId) {
+    function curtirEvento(eventoId) {
             $.ajax({
                 type: 'POST',
                 url: '/curtirEvento/' + eventoId,
