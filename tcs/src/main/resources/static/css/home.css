@@ -2737,24 +2737,38 @@ ul li.item-menu a .icon > i{
   margin: 10px;
   border-radius: 20px;
   padding: 0px;
-  height: 250px;
+  height: 30%;
 }
 
 .ingresso-left {
-  flex: 0 0 30%; /* Ocupa 30% do espaço */
+  flex: 0 0 30%; 
+  display: flex; 
+  align-items: stretch; 
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
 }
 
 .ingresso-left img {
-  width: 90%; 
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  width: 98%; 
+  height: 90%;
+  object-fit: cover; 
 }
+
 
 .ingresso-center {
   flex: 0 0 40%; /* Ocupa 40% do espaço */
   text-align: left; /* Alinha o conteúdo à esquerda */
 }
+.ingresso-tittle {
+  display: flex;
+  justify-content: center;
+  
+}
 
+.ingresso-tittle p{
+  font-size: 1.5rem;
+}
 .ingresso-right {
   flex: 0 0 30%; /* Ocupa 30% do espaço */
   text-align: center; /* Alinha o conteúdo ao centro */

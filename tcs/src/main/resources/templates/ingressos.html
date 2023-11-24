@@ -98,7 +98,9 @@
                                 <img class="imgEventoIngresso" th:src="@{'/evento-imagem/' + ${ingresso.evento.id}}" alt="foto">
                             </div>
                             <div class="ingresso-center">
-                                <p th:text="${ingresso.evento.titulo}"></p>
+                                <div class="ingresso-tittle">
+                                    <p th:text="${ingresso.evento.titulo}"></p>
+                                </div>
                                 <span>Nome</span>
                                 <p th:text="${ingresso.idUsuario.nome}"></p>
                                 <span>CPF</span>
@@ -107,9 +109,13 @@
                                 <p th:text="${ingresso.status}"></p>
                             </div>
                             <div class="ingresso-right">
-                                <p th:text="${ingresso.evento.estado}"></p>
+                                <div class="ingresso-local">
+
+                                </Div>
+                                <span>Local</span>
                                 <p th:text="${ingresso.evento.cidade}"></p>
                                 <p th:text="${ingresso.evento.bairro}"></p>
+                                <div style="margin: 50px;"></div>
                                 <span>Codigo ingresso</span>
                                 <p th:text="${ingresso.codigo}"></p>
                             </div>
