@@ -248,16 +248,27 @@
                             data-ingresso-id="${ingresso.id}"
                             th:classappend="${ingresso.status == 'Inativo'} ? 'status-inativo' : ''">
                             <div class="bloco-ingresso-confirmados">
-                                <span>Ingresso</span>
-                                <p th:text="${ingresso.codigo}"></p>
-                                <span>Nome</span>
-                                <p th:text="${ingresso.idUsuario.nome}"></p>
-                                <span>CPF</span>
-                                <p th:text="${ingresso.cpfComprador}"></p>
-                                <span>Evento</span>
-                                <p th:text="${ingresso.evento.titulo}"></p>
-                                <span>Status</span>
-                                <p th:text="${ingresso.status}"></p>
+                                <div class="ingre" style="display: block;">
+                                    <span>Ingresso</span>
+                                    <p th:text="${ingresso.codigo}"></p>
+                                </div>
+                                <div class="ingre">
+                                    <span>Nome</span>
+                                    <p th:text="${ingresso.idUsuario.nome}"></p>
+                                </div>
+                                <div class="ingre">
+                                    <span>CPF</span>
+                                    <p th:text="${ingresso.cpfComprador}"></p>
+                                </div>
+                                <div class="ingre">
+                                    <span>Evento</span>
+                                    <p th:text="${ingresso.evento.titulo}"></p>
+                                </div>
+                                <div class="ingre">
+                                    <span>Status</span>
+                                    <p th:text="${ingresso.status}"></p>
+                                </div>
+                                
             
                                 <!-- Formulário para atualização do status -->
                                 <form method="POST" action="/atualizarStatus">

@@ -2731,13 +2731,11 @@ ul li.item-menu a .icon > i{
 
 .bloco-ingresso{
   justify-content: space-around;
-  background: #00000014;
+  background: white;
   border-radius: 14px;
   display: flex;
   align-items: center;
-  padding: 10px;
   margin: 10px;
-
 }
 .bloco-ingresso p{
   font-weight: 600;
@@ -2753,13 +2751,13 @@ ul li.item-menu a .icon > i{
   align-items: center;
   font-size: 0.9rem;
   gap: 10px;
- margin: 5px;
+  margin: 5px;
 }
 
 .bloco-evento-confirmados ul li{
   background-color: lightgreen;
-  margin: 5px;
   border-radius: 10px;
+  margin: 5px;
 }
 
 .bloco-evento-confirmados{
@@ -2817,4 +2815,9 @@ ul li.item-menu a .icon > i{
 
 .status-inativo{
   background-color: #fdafaf!important;
+ }
+
+
+ .ingresso-left{
+  width: 30%;
  }
