@@ -2753,11 +2753,11 @@ ul li.item-menu a .icon > i{
   align-items: center;
   font-size: 0.9rem;
   gap: 10px;
- 
+ margin: 5px;
 }
 
 .bloco-evento-confirmados ul li{
-  background-color: rgba(255, 255, 255, 0.395);
+  background-color: lightgreen;
   margin: 5px;
   border-radius: 10px;
 }
@@ -2815,5 +2815,6 @@ ul li.item-menu a .icon > i{
 
  
 
-.status-inativo li{
-  background-color: lightgrey; }
+.status-inativo{
+  background-color: #fdafaf!important;
+ }
