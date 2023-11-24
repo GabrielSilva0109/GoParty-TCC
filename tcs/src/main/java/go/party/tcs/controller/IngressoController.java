@@ -100,23 +100,23 @@ public class IngressoController {
 
     
     @PutMapping("/atualizarStatus") 
-public String atualizarStatus(@RequestParam(name ="ingressoId") Integer id, Model model, HttpSession session) {
-    Ingresso ingresso = ingressoService.encontra(id);
-    
-
-    if (ingresso != null) {
-        ingresso.setStatus("Inativo");
-        ingressoService.save(ingresso);
+    public String atualizarStatus(@RequestParam(name ="ingressoId") Integer id, Model model, HttpSession session) {
+        Ingresso ingresso = ingressoService.encontra(id);
         
-        Usuario sessionUsuario = (Usuario) session.getAttribute("sessionUsuario");
-        if (sessionUsuario != null) {
-            session.setAttribute("sessionUsuario", sessionUsuario);
+
+        if (ingresso != null) {
+            ingresso.setStatus("Inativo");
+            ingressoService.save(ingresso);
+            
+            Usuario sessionUsuario = (Usuario) session.getAttribute("sessionUsuario");
+            if (sessionUsuario != null) {
+                session.setAttribute("sessionUsuario", sessionUsuario);
+            }
         }
+        
+        
+        return "redirect:/perfil"; 
     }
-    
-    
-    return "redirect:/perfil"; 
-}
 
 
     

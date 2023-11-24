@@ -326,7 +326,12 @@
                                 <input type="text" name="cpfComprador" id="cpfComprador" placeholder="CPF do Comprador">
                                 <button>Confirmar</button>
                             </form>
+                            <!-- Bloco para exibir mensagens de erro -->
+                            <div th:if="${message}" class="error-message">
+                                <p th:text="${message}" style="color: red;"></p>
+                            </div>
                         </div>
+                        
 
                         <div class="blocoPagamento">
                             

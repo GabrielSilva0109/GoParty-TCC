@@ -17,5 +17,7 @@ public interface IngressoRepository  extends JpaRepository<Ingresso, Integer>{
 
     List<Ingresso> findByEventoId(Integer eventoId);
 
+    Ingresso findByCpfComprador(String cpfComprador);
+
     
 }
