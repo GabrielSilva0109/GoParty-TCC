@@ -2729,16 +2729,40 @@ ul li.item-menu a .icon > i{
   list-style: none;
 }
 
-.bloco-ingresso{
-  justify-content: space-around;
-  background: white;
-  border-radius: 14px;
+.bloco-ingresso {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  background: white;
   margin: 10px;
+  border-radius: 20px;
+  padding: 0px;
+  height: 250px;
 }
+
+.ingresso-left {
+  flex: 0 0 30%; /* Ocupa 30% do espaço */
+}
+
+.ingresso-left img {
+  width: 90%; 
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.ingresso-center {
+  flex: 0 0 40%; /* Ocupa 40% do espaço */
+  text-align: left; /* Alinha o conteúdo à esquerda */
+}
+
+.ingresso-right {
+  flex: 0 0 30%; /* Ocupa 30% do espaço */
+  text-align: center; /* Alinha o conteúdo ao centro */
+}
+
 .bloco-ingresso p{
   font-weight: 600;
+  margin: 0;
 }
 .bloco-ingressos span, .bloco-ingresso-confirmados span{
   font-weight: bold;
@@ -2817,7 +2841,3 @@ ul li.item-menu a .icon > i{
   background-color: #fdafaf!important;
  }
 
-
- .ingresso-left{
-  width: 30%;
- }
