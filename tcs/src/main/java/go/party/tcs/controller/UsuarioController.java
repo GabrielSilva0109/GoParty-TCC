@@ -559,4 +559,12 @@ public class UsuarioController {
         }
     }
 
+    @GetMapping("/check-username/{username}")
+    public ResponseEntity<Map<String, Boolean>> checkUsernameExists(@PathVariable String username) {
+        boolean exists = usuarioService.checkUsernameExists(username);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("exists", exists);
+        return ResponseEntity.ok(response);
+    }
+
 }

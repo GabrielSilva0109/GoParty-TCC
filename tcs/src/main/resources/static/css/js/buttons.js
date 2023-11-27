@@ -347,10 +347,11 @@ function mostrarFiltros() {
         if (response.ok) {
             // A requisição foi bem-sucedida
             loading.style.display = "none";
+            strongElement.innerText = "Seguindo";
             console.log("Usuário seguido com sucesso.");
             popUp.style.display = "flex";
             btnChat.style.display = "block";
-            strongElement.innerText = "Seguindo";
+            
             
         } else {
             // A requisição falhou
@@ -468,6 +469,7 @@ function mostrarFiltros() {
         chatContainer.style.display = 'none';
     });
 
+    
 
 
 

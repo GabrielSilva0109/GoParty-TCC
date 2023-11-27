@@ -23,11 +23,17 @@
         <span>Insira seus dados</span>
         <div class="inputGroup">
           <input type="text" name="nome" class="form-control" placeholder="Nome Completo" required/>
-          <input type="text" name="username" id="username" class="form-control" placeholder="Nome de usuário" required/>
+
+          <input type="text" name="username" id="nomeUsuario" class="form-control" placeholder="Nome de usuário" required/>
 
            <!--Username inválido-->
            <div class="dadoInvalido">
             <p>Nome de usuário deve conter até 10 caracteres <span>  <i class="bi bi-exclamation-diamond"></i>
+            </span></p>
+           </div>
+
+           <div class="dadoInvalido" id="usernameExiste" style="display: none;">
+            <p>Nome de usuário indisponível <span>  <i class="bi bi-exclamation-diamond"></i>
             </span></p>
            </div>
 
@@ -234,5 +240,6 @@
 
             <!--Script de Validacoes Cadastro e Login-->
     <script src="/css/js/validacoesCadastroLogin.js"></script>
+    <script src="/css/js/buttons.js"></script>
 </body>
 </html>

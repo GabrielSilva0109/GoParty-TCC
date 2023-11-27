@@ -46,10 +46,6 @@ public class UsuarioService {
         }
     }
 
-
-      
-   
-
     public void atualizarUsuario(Usuario usuario){
         usuarioRepository.save(usuario);
     }
@@ -64,7 +60,9 @@ public class UsuarioService {
 
     public Usuario findByUsername(String usuarioNome){
 
-         Usuario usuario = usuarioRepository.findByUsername(usuarioNome);
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByUsername(usuarioNome);
+
+        Usuario usuario = usuarioOptional.get(); 
 
         if (usuario != null && usuario.getUsername().equals(usuarioNome)){
             return usuario;
@@ -167,6 +165,12 @@ public class UsuarioService {
     public int getFollowingCount(Usuario user) {
         List<Usuario> following = getFollowing(user);
         return following.size();
+    }
+
+    public boolean checkUsernameExists(String username) {
+        // Verifica se o username existe no banco de dados
+        Optional<Usuario> userOptional = usuarioRepository.findByUsername(username);
+        return userOptional.isPresent();
     }
    
 }

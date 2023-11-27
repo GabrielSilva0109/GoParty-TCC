@@ -9,9 +9,10 @@ import org.springframework.data.jpa.repository.Query;
 import go.party.tcs.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+
     Usuario findByNome(String nome);
 
-    Usuario findByUsername(String usuarioNome);
+    //Usuario findByUsername(String usuarioNome);
 
     Optional<Usuario> findByEmail(String email);
 
@@ -19,6 +20,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     List<Usuario> findByNomeContaining(String query);
 
-    
-    
+    Optional<Usuario> findByUsername(String username);
+
 }
