@@ -112,7 +112,6 @@ public class IngressoController {
             }
         }
         
-        
         return "redirect:/perfil"; 
     }
 
