@@ -87,7 +87,7 @@
     </nav>    
 
     <div class="container">
-        <div class="left-conta" id="info-usuario">
+        <div class="left-conta" id="info-usuario" >
             <!-- Parte Esquerda Informações do Usuario -->
             <div class="left-sidebar-perfil" style=" width: 250px;">
             
@@ -188,7 +188,7 @@
 
                     <!-- Bloco Esquerdo Evento -->
                     <div class="bloco-evento-left" >
-                        <h3 style="margin-bottom: 0;"><img class="logoUser" src="/css/img/LogoSimples.png"><span th:text="${evento.autor.username}"></span></h3>
+                        <h3 style="margin-bottom: 0;"><img class="logoUser" src="/css/img/LogoSimples.png"><span class="usernameEvento" th:text="${evento.autor.username}"></span></h3>
                         <h4 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h4>
                         <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
                         <!-- <span class="curtidas" th:text="${quantidadeCurtidasPorEvento[evento.id]}"></span> -->
@@ -271,24 +271,24 @@
                     <div class="bloco-evento-right">
                         <div class="title-descricao">
                             <p class="arroba">Descrição</p>
-                            <p th:text="${evento.descricao}" style="text-align: start;"></p>
+                            <p class="descricaoEvento" th:text="${evento.descricao}"></p>
                         </div>
 
                         <div style="display: flex; align-items: center; margin: 0;" >
                             <img src="/css/img/iconHour.png" style="width: 20px; height: 20px;" alt="">
-                            <p th:text="${evento.horario}" style="text-align: start;"></p>
+                            <p class="descricaoEvento" th:text="${evento.horario}"></p>
                         </div>
                         <p class="arroba">Local</p>
                         <div style="display: flex; align-items: center;">
                             <img src="/css/img/iconLocation.png" style="width: 20px; height: 20px;">
-                            <p th:text="${evento.estado}" style="text-transform: uppercase;"></p>&nbsp;&nbsp;&nbsp;
+                            <p class="descricaoEvento" th:text="${evento.estado}" style="text-transform: uppercase;"></p>&nbsp;&nbsp;&nbsp;
                             <p class="arroba" >|&nbsp;&nbsp;&nbsp;</p>
-                            <p th:text="${evento.cidade}"></p>&nbsp;&nbsp;&nbsp;
+                            <p class="descricaoEvento" th:text="${evento.cidade}"></p>&nbsp;&nbsp;&nbsp;
                             <p class="arroba">|&nbsp;&nbsp;&nbsp;</p>
-                            <p th:text="${evento.bairro}"></p>
+                            <p class="descricaoEvento" th:text="${evento.bairro}"></p>
                         </div>
                         
-                        <p th:text="${evento.valor}" style="font-weight: bold;"></p>
+                        <p class="descricaoEvento" th:text="${evento.valor}"></p>
 
                         
                         <!-- Bloco onde ficam os comentários -->

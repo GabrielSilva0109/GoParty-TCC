@@ -31,19 +31,12 @@ body{
 }
 
 /* Estilos para as Duas partes */
-.left-sidebar {
+.left-sidebar, .left-sidebar-perfil{
   width: 25%;
-  background-color: #f0f0f064; /* Cor de fundo do lado esquerdo */
+  background-color: #ffffffab;
   padding: 20px;
   margin-left: 49px;
- 
-}
-
-.left-sidebar-perfil {
-  width: 25%;
-  background-color: #ffffffab;/* Cor de fundo do lado esquerdo */
-  padding: 20px;
-  margin-left: 49px;
+  
 }
 
 .arroba{
@@ -531,14 +524,22 @@ footer{
 /* Layout do Feed */
 .evento-bloco{
   display: flex;
-  background:  #ffffff6b;
+  background:  #040b26e8;
   margin: 20px;
   border-radius: 20px;
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
 }
+.usernameEvento, .descricaoEvento{
+  color: white;
+}
 
+.descricaoEvento{
+  text-align: start;
+  font-weight: bold;
+  margin: 5px;
+}
 .bloco-evento-left{
   display: flex;
   flex-direction: column;
