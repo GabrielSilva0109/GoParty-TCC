@@ -18,25 +18,12 @@ body{
  margin-left: 5px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  padding: 20px; 
-  gap: 20px;
-}
-.left-conta{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 /* Estilos para as Duas partes */
 .left-sidebar, .left-sidebar-perfil{
   width: 25%;
   background-color: #ffffffab;
   padding: 20px;
   margin-left: 49px;
-  
 }
 
 .arroba{
@@ -49,6 +36,20 @@ body{
   width: 25px;
   margin-bottom: -8px;
 }
+
+.container, .left-conta{
+  display: flex;
+  gap: 10px;
+}
+.container {
+  justify-content: center;
+  padding: 20px; 
+}
+
+.left-conta{
+  flex-direction: column;
+}
+
 /* Container Principal */
 .center-content {
   display: block;
@@ -62,6 +63,7 @@ body{
   border-radius: 20px;
   text-align: center;
 }
+
 #filtro{
   background: none;
   border: none;
