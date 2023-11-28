@@ -194,7 +194,7 @@
                     <!-- Bloco Esquerdo Evento -->
                     <div class="bloco-evento-left" >
                         <h3 style="margin-bottom: 0;"><img class="logoUser" src="/css/img/LogoSimples.png"><a style="text-decoration: none;" th:href="@{/perfilUsuario/{id}(id=${evento.autor.id})}"><span class="usernameEvento" th:text="${evento.autor.username}"></span></a></span></h3>
-                        <h4 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h4>
+                        <h2 style="margin: 0; color: rgb(255, 65, 65);" th:text="${evento.titulo}"></h2>
                         <img id="imagemEvento_${evento.id}" class="imgEvento" th:src="@{'/evento-imagem/' + ${evento.id}}" alt="foto">
                         <!-- <span class="curtidas" th:text="${quantidadeCurtidasPorEvento[evento.id]}"></span> -->
                         
