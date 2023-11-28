@@ -86,7 +86,7 @@ function darkMode() {
     var body = document.body;
     body.style.background = "#040b26";
     localStorage.setItem('theme', 'dark');
-  }
+}
   
   function lightMode() {
     var body = document.body;
