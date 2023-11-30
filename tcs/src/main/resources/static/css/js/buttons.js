@@ -81,6 +81,10 @@ function abrirTemas() {
                 blocoTemas.style.display = 'none';
             }
 }
+// Aplica a máscara de CPF ao campo de entrada
+$(document).ready(function(){
+    $('#cpfComprador').inputmask('999.999.999-99');
+});
 
 function darkMode() {
     var body = document.body;

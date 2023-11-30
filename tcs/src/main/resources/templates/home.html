@@ -9,7 +9,8 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
     <link rel="icon" type="image/x-icon" href="/css/img/LogoSimples.png">
 </head>
 <body >
@@ -113,7 +114,7 @@
             </div>
 
 
-            <div class="left-sidebar-perfil" style="alto: 250px; width: 250px;">
+            <div class="left-sidebar-perfil" style="height: 250px; width: 250px;">
                 <!-- Informações do Usuario -->
                 <h2 style="font-size: 17px;">Eventos em Alta <span><i class="bi bi-bar-chart-fill"></i></span></h2>
                 <div class="info">
@@ -127,7 +128,7 @@
 
                 </div>
             </div>
-            <div class="left-sidebar-perfil" style="alto: 250px; width: 250px;">
+            <div class="left-sidebar-perfil" style="height: 250px; width: 250px;">
                 
             </div>
         </div>
@@ -322,7 +323,8 @@
                         <div class="formCompra">
                             <form method="post" action="comprar-ingresso" style="display: block;">
                                 <input type="hidden" name="eventoId" th:value="${evento.id}">
-                                <input type="text" name="cpfComprador" id="cpfComprador" placeholder="CPF do Comprador">
+                                <input type="text" name="cpfComprador" id="cpfComprador" placeholder="CPF do Comprador" required>
+
                                 <button>Confirmar</button>
                             </form>
                             <!-- Bloco para exibir mensagens de erro -->
@@ -472,9 +474,7 @@
 
     <!--Teste de Chat (Em construcao)-->
 
-    <script src="/webjars/sockjs-client/1.1.4/sockjs.min.js"></script>
-    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
-
+    
 <script>
     var stompClient = null;
 
@@ -500,7 +500,8 @@
         // lógica para exibir a mensagem na interface do usuário
     }
 </script>
-
+    <script src="/webjars/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
 
     <script src="/css/js/buttons.js"></script>
     <script src="/css/js/barraLateral.js"></script>
