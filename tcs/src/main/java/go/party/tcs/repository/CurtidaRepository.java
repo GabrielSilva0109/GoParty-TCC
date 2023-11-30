@@ -26,9 +26,7 @@ public interface CurtidaRepository extends JpaRepository<Curtida, Long> {
     @Query("SELECT COUNT(c) FROM Curtida c WHERE c.evento.id = :eventoId")
     int quantidadeCurtidasPorEvento(@Param("eventoId") Integer eventoId);
 
-    @Modifying
-    @Query("DELETE FROM Curtida c WHERE c.usuario_id = :usuario_id")
-    void deleteByAutor(@Param("usuario_id") Integer idUsuario);
+
 
     
 }

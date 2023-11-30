@@ -318,9 +318,7 @@ public class UsuarioController {
             try {
             // Excluir todos os eventos associados ao usuário
             eventoRepository.deleteByAutor(sessionUsuario);
-            comentarioRepository.deleteByAutor(sessionUsuario);
-            curtidaRepository.deleteByAutor(idUsuario);
-            
+            comentarioRepository.deleteByAutor(sessionUsuario);            
 
             // Em seguida, excluir o usuário
             usuarioRepository.delete(sessionUsuario);
