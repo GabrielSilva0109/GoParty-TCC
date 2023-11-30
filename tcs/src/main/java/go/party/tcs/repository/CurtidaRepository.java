@@ -2,6 +2,7 @@ package go.party.tcs.repository;
 
 import org.hibernate.mapping.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -25,6 +26,9 @@ public interface CurtidaRepository extends JpaRepository<Curtida, Long> {
     @Query("SELECT COUNT(c) FROM Curtida c WHERE c.evento.id = :eventoId")
     int quantidadeCurtidasPorEvento(@Param("eventoId") Integer eventoId);
 
+    @Modifying
+    @Query("DELETE FROM Curtida c WHERE c.usuario_id = :usuario_id")
+    void deleteByAutor(@Param("usuario_id") Integer idUsuario);
 
     
 }

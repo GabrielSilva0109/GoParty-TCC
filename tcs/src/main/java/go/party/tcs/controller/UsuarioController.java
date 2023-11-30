@@ -308,7 +308,7 @@ public class UsuarioController {
     @DeleteMapping("/deletar")
     public String deletarUsuario(Model model, HttpSession session, HttpServletRequest request) {
         Usuario sessionUsuario = (Usuario) session.getAttribute("usuario");
-
+        Integer idUsuario = sessionUsuario.getId();
         //ENVIO DE EMAIL QUANDO O USUÁRIO EXCLUI CONTA
         String assunto = "Exclusão de conta | GoParty";
         String mensagem = "Você deletou sua conta no GoParty!"
@@ -318,6 +318,9 @@ public class UsuarioController {
             try {
             // Excluir todos os eventos associados ao usuário
             eventoRepository.deleteByAutor(sessionUsuario);
+            comentarioRepository.deleteByAutor(sessionUsuario);
+            curtidaRepository.deleteByAutor(idUsuario);
+            
 
             // Em seguida, excluir o usuário
             usuarioRepository.delete(sessionUsuario);
