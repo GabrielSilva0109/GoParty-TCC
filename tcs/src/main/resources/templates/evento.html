@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -16,9 +16,9 @@
 </head>
 <body>
 
-   <!--menu-lateral-->
+  menu-lateral
    <nav class="menu-lateral" id="menu-lateral">
-    <!--btn-expandir-->
+    btn-expandir
     <div class="btn-expandir">
         <img src="/css/img/LogoSimples.png" alt="logo" id="btn-exp" />
         <span class="txt-link"> <img src="/css/img/LogoGoParty.png" alt="GoParty" id="palavraGoParty"> </span>
@@ -37,14 +37,14 @@
                 <span class="txt-link">Explorar</span>
             </a>
         </li>
-        <!--
+        
             <li class="item-menu" style="cursor: pointer;">
                 <a onclick="openModalChat()">
                     <img src="/css/img/communication.png" alt="Usuários" class="icon">
                     <span class="txt-link">Conversas</span>
                 </a>
             </li>
-            -->
+            
         <li class="item-menu">
             <a th:href="@{/home}">
                 <img src="/css/img/homeIcon.png" alt="Home" class="icon">
@@ -94,7 +94,7 @@
 
     <div class="container">
         <div class="center-content" id="center-notificacoes">   
-            <!--Container de criar evento-->
+          Container de criar evento
             
             <section id="criar-evento-section" class="section">
                 <div class="container-ev">
@@ -176,22 +176,22 @@
         </ul>
     </footer>
 
-    <!-- Modal Notificações -->
+    Modal Notificações
     <div id="modalNotificacao" class="modal-notificacao" style="display: none;">
         <div class="modal-content">
             <span class="close" onclick="fecharModalNotificacao()">&times;</span>
             <h1 class="tittle-modal">Notificações</h1>
             <div class="bloco-notificacoes"> 
-                <!--Lista de notificações-->
+                Lista de notificações
                 <ul>
                     <li th:if="${#lists.isEmpty(notifications)}">
                         <span>Não há notificações.</span>
                     </li>
                     <li class="lista-notificacoes" th:each="notification, index : ${notifications}">
                         
-                        <!--Bloco especifico-->
+  
                      <div class="notification-container">
-                         <!--Tempo da notificacao-->
+
                          
                         <img class="imgNoti" th:src="@{'/perfil-imagem-notification/' + ${notification.id}}" alt="Foto de Perfil" />
     
@@ -203,7 +203,7 @@
         </div>
     </div>
 
-    <!--Modal Config-->
+    Modal Config
     <div th:replace="home :: #modalConfiguracao"></div>
     <div th:replace="home :: #modalChat"></div>
 
@@ -226,4 +226,4 @@
     <script src="/css/js/buttons.js"></script>
     <script src="/css/js/barraLateral.js"></script>
 </body>
-</html>
+</html> -->
