@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
 <body>
  
   <div class="container" id="container">
-    <!-- Form de Cadastro -->
+
     <div class="form-container sign-up-container">
       <form method="post" action="/cadastro" class="cadastro-container" id="cadastro-form"> 
         <h1>Cadastro</h1>
@@ -26,7 +26,7 @@
 
           <input type="text" name="username" id="nomeUsuario" class="form-control" placeholder="Nome de usuário" required/>
 
-           <!--Username inválido-->
+
            <div class="dadoInvalido">
             <p>Nome de usuário deve conter até 10 caracteres <span>  <i class="bi bi-exclamation-diamond"></i>
             </span></p>
@@ -39,7 +39,7 @@
 
           <input type="email" name="email" id="email" class="form-control" placeholder="Email" required/>
 
-          <!--Email digitado inválido-->
+
           <div class="dadoInvalido" id="email-invalido">
             <p>Digite um e-mail válido (por exemplo, gmail.com ou hotmail.com). <span>  <i class="bi bi-exclamation-diamond"></i>
             </span></p>
@@ -80,14 +80,14 @@
       </form>
     </div>
 
-        <!--Formulario de Login-->
+
         <div class="form-container sign-in-container">
           <form action="/loginValida" method="post"> 
             <img src="/css/img/Modelo Logo.png" alt="" class="logo-inicio">
             <span>Insira seus dados</span>
             <span class="spanTexto"></span>
           
-            <!--Conteiner de senha-->
+
             <div class="password-container">
               <div class="inputGroup">
                 <input type="text" name="usuarioNome" class="form-control" placeholder="Nome de usuário" autocomplete="off"/>
@@ -100,16 +100,16 @@
               </label>
             </div>
 
-            <!--<p th:text="${mensagem}"></p>-->
+
             
             <div th:if="${error}" class="error-message">
               <p th:text="${error}"></p>	
             </div>
 
-            <!--Leva para a página de recuperação de senha-->
+
             <a class="link-esqueceu-senha" th:href="@{/recuperarSenha}">Esqueceu a sua senha?</a>
 
-            <!--Botâo para efetuar login-->
+
             <button class="btn-perfil-follow" id="btn-login-space" type="submit" style="cursor: pointer;">
               <strong>Login</strong>
               <div id="container-stars">
@@ -128,7 +128,7 @@
               <hr class="line">
             </div>
 
-            <!--Login com google-->
+
            <div class="google-login-button">
               <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" x="0px" y="0px" class="google-icon" viewBox="0 0 48 48" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
@@ -147,9 +147,8 @@
           </form>
         </div>
 
-        <!--Animação-->
         <div class="overlay-container">
-          <!-- Muda para o Login -->
+
           <div class="overlay">
             <div class="overlay-panel overlay-left">
               <h1 class="stake-h1">Login</h1>
@@ -157,7 +156,7 @@
               <button class="ghost" id="signIn">Login</button>
           </div>
 
-          <!-- Muda para o Cadastro -->
+
           <div class="overlay-panel overlay-right">
               <h2>Ainda não possui conta ?</h2>
               <p>Faça seu cadastro, <br>é rapido e facil!</p>
@@ -238,8 +237,8 @@
 
   </script> 
 
-            <!--Script de Validacoes Cadastro e Login-->
+            
     <script src="/css/js/validacoesCadastroLogin.js"></script>
     <script src="/css/js/buttons.js"></script>
 </body>
-</html>
+</html> -->
